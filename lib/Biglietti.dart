@@ -15,7 +15,7 @@ class _HomeState extends State<Biglietti> {
           title: new Text("Biglietti"),
         ),
         body: new Center(
-            child: new Text("this is dio")
+            child: new Text("this is ababa")
         )
     );
   }

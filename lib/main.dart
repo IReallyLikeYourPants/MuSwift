@@ -55,9 +55,12 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
         (
           onTap: onTappedBar,
           currentIndex: _currentIndex,
-          backgroundColor: Colors.grey,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.black,
+          backgroundColor: Colors.black,
+          selectedItemColor: Colors.amber[800],
+          selectedFontSize: 13,
+          unselectedFontSize: 11,
+          iconSize: 25,
+          unselectedItemColor: Colors.white,
           type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(icon: new Icon(Icons.home),
