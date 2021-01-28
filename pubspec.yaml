@@ -49,6 +49,11 @@ flutter:
   assets:
     - assets/map_style.txt
     - assets/images/deposizione.jpg
+    - assets/loadjson/musei.json
+    - assets/loadjson/opere.json
+    - assets/loadjson/viste.json
+    - assets/images/coming_soon.png
+    - assets/images/museovaticano.jpg
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

@@ -4,8 +4,6 @@ import 'package:prova_app/Ricerca.dart';
 import 'package:prova_app/Mappa.dart';
 import 'package:prova_app/Home.dart';
 
-
-
 void main()
 {
   runApp
