@@ -34,24 +34,33 @@ class StorageUploadState extends State<Ricerca> {
     tc = TextEditingController();
     rows = [
       {
+        'img': 'assets/images/deposizione.jpg',
         'contact_name': 'Test User 1',
         'contact_phone': '066 560 4900',
       },
       {
+        'img': 'assets/images/deposizione.jpg',
         'contact_name': 'Test User 2',
         'contact_phone': '066 560 7865',
       },
       {
+        'img': 'assets/images/deposizione.jpg',
         'contact_name': 'Test User 3',
         'contact_phone': '906 500 4334',
       }
     ];
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Colors.black87,
       appBar: new AppBar(
+        backgroundColor: Colors.black54,
+        leading: IconButton(
+          icon: Icon(Icons.search),color: Colors.white,),
         title: new Text(
           "Search",
           style: new TextStyle(
@@ -60,35 +69,46 @@ class StorageUploadState extends State<Ricerca> {
         ),
       ),
       body: Container(
-        color: Colors.white,
         padding: EdgeInsets.all(10),
         child: Stack(
           children: [
             Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: TextField(
-                    controller: tc,
-                    decoration: InputDecoration(prefixIcon: Icon(Icons.search),hintText: 'Search...'),
-                    onChanged: (v) {
-                      setState(() {
-                        query = v;
-                        setResults(query);
-                      });
+                  padding: const EdgeInsets.all(5.0),
+                  child: Theme(
+                      child: TextField(
+                          //style: TextStyle(color: Colors.grey),
+                          controller: tc,
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.search),
+                            hintText: 'Search...',
+                            hintStyle: TextStyle(color: Colors.grey)
+                          ),
+                          onChanged: (v) {
+                          setState(() {
+                            query = v;
+                            setResults(query);
+                          });
                     },
+                  ),
+                    data: new ThemeData( //colore della search bar
+                        primaryColor: Colors.white,
+                        accentColor: Colors.orange,
+                        hintColor: Colors.white
+                    ),
                   ),
                 ),
                 Container(
-                  color: Colors.white,
+                  color: Colors.black12,
                   child: query.isEmpty
                       ? ListView.builder(
                     shrinkWrap: true,
                     itemCount: rows.length,
                     itemBuilder: (con, ind) {
-                      return Card (child: ListTile(
-                        title: Text(rows[ind]['contact_name']),
-                        subtitle: Text(rows[ind]['contact_phone']),
+                      return Card (color: Colors.black12,child: ListTile(
+                        title: Text(rows[ind]['contact_name'],style: TextStyle(color: Colors.white)),
+                        subtitle: Text(rows[ind]['contact_phone'],style: TextStyle(color: Colors.white54)),
 
                         onTap: () {
                           setState(() {
@@ -104,9 +124,9 @@ class StorageUploadState extends State<Ricerca> {
                     shrinkWrap: true,
                     itemCount: results.length,
                     itemBuilder: (con, ind) {
-                      return Card(child: ListTile(
-                        title: Text(results[ind]['contact_name']),
-                        subtitle: Text(results[ind]['contact_phone']),
+                      return Card(color: Colors.black12,child: ListTile(
+                        title: Text(results[ind]['contact_name'],style: TextStyle(color: Colors.white)),
+                        subtitle: Text(results[ind]['contact_phone'],style: TextStyle(color: Colors.white54)),
 
                         onTap: () {
                           setState(() {
