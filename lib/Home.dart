@@ -9,9 +9,12 @@ class Home extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-            title: Text("HomePage"),
+            title: Text("Home",
+            style: TextStyle( color: Colors.amber[800]),),
+            backgroundColor: Color.fromRGBO(0, 0, 0, 30),
           ),
           body: Container(
+            color: Colors.black,
             child: SingleChildScrollView( // Per evitare "bottom overflowed pixel"
                 child: Column( // Per mettere più liste una sotto l'altra
                   children: <Widget> [
@@ -21,7 +24,7 @@ class Home extends StatelessWidget {
                           padding: new EdgeInsets.only(left: 8.0, top: 20.0), // padding è lo spazio vuoto
                           child: new Text(
                             'Opere più viste',
-                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black),
+                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.amber[800], fontStyle: FontStyle.normal),
                           )),
                     ),
                     Container(
@@ -34,7 +37,7 @@ class Home extends StatelessWidget {
                               margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
                               width: 145,
                               decoration: BoxDecoration(
-                                color: Colors.purple[600],
+                                  color: Color.fromRGBO(50, 50, 50, 130),
                                 borderRadius: new BorderRadius.all( // per i bordi arrotondati
                                     new Radius.circular(5.0)),
                                 /*boxShadow: [ // per l'ombra
@@ -61,7 +64,7 @@ class Home extends StatelessWidget {
                               margin: EdgeInsets.only(right: 10.0),
                               width: 145,
                               decoration: BoxDecoration(
-                                  color: Colors.purple[300],
+                                color: Color.fromRGBO(50, 50, 50, 130),
                                   borderRadius: new BorderRadius.all(
                                       new Radius.circular(5.0)),
                                 /*boxShadow: [ // per l'ombra
@@ -79,7 +82,7 @@ class Home extends StatelessWidget {
                               margin: EdgeInsets.only(right: 10.0),
                               width: 145,
                               decoration: BoxDecoration(
-                                  color: Colors.purple[300],
+                                color: Color.fromRGBO(50, 50, 50, 130),
                                   borderRadius: new BorderRadius.all(
                                       new Radius.circular(5.0)),
                                 /*boxShadow: [ // per l'ombra
@@ -96,7 +99,7 @@ class Home extends StatelessWidget {
                             Container(
                               width: 145,
                               decoration: BoxDecoration(
-                                  color: Colors.purple[300],
+                                color: Color.fromRGBO(50, 50, 50, 130),
                                   borderRadius: new BorderRadius.all(
                                       new Radius.circular(5.0)),
                                 /*boxShadow: [ // per l'ombra
@@ -121,7 +124,7 @@ class Home extends StatelessWidget {
                           padding: new EdgeInsets.only(left: 8.0, top: 20.0),
                           child: new Text(
                             'Musei più visitati',
-                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black),
+                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.amber[800]),
                           )),
                     ),
                     Container(
@@ -134,25 +137,7 @@ class Home extends StatelessWidget {
                               margin: EdgeInsets.only(right: 10.0),
                               width: 145,
                               decoration: BoxDecoration(
-                                  color: Colors.purple[300],
-                                  borderRadius: new BorderRadius.all(
-                                      new Radius.circular(5.0)),
-                                /*boxShadow: [ // per l'ombra
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 5,
-                                    blurRadius: 7,
-                                    offset: Offset(0, 3), // changes position of shadow
-                                  )
-                                ], */
-                              ),
-                              child: const Center(child: Text('item 1', style: TextStyle(fontSize: 18, color: Colors.white),)),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(right: 10.0),
-                              width: 145,
-                              decoration: BoxDecoration(
-                                  color: Colors.purple[300],
+                                color: Color.fromRGBO(50, 50, 50, 130),
                                   borderRadius: new BorderRadius.all(
                                       new Radius.circular(5.0)),
                                 /*boxShadow: [ // per l'ombra
@@ -170,7 +155,25 @@ class Home extends StatelessWidget {
                               margin: EdgeInsets.only(right: 10.0),
                               width: 145,
                               decoration: BoxDecoration(
-                                  color: Colors.purple[300],
+                                color: Color.fromRGBO(50, 50, 50, 130),
+                                  borderRadius: new BorderRadius.all(
+                                      new Radius.circular(5.0)),
+                                /*boxShadow: [ // per l'ombra
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes position of shadow
+                                  )
+                                ], */
+                              ),
+                              child: const Center(child: Text('In arrivo!', style: TextStyle(fontSize: 18, color: Colors.white),)),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(right: 10.0),
+                              width: 145,
+                              decoration: BoxDecoration(
+                                color: Color.fromRGBO(50, 50, 50, 130),
                                   borderRadius: new BorderRadius.all(
                                       new Radius.circular(5.0)),
                                 /*boxShadow: [ // per l'ombra
@@ -187,7 +190,7 @@ class Home extends StatelessWidget {
                             Container(
                               width: 145,
                               decoration: BoxDecoration(
-                                  color: Colors.purple[300],
+                                color: Color.fromRGBO(50, 50, 50, 130),
                                   borderRadius: new BorderRadius.all(
                                       new Radius.circular(5.0)),
                                 /*boxShadow: [ // per l'ombra
@@ -212,7 +215,7 @@ class Home extends StatelessWidget {
                           padding: new EdgeInsets.only(left: 8.0, top: 16.0),
                           child: new Text(
                             'Musei vicino a te',
-                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black),
+                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.amber[800]),
                           )),
                     ),
                     Container(
@@ -225,25 +228,7 @@ class Home extends StatelessWidget {
                               margin: EdgeInsets.only(right: 10.0),
                               width: 145,
                               decoration: BoxDecoration(
-                                  color: Colors.purple[300],
-                                  borderRadius: new BorderRadius.all(
-                                      new Radius.circular(5.0)),
-                                /*boxShadow: [ // per l'ombra
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 5,
-                                    blurRadius: 7,
-                                    offset: Offset(0, 3), // changes position of shadow
-                                  )
-                                ], */
-                              ),
-                              child: const Center(child: Text('Item 1', style: TextStyle(fontSize: 18, color: Colors.white),)),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(right: 10.0),
-                              width: 145,
-                              decoration: BoxDecoration(
-                                  color: Colors.purple[300],
+                                color: Color.fromRGBO(50, 50, 50, 130),
                                   borderRadius: new BorderRadius.all(
                                       new Radius.circular(5.0)),
                                 /*boxShadow: [ // per l'ombra
@@ -261,7 +246,25 @@ class Home extends StatelessWidget {
                               margin: EdgeInsets.only(right: 10.0),
                               width: 145,
                               decoration: BoxDecoration(
-                                  color: Colors.purple[300],
+                                color: Color.fromRGBO(50, 50, 50, 130),
+                                  borderRadius: new BorderRadius.all(
+                                      new Radius.circular(5.0)),
+                                /*boxShadow: [ // per l'ombra
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes position of shadow
+                                  )
+                                ], */
+                              ),
+                              child: const Center(child: Text('In arrivo!', style: TextStyle(fontSize: 18, color: Colors.white),)),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(right: 10.0),
+                              width: 145,
+                              decoration: BoxDecoration(
+                                  color: Color.fromRGBO(50, 50, 50, 130),
                                   borderRadius: new BorderRadius.all(
                                       new Radius.circular(5.0)),
                                 /*boxShadow: [ // per l'ombra
@@ -278,7 +281,7 @@ class Home extends StatelessWidget {
                             Container(
                               width: 145,
                               decoration: BoxDecoration(
-                                  color: Colors.purple[300],
+                                  color: Color.fromRGBO(50, 50, 50, 130),
                                   borderRadius: new BorderRadius.all(
                                       new Radius.circular(5.0)),
                                 /*boxShadow: [ // per l'ombra

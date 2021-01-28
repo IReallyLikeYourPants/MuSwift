@@ -55,7 +55,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
         (
           onTap: onTappedBar,
           currentIndex: _currentIndex,
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromRGBO(0, 0, 0, 30),
           selectedItemColor: Colors.amber[800],
           selectedFontSize: 13,
           unselectedFontSize: 11,
