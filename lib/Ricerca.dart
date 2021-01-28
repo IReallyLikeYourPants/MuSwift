@@ -14,106 +14,130 @@ class Post {
 
 class Ricerca extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  StorageUploadState createState() => new StorageUploadState();
 
 }
 
-class _HomeState extends State<Ricerca> {
-  Future<List<Post>> search(String search) async {
-    await Future.delayed(Duration(seconds: 2));
-    if (search == "empty") return [];
-    if (search == "error") throw Error();
-    return List.generate(search.length, (int index) {
-      return Post(
-        "Title : $search $index",
-        "Description :$search $index",
-      );
-    });
+
+
+
+class StorageUploadState extends State<Ricerca> {
+  List results = [];
+
+  var rows = [];
+  String query = '';
+  TextEditingController tc;
+
+  @override
+  void initState() {
+    super.initState();
+    tc = TextEditingController();
+    rows = [
+      {
+        'contact_name': 'Test User 1',
+        'contact_phone': '066 560 4900',
+      },
+      {
+        'contact_name': 'Test User 2',
+        'contact_phone': '066 560 7865',
+      },
+      {
+        'contact_name': 'Test User 3',
+        'contact_phone': '906 500 4334',
+      }
+    ];
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black54,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: SearchBar<Post>(
-            onSearch: search,
-            searchBarStyle: SearchBarStyle(
-              backgroundColor: Colors.black54,
-              padding: EdgeInsets.all(10),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            loader: Center(
-              child: Text("loading..."),
-            ),
-            placeHolder: Center(
-              child: Text("Placeholder"),
-            ),
-            onError: (error) {
-              return Center(
-                child: Text("Error occurred : $error"),
-              );
-            },
-            header: Row(
-              children: <Widget>[
-                Spacer(),
-                const SizedBox(height: 20,width: 3,),
-                ElevatedButton(
-                    onPressed: (){},
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.black54)),
-                    child: Text("Tutto",style: TextStyle(fontSize: 20))),
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text(
+          "Search",
+          style: new TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
+      body: Container(
+        color: Colors.white,
+        padding: EdgeInsets.all(10),
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: TextField(
+                    controller: tc,
+                    decoration: InputDecoration(prefixIcon: Icon(Icons.search),hintText: 'Search...'),
+                    onChanged: (v) {
+                      setState(() {
+                        query = v;
+                        setResults(query);
+                      });
+                    },
+                  ),
+                ),
+                Container(
+                  color: Colors.white,
+                  child: query.isEmpty
+                      ? ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: rows.length,
+                    itemBuilder: (con, ind) {
+                      return Card (child: ListTile(
+                        title: Text(rows[ind]['contact_name']),
+                        subtitle: Text(rows[ind]['contact_phone']),
 
-                const SizedBox(height: 20,width: 3,),
-                ElevatedButton(
-                    onPressed: (){},
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.black54)),
-                    child: Text("Musei",style: TextStyle(fontSize: 20))),
+                        onTap: () {
+                          setState(() {
+                            tc.text = rows[ind]['contact_name'];
+                            query = rows[ind]['contact_name'];
+                            setResults(query);
+                          });
+                        },
+                      ));
+                    },
+                  )
+                      : ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: results.length,
+                    itemBuilder: (con, ind) {
+                      return Card(child: ListTile(
+                        title: Text(results[ind]['contact_name']),
+                        subtitle: Text(results[ind]['contact_phone']),
 
-                const SizedBox(height: 20,width: 3,),
-                ElevatedButton(
-                    onPressed: (){},
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.black54)),
-                    child: Text("Opere",style: TextStyle(fontSize: 20))),
-                Spacer(),
+                        onTap: () {
+                          setState(() {
+                            tc.text = results[ind]['contact_name'];
+                            query = results[ind]['contact_name'];
+                            setResults(query);
+                          });
+                        },
+                      ));
+                    },
+                  ),
+                ),
               ],
             ),
-            emptyWidget: Center(
-              child: Text("Empty"),
-            ),
-            crossAxisCount: 1,
-            //indexedScaledTileBuilder: (int index) => ScaledTile.count(1, 1),
-            hintText: "Search hint text",
-            hintStyle: TextStyle(
-              color: Colors.grey[100],
-            ),
-            textStyle: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-            mainAxisSpacing: 15,
-
-            onItemFound: (Post post, int index) {
-              return Container(
-                //color : Colors.black54,
-                height: 125,
-                decoration: BoxDecoration(
-                    color:Colors.black54,
-                    borderRadius: BorderRadius.all(Radius.circular(20))),
-                child : ListTile(
-                    leading: FlutterLogo(size: 100.0),
-                    title: Text(post.title,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),
-                    subtitle: Text(post.description,style: TextStyle(color: Colors.white,fontSize: 18),),
-                    trailing: Icon(Icons.more_vert),
-                    isThreeLine: true,
-              ),
-              );
-            },
-          ),
+          ],
         ),
       ),
     );
   }
 
+  void setResults(String query) {
+    results = rows
+        .where((elem) =>
+    elem['contact_name']
+        .toString()
+        .toLowerCase()
+        .contains(query.toLowerCase()) ||
+        elem['contact_phone']
+            .toString()
+            .toLowerCase()
+            .contains(query.toLowerCase()))
+        .toList();
+  }
 }
