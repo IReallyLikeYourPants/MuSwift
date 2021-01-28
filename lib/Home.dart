@@ -1,5 +1,5 @@
-import 'dart:async';
 import 'dart:math';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
@@ -8,88 +8,301 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text("HomePage")),
-        body: MyWidget(),
-      ),
-    );
-  }
-}
+          appBar: AppBar(
+            title: Text("HomePage"),
+          ),
+          body: Container(
+            child: SingleChildScrollView( // Per evitare "bottom overflowed pixel"
+                child: Column( // Per mettere più liste una sotto l'altra
+                  children: <Widget> [
+                    new Align(
+                      alignment: Alignment.centerLeft,
+                      child: new Padding(
+                          padding: new EdgeInsets.only(left: 8.0, top: 20.0), // padding è lo spazio vuoto
+                          child: new Text(
+                            'Opere più viste',
+                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black),
+                          )),
+                    ),
+                    Container(
+                        height: 230,
+                        child: ListView(
+                          padding: EdgeInsets.all(10.0),
+                          scrollDirection: Axis.horizontal,
+                          children: <Widget>[
+                            Container( // primo elemento della prima lista di opere
+                              margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
+                              width: 145,
+                              decoration: BoxDecoration(
+                                color: Colors.purple[600],
+                                borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                    new Radius.circular(5.0)),
+                                /*boxShadow: [ // per l'ombra
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes position of shadow
+                                  )
+                                ], */
+                                image: new DecorationImage( // per metterci l'immagine dentro
+                                  image: new ExactAssetImage(
+                                    'assets/images/deposizione.jpg',
+                                  ),
+                                  fit: BoxFit.cover, // per adattarla al container
+                                )
+                              ),
+                              child: Align( // per allineare la scritta in una posizione specifica
+                                alignment: Alignment(-0.40, 0.90),
+                                child: Text('Deposizione', style: TextStyle(fontSize: 18, color: Colors.white),)
+                             ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(right: 10.0),
+                              width: 145,
+                              decoration: BoxDecoration(
+                                  color: Colors.purple[300],
+                                  borderRadius: new BorderRadius.all(
+                                      new Radius.circular(5.0)),
+                                /*boxShadow: [ // per l'ombra
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes position of shadow
+                                  )
+                                ], */
+                              ),
+                              child: const Center(child: Text('In arrivo!', style: TextStyle(fontSize: 18, color: Colors.white),)),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(right: 10.0),
+                              width: 145,
+                              decoration: BoxDecoration(
+                                  color: Colors.purple[300],
+                                  borderRadius: new BorderRadius.all(
+                                      new Radius.circular(5.0)),
+                                /*boxShadow: [ // per l'ombra
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes position of shadow
+                                  )
+                                ], */
+                              ),
+                              child: const Center(child: Text('In arrivo!', style: TextStyle(fontSize: 18, color: Colors.white),)),
+                            ),
+                            Container(
+                              width: 145,
+                              decoration: BoxDecoration(
+                                  color: Colors.purple[300],
+                                  borderRadius: new BorderRadius.all(
+                                      new Radius.circular(5.0)),
+                                /*boxShadow: [ // per l'ombra
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes position of shadow
+                                  )
+                                ], */
+                              ),
+                              child: const Center(child: Text('In arrivo!', style: TextStyle(fontSize: 18, color: Colors.white),)),
+                            ),
+                          ],
 
-class UrlObject {
-  final String url;
+                        )
+                    ),
+                    Divider(),
+                    new Align(
+                      alignment: Alignment.centerLeft,
+                      child: new Padding(
+                          padding: new EdgeInsets.only(left: 8.0, top: 20.0),
+                          child: new Text(
+                            'Musei più visitati',
+                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black),
+                          )),
+                    ),
+                    Container(
+                        height: 230,
+                        child: ListView(
+                          padding: EdgeInsets.all(10.0),
+                          scrollDirection: Axis.horizontal,
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.only(right: 10.0),
+                              width: 145,
+                              decoration: BoxDecoration(
+                                  color: Colors.purple[300],
+                                  borderRadius: new BorderRadius.all(
+                                      new Radius.circular(5.0)),
+                                /*boxShadow: [ // per l'ombra
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes position of shadow
+                                  )
+                                ], */
+                              ),
+                              child: const Center(child: Text('item 1', style: TextStyle(fontSize: 18, color: Colors.white),)),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(right: 10.0),
+                              width: 145,
+                              decoration: BoxDecoration(
+                                  color: Colors.purple[300],
+                                  borderRadius: new BorderRadius.all(
+                                      new Radius.circular(5.0)),
+                                /*boxShadow: [ // per l'ombra
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes position of shadow
+                                  )
+                                ], */
+                              ),
+                              child: const Center(child: Text('In arrivo!', style: TextStyle(fontSize: 18, color: Colors.white),)),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(right: 10.0),
+                              width: 145,
+                              decoration: BoxDecoration(
+                                  color: Colors.purple[300],
+                                  borderRadius: new BorderRadius.all(
+                                      new Radius.circular(5.0)),
+                                /*boxShadow: [ // per l'ombra
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes position of shadow
+                                  )
+                                ], */
+                              ),
+                              child: const Center(child: Text('In arrivo!', style: TextStyle(fontSize: 18, color: Colors.white),)),
+                            ),
+                            Container(
+                              width: 145,
+                              decoration: BoxDecoration(
+                                  color: Colors.purple[300],
+                                  borderRadius: new BorderRadius.all(
+                                      new Radius.circular(5.0)),
+                                /*boxShadow: [ // per l'ombra
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes position of shadow
+                                  )
+                                ], */
+                              ),
+                              child: const Center(child: Text('In arrivo!', style: TextStyle(fontSize: 18, color: Colors.white),)),
+                            ),
+                          ],
 
-  UrlObject(this.url);
-}
+                        )
+                    ),
+                    Divider(), // linea separatrice
+                    new Align(
+                      alignment: Alignment.centerLeft,
+                      child: new Padding(
+                          padding: new EdgeInsets.only(left: 8.0, top: 16.0),
+                          child: new Text(
+                            'Musei vicino a te',
+                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black),
+                          )),
+                    ),
+                    Container(
+                        height: 230,
+                        child: ListView(
+                          padding: EdgeInsets.all(10.0),
+                          scrollDirection: Axis.horizontal,
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.only(right: 10.0),
+                              width: 145,
+                              decoration: BoxDecoration(
+                                  color: Colors.purple[300],
+                                  borderRadius: new BorderRadius.all(
+                                      new Radius.circular(5.0)),
+                                /*boxShadow: [ // per l'ombra
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes position of shadow
+                                  )
+                                ], */
+                              ),
+                              child: const Center(child: Text('Item 1', style: TextStyle(fontSize: 18, color: Colors.white),)),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(right: 10.0),
+                              width: 145,
+                              decoration: BoxDecoration(
+                                  color: Colors.purple[300],
+                                  borderRadius: new BorderRadius.all(
+                                      new Radius.circular(5.0)),
+                                /*boxShadow: [ // per l'ombra
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes position of shadow
+                                  )
+                                ], */
+                              ),
+                              child: const Center(child: Text('In arrivo!', style: TextStyle(fontSize: 18, color: Colors.white),)),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(right: 10.0),
+                              width: 145,
+                              decoration: BoxDecoration(
+                                  color: Colors.purple[300],
+                                  borderRadius: new BorderRadius.all(
+                                      new Radius.circular(5.0)),
+                                /*boxShadow: [ // per l'ombra
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes position of shadow
+                                  )
+                                ], */
+                              ),
+                              child: const Center(child: Text('In arrivo!', style: TextStyle(fontSize: 18, color: Colors.white),)),
+                            ),
+                            Container(
+                              width: 145,
+                              decoration: BoxDecoration(
+                                  color: Colors.purple[300],
+                                  borderRadius: new BorderRadius.all(
+                                      new Radius.circular(5.0)),
+                                /*boxShadow: [ // per l'ombra
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes position of shadow
+                                  )
+                                ], */
+                              ),
+                              child: const Center(child: Text('In arrivo!', style: TextStyle(fontSize: 18, color: Colors.white),)),
+                            ),
+                          ],
 
-Stream<List<UrlObject>> generate(int num, Duration timeout) async* {
-  List<UrlObject> list = [];
-  int seed = Random().nextInt(200);
-  for (int i = 0; i < num; ++i) {
-    await Future.delayed(timeout);
-    yield list..add(UrlObject("https://loremflickr.com/640/480/dog?random=$i$seed"));
-  }
-}
+                        )
+                    ),
+                    Divider(),
+                  ],
+                )
 
-class MyWidget extends StatefulWidget {
-  @override
-  _MyWidgetState createState() => _MyWidgetState();
-}
+            )
 
-class _MyWidgetState extends State<MyWidget> {
-  Stream<List<UrlObject>> stream1;
-  Stream<List<UrlObject>> stream2;
-  Stream<List<UrlObject>> stream3;
-
-  @override
-  void initState() {
-    stream1 = generate(10, Duration(seconds: 1, milliseconds: 500));
-    stream2 = generate(10, Duration(seconds: 1));
-    stream3 = generate(30, Duration(seconds: 2));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      scrollDirection: Axis.vertical,
-      children: [
-        streamItems(stream1, (context, list) => HList(objects: list)),
-        streamItems(stream2, (context, list) => HList(objects: list)),
-        streamItems(stream3, (context, list) => HList(objects: list)),
-      ],
-    );
-  }
-
-  Widget streamItems(Stream stream, Widget builder(BuildContext context, List<UrlObject> objects)) {
-    return StreamBuilder(
-      initialData: new List<UrlObject>(),
-      builder: (context, snapshot) => builder(context, snapshot.data),
-      stream: stream,
-    );
-  }
-}
-
-class HList extends StatelessWidget {
-  final List<UrlObject> objects;
-
-  const HList({Key key, this.objects}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-
-      height: 150.0,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: objects.length,
-        itemBuilder: (context, index) {
-          return new AspectRatio(
-            aspectRatio: 3.0 / 2.0,
-            child: Image.network(
-              objects[index].url,
-              fit: BoxFit.cover,
-            ),
-          );
-        },
+          )
       ),
     );
   }
