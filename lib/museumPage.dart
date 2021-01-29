@@ -1,36 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async' show Future;
-import 'package:flutter/services.dart' show rootBundle;
-import 'package:flutter/services.dart';
-import 'dart:convert';
-
-Future<String> getJson() {
-  return rootBundle.loadString('assets/loadjson/infomusei.json');
-}
-
-//String title, int price, String address, String schedule, String number, String site, String story
-String prezzo;
-String luogo;
-String orario;
-String numero;
-String sito;
-String storia;
-String immagine;
 
 class museo{
-  String id;
-  int prezzo;
+  String prezzo;
   String luogo;
   String orario;
   String numero;
   String sito;
+  String storia;
+  String immagine;
 
-  museo({this.id, this.prezzo, this.luogo, this.orario, this.numero, this.sito});
+  museo({this.prezzo, this.luogo, this.orario, this.numero, this.sito, this.storia, this.immagine});
 }
-
-museo Museo;
+museo Museo = new museo();
 
 Container infoRow(IconData icon, String label){
   return Container(
@@ -139,8 +122,8 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
               Container(
                 child: ListView(
                   children: [
-                    infoRow(Icons.confirmation_num, "Prezzo biglietto " + prezzo + "€"),
-                    infoRow(Icons.map, luogo),
+                    infoRow(Icons.confirmation_num, "Prezzo biglietto " + Museo.prezzo + "€"),
+                    infoRow(Icons.map, Museo.luogo),
                     GestureDetector(
                         onTap: (){
                           Navigator.push(
@@ -160,7 +143,7 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
                                   child: Container(
                                     margin: EdgeInsets.only(left: 10),
                                     child: Text(
-                                      orario,
+                                      Museo.orario,
                                       style: TextStyle(
                                           fontSize: 20
                                       ),
@@ -175,12 +158,12 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
                           ),
                         )
                     ),
-                    infoRow(Icons.call, numero),
-                    infoRow(Icons.web, sito),
+                    infoRow(Icons.call, Museo.numero),
+                    infoRow(Icons.web, Museo.sito),
                     SizedBox(height: 10,),
                     Divider(color: Colors.black),
                     SizedBox(height: 10,),
-                    Text(storia,
+                    Text(Museo.storia,
                         maxLines: 3,
                         style: TextStyle(
                             fontSize: 20
@@ -318,13 +301,13 @@ class museumPage extends StatelessWidget {
   //DetailScreen({Key key, @required this.todo}) : super(key: key);
   //Museo({Key key, @required this.title}) : super(key: key);
   museumPage(String title, String price, String address, String schedule, String number, String site, String story, String img){
-    prezzo = price;
-    luogo = address;
-    orario = schedule;
-    numero = number;
-    sito = site;
-    storia = story;
-    immagine = img;
+    Museo.prezzo = price;
+    Museo.luogo = address;
+    Museo.orario = schedule;
+    Museo.numero = number;
+    Museo.sito = site;
+    Museo.storia = story;
+    Museo.immagine = img;
     this.title = title;
   }
 
@@ -337,7 +320,7 @@ class museumPage extends StatelessWidget {
         height: 300,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(immagine),
+            image: AssetImage(Museo.immagine),
             fit: BoxFit.cover,
           ),
         ),

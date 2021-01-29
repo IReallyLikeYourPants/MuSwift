@@ -2,7 +2,6 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
-
 import 'package:prova_app/museumPage.dart';
 
 class Home extends StatelessWidget {
