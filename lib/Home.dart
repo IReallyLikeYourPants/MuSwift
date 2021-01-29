@@ -1,17 +1,33 @@
 import 'dart:math';
+import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:prova_app/museumPage.dart';
 
+
+//SEGNATE I VALORI PRECEDENTI SE CAMBIATE
+//USATE LE PROPORZIONI DOVE POSSIBILE
+//Altezza e larghezza degli item nei grid. PRIMA ERANO A 145-230
+const itemWidthPercentage = 0.33;
+const itemHeightPercentage = 0.27;
+
+const FontWeight titleFontWeight = FontWeight.bold;
+const double titleFontSize = 20;
+const Color titleFontColor = Colors.black;
+
+const double itemTitleFontSize = 18;
+const Color itemFontColor = Colors.white;
+const Color itemBackgroundColor = Colors.blue;
+
+const Color backgroundColor = null;
+
 class Home extends StatelessWidget {
-
-  List musei;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: backgroundColor,
           appBar: AppBar(
             title: Text("HomePage"),
           ),
@@ -25,12 +41,12 @@ class Home extends StatelessWidget {
                             padding: new EdgeInsets.only(left: 8.0, top: 20.0), // padding è lo spazio vuoto
                             child: new Text(
                               'Opere più viste',
-                              style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black),
+                              style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
                             )
                         ),
                       ),
                       Container(
-                          height: 230,
+                          height: MediaQuery.of(context).size.height * itemHeightPercentage,
                           child: FutureBuilder(
                             future: DefaultAssetBundle.of(context).loadString('assets/loadjson/opere.json'),
                             builder: (context, snapshot){
@@ -47,9 +63,9 @@ class Home extends StatelessWidget {
                                     },
                                     child: Container( // primo elemento della prima lista di opere
                                       margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
-                                      width: 145,
+                                      width: MediaQuery.of(context).size.width * itemWidthPercentage,
                                       decoration: BoxDecoration(
-                                        color: Colors.purple[600],
+                                        color: itemBackgroundColor,
                                         borderRadius: new BorderRadius.all( // per i bordi arrotondati
                                             new Radius.circular(5.0)
                                         ),
@@ -69,7 +85,7 @@ class Home extends StatelessWidget {
                                       ),
                                       child: Align( // per allineare la scritta in una posizione specifica
                                           alignment: Alignment(-0.40, 0.90),
-                                          child: Text(newOpere[index]['title'], style: TextStyle(fontSize: 18, color: Colors.white),)
+                                          child: Text(newOpere[index]['title'], style: TextStyle(fontSize: itemTitleFontSize, color: itemFontColor),)
                                       ),
                                     ),
                                   );
@@ -85,12 +101,12 @@ class Home extends StatelessWidget {
                             padding: new EdgeInsets.only(left: 8.0, top: 20.0), // padding è lo spazio vuoto
                             child: new Text(
                               'Musei più visitati',
-                              style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black),
+                              style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
                             )
                         ),
                       ),
                       Container(
-                          height: 230,
+                          height: MediaQuery.of(context).size.height * itemHeightPercentage,
                           child: FutureBuilder(
                             future: DefaultAssetBundle.of(context).loadString('assets/loadjson/musei.json'),
                             builder: (context, snapshot){
@@ -116,9 +132,9 @@ class Home extends StatelessWidget {
                                     },
                                     child: Container( // primo elemento della prima lista di opere
                                       margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
-                                      width: 145,
+                                      width: MediaQuery.of(context).size.width * itemWidthPercentage,
                                       decoration: BoxDecoration(
-                                        color: Colors.purple[600],
+                                        color: itemBackgroundColor,
                                         borderRadius: new BorderRadius.all( // per i bordi arrotondati
                                             new Radius.circular(5.0)
                                         ),
@@ -138,7 +154,7 @@ class Home extends StatelessWidget {
                                       ),
                                       child: Align( // per allineare la scritta in una posizione specifica
                                           alignment: Alignment(-0.40, 0.90),
-                                          child: Text(newMuseo[index]['title'], style: TextStyle(fontSize: 18, color: Colors.white),)
+                                          child: Text(newMuseo[index]['title'], style: TextStyle(fontSize: itemTitleFontSize, color: itemFontColor),)
                                       ),
                                     ),
                                   );
@@ -154,12 +170,12 @@ class Home extends StatelessWidget {
                             padding: new EdgeInsets.only(left: 8.0, top: 20.0), // padding è lo spazio vuoto
                             child: new Text(
                               'Musei nei dintorni',
-                              style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black),
+                              style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
                             )
                         ),
                       ),
                       Container(
-                          height: 230,
+                          height: MediaQuery.of(context).size.height * itemHeightPercentage,
                           child: FutureBuilder(
                             future: DefaultAssetBundle.of(context).loadString('assets/loadjson/viste.json'),
                             builder: (context, snapshot){
@@ -175,10 +191,10 @@ class Home extends StatelessWidget {
                                       //IMPLEMENTARE ANDATA
                                     },
                                     child: Container( // primo elemento della prima lista di opere
-                                      margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
-                                      width: 145,
+                                      margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altraZ
+                                      width: MediaQuery.of(context).size.width * 0.33,
                                       decoration: BoxDecoration(
-                                        color: Colors.purple[600],
+                                        color: itemBackgroundColor,
                                         borderRadius: new BorderRadius.all( // per i bordi arrotondati
                                             new Radius.circular(5.0)
                                         ),
@@ -198,7 +214,7 @@ class Home extends StatelessWidget {
                                       ),
                                       child: Align( // per allineare la scritta in una posizione specifica
                                           alignment: Alignment(-0.40, 0.90),
-                                          child: Text(newViste[index]['title'], style: TextStyle(fontSize: 18, color: Colors.white),)
+                                          child: Text(newViste[index]['title'], style: TextStyle(fontSize: itemTitleFontSize, color: itemFontColor),)
                                       ),
                                     ),
                                   );
