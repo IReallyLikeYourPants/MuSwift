@@ -105,11 +105,11 @@ class Home extends StatelessWidget {
                                 return GestureDetector(
                                   onTap: (){
                                     Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Museo(title: newMuseo[index]['title'])
-                                      )
-                                    );//IMPLEMENTARE ANDATA
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Museo(title: newMuseo[index]['title'])
+                                        )
+                                    );
                                   },
                                   child: Container( // primo elemento della prima lista di opere
                                     margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
