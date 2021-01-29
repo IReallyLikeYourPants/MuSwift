@@ -1,8 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async' show Future;
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:convert';
+import 'package:prova_app/SmoothStarRating.dart';
+
+import 'file:///C:/Users/franc/Documents/GitHub/MuSwift/misc/ColorLoader5.dart';
+
+Future<String> loadMuseumAsset() async {
+  return await rootBundle.loadString('assets/loadjson/infomusei.json');
+}
+
+Future wait(int seconds) {
+  return new Future.delayed(Duration(seconds: seconds), () => {});
+}
+
+Future loadMuseum(String nome) async {
+  await wait(5);
+  String jsonString = await loadMuseumAsset();
+  final jsonResponse = json.decode(jsonString);
+  return new museo.fromJson(jsonResponse, nome);
+}
 
 class museo{
+  String nome;
   String prezzo;
   String luogo;
   String orario;
@@ -12,7 +33,20 @@ class museo{
   String immagine;
 
   museo({this.prezzo, this.luogo, this.orario, this.numero, this.sito, this.storia, this.immagine});
+
+  factory museo.fromJson(Map<String, dynamic> parsedJson, String nome){
+    return museo(
+        prezzo: parsedJson[nome]['prezzo'],
+        luogo: parsedJson[nome]['luogo'],
+        orario: parsedJson[nome]['orario'],
+        numero: parsedJson[nome]['numero'],
+        sito: parsedJson[nome]['sito'],
+        storia: parsedJson[nome]['storia'],
+        immagine: parsedJson[nome]['immagine'],
+    );
+  }
 }
+
 museo Museo = new museo();
 
 Container infoRow(IconData icon, String label){
@@ -265,7 +299,7 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
                               new Radius.circular(5.0)
                             ),
                             image: new DecorationImage( // per metterci l'immagine dentro
-                              image: new ExactAssetImage("assets/images/deposizione.jpg"),
+                              image: new ExactAssetImage(Museo.immagine),
                               fit: BoxFit.cover, // per adattarla al container
                             ),
                             boxShadow: [
@@ -297,18 +331,15 @@ class museumPage extends StatelessWidget {
   //DA IMPLEMENTARE
   //var my_data = json.decode(await getJson());
   String title;
+  double rate;
 
   //DetailScreen({Key key, @required this.todo}) : super(key: key);
   //Museo({Key key, @required this.title}) : super(key: key);
-  museumPage(String title, String price, String address, String schedule, String number, String site, String story, String img){
-    Museo.prezzo = price;
-    Museo.luogo = address;
-    Museo.orario = schedule;
-    Museo.numero = number;
-    Museo.sito = site;
-    Museo.storia = story;
-    Museo.immagine = img;
+  museumPage(String title, String img, double rat){
     this.title = title;
+    this.rate = rat;
+    print(this.rate);
+    Museo.immagine = img;
   }
 
   // This widget is the root of your application.
@@ -352,17 +383,15 @@ class museumPage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: 200,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Icon(Icons.star, color: Colors.white, size: 30,),
-                          Icon(Icons.star, color: Colors.white, size: 30,),
-                          Icon(Icons.star, color: Colors.white, size: 30,),
-                          Icon(Icons.star, color: Colors.white, size: 30,),
-                          Icon(Icons.star, color: Colors.white, size: 30,),
-                        ],
+                      child: SmoothStarRating(
+                          allowHalfRating: false,
+                          starCount: 5,
+                          rating: rate,
+                          size: 40.0,
+                          color: Colors.white,
+                          halfFilledIconData: Icons.star_half_outlined,
+                          borderColor: Colors.white,
+                          spacing:0.0
                       ),
                     )
                   ],
@@ -372,16 +401,57 @@ class museumPage extends StatelessWidget {
         )
     );
 
-    return SafeArea(
-        child:
-        Scaffold(
-          body: Column(
-            children: [
-              topPage,
-              InsideTabBar(),
-            ],
-          ),
-        )
+    return FutureBuilder(
+        future: loadMuseum(title),
+        builder: (context, snapshot){
+          if (snapshot.hasData) {
+            Museo = snapshot.data;
+            print(Museo.immagine);
+
+            return SafeArea(
+                child:
+                Scaffold(
+                  body: Column(
+                    children: [
+                      topPage,
+                      InsideTabBar(),
+                    ],
+                  ),
+                )
+            );
+          }
+          else return new SafeArea(
+              child:
+              Scaffold(
+                body: Column(
+                  children: [
+                    topPage,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 100,),
+                        Text("Caricamento",
+                            style: TextStyle(
+                                fontSize: 25
+                            )
+                        ),
+                        SizedBox(height: 20,),
+                        ColorLoader5(
+                          dotOneColor: Colors.redAccent,
+                          dotTwoColor: Colors.blueAccent,
+                          dotThreeColor: Colors.green,
+                          dotType: DotType.circle,
+                          dotIcon: Icon(Icons.museum_outlined),
+                          duration: Duration(seconds: 1),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              )
+          );
+        }
     );
   }
 }

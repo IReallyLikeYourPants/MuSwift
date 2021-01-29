@@ -107,22 +107,9 @@ class Home extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) => museumPage(
-                                                /*    prezzo = price;
-                                                      luogo = address;
-                                                      orario = schedule;
-                                                      numero = number;
-                                                      sito = site;
-                                                      storia = story;
-                                                      immagine = img;*/
-                                                  newMuseo[index]['title'],
-                                                newMuseo[index]['prezzo'],
-                                                newMuseo[index]['luogo'],
-                                                newMuseo[index]['orario'],
-                                                newMuseo[index]['numero'],
-                                                newMuseo[index]['sito'],
-                                                newMuseo[index]['storia'],
+                                                newMuseo[index]['title'],
                                                 newMuseo[index]['img'],
-
+                                                newMuseo[index]['rate'],
                                               )
                                           )
                                       );//IMPLEMENTARE ANDATA
