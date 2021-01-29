@@ -2,8 +2,8 @@
   "Museo vaticano": {
     "prezzo" : 17,
     "luogo" : "Città del Vaticano",
-    "Orario" : "Lunedì 08-99",
-    "Numero" : "06+ 12346666",
-    "Sito" : "www.ciao.com"
+    "orario" : "Lunedì 08-99",
+    "numero" : "06+ 12346666",
+    "sito" : "www.ciao.com"
   }
 }

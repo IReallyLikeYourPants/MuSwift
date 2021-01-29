@@ -1,11 +1,36 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'dart:async' show Future;
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/services.dart';
 import 'dart:convert';
 
 Future<String> getJson() {
   return rootBundle.loadString('assets/loadjson/infomusei.json');
 }
+
+//String title, int price, String address, String schedule, String number, String site, String story
+String prezzo;
+String luogo;
+String orario;
+String numero;
+String sito;
+String storia;
+String immagine;
+
+class museo{
+  String id;
+  int prezzo;
+  String luogo;
+  String orario;
+  String numero;
+  String sito;
+
+  museo({this.id, this.prezzo, this.luogo, this.orario, this.numero, this.sito});
+}
+
+museo Museo;
 
 Container infoRow(IconData icon, String label){
   return Container(
@@ -114,8 +139,8 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
               Container(
                 child: ListView(
                   children: [
-                    infoRow(Icons.confirmation_num, "Prezzo biglietto 17€"),
-                    infoRow(Icons.map, "Città del Vaticano"),
+                    infoRow(Icons.confirmation_num, "Prezzo biglietto " + prezzo + "€"),
+                    infoRow(Icons.map, luogo),
                     GestureDetector(
                         onTap: (){
                           Navigator.push(
@@ -135,7 +160,7 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
                                   child: Container(
                                     margin: EdgeInsets.only(left: 10),
                                     child: Text(
-                                      "Lunedì 08-18",
+                                      orario,
                                       style: TextStyle(
                                           fontSize: 20
                                       ),
@@ -150,12 +175,12 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
                           ),
                         )
                     ),
-                    infoRow(Icons.call, "+06 12345678"),
-                    infoRow(Icons.web, "www.musei.it"),
+                    infoRow(Icons.call, numero),
+                    infoRow(Icons.web, sito),
                     SizedBox(height: 10,),
                     Divider(color: Colors.black),
                     SizedBox(height: 10,),
-                    Text("I Musei Vaticani sono il polo museale della Città del Vaticano a Roma.Fondati da papa Giulio II nel XVI secolo, occupano gran parte del vasto cortile del Belvedere e sono una delle raccolte d'arte più grandi del mondo, dal momento che espongono l'enorme collezione di opere d'arte accumulata nei secoli dai papi: la Cappella Sistina e ...Leggi di più ",
+                    Text(storia,
                         maxLines: 3,
                         style: TextStyle(
                             fontSize: 20
@@ -285,25 +310,34 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
   }
 }
 
-class Museo extends StatelessWidget {
+class museumPage extends StatelessWidget {
   //DA IMPLEMENTARE
   //var my_data = json.decode(await getJson());
-  final String title;
+  String title;
 
   //DetailScreen({Key key, @required this.todo}) : super(key: key);
-  Museo({Key key, @required this.title}) : super(key: key);
+  //Museo({Key key, @required this.title}) : super(key: key);
+  museumPage(String title, String price, String address, String schedule, String number, String site, String story, String img){
+    prezzo = price;
+    luogo = address;
+    orario = schedule;
+    numero = number;
+    sito = site;
+    storia = story;
+    immagine = img;
+    this.title = title;
+  }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     Widget topPage = Container(
         padding: const EdgeInsets.all(10),
         width: double.infinity,
         height: 300,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/museovaticano.jpg"),
+            image: AssetImage(immagine),
             fit: BoxFit.cover,
           ),
         ),
