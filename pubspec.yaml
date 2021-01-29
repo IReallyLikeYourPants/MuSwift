@@ -52,6 +52,7 @@ flutter:
     - assets/loadjson/musei.json
     - assets/loadjson/opere.json
     - assets/loadjson/viste.json
+    - assets/loadjson/infomusei.json
     - assets/images/coming_soon.png
     - assets/images/museovaticano.jpg
   # The following line ensures that the Material Icons font is

@@ -1,5 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:convert';
+
+Future<String> getJson() {
+  return rootBundle.loadString('assets/loadjson/infomusei.json');
+}
 
 Container infoRow(IconData icon, String label){
   return Container(
@@ -99,7 +105,8 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
           ],
         ),
         Container(
-          height: 340,
+          //SISTEMARE ALTEZZA
+          height: MediaQuery. of(context). size. height - 454,
           padding: const EdgeInsets.only(left: 10, right: 10),
           child: TabBarView(
             controller: _insideTabController,
@@ -279,6 +286,13 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
 }
 
 class Museo extends StatelessWidget {
+  //DA IMPLEMENTARE
+  //var my_data = json.decode(await getJson());
+  final String title;
+
+  //DetailScreen({Key key, @required this.todo}) : super(key: key);
+  Museo({Key key, @required this.title}) : super(key: key);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -313,7 +327,7 @@ class Museo extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Musei Vaticani",
+                      title,
                       style: TextStyle(
                           fontSize: 40,
                           color: Colors.white,
@@ -341,17 +355,15 @@ class Museo extends StatelessWidget {
         )
     );
 
-    return MaterialApp(
-        title: 'Flutter Demo',
-        home: Scaffold(
-            body: new SafeArea(
-              child: Column(
-                children: [
-                  topPage,
-                  InsideTabBar(),
-                ],
-              ),
-            )
+    return SafeArea(
+        child:
+        Scaffold(
+          body: Column(
+            children: [
+              topPage,
+              InsideTabBar(),
+            ],
+          ),
         )
     );
   }

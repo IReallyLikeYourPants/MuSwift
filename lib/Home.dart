@@ -106,8 +106,9 @@ class Home extends StatelessWidget {
                                   onTap: (){
                                     Navigator.push(
                                       context,
-                                      //Museo()
-                                      MaterialPageRoute(builder: (context) => Museo()),
+                                      MaterialPageRoute(
+                                          builder: (context) => Museo(title: newMuseo[index]['title'])
+                                      )
                                     );//IMPLEMENTARE ANDATA
                                   },
                                   child: Container( // primo elemento della prima lista di opere
