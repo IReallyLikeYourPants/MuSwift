@@ -2,26 +2,36 @@
   {
     "title":"Deposizione",
     "img": "assets/images/deposizione.jpg",
-    "nav": ""
+    "nav": "Musei Vaticani"
   },
   {
-    "title":"In arrivo",
-    "img": "",
-    "nav": ""
+    "title":"Apollo del Belvedere",
+    "img": "assets/images/apollodelbelvedere.jpg",
+    "nav": "Musei Vaticani"
   },
   {
-    "title":"In arrivo",
-    "img": "",
-    "nav": ""
+    "title":"Carita con Quattro Figli",
+    "img": "assets/images/caritaconquattrofigli.jpg",
+    "nav": "Musei Vaticani"
   },
   {
-    "title":"In arrivo",
-    "img": "",
-    "nav": ""
+    "title":"Gruppo del Laocoonte",
+    "img": "assets/images/gruppodellaoconte.jpg",
+    "nav": "Musei Vaticani"
   },
   {
-    "title":"In arrivo",
-    "img": "",
-    "nav": ""
+    "title":"David",
+    "img": "assets/images/david.jpg",
+    "nav": "Galleria Borghese"
+  },
+  {
+    "title":"Apollo e Dafne",
+    "img": "assets/images/apolloedafne.jpg",
+    "nav": "Galleria Borghese"
+  },
+  {
+    "title":"Ratto di Proserpina",
+    "img": "assets/images/rattodiprospertina.jpg",
+    "nav": "Galleria Borghese"
   }
 ]

@@ -9,9 +9,6 @@ import 'package:sqflite/sqflite.dart';
 
 import 'museumPage.dart';
 
-
-
-
 class Post {
   final String title;
   final String description;
