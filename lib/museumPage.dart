@@ -189,9 +189,9 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
             ),
           ],
         ),
-        Container(
+        Expanded(child: Container(
           //SISTEMARE ALTEZZA
-          height: MediaQuery. of(context). size. height * flexBottomPercentage,
+          //height: MediaQuery. of(context). size. height * flexBottomPercentage,
           padding: const EdgeInsets.only(left: 10, right: 10),
           child: TabBarView(
             controller: _insideTabController,
@@ -399,27 +399,27 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
 
                       },
                       child: Container( // primo elemento della prima lista di opere
-                          margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
-                          width: 145,
-                          decoration: BoxDecoration(
-                            borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                        margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
+                        width: 145,
+                        decoration: BoxDecoration(
+                          borderRadius: new BorderRadius.all( // per i bordi arrotondati
                               new Radius.circular(5.0)
-                            ),
-                            image: new DecorationImage( // per metterci l'immagine dentro
-                              image: new ExactAssetImage(Museo.immagine),
-                              fit: BoxFit.cover, // per adattarla al container
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey,
-                                offset: Offset(0.0, 1.0), //(x,y)
-                                blurRadius: 6.0,
-                              )
-                            ],
+                          ),
+                          image: new DecorationImage( // per metterci l'immagine dentro
+                            image: new AssetImage(Museo.immagine),
+                            fit: BoxFit.cover, // per adattarla al container
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              offset: Offset(0.0, 1.0), //(x,y)
+                              blurRadius: 6.0,
+                            )
+                          ],
                         ),
                         child: Align( // per allineare la scritta in una posizione specifica
-                          alignment: Alignment(-0.40, 0.90),
-                          child: Text("Deposizione", style: TextStyle(fontSize: 18, color: Colors.white),)
+                            alignment: Alignment(-0.40, 0.90),
+                            child: Text("Deposizione", style: TextStyle(fontSize: 18, color: Colors.white),)
                         ),
                       ),
                     ),
@@ -428,7 +428,7 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
               ), // OPERE
             ],
           ),
-        )
+        ))
       ],
     );
   }
@@ -588,9 +588,9 @@ class storyPage extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.of(context).popUntil((route) => route.isFirst);
           },
-          child: Text('TORNIAMO INDIETRO'),
+          child: Text('TO ROOT'),
         ),
       ),
     );
