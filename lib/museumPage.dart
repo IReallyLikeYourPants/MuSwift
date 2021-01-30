@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async' show Future;
@@ -6,6 +8,8 @@ import 'dart:convert';
 import 'package:prova_app/misc/ColorLoader5.dart';
 import 'package:prova_app/misc/SmoothStarRating.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'Home.dart';
 
 const waitValue = 0;
 const double textFontSize = 17;
@@ -17,23 +21,25 @@ const double nextIconSize = 30;
 const double backIconSize = 35;
 const double starIconSize = 30;
 
-const Color tabTextColor = null;
-const Color tabColor = null;
-const Color tabActiveColor = null;
+const Color tabTextColor = Colors.black;
+const Color tabActiveTextColor = Colors.blue;
+const Color tabIndicatorColor = Colors.blue;
 
 const Color textFontColor = Colors.black;
 const Color titleFontColor = Colors.white;
-const Color itemFontColor = null;
-const Color textButtonColor = null;
-const Color buttonColor = null;
+
+const Color textButtonColor = Colors.white;
+const Color buttonColor = Colors.blue;
+const FontWeight buttonFontWeight = FontWeight.normal;
+const double elevationButton = 5;
+
 const Color starIconColor = Colors.white;
 
-const double buttonWidthPercentage = null;
-const double itemWidthPercentage = null;
-const double itemHeightPercentage = null;
+const double itemWidthPercentage = 0.30;
+const double itemHeightPercentage = 0.20;
 const int itemPerLine = 2;
 
-const int flexTopPage = 4;
+const int flexTopPage = 3;
 const int flexLowPage = 10 - flexTopPage;
 const double flexBottomPercentage = 0.5;
 const int maxLinesStory = 3;
@@ -68,8 +74,9 @@ class museo{
   String sito;
   String storia;
   String immagine;
+  var opere;
 
-  museo({this.prezzo, this.luogo, this.orario, this.numero, this.sito, this.storia, this.immagine});
+  museo({this.prezzo, this.luogo, this.orario, this.numero, this.sito, this.storia, this.immagine, this.opere});
 
   factory museo.fromJson(Map<String, dynamic> parsedJson, String nome){
     return museo(
@@ -80,6 +87,7 @@ class museo{
         sito: parsedJson[nome]['sito'],
         storia: parsedJson[nome]['storia'],
         immagine: parsedJson[nome]['immagine'],
+        opere: parsedJson[nome]['opere']
     );
   }
 }
@@ -167,9 +175,9 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
       children: [
         TabBar(
           controller: _insideTabController,
-          indicatorColor: Colors.blue,
-          labelColor: Colors.blue,
-          unselectedLabelColor: Colors.black,
+          indicatorColor: tabIndicatorColor,
+          labelColor: tabActiveTextColor,
+          unselectedLabelColor: tabTextColor,
           tabs: <Widget>[
             Tab(
               child: Text(
@@ -192,12 +200,12 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
         Expanded(child: Container(
           //SISTEMARE ALTEZZA
           //height: MediaQuery. of(context). size. height * flexBottomPercentage,
-          padding: const EdgeInsets.only(left: 10, right: 10),
           child: TabBarView(
             controller: _insideTabController,
             children: [
               Container(
                 child: ListView(
+                  padding: EdgeInsets.only(top: 5, left: 10, right: 10),
                   children: [
                     infoRow(Icons.confirmation_num, "Prezzo biglietto " + Museo.prezzo + "€"),
                     infoRow(Icons.map, Museo.luogo),
@@ -316,9 +324,23 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
                         children: [
                           GestureDetector(
                               onTap: (){
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => storyPage()),
+                                Navigator.of(context).push(new PageRouteBuilder(
+                                    opaque: true,
+                                    transitionDuration: Duration(milliseconds: 225),
+                                    pageBuilder: (BuildContext context, _, __) {
+                                      return new storyPage();
+                                    },
+                                    transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
+
+                                      return new SlideTransition(
+                                        child: child,
+                                        position: new Tween<Offset>(
+                                          begin: const Offset(1, 0),
+                                          end: Offset.zero,
+                                        ).animate(animation),
+                                      );
+                                    }
+                                )
                                 );
                               },
                               child: Text(
@@ -340,14 +362,21 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
                         Expanded(
                             child: Center(
                                 child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        primary: buttonColor,
+                                        elevation: elevationButton
+                                    ),
                                     onPressed: () {
-                                      // Respond to button press
                                     },
                                     child: Container(
                                       width: double.infinity,
                                       child: Text(
-                                          "MAPPA",
-                                          textAlign: TextAlign.center
+                                        "PRENOTA",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: textButtonColor,
+                                            fontWeight: buttonFontWeight
+                                        ),
                                       ),
                                     )
                                 )
@@ -357,13 +386,21 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
                         Expanded(
                             child: Center(
                                 child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    primary: buttonColor,
+                                    elevation: elevationButton
+                                  ),
                                     onPressed: () {
                                     },
                                     child: Container(
                                       width: double.infinity,
                                       child: Text(
-                                        "PRENOTA",
+                                        "MAPPA",
                                         textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: textButtonColor,
+                                            fontWeight: buttonFontWeight
+                                        ),
                                       ),
                                     )
                                 )
@@ -389,41 +426,44 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
               ), // INFORMAZIONI
               Container(
                 child: GridView.count(
-                  padding: const EdgeInsets.only(top: 10),
+                  padding: EdgeInsets.only(top: 10, left: 10, right: 10),
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
+                  childAspectRatio: (2/3),
                   crossAxisCount: itemPerLine,
-                  children: [
-                    GestureDetector(
-                      onTap: (){
+                  children: List.generate(Museo.opere.length, (index) {
+                    return Center(
+                      child: GestureDetector(
+                        onTap: (){
 
-                      },
-                      child: Container( // primo elemento della prima lista di opere
-                        margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
-                        width: 145,
-                        decoration: BoxDecoration(
-                          borderRadius: new BorderRadius.all( // per i bordi arrotondati
-                              new Radius.circular(5.0)
+                        },
+                        child: Container( // primo elemento della prima lista di opere
+                          margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
+                          decoration: BoxDecoration(
+                            borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                new Radius.circular(5.0)
+                            ),
+                            image: new DecorationImage( // per metterci l'immagine dentro
+                              image: new AssetImage(Museo.opere[index]['img']),
+                              fit: BoxFit.cover, // per adattarla al container
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(0.0, 1.0), //(x,y)
+                                blurRadius: 6.0,
+                              )
+                            ],
                           ),
-                          image: new DecorationImage( // per metterci l'immagine dentro
-                            image: new AssetImage(Museo.immagine),
-                            fit: BoxFit.cover, // per adattarla al container
+                          child: Align( // per allineare la scritta in una posizione specifica
+                              alignment: Alignment(-0.40, 0.90),
+                              child: Text(Museo.opere[index]['title'], style: TextStyle(fontSize: 18, color: Colors.white),)
                           ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey,
-                              offset: Offset(0.0, 1.0), //(x,y)
-                              blurRadius: 6.0,
-                            )
-                          ],
-                        ),
-                        child: Align( // per allineare la scritta in una posizione specifica
-                            alignment: Alignment(-0.40, 0.90),
-                            child: Text("Deposizione", style: TextStyle(fontSize: 18, color: Colors.white),)
                         ),
                       ),
-                    ),
-                  ],
+                    );
+                  }),
+
                 ),
               ), // OPERE
             ],
@@ -445,7 +485,6 @@ class museumPage extends StatelessWidget {
   museumPage(String title, String img, double rat){
     this.title = title;
     this.rate = rat;
-    print(this.rate);
     Museo.immagine = img;
   }
 
@@ -513,7 +552,6 @@ class museumPage extends StatelessWidget {
         builder: (context, snapshot){
           if (snapshot.hasData) {
             Museo = snapshot.data;
-            print(Museo.immagine);
 
             return Container(
               color: statusBarColor,
@@ -524,11 +562,11 @@ class museumPage extends StatelessWidget {
                       children: [
                         Expanded(
                             child: topPage,
-                            flex: 4
+                            flex: flexTopPage
                         ),
                         Expanded(
                             child : InsideTabBar(),
-                            flex: 6
+                            flex: flexLowPage
                         )
                       ],
                     ),
@@ -612,3 +650,4 @@ class schedulePage extends StatelessWidget {
     );
   }
 }
+
