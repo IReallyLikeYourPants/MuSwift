@@ -5,6 +5,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 import 'package:prova_app/misc/ColorLoader5.dart';
 import 'package:prova_app/misc/SmoothStarRating.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 const waitValue = 0;
 const double textFontSize = 17;
@@ -34,7 +35,12 @@ const int itemPerLine = 2;
 
 const int flexTopPage = 4;
 const int flexLowPage = 10 - flexTopPage;
+const double flexBottomPercentage = 0.5;
 const int maxLinesStory = 3;
+
+const double buttonDistancePercentage = 0.03;
+
+const Color statusBarColor = Colors.blue;
 
 museo Museo = new museo();
 
@@ -148,6 +154,15 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
 
   @override
   Widget build(BuildContext context) {
+
+    launchURL(String url) async {
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
+
     return Column(
       children: [
         TabBar(
@@ -176,7 +191,7 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
         ),
         Container(
           //SISTEMARE ALTEZZA
-          height: MediaQuery. of(context). size. height - 454,
+          height: MediaQuery. of(context). size. height * flexBottomPercentage,
           padding: const EdgeInsets.only(left: 10, right: 10),
           child: TabBarView(
             controller: _insideTabController,
@@ -221,8 +236,70 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
                           ),
                         )
                     ),
-                    infoRow(Icons.call, Museo.numero),
-                    infoRow(Icons.web, Museo.sito),
+                    GestureDetector(
+                        onTap: (){
+                          launch("tel://" + Museo.numero);
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(top: 15),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.call,
+                                size: iconSize,
+                              ),
+                              Expanded(
+                                  child: Container(
+                                    margin: EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      Museo.numero,
+                                      style: TextStyle(
+                                          fontSize: textFontSize,
+                                          color: textFontColor
+                                      ),
+                                    ),
+                                  )
+                              ),
+                              Icon(
+                                Icons.navigate_next_sharp,
+                                size: nextIconSize,
+                              )
+                            ],
+                          ),
+                        )
+                    ),
+                    GestureDetector(
+                        onTap: (){
+                          launchURL(Museo.sito);
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(top: 15),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.web,
+                                size: iconSize,
+                              ),
+                              Expanded(
+                                  child: Container(
+                                    margin: EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      Museo.sito,
+                                      style: TextStyle(
+                                          fontSize: textFontSize,
+                                          color: textFontColor
+                                      ),
+                                    ),
+                                  )
+                              ),
+                              Icon(
+                                Icons.navigate_next_sharp,
+                                size: nextIconSize,
+                              )
+                            ],
+                          ),
+                        )
+                    ),
                     SizedBox(height: 10,),
                     Divider(color: Colors.black),
                     SizedBox(height: 10,),
@@ -261,14 +338,13 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
-                            flex: 5,
                             child: Center(
                                 child: ElevatedButton(
                                     onPressed: () {
                                       // Respond to button press
                                     },
                                     child: Container(
-                                      width: 150,
+                                      width: double.infinity,
                                       child: Text(
                                           "MAPPA",
                                           textAlign: TextAlign.center
@@ -277,14 +353,14 @@ class _InsideTabBarState  extends State<InsideTabBar> with TickerProviderStateMi
                                 )
                             )
                         ),
+                        SizedBox(width: MediaQuery.of(context).size.width * buttonDistancePercentage,),
                         Expanded(
-                            flex: 5,
                             child: Center(
                                 child: ElevatedButton(
                                     onPressed: () {
                                     },
                                     child: Container(
-                                      width: 150,
+                                      width: double.infinity,
                                       child: Text(
                                         "PRENOTA",
                                         textAlign: TextAlign.center,
@@ -439,60 +515,66 @@ class museumPage extends StatelessWidget {
             Museo = snapshot.data;
             print(Museo.immagine);
 
-            return SafeArea(
+            return Container(
+              color: statusBarColor,
+              child: SafeArea(
+                  child:
+                  Scaffold(
+                    body: Column(
+                      children: [
+                        Expanded(
+                            child: topPage,
+                            flex: 4
+                        ),
+                        Expanded(
+                            child : InsideTabBar(),
+                            flex: 6
+                        )
+                      ],
+                    ),
+                  )
+              ),
+            );
+          }
+          else return new Container(
+            color: statusBarColor,
+            child: SafeArea(
                 child:
                 Scaffold(
                   body: Column(
                     children: [
                       Expanded(
-                        child: topPage,
-                        flex: 4
+                          child: topPage,
+                          flex: 4
                       ),
                       Expanded(
-                        child : InsideTabBar(),
-                        flex: 6
+                        flex: 6,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(height: 100,),
+                            Text("Caricamento",
+                                style: TextStyle(
+                                    fontSize: 25
+                                )
+                            ),
+                            SizedBox(height: 20,),
+                            ColorLoader5(
+                              dotOneColor: Colors.redAccent,
+                              dotTwoColor: Colors.blueAccent,
+                              dotThreeColor: Colors.green,
+                              dotType: DotType.circle,
+                              dotIcon: Icon(Icons.museum_outlined),
+                              duration: Duration(seconds: 1),
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
                 )
-            );
-          }
-          else return new SafeArea(
-              child:
-              Scaffold(
-                body: Column(
-                  children: [
-                    Expanded(
-                        child: topPage,
-                        flex: 4
-                    ),
-                    Expanded(
-                      flex: 6,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(height: 100,),
-                          Text("Caricamento",
-                              style: TextStyle(
-                                  fontSize: 25
-                              )
-                          ),
-                          SizedBox(height: 20,),
-                          ColorLoader5(
-                            dotOneColor: Colors.redAccent,
-                            dotTwoColor: Colors.blueAccent,
-                            dotThreeColor: Colors.green,
-                            dotType: DotType.circle,
-                            dotIcon: Icon(Icons.museum_outlined),
-                            duration: Duration(seconds: 1),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              )
+            )
           );
         }
     );
