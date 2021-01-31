@@ -36,6 +36,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.5.0-nullsafety.3"
+  background_app_bar:
+    dependency: "direct main"
+    description:
+      name: background_app_bar
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.3"
   boolean_selector:
     dependency: transitive
     description:

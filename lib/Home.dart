@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'package:prova_app/museumPage.dart';
+import 'package:prova_app/museoPage.dart';
 
 
 //SEGNATE I VALORI PRECEDENTI SE CAMBIATE
@@ -121,13 +121,13 @@ class Home extends StatelessWidget {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => museumPage(
+                                            builder: (context) => museoPage(
                                               newMuseo[index]['title'],
                                               newMuseo[index]['img'],
                                               newMuseo[index]['rate'],
                                             )
                                         )
-                                    );//IMPLEMENTARE ANDATA
+                                    );
                                   },
                                   child: Container( // primo elemento della prima lista di opere
                                     margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra

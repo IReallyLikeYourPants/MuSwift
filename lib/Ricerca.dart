@@ -7,7 +7,7 @@ import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:sqflite/sqflite.dart';
 
-import 'museumPage.dart';
+import 'museoPage.dart';
 
 class Post {
   final String title;
@@ -116,7 +116,7 @@ class StorageUploadState extends State<Ricerca> {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) => museumPage(
+                                                builder: (context) => museoPage(
                                                   rows[ind]['title'],
                                                   rows[ind]['img'],
                                                   rows[ind]['rate'],
@@ -149,7 +149,7 @@ class StorageUploadState extends State<Ricerca> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => museumPage(
+                                          builder: (context) => museoPage(
                                             rows[ind]['title'],
                                             rows[ind]['img'],
                                             rows[ind]['rate'],
