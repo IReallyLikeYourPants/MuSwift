@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:prova_app/museoPage.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 //SEGNATE I VALORI PRECEDENTI SE CAMBIATE
@@ -25,7 +26,7 @@ const Color backgroundColor = null;
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Theme(data: Theme.of(context).copyWith(), child: Scaffold(
         backgroundColor: backgroundColor,
         appBar: AppBar(
           title: Text("HomePage"),
@@ -228,6 +229,6 @@ class Home extends StatelessWidget {
             )
 
         )
-    );
+    ));
   }
 }

@@ -3,6 +3,7 @@ import 'package:prova_app/Biglietti.dart';
 import 'package:prova_app/Ricerca.dart';
 import 'package:prova_app/Mappa.dart';
 import 'package:prova_app/Home.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main()
 {
@@ -18,6 +19,9 @@ class MyApp extends StatelessWidget {
     return new MaterialApp
       (
           home: MyBottomNavigationBar(),
+          theme: ThemeData(
+            textTheme: GoogleFonts.robotoTextTheme((Theme.of(context).textTheme))
+          ),
     );
   }
 }

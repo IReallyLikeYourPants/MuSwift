@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
-import 'package:prova_app/misc/ColorLoader5.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:prova_app/misc/SmoothStarRating.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:prova_app/Object/museo.dart';
@@ -13,15 +13,15 @@ import 'package:flutter/rendering.dart';
 import 'Home.dart';
 
 const waitValue = 0;
-const double textFontSize = 17;
-const double titleFontSize = 25;
+const double textFontSize = 14;
+const double titleFontSize = 20;
 const double tabTextFontSize = 17;
 const double itemFontSize = null;
 
 const double iconSize = 30;
 const double nextIconSize = 30;
 const double backIconSize = 35;
-const double starIconSize = 25;
+const double starIconSize = 20;
 
 const Color tabTextColor = Colors.black;
 const Color tabActiveTextColor = Colors.blue;
@@ -36,7 +36,11 @@ const Color buttonColor = Colors.blue;
 const FontWeight buttonFontWeight = FontWeight.normal;
 const double elevationButton = 5;
 
+const double infoMargin = 9;
 const Color starIconColor = Colors.white;
+const Color iconColor = Colors.blue;
+const Color iconGoToColor = Colors.blue;
+const Color readMoreColor = Colors.blue;
 
 const double itemWidthPercentage = 0.30;
 const double itemHeightPercentage = 0.20;
@@ -45,7 +49,7 @@ const int itemPerLine = 2;
 //const int flexTopPage = 3;
 //const int flexLowPage = 10 - flexTopPage;
 const double collapsedHeightPercentage = 0.20;
-const double expandedHeightPercentage = 0.45;
+const double expandedHeightPercentage = 0.38;
 const double flexBottomPercentage = 0.5;
 const int maxLinesStory = 3;
 
@@ -80,10 +84,10 @@ Future loadMuseum(String nome) async {
 
 Container infoRow(IconData icon, String label){
   return Container(
-    margin: EdgeInsets.only(top: 15),
+    margin: EdgeInsets.only(top: infoMargin),
     child: Row(
       children: [
-        Icon(icon, size: iconSize,),
+        Icon(icon, size: iconSize, color: iconColor),
         Container(
           margin: EdgeInsets.only(left: 10),
           child: Text(
@@ -99,7 +103,7 @@ Container noteRow(IconData icon, String label){
   return Container(
     child: Row(
       children: [
-        Icon(icon, size: iconSize,),
+        Icon(icon, size: iconSize, color: textFontColor),
         Container(
           margin: EdgeInsets.only(left: 5),
           child: Text(
@@ -138,6 +142,38 @@ class schedulePage extends StatelessWidget {
           },
           child: Text('TORNIAMO INDIETRO'),
         ),
+      ),
+    );
+  }
+}
+class DetailScreen extends StatelessWidget {
+
+  String img;
+
+  DetailScreen(String immagine){
+    this.img = immagine;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: GestureDetector(
+        child: Center(
+          child: Hero(
+            tag: 'imageHero',
+            child: Container(
+              decoration: BoxDecoration(
+                image: new DecorationImage( // per metterci l'immagine dentro
+                  image: new AssetImage(img),
+                  fit: BoxFit.cover, // per adattarla al container
+                ),
+              ),
+            )
+          ),
+        ),
+        onTap: () {
+          Navigator.pop(context);
+        },
       ),
     );
   }
@@ -191,13 +227,18 @@ class _museoPageState extends State<museoPage> {
                                 snap: false,
                                 pinned: true,
                                 flexibleSpace: BackgroundFlexibleSpaceBar(
-                                  title: Column(
+                                  title: Container(
+                                    width: MediaQuery.of(context).size.width * 0.7,
+                                    child: Column(
+
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Text(
-                                        nome,
-                                        style: TextStyle(fontSize: titleFontSize, color: Colors.white, fontWeight: FontWeight.bold),
+                                          nome,
+                                          style: GoogleFonts.roboto(
+                                            textStyle : TextStyle(fontSize: titleFontSize, color: Colors.white),
+                                          )
                                       ),
                                       Container(
                                         child: SmoothStarRating(
@@ -212,6 +253,7 @@ class _museoPageState extends State<museoPage> {
                                         ),
                                       )
                                     ],
+                                  ),
                                   ),
                                   centerTitle: false,
                                   titlePadding: const EdgeInsets.only(left: 20.0, bottom: 20.0),
@@ -270,13 +312,10 @@ class _museoPageState extends State<museoPage> {
                                             );
                                           },
                                           child: Container(
-                                            margin: EdgeInsets.only(top: 15),
+                                            margin: EdgeInsets.only(top: infoMargin),
                                             child: Row(
                                               children: [
-                                                Icon(
-                                                  Icons.schedule,
-                                                  size: iconSize,
-                                                ),
+                                                Icon(Icons.schedule, size: iconSize, color: iconColor),
                                                 Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.only(left: 10),
@@ -289,10 +328,7 @@ class _museoPageState extends State<museoPage> {
                                                       ),
                                                     )
                                                 ),
-                                                Icon(
-                                                  Icons.navigate_next_sharp,
-                                                  size: nextIconSize,
-                                                )
+                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: iconGoToColor)
                                               ],
                                             ),
                                           )
@@ -302,13 +338,10 @@ class _museoPageState extends State<museoPage> {
                                             launch("tel://" + Museo.numero);
                                           },
                                           child: Container(
-                                            margin: EdgeInsets.only(top: 15),
+                                            margin: EdgeInsets.only(top: infoMargin),
                                             child: Row(
                                               children: [
-                                                Icon(
-                                                  Icons.call,
-                                                  size: iconSize,
-                                                ),
+                                                Icon(Icons.call, size: iconSize, color: iconColor),
                                                 Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.only(left: 10),
@@ -321,10 +354,7 @@ class _museoPageState extends State<museoPage> {
                                                       ),
                                                     )
                                                 ),
-                                                Icon(
-                                                  Icons.navigate_next_sharp,
-                                                  size: nextIconSize,
-                                                )
+                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: iconColor)
                                               ],
                                             ),
                                           )
@@ -334,13 +364,10 @@ class _museoPageState extends State<museoPage> {
                                             launchURL(Museo.sito);
                                           },
                                           child: Container(
-                                            margin: EdgeInsets.only(top: 15),
+                                            margin: EdgeInsets.only(top: infoMargin),
                                             child: Row(
                                               children: [
-                                                Icon(
-                                                  Icons.web,
-                                                  size: iconSize,
-                                                ),
+                                                Icon(Icons.web, size: iconSize, color: iconColor),
                                                 Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.only(left: 10),
@@ -353,10 +380,7 @@ class _museoPageState extends State<museoPage> {
                                                       ),
                                                     )
                                                 ),
-                                                Icon(
-                                                  Icons.navigate_next_sharp,
-                                                  size: nextIconSize,
-                                                )
+                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: iconGoToColor)
                                               ],
                                             ),
                                           )
@@ -400,7 +424,7 @@ class _museoPageState extends State<museoPage> {
                                                   "...leggi di più",
                                                   style: TextStyle(
                                                       fontSize: textFontSize,
-                                                      color: textFontColor
+                                                      color: readMoreColor,
                                                   ) ,
                                                 )
                                             )
@@ -490,30 +514,35 @@ class _museoPageState extends State<museoPage> {
                                     return Center(
                                       child: GestureDetector(
                                         onTap: (){
-
+                                          Navigator.push(context, MaterialPageRoute(builder: (_) {
+                                            return DetailScreen(Museo.opere[index]['img']);
+                                          }));
                                         },
-                                        child: Container( // primo elemento della prima lista di opere
-                                          margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
-                                          decoration: BoxDecoration(
-                                            borderRadius: new BorderRadius.all( // per i bordi arrotondati
-                                                new Radius.circular(5.0)
-                                            ),
-                                            image: new DecorationImage( // per metterci l'immagine dentro
-                                              image: new AssetImage(Museo.opere[index]['img']),
-                                              fit: BoxFit.cover, // per adattarla al container
-                                            ),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Colors.grey,
-                                                offset: Offset(0.0, 1.0), //(x,y)
-                                                blurRadius: 6.0,
-                                              )
-                                            ],
-                                          ),
-                                          child: Align( // per allineare la scritta in una posizione specifica
-                                              alignment: Alignment(-0.40, 0.90),
-                                              child: Text(Museo.opere[index]['title'], style: TextStyle(fontSize: 18, color: Colors.white),)
-                                          ),
+                                        child: Hero(
+                                            tag: 'imageHero',
+                                            child: Container( // primo elemento della prima lista di opere
+                                              margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
+                                              decoration: BoxDecoration(
+                                                borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                                    new Radius.circular(5.0)
+                                                ),
+                                                image: new DecorationImage( // per metterci l'immagine dentro
+                                                  image: new AssetImage(Museo.opere[index]['img']),
+                                                  fit: BoxFit.cover, // per adattarla al container
+                                                ),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.grey,
+                                                    offset: Offset(0.0, 1.0), //(x,y)
+                                                    blurRadius: 6.0,
+                                                  )
+                                                ],
+                                              ),
+                                              child: Align( // per allineare la scritta in una posizione specifica
+                                                  alignment: Alignment(-0.40, 0.90),
+                                                  child: Text(Museo.opere[index]['title'], style: TextStyle(fontSize: 18, color: Colors.white),)
+                                              ),
+                                            )
                                         ),
                                       ),
                                     );
