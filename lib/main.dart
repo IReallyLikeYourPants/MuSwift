@@ -40,9 +40,6 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
         });
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
 

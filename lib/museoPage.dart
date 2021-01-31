@@ -186,6 +186,7 @@ class _museoPageState extends State<museoPage> {
                                 collapsedHeight: MediaQuery. of(context). size. height * collapsedHeightPercentage,
                                 expandedHeight: MediaQuery. of(context). size. height * expandedHeightPercentage,
                                 backgroundColor: Colors.yellow,
+                                elevation: 0,
                                 floating: false,
                                 snap: false,
                                 pinned: true,
@@ -528,7 +529,7 @@ class _museoPageState extends State<museoPage> {
             ),
           );
         }
-        return null;
+        return Container();
       },
     );
   }
@@ -548,7 +549,17 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
-      color: Colors.white,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
       child: _tabBar,
     );
   }
