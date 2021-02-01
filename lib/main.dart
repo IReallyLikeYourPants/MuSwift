@@ -61,7 +61,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
           selectedFontSize: 11,
           unselectedFontSize: 11,
           iconSize: 25,
-          unselectedItemColor: Colors.black38,
+          unselectedItemColor: Colors.black54,
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(icon: new Icon(Icons.home),

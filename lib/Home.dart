@@ -19,7 +19,7 @@ const Color titleFontColor = Colors.black;
 
 const double itemTitleFontSize = 15;
 const Color itemFontColor = Colors.white;
-const Color itemBackgroundColor = Colors.blue;
+const Color itemBackgroundColor = Colors.blueAccent;
 const double itemPadding = 5.0;
 const double rowsPadding = 25.0;
 const double leftPadding = 10.0;

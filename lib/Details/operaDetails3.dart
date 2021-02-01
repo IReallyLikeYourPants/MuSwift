@@ -14,7 +14,7 @@ const double titleFontSizePercentage = 0.0355;
 const double subTextFontSizePercentage = 0.025;
 
 const Color titleColorFont = Colors.black;
-const Color subTextColorFont = Colors.grey;
+const Color subTextColorFont = Colors.black54;
 
 const Color descBackgroundColor = Colors.white;
 
