@@ -30,7 +30,8 @@ class Home extends StatelessWidget {
     return Theme(data: Theme.of(context).copyWith(), child: Scaffold(
         backgroundColor: backgroundColor,
         appBar: AppBar(
-          title: Text("HomePage"),
+          title: Text("MuSwift", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
+          backgroundColor: Colors.white,
         ),
         body: Container(
             child: SingleChildScrollView( // Per evitare "bottom overflowed pixel"

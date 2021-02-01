@@ -18,13 +18,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp
       (
-          home: MyBottomNavigationBar(),
-          theme: ThemeData(
-            //IL TEMA E' ROBOTO, PER DEBUG USATE IL PRIMO PER CAPIRE SE IL TEMA C'E'
-              //textTheme: GoogleFonts.sirinStencilTextTheme(Theme.of(context).textTheme)
-            textTheme: GoogleFonts.robotoTextTheme((Theme.of(context).textTheme))
+      home: MyBottomNavigationBar(),
+      theme: ThemeData(
+        //textTheme: GoogleFonts.sirinStencilTextTheme(Theme.of(context).textTheme)
+          textTheme: GoogleFonts.robotoTextTheme((Theme.of(context).textTheme))
 
-          ),
+      ),
     );
   }
 }
@@ -42,9 +41,9 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   void onTappedBar(int index)
   {
     setState(()
-        {
-          _currentIndex = index;
-        });
+    {
+      _currentIndex = index;
+    });
   }
 
   @override
@@ -57,25 +56,25 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
         (
           onTap: onTappedBar,
           currentIndex: _currentIndex,
-          backgroundColor: Color.fromRGBO(0, 0, 0, 30),
-          selectedItemColor: Colors.amber[800],
-          selectedFontSize: 13,
+          backgroundColor: Colors.white,
+          selectedItemColor: Colors.black,
+          selectedFontSize: 11,
           unselectedFontSize: 11,
           iconSize: 25,
-          unselectedItemColor: Colors.white,
+          unselectedItemColor: Colors.black38,
           type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(icon: new Icon(Icons.home),
-          title: new Text("Home"))
-        ,
-          BottomNavigationBarItem(icon: new Icon(Icons.search),
-          title: new Text("Ricerca"))
-        ,
-          BottomNavigationBarItem(icon: new Icon(Icons.map),
-          title: new Text("Mappa")),
-          BottomNavigationBarItem(icon: new Icon(Icons.book),
-              title: new Text("Biglietti"))
-        ]
+          items: [
+            BottomNavigationBarItem(icon: new Icon(Icons.home),
+                title: new Text("Home"))
+            ,
+            BottomNavigationBarItem(icon: new Icon(Icons.search),
+                title: new Text("Ricerca"))
+            ,
+            BottomNavigationBarItem(icon: new Icon(Icons.map),
+                title: new Text("Mappa")),
+            BottomNavigationBarItem(icon: new Icon(Icons.book),
+                title: new Text("Biglietti"))
+          ]
       ),
     );
   }
