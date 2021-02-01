@@ -17,7 +17,8 @@ const waitValue = 0;
 const double textFontSize = 14;
 const double titleFontSize = 20;
 const double tabTextFontSize = 17;
-const double itemFontSize = null;
+const double itemFontSize = 15;
+const FontWeight titleFontWeight = FontWeight.bold;
 
 const double iconSize = 30;
 const double nextIconSize = 30;
@@ -31,6 +32,7 @@ const Color tabIndicatorColor = Colors.blue;
 const Color textFontColor = Colors.black;
 const Color titleFontColor = Colors.white;
 const Color tabTextFontColor = Colors.white;
+const Color itemFontColor = Colors.white;
 
 const Color textButtonColor = Colors.white;
 const Color buttonColor = Colors.blue;
@@ -45,7 +47,7 @@ const Color readMoreColor = Colors.blue;
 
 const double itemWidthPercentage = 0.30;
 const double itemHeightPercentage = 0.20;
-const int itemPerLine = 2;
+const int itemPerLine = 3;
 
 const double collapsedHeightPercentage = 0.20;
 const double expandedHeightPercentage = 0.38;
@@ -188,7 +190,7 @@ class _museoPageState extends State<museoPage> {
                                 ),
                                 collapsedHeight: MediaQuery. of(context). size. height * collapsedHeightPercentage,
                                 expandedHeight: MediaQuery. of(context). size. height * expandedHeightPercentage,
-                                backgroundColor: Colors.yellow,
+                                backgroundColor: statusBarColor,
                                 elevation: 0,
                                 floating: false,
                                 snap: false,
@@ -204,7 +206,7 @@ class _museoPageState extends State<museoPage> {
                                       Text(
                                           nome,
                                           style: GoogleFonts.roboto(
-                                            textStyle : TextStyle(fontSize: titleFontSize, color: Colors.white),
+                                            textStyle : TextStyle(fontSize: titleFontSize, color: Colors.white, fontWeight: titleFontWeight),
                                           )
                                       ),
                                       Container(
@@ -487,8 +489,8 @@ class _museoPageState extends State<museoPage> {
                                         },
                                         child: Hero(
                                             tag: 'imageHero',
-                                            child: Container( // primo elemento della prima lista di opere
-                                              margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
+                                            child: Container( // primo elemento dell// il bordo tra un'opera e l'altra
+                                              padding: EdgeInsets.all(5.0),
                                               decoration: BoxDecoration(
                                                 borderRadius: new BorderRadius.all( // per i bordi arrotondati
                                                     new Radius.circular(5.0)
@@ -506,8 +508,8 @@ class _museoPageState extends State<museoPage> {
                                                 ],
                                               ),
                                               child: Align( // per allineare la scritta in una posizione specifica
-                                                  alignment: Alignment(-0.40, 0.90),
-                                                  child: Text(Museo.opere[index]['title'], style: TextStyle(fontSize: 18, color: Colors.white),)
+                                                alignment: Alignment.bottomLeft,
+                                                  child: Text(Museo.opere[index]['title'], style: TextStyle(fontSize: itemFontSize, color: itemFontColor),)
                                               ),
                                             )
                                         ),

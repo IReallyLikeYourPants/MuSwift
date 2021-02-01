@@ -17,9 +17,10 @@ const FontWeight titleFontWeight = FontWeight.bold;
 const double titleFontSize = 20;
 const Color titleFontColor = Colors.black;
 
-const double itemTitleFontSize = 18;
+const double itemTitleFontSize = 17;
 const Color itemFontColor = Colors.white;
 const Color itemBackgroundColor = Colors.blue;
+const double itemPadding = 5.0;
 
 const Color backgroundColor = null;
 
@@ -62,6 +63,7 @@ class Home extends StatelessWidget {
 
                                   },
                                   child: Container( // primo elemento della prima lista di opere
+                                    padding: EdgeInsets.all(itemPadding),
                                     margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
                                     width: MediaQuery.of(context).size.width * itemWidthPercentage,
                                     decoration: BoxDecoration(
@@ -84,7 +86,7 @@ class Home extends StatelessWidget {
                                       ],
                                     ),
                                     child: Align( // per allineare la scritta in una posizione specifica
-                                        alignment: Alignment(-0.40, 0.90),
+                                        alignment: Alignment.bottomLeft,
                                         child: Text(newOpere[index]['title'], style: TextStyle(fontSize: itemTitleFontSize, color: itemFontColor),)
                                     ),
                                   ),
@@ -131,6 +133,7 @@ class Home extends StatelessWidget {
                                     );
                                   },
                                   child: Container( // primo elemento della prima lista di opere
+                                    padding: EdgeInsets.all(itemPadding),
                                     margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
                                     width: MediaQuery.of(context).size.width * itemWidthPercentage,
                                     decoration: BoxDecoration(
@@ -153,7 +156,7 @@ class Home extends StatelessWidget {
                                       ],
                                     ),
                                     child: Align( // per allineare la scritta in una posizione specifica
-                                        alignment: Alignment(-0.40, 0.90),
+                                        alignment: Alignment.bottomLeft,
                                         child: Text(newMuseo[index]['title'], style: TextStyle(fontSize: itemTitleFontSize, color: itemFontColor),)
                                     ),
                                   ),
@@ -191,6 +194,7 @@ class Home extends StatelessWidget {
                                     //IMPLEMENTARE ANDATA
                                   },
                                   child: Container( // primo elemento della prima lista di opere
+                                    padding: EdgeInsets.all(itemPadding),
                                     margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altraZ
                                     width: MediaQuery.of(context).size.width * itemWidthPercentage,
                                     decoration: BoxDecoration(
@@ -213,7 +217,7 @@ class Home extends StatelessWidget {
                                       ],
                                     ),
                                     child: Align( // per allineare la scritta in una posizione specifica
-                                        alignment: Alignment(-0.40, 0.90),
+                                        alignment: Alignment.bottomLeft,
                                         child: Text(newViste[index]['title'], style: TextStyle(fontSize: itemTitleFontSize, color: itemFontColor),)
                                     ),
                                   ),
