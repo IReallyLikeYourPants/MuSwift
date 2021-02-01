@@ -14,10 +14,10 @@ const itemWidthPercentage = 0.33;
 const itemHeightPercentage = 0.27;
 
 const FontWeight titleFontWeight = FontWeight.bold;
-const double titleFontSize = 20;
+const double titleFontSize = 17;
 const Color titleFontColor = Colors.black;
 
-const double itemTitleFontSize = 17;
+const double itemTitleFontSize = 15;
 const Color itemFontColor = Colors.white;
 const Color itemBackgroundColor = Colors.blue;
 const double itemPadding = 5.0;

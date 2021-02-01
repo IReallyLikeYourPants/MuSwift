@@ -10,6 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:prova_app/Object/museo.dart';
 import 'package:prova_app/Details/operaDetails.dart';
 import 'package:prova_app/Details/operaDetails2.dart';
+import 'package:prova_app/Details/operaDetails3.dart';
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/rendering.dart';
 
@@ -25,9 +26,9 @@ const double nextIconSize = 30;
 const double backIconSize = 35;
 const double starIconSize = 20;
 
-const Color tabTextColor = Colors.black;
-const Color tabActiveTextColor = Colors.blue;
-const Color tabIndicatorColor = Colors.blue;
+const Color tabTextColor = Colors.blueGrey;
+const Color tabActiveTextColor = Colors.black;
+const Color tabIndicatorColor = Colors.black;
 
 const Color textFontColor = Colors.black;
 const Color titleFontColor = Colors.white;
@@ -41,9 +42,9 @@ const double elevationButton = 5;
 
 const double infoMargin = 9;
 const Color starIconColor = Colors.white;
-const Color iconColor = Colors.blue;
-const Color iconGoToColor = Colors.blue;
-const Color readMoreColor = Colors.blue;
+const Color iconColor = Colors.black87;
+const Color iconGoToColor = Colors.black;
+const Color readMoreColor = Colors.black;
 
 const double itemWidthPercentage = 0.30;
 const double itemHeightPercentage = 0.20;
@@ -323,7 +324,7 @@ class _museoPageState extends State<museoPage> {
                                                       ),
                                                     )
                                                 ),
-                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: iconColor)
+                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: iconGoToColor)
                                               ],
                                             ),
                                           )
@@ -374,7 +375,7 @@ class _museoPageState extends State<museoPage> {
                                                       opaque: true,
                                                       transitionDuration: Duration(milliseconds: 225),
                                                       pageBuilder: (BuildContext context, _, __) {
-                                                        return new storyPage();
+                                                        return new operaDetails3("assets/images/deposizione.jpg");
                                                       },
                                                       transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
 
@@ -433,7 +434,7 @@ class _museoPageState extends State<museoPage> {
                                               child: Center(
                                                   child: ElevatedButton(
                                                       style: ElevatedButton.styleFrom(
-                                                          primary: buttonColor,
+                                                          primary: Colors.white,
                                                           elevation: elevationButton
                                                       ),
                                                       onPressed: () {
@@ -444,7 +445,7 @@ class _museoPageState extends State<museoPage> {
                                                           "MAPPA",
                                                           textAlign: TextAlign.center,
                                                           style: TextStyle(
-                                                              color: textButtonColor,
+                                                              color: Colors.black87,
                                                               fontWeight: buttonFontWeight
                                                           ),
                                                         ),
