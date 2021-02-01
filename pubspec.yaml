@@ -56,6 +56,7 @@ flutter:
     - assets/loadjson/opere.json
     - assets/loadjson/viste.json
     - assets/loadjson/infomusei.json
+    - assets/loadjson/infoopere.json
     - assets/images/coming_soon.png
     - assets/images/museovaticano.jpg
     - assets/images/museocapitolino.jpg

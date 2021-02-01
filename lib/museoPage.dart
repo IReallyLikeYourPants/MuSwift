@@ -9,9 +9,9 @@ import 'package:prova_app/misc/SmoothStarRating.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:prova_app/Object/museo.dart';
 import 'package:prova_app/Details/operaDetails.dart';
+import 'package:prova_app/Details/operaDetails2.dart';
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/rendering.dart';
-import 'Home.dart';
 
 const waitValue = 0;
 const double textFontSize = 14;
@@ -277,7 +277,7 @@ class _museoPageState extends State<museoPage> {
                                           onTap: (){
                                             Navigator.push(
                                               context,
-                                              MaterialPageRoute(builder: (context) => schedulePage()),
+                                              MaterialPageRoute(builder: (context) => operaDetails2("assets/images/deposizione.jpg")),
                                             );
                                           },
                                           child: Container(
