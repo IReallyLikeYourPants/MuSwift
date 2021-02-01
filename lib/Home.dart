@@ -21,6 +21,8 @@ const double itemTitleFontSize = 15;
 const Color itemFontColor = Colors.white;
 const Color itemBackgroundColor = Colors.blue;
 const double itemPadding = 5.0;
+const double rowsPadding = 25.0;
+const double leftPadding = 10.0;
 
 const Color backgroundColor = null;
 
@@ -40,13 +42,14 @@ class Home extends StatelessWidget {
                     new Align(
                       alignment: Alignment.centerLeft,
                       child: new Padding(
-                          padding: new EdgeInsets.only(left: 8.0, top: 20.0), // padding è lo spazio vuoto
+                          padding: new EdgeInsets.only(left: leftPadding, top: rowsPadding/2),  // padding è lo spazio vuoto
                           child: new Text(
                             'Opere più viste',
                             style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
                           )
                       ),
                     ),
+                    Divider(),
                     Container(
                         height: MediaQuery.of(context).size.height * itemHeightPercentage,
                         child: FutureBuilder(
@@ -55,7 +58,7 @@ class Home extends StatelessWidget {
                             var newOpere = json.decode(snapshot.data.toString());
 
                             return ListView.builder(
-                              padding: EdgeInsets.all(10.0),
+                              padding: EdgeInsets.only(left: leftPadding, bottom: rowsPadding),
                               scrollDirection: Axis.horizontal,
                               itemCount: newOpere == null ? 0 : newOpere.length,
                               itemBuilder: (BuildContext context, int index){
@@ -97,17 +100,17 @@ class Home extends StatelessWidget {
                           },
                         )
                     ),
-                    Divider(),
                     new Align(
                       alignment: Alignment.centerLeft,
                       child: new Padding(
-                          padding: new EdgeInsets.only(left: 8.0, top: 20.0), // padding è lo spazio vuoto
+                          padding: new EdgeInsets.only(left: leftPadding), // padding è lo spazio vuoto
                           child: new Text(
                             'Musei più visitati',
                             style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
                           )
                       ),
                     ),
+                    Divider(),
                     Container(
                         height: MediaQuery.of(context).size.height * itemHeightPercentage,
                         child: FutureBuilder(
@@ -116,7 +119,7 @@ class Home extends StatelessWidget {
                             var newMuseo = json.decode(snapshot.data.toString());
 
                             return ListView.builder(
-                              padding: EdgeInsets.all(10.0),
+                              padding: EdgeInsets.only(left: leftPadding, bottom: rowsPadding),
                               scrollDirection: Axis.horizontal,
                               itemCount: newMuseo == null ? 0 : newMuseo.length,
                               itemBuilder: (BuildContext context, int index){
@@ -167,17 +170,17 @@ class Home extends StatelessWidget {
                           },
                         )
                     ),
-                    Divider(), // linea separatrice
                     new Align(
                       alignment: Alignment.centerLeft,
                       child: new Padding(
-                          padding: new EdgeInsets.only(left: 8.0, top: 20.0), // padding è lo spazio vuoto
+                          padding: new EdgeInsets.only(left: leftPadding), // padding è lo spazio vuoto
                           child: new Text(
                             'Musei nei dintorni',
                             style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
                           )
                       ),
                     ),
+                    Divider(),
                     Container(
                         height: MediaQuery.of(context).size.height * itemHeightPercentage,
                         child: FutureBuilder(
@@ -186,7 +189,7 @@ class Home extends StatelessWidget {
                             var newViste = json.decode(snapshot.data.toString());
 
                             return ListView.builder(
-                              padding: EdgeInsets.all(10.0),
+                              padding: EdgeInsets.only(left: leftPadding, bottom: rowsPadding/2),
                               scrollDirection: Axis.horizontal,
                               itemCount: newViste == null ? 0 : newViste.length,
                               itemBuilder: (BuildContext context, int index){

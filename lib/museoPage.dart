@@ -17,7 +17,7 @@ import 'package:flutter/rendering.dart';
 const waitValue = 0;
 const double textFontSize = 14;
 const double titleFontSize = 20;
-const double tabTextFontSize = 17;
+const double tabTextFontSize = 16;
 const double itemFontSize = 15;
 const FontWeight titleFontWeight = FontWeight.bold;
 
@@ -43,7 +43,7 @@ const double elevationButton = 5;
 const double infoMargin = 9;
 const Color starIconColor = Colors.white;
 const Color iconColor = Colors.black87;
-const Color iconGoToColor = Colors.black;
+const Color iconGoToColor = Colors.blueGrey;
 const Color readMoreColor = Colors.black;
 
 const double itemWidthPercentage = 0.30;
@@ -105,7 +105,7 @@ Container noteRow(IconData icon, String label){
   return Container(
     child: Row(
       children: [
-        Icon(icon, size: iconSize, color: textFontColor),
+        Icon(icon, size: iconSize, color: Colors.green),
         Container(
           margin: EdgeInsets.only(left: 5),
           child: Text(
@@ -278,7 +278,7 @@ class _museoPageState extends State<museoPage> {
                                           onTap: (){
                                             Navigator.push(
                                               context,
-                                              MaterialPageRoute(builder: (context) => operaDetails2("assets/images/deposizione.jpg")),
+                                              MaterialPageRoute(builder: (context) => schedulePage()),
                                             );
                                           },
                                           child: Container(
@@ -375,7 +375,7 @@ class _museoPageState extends State<museoPage> {
                                                       opaque: true,
                                                       transitionDuration: Duration(milliseconds: 225),
                                                       pageBuilder: (BuildContext context, _, __) {
-                                                        return new operaDetails3("assets/images/deposizione.jpg");
+                                                        return new storyPage();
                                                       },
                                                       transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
 
@@ -392,10 +392,7 @@ class _museoPageState extends State<museoPage> {
                                                 },
                                                 child: Text(
                                                   "...leggi di più",
-                                                  style: TextStyle(
-                                                      fontSize: textFontSize,
-                                                      color: readMoreColor,
-                                                  ) ,
+                                                  style: TextStyle(fontSize: textFontSize, color: readMoreColor, fontWeight: FontWeight.bold) ,
                                                 )
                                             )
                                           ]
@@ -460,7 +457,7 @@ class _museoPageState extends State<museoPage> {
                                         children: [
                                           Text(
                                             "Note aggiuntive: ",
-                                            style: TextStyle(fontSize: textFontSize, color: textFontColor),
+                                            style: TextStyle(fontSize: textFontSize, color: textFontColor, fontWeight: FontWeight.bold),
                                           ),
                                         ],
                                       ),
@@ -485,7 +482,7 @@ class _museoPageState extends State<museoPage> {
                                       child: GestureDetector(
                                         onTap: (){
                                           Navigator.push(context, MaterialPageRoute(builder: (_) {
-                                            return operaDetails(Museo.opere[index]['img']);
+                                            return operaDetails3(Museo.opere[index]['img']);
                                           }));
                                         },
                                         child: Hero(
