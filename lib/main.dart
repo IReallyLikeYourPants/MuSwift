@@ -20,7 +20,9 @@ class MyApp extends StatelessWidget {
       (
           home: MyBottomNavigationBar(),
           theme: ThemeData(
+              //textTheme: GoogleFonts.sirinStencilTextTheme(Theme.of(context).textTheme)
             textTheme: GoogleFonts.robotoTextTheme((Theme.of(context).textTheme))
+
           ),
     );
   }

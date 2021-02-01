@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:prova_app/misc/SmoothStarRating.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:prova_app/Object/museo.dart';
+import 'package:prova_app/Details/operaDetails.dart';
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/rendering.dart';
 import 'Home.dart';
@@ -46,8 +47,6 @@ const double itemWidthPercentage = 0.30;
 const double itemHeightPercentage = 0.20;
 const int itemPerLine = 2;
 
-//const int flexTopPage = 3;
-//const int flexLowPage = 10 - flexTopPage;
 const double collapsedHeightPercentage = 0.20;
 const double expandedHeightPercentage = 0.38;
 const double flexBottomPercentage = 0.5;
@@ -142,38 +141,6 @@ class schedulePage extends StatelessWidget {
           },
           child: Text('TORNIAMO INDIETRO'),
         ),
-      ),
-    );
-  }
-}
-class DetailScreen extends StatelessWidget {
-
-  String img;
-
-  DetailScreen(String immagine){
-    this.img = immagine;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: GestureDetector(
-        child: Center(
-          child: Hero(
-            tag: 'imageHero',
-            child: Container(
-              decoration: BoxDecoration(
-                image: new DecorationImage( // per metterci l'immagine dentro
-                  image: new AssetImage(img),
-                  fit: BoxFit.cover, // per adattarla al container
-                ),
-              ),
-            )
-          ),
-        ),
-        onTap: () {
-          Navigator.pop(context);
-        },
       ),
     );
   }
@@ -515,7 +482,7 @@ class _museoPageState extends State<museoPage> {
                                       child: GestureDetector(
                                         onTap: (){
                                           Navigator.push(context, MaterialPageRoute(builder: (_) {
-                                            return DetailScreen(Museo.opere[index]['img']);
+                                            return operaDetails(Museo.opere[index]['img']);
                                           }));
                                         },
                                         child: Hero(
