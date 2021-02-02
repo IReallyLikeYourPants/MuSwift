@@ -2,21 +2,25 @@
   {
     "title":"Musei Vaticani",
     "img": "assets/images/museovaticano.jpg",
-    "rate" : 4.5
+    "rate" : 4.5,
+    "tipo": "museo"
   },
   {
     "title":"Museo Nazionale Castel Sant'Angelo",
     "img": "assets/images/nazionale.jpg",
-    "rate" : 3.0
+    "rate" : 3.0,
+    "tipo": "museo"
   },
   {
     "title":"Musei Capitolini",
     "img": "assets/images/museocapitolino.jpg",
-    "rate" : 5.0
+    "rate" : 5.0,
+    "tipo": "museo"
   },
   {
     "title":"Galleria Borghese",
     "img": "assets/images/galleriaborghese.jpg",
-    "rate" : 1.5
+    "rate" : 1.5,
+    "tipo": "museo"
   }
 ]
