@@ -57,7 +57,7 @@ const int maxLinesStory = 3;
 
 const double buttonDistancePercentage = 0.03;
 
-const Color statusBarColor = Colors.blue;
+const Color statusBarColor = Colors.white;
 
 String nome;
 String immagine;
@@ -482,11 +482,11 @@ class _museoPageState extends State<museoPage> {
                                       child: GestureDetector(
                                         onTap: (){
                                           Navigator.push(context, MaterialPageRoute(builder: (_) {
-                                            return operaDetails3(Museo.opere[index]['img']);
+                                            return operaDetails3(Museo.opere[index]['img'], Museo.opere[index]['title']);
                                           }));
                                         },
                                         child: Hero(
-                                            tag: 'imageHero',
+                                            tag: Museo.opere[index]['title'],
                                             child: Container( // primo elemento dell// il bordo tra un'opera e l'altra
                                               padding: EdgeInsets.all(5.0),
                                               decoration: BoxDecoration(

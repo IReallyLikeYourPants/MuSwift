@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:prova_app/museoPage.dart';
+import 'package:prova_app/Details/operaDetails3.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -64,7 +65,12 @@ class Home extends StatelessWidget {
                               itemBuilder: (BuildContext context, int index){
                                 return GestureDetector(
                                   onTap: (){
-
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => operaDetails3(newOpere[index]['img'], newOpere[index]['title'])
+                                        )
+                                    );
                                   },
                                   child: Container( // primo elemento della prima lista di opere
                                     padding: EdgeInsets.all(itemPadding),
@@ -195,7 +201,6 @@ class Home extends StatelessWidget {
                               itemBuilder: (BuildContext context, int index){
                                 return GestureDetector(
                                   onTap: (){
-                                    //IMPLEMENTARE ANDATA
                                   },
                                   child: Container( // primo elemento della prima lista di opere
                                     padding: EdgeInsets.all(itemPadding),

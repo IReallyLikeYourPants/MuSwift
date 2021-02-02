@@ -22,7 +22,7 @@ const Color descBackgroundColor = Colors.white;
 const double textDistancePercentage = 0.01;
 
 Future<String> loadOpereAsset() async {
-  return await rootBundle.loadString('assets/loadjson/infomusei.json');
+  return await rootBundle.loadString('assets/loadjson/infoopere.json');
 }
 Future wait(int seconds) {
   return new Future.delayed(Duration(seconds: seconds), () => {});
@@ -34,12 +34,14 @@ Future loadOpera(String nome) async {
   return new opera.fromJson(jsonResponse, nome);
 }
 
+String img;
+String titolo;
+
 class operaDetails3 extends StatelessWidget {
 
-  String img;
-
-  operaDetails3(String immagine){
-    this.img = immagine;
+  operaDetails3(String immagine, String nome){
+    img = immagine;
+    titolo = nome;
   }
 
   @override
@@ -55,7 +57,7 @@ class operaDetails3 extends StatelessWidget {
                     children: [
                       Expanded(child: Center(
                         child: Hero(
-                            tag: 'imageHero',
+                            tag: titolo,
                             child: Container(
                               decoration: BoxDecoration(
                                 image: new DecorationImage( // per metterci l'immagine dentro
@@ -83,10 +85,62 @@ class moreInfo extends StatefulWidget {
 }
 
 class _moreInfoState extends State<moreInfo>{
-  ScrollController _scrollController = ScrollController();
+  ScrollController _scrollController = ScrollController(initialScrollOffset: 100);
 
   Widget build(BuildContext context){
-
+    return FutureBuilder(
+        future: loadOpera(titolo),
+        builder: (context, snapshot){
+          if(snapshot.hasData) return ListView(
+            controller: _scrollController,
+            shrinkWrap: true,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  if(_scrollController.position.pixels == 0.0 ){
+                    Navigator.pop(context);
+                  }
+                  _scrollController.animateTo(
+                    0.0,
+                    curve: Curves.easeOut,
+                    duration: const Duration(milliseconds: animationMilliseconds),
+                  );
+                },
+                child: Container(color: Colors.transparent, height: MediaQuery. of(context). size. height * (1 - bottomHeightPercentage),),
+              ),
+              GestureDetector(
+                onTap: (){
+                  _scrollController.animateTo(
+                    _scrollController.position.maxScrollExtent,
+                    curve: Curves.easeOut,
+                    duration: const Duration(milliseconds: animationMilliseconds),
+                  );
+                },
+                child: Container(
+                  padding: EdgeInsets.all(10.0),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: descBackgroundColor,
+                      borderRadius: BorderRadius.all(Radius.circular(15))
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(titolo, style: TextStyle(fontSize: MediaQuery. of(context). size. height * titleFontSizePercentage, color: titleColorFont , fontWeight: FontWeight.bold)),
+                      SizedBox(height: MediaQuery. of(context). size. height * textDistancePercentage,),
+                      Text(snapshot.data.autore, style: TextStyle(fontSize: MediaQuery. of(context). size. height * subTextFontSizePercentage, color: subTextColorFont)),
+                      Text(snapshot.data.tipo, style: TextStyle(fontSize: MediaQuery. of(context). size. height * subTextFontSizePercentage, color: subTextColorFont)),
+                      Text(snapshot.data.anno, style: TextStyle(fontSize: MediaQuery. of(context). size. height * subTextFontSizePercentage, color: subTextColorFont)),
+                      Text(snapshot.data.nav, style: TextStyle(fontSize: MediaQuery. of(context). size. height * subTextFontSizePercentage, color: subTextColorFont))
+                    ],
+                  ),
+                ),
+              )
+            ],
+          );
+          return Container();
+        }
+    );
     return ListView(
       controller: _scrollController,
       shrinkWrap: true,

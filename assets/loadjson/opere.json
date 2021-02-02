@@ -2,36 +2,43 @@
   {
     "title":"Deposizione",
     "img": "assets/images/deposizione.jpg",
-    "nav": "Musei Vaticani"
+    "nav": "Musei Vaticani",
+    "tipo" : "opera"
   },
   {
     "title":"Apollo del Belvedere",
     "img": "assets/images/apollodelbelvedere.jpg",
-    "nav": "Musei Vaticani"
+    "nav": "Musei Vaticani",
+    "tipo" : "opera"
   },
   {
     "title":"Carita con Quattro Figli",
     "img": "assets/images/caritaconquattrofigli.jpg",
-    "nav": "Musei Vaticani"
+    "nav": "Musei Vaticani",
+    "tipo" : "opera"
   },
   {
     "title":"Gruppo del Laocoonte",
     "img": "assets/images/gruppodellaoconte.jpg",
-    "nav": "Musei Vaticani"
+    "nav": "Musei Vaticani",
+    "tipo" : "opera"
   },
   {
     "title":"David",
     "img": "assets/images/david.jpg",
-    "nav": "Galleria Borghese"
+    "nav": "Galleria Borghese",
+    "tipo" : "opera"
   },
   {
     "title":"Apollo e Dafne",
     "img": "assets/images/apolloedafne.jpg",
-    "nav": "Galleria Borghese"
+    "nav": "Galleria Borghese",
+    "tipo" : "opera"
   },
   {
     "title":"Ratto di Proserpina",
     "img": "assets/images/rattodiprospertina.jpg",
-    "nav": "Galleria Borghese"
+    "nav": "Galleria Borghese",
+    "tipo" : "opera"
   }
 ]
