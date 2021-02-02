@@ -34,6 +34,9 @@ const Color tabTextColor = Colors.blueGrey;
 const Color tabActiveTextColor = Colors.black;
 const Color tabIndicatorColor = Colors.black;
 
+List recenti = [];
+List titoli = [];
+
 class Post {
   final String title;
   final String description;
@@ -54,7 +57,6 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
 
 
   TabController _tabController;
-
   List results = [];
   var rows = [];
   String query = '';
@@ -93,7 +95,8 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                   if (snapshot.hasData) {
                     var rows = json.decode(snapshot.data['jsonMusei'].toString());
                     rows = new List<dynamic>.from(rows)..addAll(json.decode(snapshot.data['jsonOpere'].toString()));
-                    print(rows.runtimeType);
+                    print(recenti);
+                    print(titoli);
                     return Scaffold(
                       backgroundColor: backroundColor,
                       body: Container(
@@ -141,13 +144,13 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                 Expanded(
                                     child:
                                     Column(children : [
-                                      //SizedBox(width: double.infinity,child: Text("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
-                                      //Divider(color: Colors.black54,),
+                                      SizedBox(width: double.infinity,child: Text("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
+                                      Divider(color: Colors.black54,),
                                       Expanded (child :
                                       ListView.builder(
                                         padding: EdgeInsets.only(top:10.0),
                                         shrinkWrap: true,
-                                        itemCount: rows == null ? 0 : rows.length,
+                                        itemCount: recenti == null ? 0 : recenti.length,
                                         itemBuilder: (con, ind) {
                                           return Card (
                                               color: listviewCardColor,
@@ -161,23 +164,23 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                     ),
                                                     image : DecorationImage(
                                                       fit: BoxFit.cover,
-                                                      image: AssetImage(rows[ind]['img'].toString())
+                                                      image: AssetImage(recenti[ind]['img'].toString())
                                                     )
                                                   ),
                                                 ),
-                                                title: Text(rows[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                                subtitle: Text(rows[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                                title: Text(recenti[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
+                                                subtitle: Text(recenti[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                 onTap: () {
-                                                  if(rows[ind]['tipo'] == "museo") {
+                                                  if(recenti[ind]['tipo'] == "museo") {
                                                     Navigator.push(
                                                         context,
                                                         MaterialPageRoute(
                                                             builder: (context) =>
                                                                 museoPage(
-                                                                  rows[ind]['title'],
-                                                                  rows[ind]['img'],
-                                                                  rows[ind]['rate'],
+                                                                  recenti[ind]['title'],
+                                                                  recenti[ind]['img'],
+                                                                  recenti[ind]['rate'],
                                                                 )
                                                         )
                                                     );
@@ -185,7 +188,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                   else Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
-                                                          builder: (context) => operaDetails3(rows[ind]['img'], rows[ind]['title'])
+                                                          builder: (context) => operaDetails3(recenti[ind]['img'], recenti[ind]['title'])
                                                       )
                                                   );
                                                 },
@@ -259,15 +262,22 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                       subtitle: Text(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                       onTap: () {
+                                                        if(titoli.contains(results[ind]['title'])==false){
+                                                          titoli.add(results[ind]['title']);
+                                                          recenti.insert(0,results[ind]);
+
+                                                        }
+
                                                         if(results[ind]['tipo'] == "museo") {
+
                                                           Navigator.push(
                                                               context,
                                                               MaterialPageRoute(
                                                                   builder: (context) =>
                                                                       museoPage(
-                                                                        rows[ind]['title'],
-                                                                        rows[ind]['img'],
-                                                                        rows[ind]['rate'],
+                                                                        results[ind]['title'],
+                                                                        results[ind]['img'],
+                                                                        results[ind]['rate'],
                                                                       )
                                                               )
                                                           );
@@ -306,6 +316,11 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                         subtitle: Text(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                         onTap: () {
+                                                          if(titoli.contains(results[ind]['title'])==false){
+                                                            titoli.add(results[ind]['title']);
+                                                            recenti.insert(0,results[ind]);
+                                                          }
+
                                                           Navigator.push(
                                                               context,
                                                               MaterialPageRoute(
@@ -346,6 +361,11 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                         subtitle: Text(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                         onTap: () {
+                                                          if(titoli.contains(results[ind]['title'])==false){
+                                                            titoli.add(results[ind]['title']);
+                                                            recenti.insert(0,results[ind]);
+                                                          }
+
                                                           Navigator.push(
                                                               context,
                                                               MaterialPageRoute(
