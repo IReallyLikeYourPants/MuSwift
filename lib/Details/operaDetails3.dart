@@ -15,7 +15,7 @@ const double bottomHeightPercentage = 0.32;
 const double initalScrollPercentage = 0.13;
 const Color statusBarColor = Colors.white;
 
-const double titleFontSize = 17;
+const double titleFontSize = 20;
 const double subTextFontSize = 17;
 
 const Color titleColorFont = Colors.black;
@@ -136,24 +136,100 @@ class _moreInfoState extends State<moreInfo>{
                       AutoSizeText(snapshot.data.tipo, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
                       AutoSizeText(snapshot.data.anno, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
                       AutoSizeText(snapshot.data.nav, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
-                      SizedBox(height: 10),
+                      SizedBox(height: 20),
+                      AutoSizeText("Stile", style: TextStyle(fontSize: titleFontSize, color: subTextColorFont, fontWeight: FontWeight.bold)),
+                      Divider(),
                       AutoSizeText(snapshot.data.stile, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
-                      AutoSizeText(snapshot.data.storia, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
-                      RichText(
-                        text: new TextSpan(
-                          // Note: Styles for TextSpans must be explicitly defined.
-                          // Child text spans will inherit styles from parent
-                          style: new TextStyle(
-                            fontSize: 14.0,
-                            color: Colors.black,
-                          ),
-                          children: <TextSpan>[
-                            new TextSpan(text: 'Hello'),
-                            new TextSpan(text: 'World', style: new TextStyle(fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                      )
+                      SizedBox(height: 20),
+                      AutoSizeText("Storia", style: TextStyle(fontSize: titleFontSize, color: subTextColorFont, fontWeight: FontWeight.bold)),
+                      Divider(),
+                      Text(snapshot.data.storia, maxLines: 3, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
+                      SizedBox(height: 5,),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            GestureDetector(
+                                onTap: (){
 
+                                },
+                                child: AutoSizeText(
+                                  "...leggi di più",
+                                  style: TextStyle(fontSize: textFontSize, color: readMoreColor, fontWeight: FontWeight.bold) ,
+                                )
+                            )
+                          ]
+                      ),
+                      AutoSizeText("Autore", style: TextStyle(fontSize: titleFontSize, color: subTextColorFont, fontWeight: FontWeight.bold)),
+                      Divider(),
+                      Text(snapshot.data.autore_storia, maxLines: 3, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
+                      SizedBox(height: 5,),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            GestureDetector(
+                                onTap: (){
+
+                                },
+                                child: AutoSizeText(
+                                  "...leggi di più",
+                                  style: TextStyle(fontSize: textFontSize, color: readMoreColor, fontWeight: FontWeight.bold) ,
+                                )
+                            )
+                          ]
+                      ),
+                      SizedBox(height: 10,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                              child: Center(
+                                  child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          primary: buttonColor,
+                                          elevation: elevationButton
+                                      ),
+                                      onPressed: () {
+                                      },
+                                      child: Container(
+                                        width: double.infinity,
+                                        child: AutoSizeText(
+                                          "PRENOTA",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: textButtonColor,
+                                              fontWeight: buttonFontWeight
+                                          ),
+                                        ),
+                                      )
+                                  )
+                              )
+                          ),
+                          SizedBox(width: MediaQuery.of(context).size.width * buttonDistancePercentage,),
+                          Expanded(
+                              child: Center(
+                                  child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          primary: Colors.white,
+                                          elevation: elevationButton
+                                      ),
+                                      onPressed: () {
+                                      },
+                                      child: Container(
+                                        width: double.infinity,
+                                        child: AutoSizeText(
+                                          "MAPPA",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.black87,
+                                              fontWeight: buttonFontWeight
+                                          ),
+                                        ),
+                                      )
+                                  )
+                              )
+                          )
+                        ],
+                      ),
 
                     ],
                   ),

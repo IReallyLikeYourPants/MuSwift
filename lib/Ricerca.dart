@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 import 'package:prova_app/Details/operaDetails3.dart';
 import 'museoPage.dart';
@@ -144,7 +145,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                 Expanded(
                                     child:
                                     Column(children : [
-                                      SizedBox(width: double.infinity,child: Text("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
+                                      SizedBox(width: double.infinity,child: AutoSizeText("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
                                       Divider(color: Colors.black54,),
                                       Expanded (child :
                                       ListView.builder(
@@ -168,8 +169,8 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                     )
                                                   ),
                                                 ),
-                                                title: Text(recenti[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                                subtitle: Text(recenti[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                                title: AutoSizeText(recenti[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
+                                                subtitle: AutoSizeText(recenti[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                 onTap: () {
                                                   if(recenti[ind]['tipo'] == "museo") {
@@ -197,7 +198,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                       ))]))
                                     : Expanded(
                                     child: Column(children : [
-                                      //SizedBox(width: double.infinity,child: Text("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
+                                      //SizedBox(width: double.infinity,child: AutoSizeText("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
                                       //Divider(color: Colors.black54,),
                                       SizedBox(height: 5,),
                                       Container(
@@ -209,7 +210,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                           unselectedLabelColor: tabTextColor,
                                           tabs: <Widget>[
                                             Tab(
-                                              child: Text(
+                                              child: AutoSizeText(
                                                 "TUTTO",
                                                 style: TextStyle(
                                                     fontSize: tabsFontSize
@@ -217,7 +218,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                               ),
                                             ), // TUTTO TAB
                                             Tab(
-                                              child: Text(
+                                              child: AutoSizeText(
                                                 "MUSEI",
                                                 style: TextStyle(
                                                     fontSize: tabsFontSize
@@ -225,7 +226,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                               ),
                                             ), // MUSEI TAB
                                             Tab(
-                                              child: Text(
+                                              child: AutoSizeText(
                                                 "OPERE",
                                                 style: TextStyle(
                                                     fontSize: tabsFontSize
@@ -258,8 +259,8 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                             )
                                                         ),
                                                       ),
-                                                      title: Text(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                                      subtitle: Text(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                                      title: AutoSizeText(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
+                                                      subtitle: AutoSizeText(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                       onTap: () {
                                                         if(titoli.contains(results[ind]['title'])==false){
@@ -312,8 +313,8 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                               )
                                                           ),
                                                         ),
-                                                        title: Text(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                                        subtitle: Text(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                                        title: AutoSizeText(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
+                                                        subtitle: AutoSizeText(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                         onTap: () {
                                                           if(titoli.contains(results[ind]['title'])==false){
@@ -357,8 +358,8 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                               )
                                                           ),
                                                         ),
-                                                        title: Text(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                                        subtitle: Text(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                                        title: AutoSizeText(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
+                                                        subtitle: AutoSizeText(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                         onTap: () {
                                                           if(titoli.contains(results[ind]['title'])==false){

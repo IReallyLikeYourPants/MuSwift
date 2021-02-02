@@ -15,10 +15,10 @@ import 'package:flutter/rendering.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 const waitValue = 0;
-const double textFontSize = 15;
+const double textFontSize = 17;
 const double titleFontSize = 20;
 const double tabTextFontSize = 16;
-const double itemFontSize = 15;
+const double itemFontSize = 16;
 const FontWeight titleFontWeight = FontWeight.bold;
 
 const double iconSize = 30;
@@ -323,7 +323,7 @@ class _museoPageState extends State<museoPage> {
                                       SizedBox(height: 10,),
                                       Divider(color: Colors.black),
                                       SizedBox(height: 10,),
-                                      AutoSizeText(Museo.storia,
+                                      Text(Museo.storia,
                                           maxLines: maxLinesStory,
                                           style: TextStyle(
                                               fontSize: textFontSize,

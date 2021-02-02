@@ -5,7 +5,7 @@ import 'package:prova_app/Mappa.dart';
 import 'package:prova_app/Home.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-
+import 'package:auto_size_text/auto_size_text.dart';
 
 
 void main()
@@ -68,15 +68,15 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(icon: new Icon(Icons.home),
-                title: new Text("Home"))
+                title: new AutoSizeText("Home"))
             ,
             BottomNavigationBarItem(icon: new Icon(Icons.search),
-                title: new Text("Ricerca"))
+                title: new AutoSizeText("Ricerca"))
             ,
             BottomNavigationBarItem(icon: new Icon(Icons.map),
-                title: new Text("Mappa")),
+                title: new AutoSizeText("Mappa")),
             BottomNavigationBarItem(icon: new Icon(Icons.book),
-                title: new Text("Biglietti"))
+                title: new AutoSizeText("Biglietti"))
           ]
       ),
     );

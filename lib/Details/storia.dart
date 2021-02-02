@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 const FontWeight titleFontWeight = FontWeight.bold;
 
@@ -20,14 +21,14 @@ class storia extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: Text("Storia", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
+        title: AutoSizeText("Storia", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
         backgroundColor: Colors.white,
       ),
       body: ListView(
         children: [
               Container(
                 padding: const EdgeInsets.all(10),
-                child: Text(text),
+                child: AutoSizeText(text),
             ),
         ],
       )

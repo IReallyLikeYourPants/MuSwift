@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
-
-
+import 'package:auto_size_text/auto_size_text.dart';
 
 class Biglietti extends StatefulWidget {
   @override
@@ -12,10 +11,10 @@ class _HomeState extends State<Biglietti> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("Biglietti"),
+          title: new AutoSizeText("Biglietti"),
         ),
         body: new Center(
-            child: new Text("this is ababa")
+            child: new AutoSizeText("this is ababa")
         )
     );
   }

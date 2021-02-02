@@ -5,7 +5,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:prova_app/Ricerca.dart';
 
-
 class Mappa extends StatefulWidget {
   @override
   _MapScreenState createState() => _MapScreenState();

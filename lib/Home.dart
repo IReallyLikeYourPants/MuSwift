@@ -7,7 +7,7 @@ import 'package:prova_app/museoPage.dart';
 import 'package:prova_app/Details/operaDetails3.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-
+import 'package:auto_size_text/auto_size_text.dart';
 
 //SEGNATE I VALORI PRECEDENTI SE CAMBIATE
 //USATE LE PROPORZIONI DOVE POSSIBILE
@@ -34,7 +34,7 @@ class Home extends StatelessWidget {
     return Theme(data: Theme.of(context).copyWith(), child: Scaffold(
         backgroundColor: backgroundColor,
         appBar: AppBar(
-          title: Text("MuSwift", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
+          title: AutoSizeText("MuSwift", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
           backgroundColor: Colors.white,
         ),
         body: Container(
@@ -45,7 +45,7 @@ class Home extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: new Padding(
                           padding: new EdgeInsets.only(left: leftPadding, top: rowsPadding/2),  // padding è lo spazio vuoto
-                          child: new Text(
+                          child: new AutoSizeText(
                             'Opere più viste',
                             style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
                           )
@@ -98,7 +98,7 @@ class Home extends StatelessWidget {
                                     ),
                                     child: Align( // per allineare la scritta in una posizione specifica
                                         alignment: Alignment.bottomLeft,
-                                        child: Text(newOpere[index]['title'], style: TextStyle(fontSize: itemTitleFontSize, color: itemFontColor),)
+                                        child: AutoSizeText(newOpere[index]['title'], style: TextStyle(fontSize: itemTitleFontSize, color: itemFontColor),)
                                     ),
                                   ),
                                 );
@@ -111,7 +111,7 @@ class Home extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: new Padding(
                           padding: new EdgeInsets.only(left: leftPadding), // padding è lo spazio vuoto
-                          child: new Text(
+                          child: new AutoSizeText(
                             'Musei più visitati',
                             style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
                           )
@@ -168,7 +168,7 @@ class Home extends StatelessWidget {
                                     ),
                                     child: Align( // per allineare la scritta in una posizione specifica
                                         alignment: Alignment.bottomLeft,
-                                        child: Text(newMuseo[index]['title'], style: TextStyle(fontSize: itemTitleFontSize, color: itemFontColor),)
+                                        child: AutoSizeText(newMuseo[index]['title'], style: TextStyle(fontSize: itemTitleFontSize, color: itemFontColor),)
                                     ),
                                   ),
                                 );
@@ -181,7 +181,7 @@ class Home extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: new Padding(
                           padding: new EdgeInsets.only(left: leftPadding), // padding è lo spazio vuoto
-                          child: new Text(
+                          child: new AutoSizeText(
                             'Musei nei dintorni',
                             style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
                           )
@@ -229,7 +229,7 @@ class Home extends StatelessWidget {
                                     ),
                                     child: Align( // per allineare la scritta in una posizione specifica
                                         alignment: Alignment.bottomLeft,
-                                        child: Text(newViste[index]['title'], style: TextStyle(fontSize: itemTitleFontSize, color: itemFontColor),)
+                                        child: AutoSizeText(newViste[index]['title'], style: TextStyle(fontSize: itemTitleFontSize, color: itemFontColor),)
                                     ),
                                   ),
                                 );
