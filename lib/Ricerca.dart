@@ -150,7 +150,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                 subtitle: Text(rows[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                 onTap: () {
-                                                  if(results[ind]['tipo'] == "museo") {
+                                                  if(rows[ind]['tipo'] == "museo") {
                                                     Navigator.push(
                                                         context,
                                                         MaterialPageRoute(
@@ -166,7 +166,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                   else Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
-                                                          builder: (context) => operaDetails3(results[ind]['img'], results[ind]['title'])
+                                                          builder: (context) => operaDetails3(rows[ind]['img'], rows[ind]['title'])
                                                       )
                                                   );
                                                 },
