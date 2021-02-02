@@ -7,8 +7,9 @@ import 'package:prova_app/Object/opera.dart';
 const waitValue = 0;
 
 const int animationMilliseconds = 300;
-const double bottomHeightPercentage = 0.1;
-const Color statusBarColor = Colors.blue;
+const double bottomHeightPercentage = 0.13;
+const double initalScrollPercentage = 0.13;
+const Color statusBarColor = Colors.white;
 
 const double titleFontSizePercentage = 0.0355;
 const double subTextFontSizePercentage = 0.025;
@@ -82,9 +83,10 @@ class moreInfo extends StatefulWidget {
 }
 
 class _moreInfoState extends State<moreInfo>{
-  ScrollController _scrollController = ScrollController(initialScrollOffset: 100);
+  ScrollController _scrollController = ScrollController();
 
   Widget build(BuildContext context){
+
     return ListView(
       controller: _scrollController,
       shrinkWrap: true,

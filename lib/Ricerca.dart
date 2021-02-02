@@ -134,7 +134,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                         child: Image.asset(rows[ind]['img'].toString(), fit: BoxFit.cover),
                                       ),
                                       title: Text(rows[ind]['title'],style: TextStyle(color: listviewTitleColor)),
-                                      subtitle: Text(rows[ind]['rate'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                      subtitle: Text(rows[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                       onTap: () {
                                         Navigator.push(
@@ -143,7 +143,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                 builder: (context) => museoPage(
                                                   rows[ind]['title'],
                                                   rows[ind]['img'],
-                                                  rows[ind]['rate'],
+                                                  rows[ind]['nav'],
                                                 )
                                             )
                                         );
@@ -206,7 +206,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                               child: Image.asset(results[ind]['img'].toString(), fit: BoxFit.cover),
                                             ),
                                             title: Text(results[ind]['title'],style: TextStyle(color: listviewTitleColor)),
-                                            subtitle: Text(results[ind]['rate'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                            subtitle: Text(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                             onTap: () {
                                               Navigator.push(
@@ -215,7 +215,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                       builder: (context) => museoPage(
                                                         rows[ind]['title'],
                                                         rows[ind]['img'],
-                                                        rows[ind]['rate'],
+                                                        rows[ind]['nav'],
                                                       )
                                                   )
                                               );
@@ -239,7 +239,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                 child: Image.asset(results[ind]['img'].toString(), fit: BoxFit.cover),
                                               ),
                                               title: Text(results[ind]['title'],style: TextStyle(color: listviewTitleColor)),
-                                              subtitle: Text(results[ind]['rate'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                              subtitle: Text(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                               onTap: () {
                                                 Navigator.push(
@@ -248,7 +248,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                         builder: (context) => museoPage(
                                                           rows[ind]['title'],
                                                           rows[ind]['img'],
-                                                          rows[ind]['rate'],
+                                                          rows[ind]['nav'],
                                                         )
                                                     )
                                                 );
@@ -274,7 +274,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                 child: Image.asset(results[ind]['img'].toString(), fit: BoxFit.cover),
                                               ),
                                               title: Text(results[ind]['title'],style: TextStyle(color: listviewTitleColor)),
-                                              subtitle: Text(results[ind]['rate'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                              subtitle: Text(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                               onTap: () {
                                                 Navigator.push(
@@ -283,7 +283,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                         builder: (context) => museoPage(
                                                           rows[ind]['title'],
                                                           rows[ind]['img'],
-                                                          rows[ind]['rate'],
+                                                          rows[ind]['nav'],
                                                         )
                                                     )
                                                 );
@@ -315,7 +315,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
         .toString()
         .toLowerCase()
         .contains(query.toLowerCase()) ||
-        elem['rate'].toString()
+        elem['nav'].toString()
             .toString()
             .toLowerCase()
             .contains(query.toLowerCase()))

@@ -8,7 +8,7 @@ const waitValue = 0;
 
 const int animationMilliseconds = 300;
 const double bottomHeightPercentage = 0.24;
-const Color statusBarColor = Colors.blue;
+const Color statusBarColor = Colors.white;
 
 const double titleFontSizePercentage = 0.0355;
 const double subTextFontSizePercentage = 0.025;
