@@ -4,16 +4,19 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 import 'package:prova_app/Object/opera.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:prova_app/museoPage.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 const waitValue = 0;
 
 const int animationMilliseconds = 300;
-const double bottomHeightPercentage = 0.13;
+const double dropDownPixelPercentage = 0.86;
+const double bottomHeightPercentage = 0.32;
 const double initalScrollPercentage = 0.13;
 const Color statusBarColor = Colors.white;
 
-const double titleFontSizePercentage = 0.0355;
-const double subTextFontSizePercentage = 0.025;
+const double titleFontSize = 17;
+const double subTextFontSize = 17;
 
 const Color titleColorFont = Colors.black;
 const Color subTextColorFont = Colors.black87;
@@ -23,6 +26,8 @@ const Color descContainerColor = Colors.white;
 const String backgroundHexColor = "#FAFAFA";
 
 const double textDistancePercentage = 0.01;
+
+const FontWeight titleFontWeight = FontWeight.bold;
 
 Future<String> loadOpereAsset() async {
   return await rootBundle.loadString('assets/loadjson/infoopere.json');
@@ -49,35 +54,34 @@ class operaDetails3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: statusBarColor,
-      child: SafeArea(
-        child: Scaffold(
-            body: Stack(
-              children: [
-                Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(child: Center(
-                        child: Hero(
-                            tag: titolo,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                image: new DecorationImage( // per metterci l'immagine dentro
-                                  image: new AssetImage(img),
-                                  fit: BoxFit.cover, // per adattarla al container
-                                ),
-                              ),
-                            )
-                        ),
-                      )),
-                    ]
-                ),
-                moreInfo()
-              ],
-            )
+    return Scaffold(
+      appBar: AppBar(
+        title: AutoSizeText("Storia", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
+        backgroundColor: Colors.white,
+        leading: GestureDetector(
+          child: Icon(Icons.arrow_back, color: Colors.black),
+          onTap: (){
+            Navigator.pop(context);
+          },
         ),
       ),
+        body: Stack(
+              children: [
+                Hero(
+                    tag: titolo,
+                    child: Container(
+                      height: MediaQuery. of(context). size. height * (1.1 - bottomHeightPercentage),
+                      decoration: BoxDecoration(
+                        image: new DecorationImage( // per metterci l'immagine dentro
+                          image: new AssetImage(img),
+                          fit: BoxFit.cover, // per adattarla al container
+                        ),
+                      ),
+                    )
+                ),
+                moreInfo(),
+              ],
+            )
     );
   }
 }
@@ -88,7 +92,7 @@ class moreInfo extends StatefulWidget {
 }
 
 class _moreInfoState extends State<moreInfo>{
-  ScrollController _scrollController = ScrollController(initialScrollOffset: 100);
+  ScrollController _scrollController = ScrollController();
 
   Widget build(BuildContext context){
     return FutureBuilder(
@@ -100,21 +104,18 @@ class _moreInfoState extends State<moreInfo>{
             children: [
               GestureDetector(
                 onTap: () {
-                  if(_scrollController.position.pixels == 0.0 ){
-                    Navigator.pop(context);
-                  }
                   _scrollController.animateTo(
                     0.0,
                     curve: Curves.easeOut,
                     duration: const Duration(milliseconds: animationMilliseconds),
                   );
                 },
-                child: Container(color: Colors.transparent, height: MediaQuery. of(context). size. height * (1 - bottomHeightPercentage),),
+                child: Container(color: Colors.transparent, height: MediaQuery. of(context). size. height * (1 - bottomHeightPercentage)),
               ),
               GestureDetector(
                 onTap: (){
                   _scrollController.animateTo(
-                    _scrollController.position.maxScrollExtent,
+                    MediaQuery. of(context). size. height * dropDownPixelPercentage,
                     curve: Curves.easeOut,
                     duration: const Duration(milliseconds: animationMilliseconds),
                   );
@@ -129,16 +130,35 @@ class _moreInfoState extends State<moreInfo>{
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(titolo, style: TextStyle(fontSize: MediaQuery. of(context). size. height * titleFontSizePercentage, color: titleColorFont , fontWeight: FontWeight.bold)),
+                      AutoSizeText(titolo, style: TextStyle(fontSize: titleFontSize, color: titleColorFont , fontWeight: FontWeight.bold)),
                       SizedBox(height: MediaQuery. of(context). size. height * textDistancePercentage,),
-                      Text(snapshot.data.autore, style: TextStyle(fontSize: MediaQuery. of(context). size. height * subTextFontSizePercentage, color: subTextColorFont)),
-                      Text(snapshot.data.tipo, style: TextStyle(fontSize: MediaQuery. of(context). size. height * subTextFontSizePercentage, color: subTextColorFont)),
-                      Text(snapshot.data.anno, style: TextStyle(fontSize: MediaQuery. of(context). size. height * subTextFontSizePercentage, color: subTextColorFont)),
-                      Text(snapshot.data.nav, style: TextStyle(fontSize: MediaQuery. of(context). size. height * subTextFontSizePercentage, color: subTextColorFont))
+                      AutoSizeText(snapshot.data.autore, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
+                      AutoSizeText(snapshot.data.tipo, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
+                      AutoSizeText(snapshot.data.anno, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
+                      AutoSizeText(snapshot.data.nav, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
+                      SizedBox(height: 10),
+                      AutoSizeText(snapshot.data.stile, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
+                      AutoSizeText(snapshot.data.storia, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
+                      RichText(
+                        text: new TextSpan(
+                          // Note: Styles for TextSpans must be explicitly defined.
+                          // Child text spans will inherit styles from parent
+                          style: new TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black,
+                          ),
+                          children: <TextSpan>[
+                            new TextSpan(text: 'Hello'),
+                            new TextSpan(text: 'World', style: new TextStyle(fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                      )
+
+
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           );
           return Container();

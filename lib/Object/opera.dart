@@ -4,9 +4,10 @@ class opera{
   String tipo;
   String anno;
   String nav;
+  String stile;
+  String storia;
 
-
-  opera({this.autore, this.tipo, this.anno, this.nav});
+  opera({this.autore, this.tipo, this.anno, this.nav, this.stile, this.storia});
 
   factory opera.fromJson(Map<String, dynamic> parsedJson, String nome){
     return opera(
@@ -14,6 +15,8 @@ class opera{
       tipo: parsedJson[nome]['tipo'],
       anno: parsedJson[nome]['anno'],
       nav: parsedJson[nome]['nav'],
+      stile: parsedJson[nome]['stile'],
+      storia: parsedJson[nome]['storia']
     );
   }
 }

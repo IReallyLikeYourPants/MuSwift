@@ -8,14 +8,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:prova_app/misc/SmoothStarRating.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:prova_app/Object/museo.dart';
-import 'package:prova_app/Details/operaDetails.dart';
-import 'package:prova_app/Details/operaDetails2.dart';
+import 'package:prova_app/Details/storia.dart';
 import 'package:prova_app/Details/operaDetails3.dart';
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/rendering.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 const waitValue = 0;
-const double textFontSize = 14;
+const double textFontSize = 15;
 const double titleFontSize = 20;
 const double tabTextFontSize = 16;
 const double itemFontSize = 15;
@@ -91,7 +91,7 @@ Container infoRow(IconData icon, String label){
         Icon(icon, size: iconSize, color: iconColor),
         Container(
           margin: EdgeInsets.only(left: 10),
-          child: Text(
+          child: AutoSizeText(
             label,
             style: TextStyle(fontSize: textFontSize, color: textFontColor),
           ),
@@ -107,7 +107,7 @@ Container noteRow(IconData icon, String label){
         Icon(icon, size: iconSize, color: Colors.green),
         Container(
           margin: EdgeInsets.only(left: 5),
-          child: Text(
+          child: AutoSizeText(
             label,
             style: TextStyle(fontSize: textFontSize, color: textFontColor),
           ),
@@ -115,37 +115,6 @@ Container noteRow(IconData icon, String label){
       ],
     ),
   );
-}
-
-class storyPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).popUntil((route) => route.isFirst);
-          },
-          child: Text('TO ROOT'),
-        ),
-      ),
-    );
-  }
-}
-class schedulePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('TORNIAMO INDIETRO'),
-        ),
-      ),
-    );
-  }
 }
 
 class museoPage extends StatefulWidget {
@@ -203,7 +172,7 @@ class _museoPageState extends State<museoPage> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      Text(
+                                      AutoSizeText(
                                           nome,
                                           style: GoogleFonts.roboto(
                                             textStyle : TextStyle(fontSize: titleFontSize, color: Colors.white, fontWeight: titleFontWeight),
@@ -248,12 +217,12 @@ class _museoPageState extends State<museoPage> {
                                     unselectedLabelColor: tabTextColor,
                                     tabs: <Widget>[
                                       Tab(
-                                        child: Text("INFORMAZIONI",
+                                        child: AutoSizeText("INFORMAZIONI",
                                           style: TextStyle(fontSize: tabTextFontSize),
                                         ),
                                       ),
                                       Tab(
-                                        child: Text("OPERE",
+                                        child: AutoSizeText("OPERE",
                                           style: TextStyle(fontSize: tabTextFontSize),
                                         ),
                                       ),
@@ -275,10 +244,7 @@ class _museoPageState extends State<museoPage> {
                                       infoRow(Icons.map, Museo.luogo),
                                       GestureDetector(
                                           onTap: (){
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(builder: (context) => schedulePage()),
-                                            );
+
                                           },
                                           child: Container(
                                             margin: EdgeInsets.only(top: infoMargin),
@@ -288,7 +254,7 @@ class _museoPageState extends State<museoPage> {
                                                 Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.only(left: 10),
-                                                      child: Text(
+                                                      child: AutoSizeText(
                                                         Museo.orario,
                                                         style: TextStyle(
                                                             fontSize: textFontSize,
@@ -314,7 +280,7 @@ class _museoPageState extends State<museoPage> {
                                                 Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.only(left: 10),
-                                                      child: Text(
+                                                      child: AutoSizeText(
                                                         Museo.numero,
                                                         style: TextStyle(
                                                             fontSize: textFontSize,
@@ -340,7 +306,7 @@ class _museoPageState extends State<museoPage> {
                                                 Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.only(left: 10),
-                                                      child: Text(
+                                                      child: AutoSizeText(
                                                         Museo.sito,
                                                         style: TextStyle(
                                                             fontSize: textFontSize,
@@ -357,7 +323,7 @@ class _museoPageState extends State<museoPage> {
                                       SizedBox(height: 10,),
                                       Divider(color: Colors.black),
                                       SizedBox(height: 10,),
-                                      Text(Museo.storia,
+                                      AutoSizeText(Museo.storia,
                                           maxLines: maxLinesStory,
                                           style: TextStyle(
                                               fontSize: textFontSize,
@@ -374,7 +340,7 @@ class _museoPageState extends State<museoPage> {
                                                       opaque: true,
                                                       transitionDuration: Duration(milliseconds: 225),
                                                       pageBuilder: (BuildContext context, _, __) {
-                                                        return new storyPage();
+                                                        return new storia(Museo.storia);
                                                       },
                                                       transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
 
@@ -389,7 +355,7 @@ class _museoPageState extends State<museoPage> {
                                                   )
                                                   );
                                                 },
-                                                child: Text(
+                                                child: AutoSizeText(
                                                   "...leggi di più",
                                                   style: TextStyle(fontSize: textFontSize, color: readMoreColor, fontWeight: FontWeight.bold) ,
                                                 )
@@ -413,7 +379,7 @@ class _museoPageState extends State<museoPage> {
                                                       },
                                                       child: Container(
                                                         width: double.infinity,
-                                                        child: Text(
+                                                        child: AutoSizeText(
                                                           "PRENOTA",
                                                           textAlign: TextAlign.center,
                                                           style: TextStyle(
@@ -437,7 +403,7 @@ class _museoPageState extends State<museoPage> {
                                                       },
                                                       child: Container(
                                                         width: double.infinity,
-                                                        child: Text(
+                                                        child: AutoSizeText(
                                                           "MAPPA",
                                                           textAlign: TextAlign.center,
                                                           style: TextStyle(
@@ -454,7 +420,7 @@ class _museoPageState extends State<museoPage> {
                                       SizedBox(height: 10,),
                                       Row(
                                         children: [
-                                          Text(
+                                          AutoSizeText(
                                             "Note aggiuntive: ",
                                             style: TextStyle(fontSize: textFontSize, color: textFontColor, fontWeight: FontWeight.bold),
                                           ),
@@ -506,7 +472,7 @@ class _museoPageState extends State<museoPage> {
                                               ),
                                               child: Align( // per allineare la scritta in una posizione specifica
                                                 alignment: Alignment.bottomLeft,
-                                                  child: Text(Museo.opere[index]['title'], style: TextStyle(fontSize: itemFontSize, color: itemFontColor),)
+                                                  child: AutoSizeText(Museo.opere[index]['title'], style: TextStyle(fontSize: itemFontSize, color: itemFontColor),)
                                               ),
                                             )
                                         ),

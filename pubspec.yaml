@@ -23,6 +23,8 @@ environment:
 
 
 dependencies:
+  auto_size_text: ^2.1.0
+  flutter_screenutil: ^4.0.2+3
   hexcolor: ^1.0.6
   google_fonts: ^1.1.2
   background_app_bar: ^1.0.3
