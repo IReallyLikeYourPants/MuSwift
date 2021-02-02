@@ -57,7 +57,6 @@ class _MapScreenState extends State<Mappa> {
                   mapType: MapType.normal,
                   zoomControlsEnabled: false,
                 ),
-
                 floatingActionButton: FloatingActionButton.extended(
                   onPressed: _currentLocation,
                   backgroundColor: Colors.black,
@@ -66,7 +65,8 @@ class _MapScreenState extends State<Mappa> {
                   hoverColor: Colors.white,
                   splashColor: Colors.white,
                   label: Icon(Icons.location_on),
-                )),
+                )
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

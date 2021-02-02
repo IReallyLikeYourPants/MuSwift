@@ -3,6 +3,7 @@ import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 import 'package:prova_app/Object/opera.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 const waitValue = 0;
 
@@ -15,9 +16,11 @@ const double titleFontSizePercentage = 0.0355;
 const double subTextFontSizePercentage = 0.025;
 
 const Color titleColorFont = Colors.black;
-const Color subTextColorFont = Colors.black54;
+const Color subTextColorFont = Colors.black87;
 
-const Color descBackgroundColor = Colors.white;
+const double opacity = 1;
+const Color descContainerColor = Colors.white;
+const String backgroundHexColor = "#FAFAFA";
 
 const double textDistancePercentage = 0.01;
 
@@ -120,7 +123,7 @@ class _moreInfoState extends State<moreInfo>{
                   padding: EdgeInsets.all(10.0),
                   width: double.infinity,
                   decoration: BoxDecoration(
-                      color: descBackgroundColor,
+                      color: HexColor(backgroundHexColor),
                       borderRadius: BorderRadius.all(Radius.circular(15))
                   ),
                   child: Column(
@@ -140,53 +143,6 @@ class _moreInfoState extends State<moreInfo>{
           );
           return Container();
         }
-    );
-    return ListView(
-      controller: _scrollController,
-      shrinkWrap: true,
-      children: [
-        GestureDetector(
-          onTap: () {
-            if(_scrollController.position.pixels == 0.0 ){
-              Navigator.pop(context);
-            }
-            _scrollController.animateTo(
-              0.0,
-              curve: Curves.easeOut,
-              duration: const Duration(milliseconds: animationMilliseconds),
-            );
-          },
-          child: Container(color: Colors.transparent, height: MediaQuery. of(context). size. height * (1 - bottomHeightPercentage),),
-        ),
-        GestureDetector(
-          onTap: (){
-            _scrollController.animateTo(
-              _scrollController.position.maxScrollExtent,
-              curve: Curves.easeOut,
-              duration: const Duration(milliseconds: animationMilliseconds),
-            );
-          },
-          child: Container(
-            padding: EdgeInsets.all(10.0),
-            width: double.infinity,
-            decoration: BoxDecoration(
-                color: descBackgroundColor,
-                borderRadius: BorderRadius.all(Radius.circular(15))
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("La deposizione", style: TextStyle(fontSize: MediaQuery. of(context). size. height * titleFontSizePercentage, color: titleColorFont , fontWeight: FontWeight.bold)),
-                SizedBox(height: MediaQuery. of(context). size. height * textDistancePercentage,),
-                Text("Michelangelo Merisi da Caravaggio", style: TextStyle(fontSize: MediaQuery. of(context). size. height * subTextFontSizePercentage, color: subTextColorFont)),
-                Text("Olio su tela, cm 300 x 203", style: TextStyle(fontSize: MediaQuery. of(context). size. height * subTextFontSizePercentage, color: subTextColorFont)),
-                Text("1600 - 1604 ac.", style: TextStyle(fontSize: MediaQuery. of(context). size. height * subTextFontSizePercentage, color: subTextColorFont)),
-                Text("Musei Vaticani - Roma", style: TextStyle(fontSize: MediaQuery. of(context). size. height * subTextFontSizePercentage, color: subTextColorFont))
-              ],
-            ),
-          ),
-        )
-      ],
     );
   }
 

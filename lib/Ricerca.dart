@@ -5,6 +5,7 @@ import 'package:flappy_search_bar/scaled_tile.dart';
 import 'package:flappy_search_bar/search_bar_style.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:hexcolor/hexcolor.dart';
 import 'package:sqflite/sqflite.dart';
 
 import 'package:prova_app/Details/operaDetails3.dart';
@@ -16,13 +17,22 @@ const backroundColor = Colors.white;
 const searchbarPrimaryColor = Colors.black;
 const searchbarHintColor = Colors.black;
 const searchbarTextColor = Colors.black;
-const searchbarText = "Search...";
+const searchbarText = "Ricerca...";
 
-const listviewCardColor = Colors.grey;
-const listviewTitleColor = Colors.white;
-const listviewSubtitleColor = Colors.white;
+const listviewCardColor = Colors.white;
+const listviewTitleColor = Colors.black;
+const listviewSubtitleColor = Colors.black;
 const double listviewImgSize = 60;
 
+const double tabsFontSize = 15;
+
+const double itemImageSizeHeight = 60;
+const double itemImageSizeWidth = 60;
+const double roundedValue = 10;
+
+const Color tabTextColor = Colors.blueGrey;
+const Color tabActiveTextColor = Colors.black;
+const Color tabIndicatorColor = Colors.black;
 
 class Post {
   final String title;
@@ -74,8 +84,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
         'jsonOpere': jsonB
       };
     }
-
-    return  Container(
+    return Theme(data: Theme.of(context).copyWith(), child: Container(
         color: statusBarColor,
         child: SafeArea(
             child: FutureBuilder(
@@ -98,28 +107,33 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                   child: Row(
                                     children: [
                                       Expanded(
-                                          child: TextField(
-                                        //style: TextStyle(color: Colors.grey),
+                                          child: Theme(
+                                              child : TextField(
+                                                //style: TextStyle(color: Colors.grey),
 
-                                        controller: tc,
-                                        decoration: InputDecoration(
-                                            prefixIcon: Icon(Icons.search),
-                                            hintText: searchbarText,
-                                            hintStyle: TextStyle(color: searchbarTextColor),
-                                            suffixIcon: IconButton(
-                                              onPressed: () => tc.clear(),
-                                              icon: Icon(Icons.clear),
-                                            ),
-
-                                        ),
-                                        onChanged: (v) {
-                                          setState(() {
-                                            query = v;
-                                            setResults(query,rows);
-                                          });
-                                        },
-                                      )),
-
+                                                controller: tc,
+                                                decoration: InputDecoration(
+                                                  prefixIcon: Icon(Icons.search),
+                                                  hintText: searchbarText,
+                                                  hintStyle: TextStyle(color: searchbarTextColor),
+                                                  suffixIcon: IconButton(
+                                                    onPressed: () => tc.clear(),
+                                                    icon: Icon(Icons.clear),
+                                                  ),
+                                                ),
+                                                onChanged: (v) {
+                                                  setState(() {
+                                                    query = v;
+                                                    setResults(query,rows);
+                                                  });
+                                                },
+                                              ),
+                                            data: ThemeData(
+                                              primaryColor: HexColor("FFCB05"),
+                                              hintColor: HexColor("FFCB05"),
+                                            )
+                                          )
+                                      ),
                                     ],
                                   ),
                                 ),  //SearchBar
@@ -135,18 +149,23 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                         shrinkWrap: true,
                                         itemCount: rows == null ? 0 : rows.length,
                                         itemBuilder: (con, ind) {
-                                          return Card (color: Colors.black12,
+                                          return Card (
+                                              color: listviewCardColor,
                                               child: ListTile(
-                                                leading: ConstrainedBox(
-                                                  constraints: BoxConstraints(
-                                                    minWidth: listviewImgSize,
-                                                    minHeight: listviewImgSize,
-                                                    maxWidth: listviewImgSize,
-                                                    maxHeight: listviewImgSize,
+                                                leading: Container(
+                                                  width: itemImageSizeWidth,
+                                                  height: itemImageSizeHeight,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                                        new Radius.circular(roundedValue)
+                                                    ),
+                                                    image : DecorationImage(
+                                                      fit: BoxFit.cover,
+                                                      image: AssetImage(rows[ind]['img'].toString())
+                                                    )
                                                   ),
-                                                  child: Image.asset(rows[ind]['img'].toString(), fit: BoxFit.cover),
                                                 ),
-                                                title: Text(rows[ind]['title'],style: TextStyle(color: listviewTitleColor)),
+                                                title: Text(rows[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
                                                 subtitle: Text(rows[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                 onTap: () {
@@ -177,37 +196,41 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                     child: Column(children : [
                                       //SizedBox(width: double.infinity,child: Text("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
                                       //Divider(color: Colors.black54,),
-                                      TabBar(
-                                        controller: _tabController,
-                                        indicatorColor: Colors.blue,
-                                        labelColor: Colors.blue,
-                                        unselectedLabelColor: Colors.black,
-                                        tabs: <Widget>[
-                                          Tab(
-                                            child: Text(
-                                              "TUTTO",
-                                              style: TextStyle(
-                                                  fontSize: 17
+                                      SizedBox(height: 5,),
+                                      Container(
+                                        color: Colors.white,
+                                        child: TabBar(
+                                          controller: _tabController,
+                                          indicatorColor: tabIndicatorColor,
+                                          labelColor: tabActiveTextColor,
+                                          unselectedLabelColor: tabTextColor,
+                                          tabs: <Widget>[
+                                            Tab(
+                                              child: Text(
+                                                "TUTTO",
+                                                style: TextStyle(
+                                                    fontSize: tabsFontSize
+                                                ),
                                               ),
-                                            ),
-                                          ), // TUTTO TAB
-                                          Tab(
-                                            child: Text(
-                                              "MUSEI",
-                                              style: TextStyle(
-                                                  fontSize: 17
+                                            ), // TUTTO TAB
+                                            Tab(
+                                              child: Text(
+                                                "MUSEI",
+                                                style: TextStyle(
+                                                    fontSize: tabsFontSize
+                                                ),
                                               ),
-                                            ),
-                                          ), // MUSEI TAB
-                                          Tab(
-                                            child: Text(
-                                              "OPERE",
-                                              style: TextStyle(
-                                                  fontSize: 17
+                                            ), // MUSEI TAB
+                                            Tab(
+                                              child: Text(
+                                                "OPERE",
+                                                style: TextStyle(
+                                                    fontSize: tabsFontSize
+                                                ),
                                               ),
-                                            ),
-                                          ), // OPERE TAB
-                                        ],
+                                            ), // OPERE TAB
+                                          ],
+                                        ),
                                       ),
                                       Expanded(
                                           child: TabBarView(
@@ -219,16 +242,20 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                   itemCount: results.length,
                                                   itemBuilder: (con, ind) {
                                                     return Card(color: listviewCardColor,child: ListTile(
-                                                      leading: ConstrainedBox(
-                                                        constraints: BoxConstraints(
-                                                          minWidth: listviewImgSize,
-                                                          minHeight: listviewImgSize,
-                                                          maxWidth: listviewImgSize,
-                                                          maxHeight: listviewImgSize,
+                                                      leading: Container(
+                                                        width: itemImageSizeWidth,
+                                                        height: itemImageSizeHeight,
+                                                        decoration: BoxDecoration(
+                                                            borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                                                new Radius.circular(roundedValue)
+                                                            ),
+                                                            image : DecorationImage(
+                                                                fit: BoxFit.cover,
+                                                                image: AssetImage(results[ind]['img'].toString())
+                                                            )
                                                         ),
-                                                        child: Image.asset(results[ind]['img'].toString(), fit: BoxFit.cover),
                                                       ),
-                                                      title: Text(results[ind]['title'],style: TextStyle(color: listviewTitleColor)),
+                                                      title: Text(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
                                                       subtitle: Text(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                       onTap: () {
@@ -262,16 +289,20 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                   itemBuilder: (con, ind) {
                                                     if (results[ind]["tipo"] == "museo" ){
                                                       return Card(color: listviewCardColor,child: ListTile(
-                                                        leading: ConstrainedBox(
-                                                          constraints: BoxConstraints(
-                                                            minWidth: listviewImgSize,
-                                                            minHeight: listviewImgSize,
-                                                            maxWidth: listviewImgSize,
-                                                            maxHeight: listviewImgSize,
+                                                        leading: Container(
+                                                          width: itemImageSizeWidth,
+                                                          height: itemImageSizeHeight,
+                                                          decoration: BoxDecoration(
+                                                              borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                                                  new Radius.circular(roundedValue)
+                                                              ),
+                                                              image : DecorationImage(
+                                                                  fit: BoxFit.cover,
+                                                                  image: AssetImage(results[ind]['img'].toString())
+                                                              )
                                                           ),
-                                                          child: Image.asset(results[ind]['img'].toString(), fit: BoxFit.cover),
                                                         ),
-                                                        title: Text(results[ind]['title'],style: TextStyle(color: listviewTitleColor)),
+                                                        title: Text(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
                                                         subtitle: Text(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                         onTap: () {
@@ -298,16 +329,20 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                   itemBuilder: (con, ind) {
                                                     if (results[ind]["tipo"] == "opera" ){
                                                       return Card(color: listviewCardColor,child: ListTile(
-                                                        leading: ConstrainedBox(
-                                                          constraints: BoxConstraints(
-                                                            minWidth: listviewImgSize,
-                                                            minHeight: listviewImgSize,
-                                                            maxWidth: listviewImgSize,
-                                                            maxHeight: listviewImgSize,
+                                                        leading: Container(
+                                                          width: itemImageSizeWidth,
+                                                          height: itemImageSizeHeight,
+                                                          decoration: BoxDecoration(
+                                                              borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                                                  new Radius.circular(roundedValue)
+                                                              ),
+                                                              image : DecorationImage(
+                                                                  fit: BoxFit.cover,
+                                                                  image: AssetImage(results[ind]['img'].toString())
+                                                              )
                                                           ),
-                                                          child: Image.asset(results[ind]['img'].toString(), fit: BoxFit.cover),
                                                         ),
-                                                        title: Text(results[ind]['title'],style: TextStyle(color: listviewTitleColor)),
+                                                        title: Text(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
                                                         subtitle: Text(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                         onTap: () {
@@ -339,7 +374,8 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                 }
             )
         )
-    );
+    ));
+
   }
 
   void setResults(String query,var rowss) {

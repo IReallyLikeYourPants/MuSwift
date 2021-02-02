@@ -32,7 +32,6 @@ const Color tabIndicatorColor = Colors.black;
 
 const Color textFontColor = Colors.black;
 const Color titleFontColor = Colors.white;
-const Color tabTextFontColor = Colors.white;
 const Color itemFontColor = Colors.white;
 
 const Color textButtonColor = Colors.white;

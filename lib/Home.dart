@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'package:prova_app/museoPage.dart';
 import 'package:prova_app/Details/operaDetails3.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 
 //SEGNATE I VALORI PRECEDENTI SE CAMBIATE
@@ -20,7 +21,7 @@ const Color titleFontColor = Colors.black;
 
 const double itemTitleFontSize = 15;
 const Color itemFontColor = Colors.white;
-const Color itemBackgroundColor = Colors.blueAccent;
+const String itemBackgroundColor = "111B22";
 const double itemPadding = 5.0;
 const double rowsPadding = 25.0;
 const double leftPadding = 10.0;
@@ -77,7 +78,7 @@ class Home extends StatelessWidget {
                                     margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
                                     width: MediaQuery.of(context).size.width * itemWidthPercentage,
                                     decoration: BoxDecoration(
-                                      color: itemBackgroundColor,
+                                      color: HexColor(itemBackgroundColor),
                                       borderRadius: new BorderRadius.all( // per i bordi arrotondati
                                           new Radius.circular(5.0)
                                       ),
@@ -147,7 +148,7 @@ class Home extends StatelessWidget {
                                     margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
                                     width: MediaQuery.of(context).size.width * itemWidthPercentage,
                                     decoration: BoxDecoration(
-                                      color: itemBackgroundColor,
+                                      color: HexColor(itemBackgroundColor),
                                       borderRadius: new BorderRadius.all( // per i bordi arrotondati
                                           new Radius.circular(5.0)
                                       ),
@@ -201,13 +202,14 @@ class Home extends StatelessWidget {
                               itemBuilder: (BuildContext context, int index){
                                 return GestureDetector(
                                   onTap: (){
+
                                   },
                                   child: Container( // primo elemento della prima lista di opere
                                     padding: EdgeInsets.all(itemPadding),
                                     margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altraZ
                                     width: MediaQuery.of(context).size.width * itemWidthPercentage,
                                     decoration: BoxDecoration(
-                                      color: itemBackgroundColor,
+                                      color: HexColor(itemBackgroundColor),
                                       borderRadius: new BorderRadius.all( // per i bordi arrotondati
                                           new Radius.circular(5.0)
                                       ),

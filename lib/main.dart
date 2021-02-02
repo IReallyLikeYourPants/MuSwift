@@ -4,6 +4,7 @@ import 'package:prova_app/Ricerca.dart';
 import 'package:prova_app/Mappa.dart';
 import 'package:prova_app/Home.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 void main()
 {
@@ -57,7 +58,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
           onTap: onTappedBar,
           currentIndex: _currentIndex,
           backgroundColor: Colors.white,
-          selectedItemColor: Colors.black,
+          selectedItemColor: HexColor("FFCB05"),
           selectedFontSize: 11,
           unselectedFontSize: 11,
           iconSize: 25,
