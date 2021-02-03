@@ -56,7 +56,7 @@ class operaDetails3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: AutoSizeText("Storia", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
+        title: AutoSizeText("Info", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
         backgroundColor: Colors.white,
         leading: GestureDetector(
           child: Icon(Icons.arrow_back, color: Colors.black),
