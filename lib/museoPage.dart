@@ -59,8 +59,6 @@ const double buttonDistancePercentage = 0.03;
 const Color statusBarColor = Colors.white;
 
 String nome;
-String immagine;
-double rate;
 
 museo Museo = new museo();
 launchURL(String url) async {
@@ -119,10 +117,8 @@ Container noteRow(IconData icon, String label){
 
 class museoPage extends StatefulWidget {
 
-  museoPage(String title, String img, double rat){
+  museoPage(String title){
     nome = title;
-    immagine = img;
-    rate = rat;
   }
 
   @override
@@ -149,7 +145,7 @@ class _museoPageState extends State<museoPage> {
                               SliverAppBar(
                                 leading: GestureDetector(
                                   onTap: (){
-                                    Navigator.of(context).popUntil((route) => route.isFirst);
+                                    Navigator.pop(context);
                                   },
                                   child: Icon(
                                       Icons.arrow_drop_down,
@@ -182,7 +178,7 @@ class _museoPageState extends State<museoPage> {
                                         child: SmoothStarRating(
                                             allowHalfRating: false,
                                             starCount: 5,
-                                            rating: rate,
+                                            rating: Museo.rate,
                                             size: starIconSize,
                                             color: starIconColor,
                                             halfFilledIconData: Icons.star_half_outlined,

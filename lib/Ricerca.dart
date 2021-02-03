@@ -327,8 +327,6 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                             builder: (context) =>
                                                                 museoPage(
                                                                   rows[ind]['title'],
-                                                                  rows[ind]['img'],
-                                                                  rows[ind]['rate'],
                                                                 )
                                                         )
                                                     );
@@ -383,8 +381,6 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                                   builder: (context) =>
                                                                       museoPage(
                                                                         recenti[ind]['title'],
-                                                                        recenti[ind]['img'],
-                                                                        recenti[ind]['rate'],
                                                                       )
                                                               )
                                                           );
@@ -441,8 +437,6 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                               builder: (context) =>
                                                                   museoPage(
                                                                     rows[ind]['title'],
-                                                                    rows[ind]['img'],
-                                                                    rows[ind]['rate'],
                                                                   )
                                                           )
                                                       );
@@ -505,8 +499,6 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                                   builder: (context) =>
                                                                       museoPage(
                                                                         results[ind]['title'],
-                                                                        results[ind]['img'],
-                                                                        results[ind]['rate'],
                                                                       )
                                                               )
                                                           );
@@ -555,8 +547,6 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                               MaterialPageRoute(
                                                                   builder: (context) => museoPage(
                                                                     results[ind]['title'],
-                                                                    results[ind]['img'],
-                                                                    results[ind]['rate'],
                                                                   )
                                                               )
                                                           );

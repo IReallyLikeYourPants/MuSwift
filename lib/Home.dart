@@ -151,8 +151,6 @@ class Home extends StatelessWidget {
                                         MaterialPageRoute(
                                             builder: (context) => museoPage(
                                               newMuseo[index]['title'],
-                                              newMuseo[index]['img'],
-                                              newMuseo[index]['rate'],
                                             )
                                         )
                                     );
