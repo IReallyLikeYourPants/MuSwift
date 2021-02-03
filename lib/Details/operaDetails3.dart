@@ -74,7 +74,8 @@ class operaDetails3 extends StatelessWidget {
                       decoration: BoxDecoration(
                         image: new DecorationImage( // per metterci l'immagine dentro
                           image: new AssetImage(img),
-                          fit: BoxFit.cover, // per adattarla al container
+                          fit: BoxFit.cover,
+                          alignment: Alignment.topCenter// per adattarla al container
                         ),
                       ),
                     )
