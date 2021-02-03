@@ -5,11 +5,13 @@ import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:prova_app/misc/SmoothStarRating.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:prova_app/Object/museo.dart';
 import 'package:prova_app/Details/storia.dart';
 import 'package:prova_app/Details/operaDetails3.dart';
+import 'package:prova_app/main.dart';
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/rendering.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -236,89 +238,6 @@ class _museoPageState extends State<museoPage> {
                                   padding: EdgeInsets.all(10.0),
                                   child: Column(
                                     children: [
-                                      infoRow(Icons.confirmation_num, "Prezzo biglietto " + Museo.prezzo + "€"),
-                                      infoRow(Icons.map, Museo.luogo),
-                                      GestureDetector(
-                                          onTap: (){
-
-                                          },
-                                          child: Container(
-                                            margin: EdgeInsets.only(top: infoMargin),
-                                            child: Row(
-                                              children: [
-                                                Icon(Icons.schedule, size: iconSize, color: iconColor),
-                                                Expanded(
-                                                    child: Container(
-                                                      margin: EdgeInsets.only(left: 10),
-                                                      child: AutoSizeText(
-                                                        Museo.orario,
-                                                        style: TextStyle(
-                                                            fontSize: textFontSize,
-                                                            color: textFontColor
-                                                        ),
-                                                      ),
-                                                    )
-                                                ),
-                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: iconGoToColor)
-                                              ],
-                                            ),
-                                          )
-                                      ),
-                                      GestureDetector(
-                                          onTap: (){
-                                            launch("tel://" + Museo.numero);
-                                          },
-                                          child: Container(
-                                            margin: EdgeInsets.only(top: infoMargin),
-                                            child: Row(
-                                              children: [
-                                                Icon(Icons.call, size: iconSize, color: iconColor),
-                                                Expanded(
-                                                    child: Container(
-                                                      margin: EdgeInsets.only(left: 10),
-                                                      child: AutoSizeText(
-                                                        Museo.numero,
-                                                        style: TextStyle(
-                                                            fontSize: textFontSize,
-                                                            color: textFontColor
-                                                        ),
-                                                      ),
-                                                    )
-                                                ),
-                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: iconGoToColor)
-                                              ],
-                                            ),
-                                          )
-                                      ),
-                                      GestureDetector(
-                                          onTap: (){
-                                            launchURL(Museo.sito);
-                                          },
-                                          child: Container(
-                                            margin: EdgeInsets.only(top: infoMargin),
-                                            child: Row(
-                                              children: [
-                                                Icon(Icons.web, size: iconSize, color: iconColor),
-                                                Expanded(
-                                                    child: Container(
-                                                      margin: EdgeInsets.only(left: 10),
-                                                      child: AutoSizeText(
-                                                        Museo.sito,
-                                                        style: TextStyle(
-                                                            fontSize: textFontSize,
-                                                            color: textFontColor
-                                                        ),
-                                                      ),
-                                                    )
-                                                ),
-                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: iconGoToColor)
-                                              ],
-                                            ),
-                                          )
-                                      ),
-                                      SizedBox(height: 10,),
-                                      Divider(color: Colors.black),
-                                      SizedBox(height: 10,),
                                       Text(Museo.storia,
                                           maxLines: maxLinesStory,
                                           style: TextStyle(
@@ -360,7 +279,107 @@ class _museoPageState extends State<museoPage> {
                                       ),
                                       SizedBox(height: 10,),
                                       Divider(color: Colors.black),
-                                      SizedBox(height: 10,),
+                                      GestureDetector(
+                                          onTap: (){
+                                            launchURL(Museo.sito);
+                                          },
+                                          child: Container(
+                                            margin: EdgeInsets.only(top: infoMargin),
+                                            child: Row(
+                                              children: [
+                                                Icon(Icons.web, size: iconSize, color: iconColor),
+                                                Expanded(
+                                                    child: Container(
+                                                      margin: EdgeInsets.only(left: 10),
+                                                      child: AutoSizeText(
+                                                        Museo.sito,
+                                                        style: TextStyle(
+                                                            fontSize: textFontSize,
+                                                            color: textFontColor
+                                                        ),
+                                                      ),
+                                                    )
+                                                ),
+                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: iconGoToColor)
+                                              ],
+                                            ),
+                                          )
+                                      ),
+                                      GestureDetector(
+                                          onTap: (){
+                                            launch("tel://" + Museo.numero);
+                                          },
+                                          child: Container(
+                                            margin: EdgeInsets.only(top: infoMargin),
+                                            child: Row(
+                                              children: [
+                                                Icon(Icons.call, size: iconSize, color: iconColor),
+                                                Expanded(
+                                                    child: Container(
+                                                      margin: EdgeInsets.only(left: 10),
+                                                      child: AutoSizeText(
+                                                        Museo.numero,
+                                                        style: TextStyle(
+                                                            fontSize: textFontSize,
+                                                            color: textFontColor
+                                                        ),
+                                                      ),
+                                                    )
+                                                ),
+                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: iconGoToColor)
+                                              ],
+                                            ),
+                                          )
+                                      ),
+                                      GestureDetector(
+                                          onTap: (){
+
+                                          },
+                                          child: Container(
+                                            margin: EdgeInsets.only(top: infoMargin),
+                                            child: Row(
+                                              children: [
+                                                Icon(Icons.schedule, size: iconSize, color: iconColor),
+                                                Expanded(
+                                                    child: Container(
+                                                      margin: EdgeInsets.only(left: 10),
+                                                      child: AutoSizeText(
+                                                        Museo.orario,
+                                                        style: TextStyle(
+                                                            fontSize: textFontSize,
+                                                            color: textFontColor
+                                                        ),
+                                                      ),
+                                                    )
+                                                ),
+                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: iconGoToColor)
+                                              ],
+                                            ),
+                                          )
+                                      ),
+                                      infoRow(Icons.map, Museo.luogo),
+                                      infoRow(Icons.confirmation_num, "Prezzo biglietto " + Museo.prezzo + "€"),
+                                      Divider(color: Colors.black),
+                                      Container(
+                                          child: Center(child: AutoSizeText("Hai già effettuto una prenotazione!", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 23)),),
+                                          height: 35,
+                                          width: double.infinity,
+                                          decoration: BoxDecoration(
+                                            color: HexColor("40CB94"),
+                                            borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                                new Radius.circular(5.0)
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey,
+                                                offset: Offset(0.0, 1.0), //(x,y)
+                                                blurRadius: 6.0,
+                                              )
+                                            ],
+                                          ),
+                                          padding: EdgeInsets.all(5),
+                                        ),
+
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
@@ -423,6 +442,7 @@ class _museoPageState extends State<museoPage> {
                                         ],
                                       ),
                                       SizedBox(height: 10,),
+
                                       noteRow(Icons.check, "Adibito per disabili"),
                                       noteRow(Icons.check, "Visita interattiva"),
                                       noteRow(Icons.check, "Percheggio a pagamento"),
