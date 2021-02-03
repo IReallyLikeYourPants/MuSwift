@@ -14,7 +14,9 @@ import 'package:prova_app/Details/operaDetails3.dart';
 import 'museoPage.dart';
 
 const statusBarColor = Colors.white;
-const backroundColor = Colors.white;
+const String backroundColor = "FAFAFA";
+const String textFieldColor = "FAFAFA";
+const String barColor = "FFFFFF";
 
 const searchbarPrimaryColor = Colors.black;
 const searchbarHintColor = Colors.black;
@@ -99,53 +101,145 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                     print(recenti);
                     print(titoli);
                     return Scaffold(
-                      backgroundColor: backroundColor,
+                      appBar: query.isEmpty ? AppBar(
+                        leading: GestureDetector(
+                          child: Icon(Icons.arrow_back, color: Colors.black,),
+                          onTap: (){
+                            Navigator.pop(context);
+                          },
+                        ),
+                        backgroundColor: HexColor(barColor),
+                        title: Theme(
+                            child : Container(
+                              padding: EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                color: HexColor(textFieldColor),
+                                borderRadius:  BorderRadius.circular(10),
+                              ),
+                              child: TextField(
+                                //style: TextStyle(color: Colors.grey),
+                                controller: tc,
+                                decoration: InputDecoration(
+                                  fillColor: Colors.green,
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  enabledBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  disabledBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
+
+                                  //contentPadding: EdgeInsets.only(left: 2),
+
+                                  hintText: searchbarText,
+                                  hintStyle: TextStyle(color: searchbarTextColor),
+                                  suffixIcon: IconButton(
+                                    onPressed: () => tc.clear(),
+                                    icon: Icon(Icons.clear),
+                                  ),
+                                ),
+                                onChanged: (v) {
+                                  setState(() {
+                                    query = v;
+                                    setResults(query,rows);
+                                  });
+                                },
+                              ),
+                            ),
+                            data: ThemeData(
+                              primaryColor: HexColor("FFCB05"),
+                              hintColor: HexColor("FFCB05"),
+                            )
+                        ),
+                      ) :
+                      AppBar(
+                        leading: GestureDetector(
+                          child: Icon(Icons.arrow_back, color: Colors.black,),
+                          onTap: (){
+                            Navigator.pop(context);
+                          },
+                        ),
+                        backgroundColor: Colors.white,
+                        bottom: TabBar(
+                          controller: _tabController,
+                          indicatorColor: tabIndicatorColor,
+                          labelColor: tabActiveTextColor,
+                          unselectedLabelColor: tabTextColor,
+                          tabs: <Widget>[
+                            Tab(
+                              child: AutoSizeText(
+                                "TUTTO",
+                                style: TextStyle(
+                                    fontSize: tabsFontSize
+                                ),
+                              ),
+                            ), // TUTTO TAB
+                            Tab(
+                              child: AutoSizeText(
+                                "MUSEI",
+                                style: TextStyle(
+                                    fontSize: tabsFontSize
+                                ),
+                              ),
+                            ), // MUSEI TAB
+                            Tab(
+                              child: AutoSizeText(
+                                "OPERE",
+                                style: TextStyle(
+                                    fontSize: tabsFontSize
+                                ),
+                              ),
+                            ), // OPERE TAB
+                          ],
+                        ),
+                        title: Theme(
+                            child : Container(
+                              padding: EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                color: HexColor(textFieldColor),
+                                borderRadius:  BorderRadius.circular(10),
+                              ),
+                              child: TextField(
+                                //style: TextStyle(color: Colors.grey),
+                                controller: tc,
+                                decoration: InputDecoration(
+                                  fillColor: Colors.green,
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  enabledBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  disabledBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
+
+                                  //contentPadding: EdgeInsets.only(left: 2),
+
+                                  hintText: searchbarText,
+                                  hintStyle: TextStyle(color: searchbarTextColor),
+                                  suffixIcon: IconButton(
+                                    onPressed: () => tc.clear(),
+                                    icon: Icon(Icons.clear),
+                                  ),
+                                ),
+                                onChanged: (v) {
+                                  setState(() {
+                                    query = v;
+                                    setResults(query,rows);
+                                  });
+                                },
+                              ),
+                            ),
+                            data: ThemeData(
+                              primaryColor: HexColor("FFCB05"),
+                              hintColor: HexColor("FFCB05"),
+                            )
+                        ),
+                      ),
+                      backgroundColor: HexColor(backroundColor),
                       body: Container(
                         padding: EdgeInsets.only(top:10),
                         child: Stack(
                           children: [
                             Column(
                               children: [
-                                Container(
-                                  padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                                  child: Row(
-                                    children: [
-                                      IconButton(icon: Icon(Icons.arrow_back_ios_rounded),
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          }
-                                      ),
-                                      Expanded(
-                                          child: Theme(
-                                              child : TextField(
-                                                //style: TextStyle(color: Colors.grey),
-
-                                                controller: tc,
-                                                decoration: InputDecoration(
-                                                  prefixIcon: Icon(Icons.search),
-                                                  hintText: searchbarText,
-                                                  hintStyle: TextStyle(color: searchbarTextColor),
-                                                  suffixIcon: IconButton(
-                                                    onPressed: () => tc.clear(),
-                                                    icon: Icon(Icons.clear),
-                                                  ),
-                                                ),
-                                                onChanged: (v) {
-                                                  setState(() {
-                                                    query = v;
-                                                    setResults(query,rows);
-                                                  });
-                                                },
-                                              ),
-                                            data: ThemeData(
-                                              primaryColor: HexColor("FFCB05"),
-                                              hintColor: HexColor("FFCB05"),
-                                            )
-                                          )
-                                      ),
-                                    ],
-                                  ),
-                                ),  //SearchBar
                                 query.isEmpty ?
                                 Expanded(
                                     child:
@@ -160,52 +254,55 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                           shrinkWrap: true,
                                           itemCount: rows.length,
                                           itemBuilder: (con, ind) {
-                                            return Card(color: listviewCardColor,child: ListTile(
-                                              leading: Container(
-                                                width: itemImageSizeWidth,
-                                                height: itemImageSizeHeight,
-                                                decoration: BoxDecoration(
-                                                    borderRadius: new BorderRadius.all( // per i bordi arrotondati
-                                                        new Radius.circular(roundedValue)
-                                                    ),
-                                                    image : DecorationImage(
-                                                        fit: BoxFit.cover,
-                                                        image: AssetImage(rows[ind]['img'].toString())
-                                                    )
+                                            return Container(
+                                              padding: EdgeInsets.only(bottom: 5, left: 10, right: 10),
+                                              child: Card(color: listviewCardColor,child: ListTile(
+                                                leading: Container(
+                                                  width: itemImageSizeWidth,
+                                                  height: itemImageSizeHeight,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                                          new Radius.circular(roundedValue)
+                                                      ),
+                                                      image : DecorationImage(
+                                                          fit: BoxFit.cover,
+                                                          image: AssetImage(rows[ind]['img'].toString())
+                                                      )
+                                                  ),
                                                 ),
-                                              ),
-                                              title: AutoSizeText(rows[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                              subtitle: AutoSizeText(rows[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                                title: AutoSizeText(rows[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
+                                                subtitle: AutoSizeText(rows[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
-                                              onTap: () {
-                                                if(titoli.contains(rows[ind]['title'])==false){
-                                                  titoli.add(rows[ind]['title']);
-                                                  recenti.insert(0,rows[ind]);
+                                                onTap: () {
+                                                  if(titoli.contains(rows[ind]['title'])==false){
+                                                    titoli.add(rows[ind]['title']);
+                                                    recenti.insert(0,rows[ind]);
 
-                                                }
+                                                  }
 
-                                                if(rows[ind]['tipo'] == "museo") {
+                                                  if(rows[ind]['tipo'] == "museo") {
 
-                                                  Navigator.push(
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                museoPage(
+                                                                  rows[ind]['title'],
+                                                                  rows[ind]['img'],
+                                                                  rows[ind]['rate'],
+                                                                )
+                                                        )
+                                                    );
+                                                  }
+                                                  else Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              museoPage(
-                                                                rows[ind]['title'],
-                                                                rows[ind]['img'],
-                                                                rows[ind]['rate'],
-                                                              )
+                                                          builder: (context) => operaDetails3(rows[ind]['img'], rows[ind]['title'])
                                                       )
                                                   );
-                                                }
-                                                else Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => operaDetails3(rows[ind]['img'], rows[ind]['title'])
-                                                    )
-                                                );
-                                              },
-                                            ));
+                                                },
+                                              )),
+                                            );
                                           },
                                         )),
                                       ],)) :
@@ -326,41 +423,6 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                       //SizedBox(width: double.infinity,child: AutoSizeText("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
                                       //Divider(color: Colors.black54,),
                                       SizedBox(height: 5,),
-                                      Container(
-                                        color: Colors.white,
-                                        child: TabBar(
-                                          controller: _tabController,
-                                          indicatorColor: tabIndicatorColor,
-                                          labelColor: tabActiveTextColor,
-                                          unselectedLabelColor: tabTextColor,
-                                          tabs: <Widget>[
-                                            Tab(
-                                              child: AutoSizeText(
-                                                "TUTTO",
-                                                style: TextStyle(
-                                                    fontSize: tabsFontSize
-                                                ),
-                                              ),
-                                            ), // TUTTO TAB
-                                            Tab(
-                                              child: AutoSizeText(
-                                                "MUSEI",
-                                                style: TextStyle(
-                                                    fontSize: tabsFontSize
-                                                ),
-                                              ),
-                                            ), // MUSEI TAB
-                                            Tab(
-                                              child: AutoSizeText(
-                                                "OPERE",
-                                                style: TextStyle(
-                                                    fontSize: tabsFontSize
-                                                ),
-                                              ),
-                                            ), // OPERE TAB
-                                          ],
-                                        ),
-                                      ),
                                       Expanded(
                                           child: TabBarView(
                                               controller : _tabController,

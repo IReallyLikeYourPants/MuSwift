@@ -37,6 +37,7 @@ class Home extends StatelessWidget {
         backgroundColor: backgroundColor,
         appBar: AppBar(
           backgroundColor: Colors.white,
+          title: AutoSizeText("MuSwift", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
           actions: <Widget>[
             IconButton(
                 icon: Icon(Icons.search),
@@ -47,7 +48,8 @@ class Home extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => Ricerca()),
                   );
                 }
-            )],
+            )
+          ],
         ),
         body: Container(
             child: SingleChildScrollView( // Per evitare "bottom overflowed pixel"
