@@ -40,6 +40,7 @@ const Color tabIndicatorColor = Colors.black;
 
 List recenti = [];
 List titoli = [];
+List ricercheRecenti = [];
 
 class Post {
   final String title;
@@ -62,7 +63,9 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
   TabController _tabController;
   List results = [];
   var rows = [];
+
   String query = '';
+  String yo = '';
   TextEditingController tc;
 
   @override
@@ -77,6 +80,18 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
     super.dispose();
     _tabController.dispose();
   }
+
+  /*Widget buildSuggestions(BuildContext context) {
+    final suggestionList = ricercheRecenti.isEmpty ? ricercheRecenti : [];
+    return ListView.builder(
+        itemBuilder: (context,index) => ListTile(
+          leading: Icon(Icons.history),
+          title: Text(suggestionList[index])
+        ),
+        itemCount: ricercheRecenti.length,
+
+    );
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -98,10 +113,10 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                   if (snapshot.hasData) {
                     var rows = json.decode(snapshot.data['jsonMusei'].toString());
                     rows = new List<dynamic>.from(rows)..addAll(json.decode(snapshot.data['jsonOpere'].toString()));
-                    print(recenti);
-                    print(titoli);
+
+
                     return Scaffold(
-                      appBar: query.isEmpty ? AppBar(
+                      appBar: yo.isEmpty ? AppBar( //yo serve per risolvere un bug
                         leading: GestureDetector(
                           child: Icon(Icons.arrow_back, color: Colors.black,),
                           onTap: (){
@@ -137,10 +152,20 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                     icon: Icon(Icons.clear),
                                   ),
                                 ),
-                                onChanged: (v) {
+                                onChanged: (t){
+                                  //buildSuggestions(context);
                                   setState(() {
-                                    query = v;
+                                    query = t;
                                     setResults(query,rows);
+                                  });
+                                },
+                                onSubmitted: (v) {
+                                  setState(() {
+                                    yo = v;
+                                    if (ricercheRecenti.contains(v) == false){
+                                      ricercheRecenti.add(v);
+                                    };
+                                    setResults(yo,rows);
                                   });
                                 },
                               ),
@@ -219,12 +244,23 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                     icon: Icon(Icons.clear),
                                   ),
                                 ),
-                                onChanged: (v) {
+                                onChanged: (t){
+                                  //buildSuggestions(context);
                                   setState(() {
-                                    query = v;
+                                    query = t;
                                     setResults(query,rows);
                                   });
                                 },
+                                onSubmitted: (v) {
+                                  setState(() {
+                                    yo = v;
+                                    if (ricercheRecenti.contains(v) == false){
+                                      ricercheRecenti.add(v);
+                                    };
+                                    setResults(yo,rows);
+                                  });
+                                },
+
                               ),
                             ),
                             data: ThemeData(
@@ -233,6 +269,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                             )
                         ),
                       ),
+
                       backgroundColor: HexColor(backroundColor),
                       body: Container(
                         padding: EdgeInsets.only(top:10),
@@ -245,11 +282,13 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                     child:
                                     Column(children : [
                                       titoli.isEmpty ?
-                                      Expanded(child: Column(children: [
+                                      Expanded(child:
+                                      ListView(children: [
                                         SizedBox(width: double.infinity,child: AutoSizeText("  Consigliati",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
                                         Divider(color: Colors.black54,),
                                         Expanded (child :
                                         ListView.builder(
+                                          physics: NeverScrollableScrollPhysics(),
                                           padding: EdgeInsets.only(top:10.0),
                                           shrinkWrap: true,
                                           itemCount: rows.length,
@@ -307,11 +346,12 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                         )),
                                       ],)) :
                                           Expanded(child:
-                                          Column(children: [
-                                            SizedBox(width: double.infinity,child: AutoSizeText("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
+                                          ListView(children: [
+                                            SizedBox(width: double.infinity,child: AutoSizeText("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 15),textAlign: TextAlign.left)),
                                             Divider(color: Colors.black54,),
                                             Expanded (child :
                                             ListView.builder(
+                                              physics: NeverScrollableScrollPhysics(),
                                               padding: EdgeInsets.only(top:10.0),
                                               shrinkWrap: true,
                                               itemCount: recenti == null ? 0 : recenti.length,
@@ -359,10 +399,12 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                     ));
                                               },
                                             )),
-                                            SizedBox(width: double.infinity,child: AutoSizeText("  Consigliati",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
+
+                                            SizedBox(width: double.infinity,child: AutoSizeText("  Consigliati",style: TextStyle(color: Colors.black54,height: 2,fontSize: 15),textAlign: TextAlign.left)),
                                             Divider(color: Colors.black54,),
                                             Expanded (child :
                                             ListView.builder(
+                                              physics: NeverScrollableScrollPhysics(),
                                               padding: EdgeInsets.only(top:10.0),
                                               shrinkWrap: true,
                                               itemCount: rows.length,
@@ -417,7 +459,6 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                             )),
                                           ],))
                                     ]))
-
                                     : Expanded(
                                     child: Column(children : [
                                       //SizedBox(width: double.infinity,child: AutoSizeText("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
