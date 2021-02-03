@@ -138,12 +138,12 @@ class _moreInfoState extends State<moreInfo>{
                       AutoSizeText(snapshot.data.anno, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
                       AutoSizeText(snapshot.data.nav, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
                       SizedBox(height: 20),
-                      AutoSizeText("Stile", style: TextStyle(fontSize: titleFontSize, color: subTextColorFont, fontWeight: FontWeight.bold)),
                       Divider(),
+                      AutoSizeText("Stile", style: TextStyle(fontSize: titleFontSize, color: subTextColorFont, fontWeight: FontWeight.bold)),
                       AutoSizeText(snapshot.data.stile, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
                       SizedBox(height: 20),
-                      AutoSizeText("Storia", style: TextStyle(fontSize: titleFontSize, color: subTextColorFont, fontWeight: FontWeight.bold)),
                       Divider(),
+                      AutoSizeText("Storia", style: TextStyle(fontSize: titleFontSize, color: subTextColorFont, fontWeight: FontWeight.bold)),
                       Text(snapshot.data.storia, maxLines: 3, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
                       SizedBox(height: 5,),
                       Row(
@@ -160,8 +160,9 @@ class _moreInfoState extends State<moreInfo>{
                             )
                           ]
                       ),
-                      AutoSizeText("Autore", style: TextStyle(fontSize: titleFontSize, color: subTextColorFont, fontWeight: FontWeight.bold)),
+                      SizedBox(height: 10),
                       Divider(),
+                      AutoSizeText("Autore", style: TextStyle(fontSize: titleFontSize, color: subTextColorFont, fontWeight: FontWeight.bold)),
                       Text(snapshot.data.autore_storia, maxLines: 3, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
                       SizedBox(height: 5,),
                       Row(
@@ -178,7 +179,7 @@ class _moreInfoState extends State<moreInfo>{
                             )
                           ]
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(height: 15,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
