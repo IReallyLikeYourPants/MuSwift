@@ -43,12 +43,13 @@ class _MapScreenState extends State<Mappa> {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      color: Colors.blue,
+      color: Colors.white,
       child: SafeArea(
         child: Stack(
           children: [
             Scaffold(
                 body: GoogleMap(
+                  padding: EdgeInsets.only(right: 1000),
                   initialCameraPosition: _kGooglePlex,
                   onMapCreated: _onMapCreated,
                   myLocationEnabled: true,
@@ -58,9 +59,9 @@ class _MapScreenState extends State<Mappa> {
                 ),
                 floatingActionButton: FloatingActionButton.extended(
                   onPressed: _currentLocation,
-                  backgroundColor: Colors.black,
+                  backgroundColor: Colors.white,
                   focusColor: Colors.red,
-                  foregroundColor: Colors.amber[800],
+                  foregroundColor: Colors.amber[400],
                   hoverColor: Colors.white,
                   splashColor: Colors.white,
                   label: Icon(Icons.location_on),

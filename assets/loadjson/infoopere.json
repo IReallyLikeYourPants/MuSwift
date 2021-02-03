@@ -12,12 +12,18 @@
     "autore" : "Leocare",
     "tipo" : "Scultura di marmo bianco, 224 cm",
     "anno" : "350 a.C.",
-    "nav" :"Musei Vaticani - Città del Vaticano"
+    "nav" :"Musei Vaticani - Città del Vaticano",
+    "stile" : "Stile dell'opera",
+    "storia" : "Storia dell'opera",
+    "autore_storia" : "Storia dell'autore"
   },
   "Carita con Quattro Figli" : {
     "autore" : "Michelangelo Merisi da Caravaggio",
     "tipo" : "Olio su tela, cm 300 x 203",
     "anno" : "1627 - 1628 a.C.",
-    "nav" :"Musei Vaticani - Roma"
+    "nav" :"Musei Vaticani - Roma",
+    "stile" : "Stile dell'opera",
+    "storia" : "Storia dell'opera",
+    "autore_storia" : "Storia dell'autore"
   }
 }

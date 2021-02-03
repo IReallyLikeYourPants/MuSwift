@@ -14,7 +14,7 @@ class _HomeState extends State<Biglietti> {
           title: new AutoSizeText("Biglietti"),
         ),
         body: new Center(
-            child: new AutoSizeText("this is ababa")
+            child: new AutoSizeText("in Arrivo!")
         )
     );
   }

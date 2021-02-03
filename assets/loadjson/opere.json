@@ -40,5 +40,17 @@
     "img": "assets/images/rattodiprospertina.jpg",
     "nav": "Galleria Borghese",
     "tipo" : "opera"
+  },
+  {
+    "title":"Amore e Psiche",
+    "img": "assets/images/amoreepsiche.jpg",
+    "nav": "Galleria Borghese",
+    "tipo" : "opera"
+  },
+  {
+    "title":"Statua di Iside",
+    "img": "assets/images/statua_di_iside.jpg",
+    "nav": "Musei Capitolini",
+    "tipo" : "opera"
   }
 ]
