@@ -9,6 +9,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
+import 'Ricerca.dart';
+
 //SEGNATE I VALORI PRECEDENTI SE CAMBIATE
 //USATE LE PROPORZIONI DOVE POSSIBILE
 //Altezza e larghezza degli item nei grid. PRIMA ERANO A 145-230
@@ -34,8 +36,18 @@ class Home extends StatelessWidget {
     return Theme(data: Theme.of(context).copyWith(), child: Scaffold(
         backgroundColor: backgroundColor,
         appBar: AppBar(
-          title: AutoSizeText("MuSwift", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
           backgroundColor: Colors.white,
+          actions: <Widget>[
+            IconButton(
+                icon: Icon(Icons.search),
+                color: Colors.amber[400],
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Ricerca()),
+                  );
+                }
+            )],
         ),
         body: Container(
             child: SingleChildScrollView( // Per evitare "bottom overflowed pixel"

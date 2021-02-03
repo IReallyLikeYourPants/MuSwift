@@ -39,7 +39,7 @@ class MyBottomNavigationBar extends StatefulWidget {
 
 class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   int _currentIndex = 0;
-  final List<Widget> _children = [Home(),Ricerca(),Mappa(),Biglietti()];
+  final List<Widget> _children = [Home(),Mappa(),Biglietti()];
 
   void onTappedBar(int index)
   {
@@ -68,11 +68,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(icon: new Icon(Icons.home),
-                title: new AutoSizeText("Home"))
-            ,
-            BottomNavigationBarItem(icon: new Icon(Icons.search),
-                title: new AutoSizeText("Ricerca"))
-            ,
+                title: new AutoSizeText("Home")),
             BottomNavigationBarItem(icon: new Icon(Icons.map),
                 title: new AutoSizeText("Mappa")),
             BottomNavigationBarItem(icon: new Icon(Icons.book),
