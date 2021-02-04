@@ -132,6 +132,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                               ),
                               child: TextField(
                                 //style: TextStyle(color: Colors.grey),
+                                autofocus: true,
                                 controller: tc,
                                 decoration: InputDecoration(
                                   fillColor: Colors.green,
