@@ -9,6 +9,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 
 List isBooked = ['Musei Vaticani'];
 
+const double iconSize = 30;
+
 void main()
 {
   runApp
@@ -64,16 +66,16 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
           selectedItemColor: HexColor("FFCB05"),
           selectedFontSize: 11,
           unselectedFontSize: 11,
-          iconSize: 25,
+          iconSize: iconSize,
           unselectedItemColor: Colors.black54,
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(icon: new Icon(Icons.home),
-                title: new AutoSizeText("Home")),
+                title: Container()),
             BottomNavigationBarItem(icon: new Icon(Icons.map),
-                title: new AutoSizeText("Mappa")),
+                title: Container()),
             BottomNavigationBarItem(icon: new Icon(Icons.book),
-                title: new AutoSizeText("Biglietti"))
+                title: Container())
           ]
       ),
     );
