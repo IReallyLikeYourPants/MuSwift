@@ -114,7 +114,6 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                     var rows = json.decode(snapshot.data['jsonMusei'].toString());
                     rows = new List<dynamic>.from(rows)..addAll(json.decode(snapshot.data['jsonOpere'].toString()));
 
-
                     return Scaffold(
                       appBar: yo.isEmpty ? AppBar( //yo serve per risolvere un bug
                         leading: GestureDetector(

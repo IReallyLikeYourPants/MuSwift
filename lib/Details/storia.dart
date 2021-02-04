@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 const FontWeight titleFontWeight = FontWeight.bold;
+const double textFontSize = 17;
 
 class storia extends StatelessWidget {
 
@@ -28,7 +29,7 @@ class storia extends StatelessWidget {
         children: [
               Container(
                 padding: const EdgeInsets.all(10),
-                child: AutoSizeText(text),
+                child: AutoSizeText(text, style : TextStyle(color: Colors.black, fontSize: textFontSize)),
             ),
         ],
       )

@@ -360,26 +360,13 @@ class _museoPageState extends State<museoPage> {
                                       infoRow(Icons.map, Museo.luogo),
                                       infoRow(Icons.confirmation_num, "Prezzo biglietto " + Museo.prezzo + "€"),
                                       Divider(color: Colors.black),
-                                      Container(
-                                          child: Center(child: AutoSizeText("Hai già effettuto una prenotazione!", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 23)),),
-                                          height: 35,
-                                          width: double.infinity,
-                                          decoration: BoxDecoration(
-                                            color: HexColor("40CB94"),
-                                            borderRadius: new BorderRadius.all( // per i bordi arrotondati
-                                                new Radius.circular(5.0)
-                                            ),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Colors.grey,
-                                                offset: Offset(0.0, 1.0), //(x,y)
-                                                blurRadius: 6.0,
-                                              )
-                                            ],
-                                          ),
-                                          padding: EdgeInsets.all(5),
-                                        ),
-
+                                      isBooked.contains(nome) ? Row(
+                                        children: [
+                                          Icon(Icons.watch_later_outlined, color: Colors.red,),
+                                          SizedBox(width: 5,),
+                                          AutoSizeText("Esiste una prenotazione per questo museo", style: TextStyle( color: Colors.redAccent, fontSize: textFontSize),)
+                                        ],
+                                      ) : Container(),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
@@ -412,6 +399,7 @@ class _museoPageState extends State<museoPage> {
                                                   child: ElevatedButton(
                                                       style: ElevatedButton.styleFrom(
                                                           primary: Colors.white,
+                                                          onPrimary: Colors.grey,
                                                           elevation: elevationButton
                                                       ),
                                                       onPressed: () {
