@@ -23,6 +23,8 @@ environment:
 
 
 dependencies:
+  favorite_button: ^0.0.3
+  infinite_listview: ^1.0.1+1
   auto_size_text: ^2.1.0
   flutter_screenutil: ^4.0.2+3
   hexcolor: ^1.0.6
@@ -46,6 +48,7 @@ dev_dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
+  intl: ^0.16.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

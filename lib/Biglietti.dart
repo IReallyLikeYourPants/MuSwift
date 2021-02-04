@@ -9,6 +9,8 @@ const listviewCardColor = Colors.white;
 const listviewTitleColor = Colors.black;
 const listviewSubtitleColor = Colors.black;
 
+const FontWeight titleFontWeight = FontWeight.bold;
+
 List prenotati = [
   {
     "title":"Musei Vaticani",
@@ -61,7 +63,8 @@ class _HomeState extends State<Biglietti> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new AutoSizeText("Biglietti"),
+          title: new AutoSizeText("Biglietto", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
+          backgroundColor: Colors.white,
         ),
         body: Container(child:
         Stack(children: [

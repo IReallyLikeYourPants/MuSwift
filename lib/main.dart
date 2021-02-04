@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
-List isBooked = ['Musei Vaticani'];
+List isBooked = [];
 
 const double iconSize = 30;
 

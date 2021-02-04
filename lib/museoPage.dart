@@ -9,7 +9,9 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:prova_app/misc/SmoothStarRating.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:prova_app/Object/museo.dart';
+import 'package:favorite_button/favorite_button.dart';
 import 'package:prova_app/Details/storia.dart';
+import 'package:prova_app/prenotazione.dart';
 import 'package:prova_app/Details/operaDetails3.dart';
 import 'package:prova_app/main.dart';
 import 'package:background_app_bar/background_app_bar.dart';
@@ -170,24 +172,48 @@ class _museoPageState extends State<museoPage> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      AutoSizeText(
-                                          nome,
-                                          style: GoogleFonts.roboto(
-                                            textStyle : TextStyle(fontSize: titleFontSize, color: Colors.white, fontWeight: titleFontWeight),
-                                          )
-                                      ),
-                                      Container(
-                                        child: SmoothStarRating(
-                                            allowHalfRating: false,
-                                            starCount: 5,
-                                            rating: Museo.rate,
-                                            size: starIconSize,
-                                            color: starIconColor,
-                                            halfFilledIconData: Icons.star_half_outlined,
-                                            borderColor: starIconColor,
-                                            spacing:0.0
-                                        ),
+                                      Row(
+                                        children: [
+                                          Container(
+                                            width: MediaQuery.of(context).size.width * 0.55,
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                AutoSizeText(
+                                                    nome,
+                                                    style: GoogleFonts.roboto(
+                                                      textStyle : TextStyle(fontSize: titleFontSize, color: Colors.white, fontWeight: titleFontWeight),
+                                                    )
+                                                ),
+                                                Container(
+                                                  child: SmoothStarRating(
+                                                      allowHalfRating: false,
+                                                      starCount: 5,
+                                                      rating: Museo.rate,
+                                                      size: starIconSize,
+                                                      color: starIconColor,
+                                                      halfFilledIconData: Icons.star_half_outlined,
+                                                      borderColor: starIconColor,
+                                                      spacing:0.0
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            height: 30,
+                                            width: 30,
+                                            child: FavoriteButton(
+                                              iconSize: 40,
+                                              isFavorite: true,
+                                              valueChanged: (_isFavorite) {
+                                                print('Is Favorite : $_isFavorite');
+                                              },
+                                            ),
+                                          ),
+                                        ],
                                       )
+
                                     ],
                                   ),
                                   ),
@@ -378,6 +404,24 @@ class _museoPageState extends State<museoPage> {
                                                           elevation: elevationButton
                                                       ),
                                                       onPressed: () {
+                                                        Navigator.of(context).push(new PageRouteBuilder(
+                                                            opaque: true,
+                                                            transitionDuration: Duration(milliseconds: 225),
+                                                            pageBuilder: (BuildContext context, _, __) {
+                                                              return new prenotazione(nome);
+                                                            },
+                                                            transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
+
+                                                              return new SlideTransition(
+                                                                child: child,
+                                                                position: new Tween<Offset>(
+                                                                  begin: const Offset(1, 0),
+                                                                  end: Offset.zero,
+                                                                ).animate(animation),
+                                                              );
+                                                            }
+                                                        )
+                                                        );
                                                       },
                                                       child: Container(
                                                         width: double.infinity,
