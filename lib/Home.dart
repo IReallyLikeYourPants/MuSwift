@@ -30,7 +30,15 @@ const double leftPadding = 10.0;
 
 const Color backgroundColor = null;
 
-class Home extends StatelessWidget {
+
+class Home extends StatefulWidget {
+  @override
+  StorageUploadState createState() => new StorageUploadState();
+}
+
+
+
+class StorageUploadState extends State<Home> with TickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
     return Theme(data: Theme.of(context).copyWith(), child: Scaffold(
@@ -52,8 +60,7 @@ class Home extends StatelessWidget {
           ],
         ),
         body: Container(
-            child: SingleChildScrollView( // Per evitare "bottom overflowed pixel"
-                child: Column( // Per mettere più liste una sotto l'altra
+            child: ListView( // Per mettere più liste una sotto l'altra
                   children: <Widget> [
                     new Align(
                       alignment: Alignment.centerLeft,
@@ -194,15 +201,16 @@ class Home extends StatelessWidget {
                       child: new Padding(
                           padding: new EdgeInsets.only(left: leftPadding), // padding è lo spazio vuoto
                           child: new AutoSizeText(
-                            'Musei nei dintorni',
+                            'Musei preferiti',
                             style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
                           )
                       ),
                     ),
                     Divider(),
+                    preferiti.isEmpty ?
                     Container(
                         height: MediaQuery.of(context).size.height * itemHeightPercentage,
-                        child: FutureBuilder(
+                        child: Expanded(child: FutureBuilder(
                           future: DefaultAssetBundle.of(context).loadString('assets/loadjson/viste.json'),
                           builder: (context, snapshot){
                             var newViste = json.decode(snapshot.data.toString());
@@ -248,7 +256,60 @@ class Home extends StatelessWidget {
                               },
                             );
                           },
-                        )
+                        ))
+                    ):
+                    Container(
+                      height: MediaQuery.of(context).size.height * itemHeightPercentage,
+                      child: Expanded(child: FutureBuilder(
+                        builder: (context,snapshot) {
+                          return ListView.builder(
+                            padding: EdgeInsets.only(left: leftPadding, bottom: rowsPadding),
+                            scrollDirection: Axis.horizontal,
+                            itemCount: preferiti == null ? 0 : preferiti.length,
+                            itemBuilder: (BuildContext context, int index){
+                              return GestureDetector(
+                                onTap: (){
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => museoPage(preferiti[index])
+                                      )
+                                  );
+                                },
+                                child: Container( // primo elemento della prima lista di opere
+                                  padding: EdgeInsets.all(itemPadding),
+                                  margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altra
+                                  width: MediaQuery.of(context).size.width * itemWidthPercentage,
+                                  decoration: BoxDecoration(
+                                    color: HexColor(itemBackgroundColor),
+                                    borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                        new Radius.circular(5.0)
+                                    ),
+                                    image: new DecorationImage( // per metterci l'immagine dentro
+                                      image: new ExactAssetImage(
+                                          immaginiPreferiti[index]
+                                      ),
+                                      fit: BoxFit.cover, // per adattarla al container
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        offset: Offset(0.0, 1.0), //(x,y)
+                                        blurRadius: 6.0,
+                                      )
+                                    ],
+                                  ),
+                                  child: Align( // per allineare la scritta in una posizione specifica
+                                      alignment: Alignment.bottomLeft,
+                                      child: AutoSizeText(preferiti[index], style: TextStyle(fontSize: itemTitleFontSize, color: itemFontColor),)
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+
+                      ))
                     ),
                   ],
                 )
@@ -256,6 +317,6 @@ class Home extends StatelessWidget {
             )
 
         )
-    ));
+    );
   }
 }

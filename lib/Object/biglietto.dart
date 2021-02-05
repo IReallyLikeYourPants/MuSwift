@@ -6,4 +6,10 @@ class biglietto{
   double adulti;
   double bambini;
   double costo;
+
+  biglietto([String m,String d]){
+    museo = m;
+    data = d;
+  }
+
 }
