@@ -38,6 +38,10 @@ const Color tabTextColor = Colors.blueGrey;
 const Color tabActiveTextColor = Colors.black;
 const Color tabIndicatorColor = Colors.black;
 
+const double titleFontSize = 20;
+const Color titleFontColor = Colors.black;
+const FontWeight titleFontWeight = FontWeight.bold;
+
 List recenti = [];
 List titoli = [];
 List ricercheRecenti = [];
@@ -286,7 +290,10 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                       titoli.isEmpty ?
                                       Expanded(child:
                                       ListView(children: [
-                                        SizedBox(width: double.infinity,child: AutoSizeText("  Consigliati",style: TextStyle(color: Colors.black54,height: 2,fontSize: 15),textAlign: TextAlign.left)),
+                                        SizedBox(width: double.infinity,child: AutoSizeText(
+                                          '  Consigliati',
+                                          style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
+                                        )),
                                         Divider(color: Colors.black54,),
                                         Expanded (child :
                                         ListView.builder(
@@ -347,7 +354,10 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                       ],)) :
                                           Expanded(child:
                                           ListView(children: [
-                                            SizedBox(width: double.infinity,child: AutoSizeText("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 15),textAlign: TextAlign.left)),
+                                            SizedBox(width: double.infinity,child: AutoSizeText(
+                                              '  Recenti',
+                                              style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
+                                            )),
                                             Divider(color: Colors.black54,),
                                             Expanded (child :
                                             ListView.builder(
@@ -401,7 +411,10 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                               },
                                             )),
 
-                                            SizedBox(width: double.infinity,child: AutoSizeText("  Consigliati",style: TextStyle(color: Colors.black54,height: 2,fontSize: 15),textAlign: TextAlign.left)),
+                                            SizedBox(width: double.infinity,child: AutoSizeText(
+                                              '  Consigliati',
+                                              style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
+                                            )),
                                             Divider(color: Colors.black54,),
                                             Expanded (child :
                                             ListView.builder(
