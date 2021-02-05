@@ -1,6 +1,7 @@
 class museo{
   String nome;
-  String prezzo;
+  int adulti;
+  int bambini;
   String luogo;
   String orario;
   String numero;
@@ -10,11 +11,12 @@ class museo{
   double rate;
   var opere;
 
-  museo({this.prezzo, this.luogo, this.orario, this.numero, this.sito, this.storia, this.immagine, this.rate, this.opere});
+  museo({this.adulti, this.bambini, this.luogo, this.orario, this.numero, this.sito, this.storia, this.immagine, this.rate, this.opere});
 
   factory museo.fromJson(Map<String, dynamic> parsedJson, String nome){
     return museo(
-        prezzo: parsedJson[nome]['prezzo'],
+        adulti: parsedJson[nome]['adulti'],
+        bambini: parsedJson[nome]['bambini'],
         luogo: parsedJson[nome]['luogo'],
         orario: parsedJson[nome]['orario'],
         numero: parsedJson[nome]['numero'],

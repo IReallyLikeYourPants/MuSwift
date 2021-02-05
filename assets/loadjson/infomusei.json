@@ -1,6 +1,7 @@
 {
   "Musei Vaticani" : {
-    "prezzo" : "17",
+    "adulti" : 10,
+    "bambini" : 5,
     "luogo" : "Città del Vaticano",
     "orario" : "Lunedì 08-99",
     "numero" : "06+ 12346666",
@@ -48,7 +49,8 @@
     ]
   },
   "Museo Nazionale Castel Sant'Angelo" : {
-    "prezzo" : "17",
+    "adulti" : 10,
+    "bambini" : 5,
     "luogo" : "Lungotevere Castello",
     "orario" : "Lunedì 08-99",
     "numero" : "06+ 1232342346",
@@ -97,7 +99,8 @@
   },
   "Musei Capitolini" : {
     "immagine": "assets/images/museocapitolino.jpg",
-    "prezzo" : "8-12",
+    "adulti" : 10,
+    "bambini" : 5,
     "luogo" : "Via dei Musei Capitolini",
     "orario" : "Lunedì 08-99",
     "numero" : "+06 12346666",
@@ -145,7 +148,8 @@
   },
   "Galleria Borghese" : {
     "immagine": "assets/images/galleriaborghese.jpg",
-    "prezzo" : "13",
+    "adulti" : 10,
+    "bambini" : 5,
     "luogo" : "Villa Borghese",
     "orario" : "Lunedì 08-99",
     "numero" : "+39 0667233753",

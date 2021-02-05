@@ -165,6 +165,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_number_picker:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "3a1171efca885a7e38b63c78710ba16eae28c93a"
+      url: "https://github.com/phuongtinhbien/flutter_number_picker.git"
+    source: git
+    version: "0.0.8"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -186,6 +195,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.3"
+  flutter_svg:
+    dependency: transitive
+    description:
+      name: flutter_svg
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.19.2+1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -360,6 +376,20 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.8.0-nullsafety.3"
+  path_drawing:
+    dependency: transitive
+    description:
+      name: path_drawing
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.4.1+1"
+  path_parsing:
+    dependency: transitive
+    description:
+      name: path_parsing
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.4"
   path_provider:
     dependency: transitive
     description:
@@ -402,6 +432,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.10.0-nullsafety.3"
+  petitparser:
+    dependency: transitive
+    description:
+      name: petitparser
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.1.0"
   platform:
     dependency: transitive
     description:
@@ -638,6 +675,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.2"
+  xml:
+    dependency: transitive
+    description:
+      name: xml
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "4.5.1"
   yaml:
     dependency: transitive
     description:
@@ -647,4 +691,4 @@ packages:
     version: "2.2.1"
 sdks:
   dart: ">=2.12.0-0.0 <3.0.0"
-  flutter: ">=1.22.2"
+  flutter: ">=1.24.0-6.0.pre"

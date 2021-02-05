@@ -214,8 +214,6 @@ class _museoPageState extends State<museoPage> {
                                               iconSize: 40,
                                               isFavorite: preferiti.contains((nome)) ? true : false,
                                               valueChanged: (_isFavorite) {
-                                                print(preferiti);
-                                                print(immaginiPreferiti);
                                                 if (_isFavorite == true){
                                                       setState((){
                                                       preferiti.add(nome);
@@ -406,7 +404,7 @@ class _museoPageState extends State<museoPage> {
                                           )
                                       ),
                                       infoRow(Icons.map, Museo.luogo),
-                                      infoRow(Icons.confirmation_num, "Prezzo biglietto " + Museo.prezzo + "€"),
+                                      infoRow(Icons.confirmation_num, "Prezzo biglietto:" + Museo.bambini.toString() + "-" + Museo.adulti.toString() + "€"),
                                       Divider(color: Colors.black),
                                       isBooked.contains(nome) ? Row(
                                         children: [
@@ -430,7 +428,7 @@ class _museoPageState extends State<museoPage> {
                                                             opaque: true,
                                                             transitionDuration: Duration(milliseconds: 225),
                                                             pageBuilder: (BuildContext context, _, __) {
-                                                              return new prenotazione(nome);
+                                                              return new prenotazione(nome, Museo.adulti, Museo.bambini);
                                                             },
                                                             transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
 

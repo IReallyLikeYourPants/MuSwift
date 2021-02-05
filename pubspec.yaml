@@ -23,6 +23,8 @@ environment:
 
 
 dependencies:
+  flutter_number_picker:
+    git: https://github.com/phuongtinhbien/flutter_number_picker.git
   favorite_button: ^0.0.3
   infinite_listview: ^1.0.1+1
   auto_size_text: ^2.1.0

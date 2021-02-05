@@ -3,9 +3,9 @@ class biglietto{
   String nome;
   String cognome;
   String data;
-  double adulti;
-  double bambini;
-  double costo;
+  int adulti;
+  int bambini;
+  int costo;
 
   biglietto([String m,String d]){
     museo = m;
