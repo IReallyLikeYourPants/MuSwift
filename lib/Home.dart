@@ -8,6 +8,7 @@ import 'package:prova_app/Details/operaDetails3.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:sqflite/sqflite.dart';
 
 import 'Ricerca.dart';
 
@@ -269,7 +270,14 @@ class StorageUploadState extends State<Home> with TickerProviderStateMixin{
                             itemBuilder: (BuildContext context, int index){
                               return GestureDetector(
                                 onTap: (){
-                                  Navigator.push(
+                                  if (operePreferite.contains(preferiti[index])){
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => operaDetails3(immaginiPreferiti[index], preferiti[index])
+                                        ));
+                                  }
+                                  else Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => museoPage(preferiti[index])

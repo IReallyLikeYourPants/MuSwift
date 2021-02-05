@@ -268,13 +268,16 @@ class _favoriteState extends State<favorite>{
           setState((){
             preferiti.add(titolo);
             immaginiPreferiti.add(img);
+            operePreferite.add(titolo);
+            immaginiOperePreferite.add(img);
           });
         }
         else {
           setState((){
             preferiti.remove(titolo);
-            immaginiPreferiti.remove(
-                img);
+            immaginiPreferiti.remove(img);
+            operePreferite.remove(titolo);
+            immaginiOperePreferite.remove(img);
           });
         };
 

@@ -67,6 +67,9 @@ const Color statusBarColor = Colors.white;
 String nome;
 List preferiti = ["Musei Capitolini"];
 List immaginiPreferiti = ["assets/images/museocapitolino.jpg"];
+List operePreferite = [];
+List immaginiOperePreferite = [];
+
 
 museo Museo = new museo();
 launchURL(String url) async {
@@ -209,7 +212,7 @@ class _museoPageState extends State<museoPage> {
                                             width: 30,
                                             child: FavoriteButton(
                                               iconSize: 40,
-                                              isFavorite: preferiti.contains(nome) ? true : false,
+                                              isFavorite: preferiti.contains((nome)) ? true : false,
                                               valueChanged: (_isFavorite) {
                                                 print(preferiti);
                                                 print(immaginiPreferiti);
