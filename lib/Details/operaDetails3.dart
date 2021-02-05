@@ -6,6 +6,7 @@ import 'package:prova_app/Object/opera.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:prova_app/museoPage.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:favorite_button/favorite_button.dart';
 
 const waitValue = 0;
 
@@ -58,6 +59,9 @@ class operaDetails3 extends StatelessWidget {
       appBar: AppBar(
         title: AutoSizeText("Info", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
         backgroundColor: Colors.white,
+        actions: [
+          favorite()
+        ],
         leading: GestureDetector(
           child: Icon(Icons.arrow_back, color: Colors.black),
           onTap: (){
@@ -241,6 +245,40 @@ class _moreInfoState extends State<moreInfo>{
           );
           return Container();
         }
+    );
+  }
+
+}
+
+class favorite extends StatefulWidget {
+  @override
+  _favoriteState createState() => new _favoriteState();
+}
+
+class _favoriteState extends State<favorite>{
+
+  Widget build(BuildContext context){
+    return FavoriteButton(
+      iconSize: 40,
+      isFavorite: preferiti.contains(titolo) ? true : false,
+      valueChanged: (_isFavorite) {
+        print(preferiti);
+        print(immaginiPreferiti);
+        if (_isFavorite == true){
+          setState((){
+            preferiti.add(titolo);
+            immaginiPreferiti.add(img);
+          });
+        }
+        else {
+          setState((){
+            preferiti.remove(titolo);
+            immaginiPreferiti.remove(
+                img);
+          });
+        };
+
+      },
     );
   }
 
