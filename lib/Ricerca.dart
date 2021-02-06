@@ -10,7 +10,7 @@ import 'package:prova_app/Home.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
-import 'package:prova_app/Details/operaDetails3.dart';
+import 'package:prova_app/Details/operaDetails5.dart';
 import 'museoPage.dart';
 
 const statusBarColor = Colors.white;

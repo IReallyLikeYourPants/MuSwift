@@ -12,7 +12,7 @@ import 'package:prova_app/Object/museo.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:prova_app/Details/storia.dart';
 import 'package:prova_app/prenotazione2.dart';
-import 'package:prova_app/Details/operaDetails3.dart';
+import 'package:prova_app/Details/operaDetails5.dart';
 import 'package:prova_app/main.dart';
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/rendering.dart';
@@ -408,7 +408,7 @@ class _museoPageState extends State<museoPage> {
                                           )
                                       ),
                                       infoRow(Icons.map, Museo.luogo),
-                                      infoRow(Icons.confirmation_num, "Prezzo biglietto:" + Museo.bambini.toString() + "-" + Museo.adulti.toString() + "€"),
+                                      infoRow(Icons.confirmation_num, "Prezzo biglietto: " + Museo.bambini.toString() + "-" + Museo.adulti.toString() + "€"),
                                       Divider(color: Colors.black),
                                       isBooked.contains(nome) ? Row(
                                         children: [

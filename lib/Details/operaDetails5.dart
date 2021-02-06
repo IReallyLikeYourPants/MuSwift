@@ -8,6 +8,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:prova_app/museoPage.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:favorite_button/favorite_button.dart';
+import 'package:prova_app/Details/storia.dart';
 
 const waitValue = 0;
 
@@ -100,6 +101,21 @@ class moreInfo extends StatefulWidget {
 class _moreInfoState extends State<moreInfo>{
   ScrollController _scrollController = ScrollController();
 
+  bool isDropped = true;
+
+  void dropping(){
+    setState(() {
+      isDropped = !isDropped;
+    });
+  }
+
+  Widget dropDown(){
+    if(isDropped){
+      return Icon(Icons.keyboard_arrow_down, size: 30,);
+    }
+    return Container();
+  }
+
   Widget build(BuildContext context){
     return FutureBuilder(
         future: loadOpera(titolo),
@@ -110,6 +126,8 @@ class _moreInfoState extends State<moreInfo>{
             children: [
               GestureDetector(
                 onTap: () {
+                  isDropped = false;
+                  dropping();
                   _scrollController.animateTo(
                     0.0,
                     curve: Curves.easeOut,
@@ -120,11 +138,22 @@ class _moreInfoState extends State<moreInfo>{
               ),
               GestureDetector(
                 onTap: (){
-                  _scrollController.animateTo(
-                    MediaQuery. of(context). size. height * dropDownPixelPercentage,
-                    curve: Curves.easeOut,
-                    duration: const Duration(milliseconds: animationMilliseconds),
-                  );
+                  if(isDropped){
+                    dropping();
+                    _scrollController.animateTo(
+                      MediaQuery. of(context). size. height * dropDownPixelPercentage,
+                      curve: Curves.easeOut,
+                      duration: const Duration(milliseconds: animationMilliseconds),
+                    );
+                  }
+                  else{
+                    dropping();
+                    _scrollController.animateTo(
+                      0.0,
+                      curve: Curves.easeOut,
+                      duration: const Duration(milliseconds: animationMilliseconds),
+                    );
+                  }
                 },
                 child: Container(
                   padding: EdgeInsets.all(10.0),
@@ -144,7 +173,12 @@ class _moreInfoState extends State<moreInfo>{
                       AutoSizeText(snapshot.data.nav, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
                       Container(
                         child: Center(
-                          child: Icon(Icons.keyboard_arrow_down, color: Colors.blue, size: 50,),
+                          child: GestureDetector(
+                            onTap: (){
+                                dropping();
+                            },
+                            child: dropDown(),
+                          )
                         ),
                       ),
                       SizedBox(height: 20),
@@ -161,11 +195,28 @@ class _moreInfoState extends State<moreInfo>{
                           children: [
                             GestureDetector(
                                 onTap: (){
+                                  Navigator.of(context).push(new PageRouteBuilder(
+                                      opaque: true,
+                                      transitionDuration: Duration(milliseconds: 225),
+                                      pageBuilder: (BuildContext context, _, __) {
+                                        return new storia(snapshot.data.storia);
+                                      },
+                                      transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
 
+                                        return new SlideTransition(
+                                          child: child,
+                                          position: new Tween<Offset>(
+                                            begin: const Offset(1, 0),
+                                            end: Offset.zero,
+                                          ).animate(animation),
+                                        );
+                                      }
+                                  )
+                                  );
                                 },
                                 child: AutoSizeText(
                                   "...leggi di più",
-                                  style: TextStyle(fontSize: textFontSize, color: readMoreColor, fontWeight: FontWeight.bold) ,
+                                  style: TextStyle(fontSize: subTextFontSize, color: readMoreColor, fontWeight: FontWeight.bold) ,
                                 )
                             )
                           ]
@@ -180,11 +231,28 @@ class _moreInfoState extends State<moreInfo>{
                           children: [
                             GestureDetector(
                                 onTap: (){
+                                  Navigator.of(context).push(new PageRouteBuilder(
+                                      opaque: true,
+                                      transitionDuration: Duration(milliseconds: 225),
+                                      pageBuilder: (BuildContext context, _, __) {
+                                        return new storia(snapshot.data.autore_storia);
+                                      },
+                                      transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
 
+                                        return new SlideTransition(
+                                          child: child,
+                                          position: new Tween<Offset>(
+                                            begin: const Offset(1, 0),
+                                            end: Offset.zero,
+                                          ).animate(animation),
+                                        );
+                                      }
+                                  )
+                                  );
                                 },
                                 child: AutoSizeText(
                                   "...leggi di più",
-                                  style: TextStyle(fontSize: textFontSize, color: readMoreColor, fontWeight: FontWeight.bold) ,
+                                  style: TextStyle(fontSize: subTextFontSize, color: readMoreColor, fontWeight: FontWeight.bold) ,
                                 )
                             )
                           ]
@@ -201,11 +269,18 @@ class _moreInfoState extends State<moreInfo>{
                                           elevation: elevationButton
                                       ),
                                       onPressed: () {
+                                        print(snapshot.data.nav_real);
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => museoPage(snapshot.data.nav_real)
+                                            )
+                                        );
                                       },
                                       child: Container(
                                         width: double.infinity,
                                         child: AutoSizeText(
-                                          "PRENOTA",
+                                          "MUSEO",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               color: textButtonColor,
@@ -294,5 +369,7 @@ class _favoriteState extends State<favorite>{
       },
     );
   }
-
 }
+
+
+
