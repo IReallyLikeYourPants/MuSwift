@@ -6,6 +6,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_number_picker/flutter_number_picker.dart';
 import 'package:prova_app/Object/biglietto.dart';
+import 'package:prova_app/Biglietti.dart';
 import 'package:prova_app/museoPage.dart';
 import 'package:prova_app/main.dart';
 import 'package:flutter/services.dart';
@@ -738,6 +739,7 @@ class riepilogo extends StatelessWidget {
                             Biglietto.data = "non lo so";
 
                             isBooked.add(Biglietto.museo);
+                            prenotati.add(Biglietto);
 
                             int count = 0;
                             Navigator.popUntil(context, (route) {

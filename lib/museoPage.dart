@@ -218,6 +218,8 @@ class _museoPageState extends State<museoPage> {
                                                       setState((){
                                                       preferiti.add(nome);
                                                       immaginiPreferiti.add(Museo.immagine);
+                                                      Scaffold.of(context)
+                                                          .showSnackBar(SnackBar(content: Text('Museo aggiunto ai preferiti')));
                                                     });
                                                   }
                                                 else {
@@ -226,6 +228,8 @@ class _museoPageState extends State<museoPage> {
                                                       immaginiPreferiti.remove(
                                                           Museo.immagine);
                                                     });
+                                                Scaffold.of(context)
+                                                    .showSnackBar(SnackBar(content: Text('Museo rimosso dai preferiti')));
                                                   };
 
                                               },
