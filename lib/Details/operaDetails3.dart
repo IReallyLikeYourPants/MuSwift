@@ -271,6 +271,8 @@ class _favoriteState extends State<favorite>{
             operePreferite.add(titolo);
             immaginiOperePreferite.add(img);
           });
+    Scaffold.of(context)
+        .showSnackBar(SnackBar(content: Text('Opera aggiunto ai preferiti')));
         }
         else {
           setState((){
@@ -278,6 +280,8 @@ class _favoriteState extends State<favorite>{
             immaginiPreferiti.remove(img);
             operePreferite.remove(titolo);
             immaginiOperePreferite.remove(img);
+    Scaffold.of(context)
+        .showSnackBar(SnackBar(content: Text('Opera rimossa dai preferiti')));
           });
         };
 

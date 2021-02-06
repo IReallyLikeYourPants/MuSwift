@@ -13,13 +13,8 @@ const listviewSubtitleColor = Colors.black;
 const FontWeight titleFontWeight = FontWeight.bold;
 
 List prenotati = [
-  biglietto('Musei Vaticani','14-07-2021'),
-  biglietto('Musei Vaticani','15-07-2021'),
-  biglietto('Musei Vaticani','16-07-2021'),
 ];
 List scaduti = [
-  biglietto('Musei Vaticani','03-04-2019'),
-  biglietto('Musei Vaticani','03-04-2019'),
 ];
 
 class Biglietti extends StatefulWidget {

@@ -11,7 +11,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:prova_app/Object/museo.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:prova_app/Details/storia.dart';
-import 'package:prova_app/prenotazione.dart';
+import 'package:prova_app/prenotazione2.dart';
 import 'package:prova_app/Details/operaDetails3.dart';
 import 'package:prova_app/main.dart';
 import 'package:background_app_bar/background_app_bar.dart';

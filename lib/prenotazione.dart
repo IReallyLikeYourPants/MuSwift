@@ -84,6 +84,9 @@ class _prenotazioneState extends State<prenotazione> {
   @override
   Widget build(BuildContext context) {
 
+    TextEditingController controllerData = TextEditingController();
+    final GlobalKey<FormState> _formKey2 = GlobalKey<FormState>();
+
     return Scaffold(
         appBar: AppBar(
           leading: GestureDetector(
@@ -132,25 +135,35 @@ class _prenotazioneState extends State<prenotazione> {
                       color: HexColor(textFieldColor),
                       borderRadius:  BorderRadius.circular(10),
                     ),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        fillColor: Colors.green,
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        focusedErrorBorder: InputBorder.none,
+                    child: Form(
+                      key: _formKey2,
+                      child: TextFormField(
+                        validator: (String value) {
+                          if (value.isEmpty) {
+                            return 'Inserisci una data';
+                          }
 
-                        //contentPadding: EdgeInsets.only(left: 2),
-
-                        hintText: "Data",
+                          return null;
+                        },
+                        onSaved: (String value) {
+                          Biglietto.data = value;
+                        },
+                        decoration: InputDecoration(
+                          fillColor: Colors.green,
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          focusedErrorBorder: InputBorder.none,
+                          hintText: "Data",
+                        ),
+                        focusNode: AlwaysDisabledFocusNode(),
+                        controller: _textEditingController,
+                        onTap: () {
+                          _selectDate(context);
+                        },
                       ),
-                      focusNode: AlwaysDisabledFocusNode(),
-                      controller: _textEditingController,
-                      onTap: () {
-                        _selectDate(context);
-                      },
                     )
                 ),
 
@@ -253,6 +266,11 @@ class _prenotazioneState extends State<prenotazione> {
                               elevation: elevationButton
                           ),
                           onPressed: () {
+                            if (!_formKey2.currentState.validate()) {
+                              return;
+                            }
+                            _formKey2.currentState.save();
+
                             Navigator.of(context).push(new PageRouteBuilder(
                                 opaque: true,
                                 transitionDuration: Duration(milliseconds: 225),
@@ -293,12 +311,20 @@ class _prenotazioneState extends State<prenotazione> {
     );
   }
 
+  bool _decideWhichDayToEnable(DateTime day) {
+    if (day.isAfter(DateTime.now().subtract(Duration(days: 1)))) {
+      return true;
+    }
+    return false;
+  }
+
   _selectDate(BuildContext context) async {
     DateTime newSelectedDate = await showDatePicker(
         context: context,
         initialDate: _selectedDate != null ? _selectedDate : DateTime.now(),
         firstDate: DateTime(2000),
         lastDate: DateTime(2040),
+        selectableDayPredicate: _decideWhichDayToEnable,
         builder: (BuildContext context, Widget child) {
           return Theme(
             data: ThemeData.dark().copyWith(
@@ -699,7 +725,7 @@ class riepilogo extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              AutoSizeText("E mo? ", style: TextStyle(fontSize: textFontSize, color: textFontColor)),
+                              AutoSizeText(Biglietto.data, style: TextStyle(fontSize: textFontSize, color: textFontColor)),
                               SizedBox(height: 20,),
                               AutoSizeText("$adulti", style: TextStyle(fontSize: textFontSize, color: textFontColor)),
                               SizedBox(height: 20,),
@@ -736,7 +762,6 @@ class riepilogo extends StatelessWidget {
                             Biglietto.adulti = adulti;
                             Biglietto.bambini = bambini;
                             Biglietto.costo = totale;
-                            Biglietto.data = "non lo so";
 
                             isBooked.add(Biglietto.museo);
                             prenotati.add(Biglietto);
