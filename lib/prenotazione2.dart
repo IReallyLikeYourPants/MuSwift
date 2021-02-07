@@ -36,6 +36,7 @@ int bambini = 0;
 int totale;
 String nome;
 String cognome;
+var chiuso;
 
 class MaskedTextInputFormatter extends TextInputFormatter {
   final String mask;
@@ -67,11 +68,11 @@ class MaskedTextInputFormatter extends TextInputFormatter {
 
 class prenotazione extends StatefulWidget {
 
-  prenotazione(String museo, String luogo, int adu, int bam){
+  prenotazione(String museo, String luogo, int adu, int bam, var c){
     Biglietto = new biglietto(museo, luogo);
     adulti_prezzo = adu;
     bambini_prezzo = bam;
-
+    chiuso = c;
     totale = adu;
   }
 
@@ -308,6 +309,12 @@ class _prenotazioneState extends State<prenotazione> {
   bool _decideWhichDayToEnable(DateTime day) {
     if (day.isBefore(DateTime.now().subtract(Duration(days: 1))) || DateFormat('E').format(day) == 'Mon') {
       return false;
+    }
+
+    for(var i = 0; i < chiuso.length; i++){
+      if(DateFormat('E').format(day) == chiuso[i]){
+        return false;
+      }
     }
 
     return true;

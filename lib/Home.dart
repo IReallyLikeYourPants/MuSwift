@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:prova_app/museoPage.dart';
+import 'package:prova_app/constant.dart';
 import 'package:prova_app/Details/operaDetails5.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -15,6 +16,7 @@ import 'Ricerca.dart';
 //SEGNATE I VALORI PRECEDENTI SE CAMBIATE
 //USATE LE PROPORZIONI DOVE POSSIBILE
 //Altezza e larghezza degli item nei grid. PRIMA ERANO A 145-230
+
 const itemWidthPercentage = 0.33;
 const itemHeightPercentage = 0.27;
 
@@ -52,7 +54,7 @@ class StorageUploadState extends State<Home> with TickerProviderStateMixin{
           actions: <Widget>[
             IconButton(
                 icon: Icon(Icons.search),
-                color: Colors.amber[400],
+                color: HexColor("FFA62B"),
                 onPressed: () {
                   Navigator.push(
                     context,

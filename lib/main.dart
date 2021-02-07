@@ -26,11 +26,6 @@ class MyApp extends StatelessWidget {
     return new MaterialApp
       (
       home: MyBottomNavigationBar(),
-      theme: ThemeData(
-        //textTheme: GoogleFonts.sirinStencilTextTheme(Theme.of(context).textTheme)
-          textTheme: GoogleFonts.robotoTextTheme((Theme.of(context).textTheme))
-
-      ),
     );
   }
 }

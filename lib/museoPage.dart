@@ -18,8 +18,9 @@ import 'package:prova_app/main.dart';
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/rendering.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:intl/intl.dart';
+import 'package:prova_app/constant.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 import 'Home.dart';
 
@@ -279,9 +280,9 @@ class _museoPageState extends State<museoPage> {
                               SliverPersistentHeader(
                                 delegate: _SliverAppBarDelegate(
                                   TabBar(
-                                    indicatorColor: tabIndicatorColor,
-                                    labelColor: tabActiveTextColor,
-                                    unselectedLabelColor: tabTextColor,
+                                    indicatorColor: HexColor(bianco),
+                                    labelColor: HexColor(bianco),
+                                    unselectedLabelColor: HexColor(secondaVarianteColor),
                                     tabs: <Widget>[
                                       Tab(
                                         child: AutoSizeText("INFORMAZIONI",
@@ -462,7 +463,7 @@ class _museoPageState extends State<museoPage> {
                                               child: Center(
                                                   child: ElevatedButton(
                                                       style: ElevatedButton.styleFrom(
-                                                          primary: buttonColor,
+                                                          primary: HexColor(accentuatoColor),
                                                           elevation: elevationButton
                                                       ),
                                                       onPressed: ()async {
@@ -470,7 +471,7 @@ class _museoPageState extends State<museoPage> {
                                                             opaque: true,
                                                             transitionDuration: Duration(milliseconds: 225),
                                                             pageBuilder: (BuildContext context, _, __) {
-                                                              return new prenotazione(nome, Museo.luogo, Museo.adulti, Museo.bambini);
+                                                              return new prenotazione(nome, Museo.luogo, Museo.adulti, Museo.bambini, Museo.chiuso);
                                                             },
                                                             transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
 
@@ -507,7 +508,7 @@ class _museoPageState extends State<museoPage> {
                                               child: Center(
                                                   child: ElevatedButton(
                                                       style: ElevatedButton.styleFrom(
-                                                          primary: Colors.white,
+                                                          primary: HexColor(secondoColor),
                                                           onPrimary: Colors.grey,
                                                           elevation: elevationButton
                                                       ),
@@ -543,7 +544,7 @@ class _museoPageState extends State<museoPage> {
                                                           "MAPPA",
                                                           textAlign: TextAlign.center,
                                                           style: TextStyle(
-                                                              color: Colors.black87,
+                                                              color: HexColor(bianco),
                                                               fontWeight: buttonFontWeight
                                                           ),
                                                         ),
@@ -650,7 +651,7 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: HexColor(primoColor),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),

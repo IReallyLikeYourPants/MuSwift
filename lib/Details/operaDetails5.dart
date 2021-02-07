@@ -9,6 +9,7 @@ import 'package:prova_app/museoPage.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:prova_app/Details/storia.dart';
+import 'package:prova_app/constant.dart';
 
 const waitValue = 0;
 
@@ -59,12 +60,12 @@ class operaDetails3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: HexColor(primoColor),
           actions: [
             favorite()
           ],
           leading: GestureDetector(
-            child: Icon(Icons.arrow_back, color: Colors.black),
+            child: Icon(Icons.arrow_back, color: HexColor(bianco)),
             onTap: (){
               Navigator.pop(context);
             },
@@ -259,7 +260,7 @@ class _moreInfoState extends State<moreInfo>{
                               child: Center(
                                   child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                          primary: buttonColor,
+                                          primary: HexColor(accentuatoColor),
                                           elevation: elevationButton
                                       ),
                                       onPressed: () {
@@ -290,10 +291,35 @@ class _moreInfoState extends State<moreInfo>{
                               child: Center(
                                   child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                          primary: Colors.white,
+                                          primary: HexColor(secondoColor),
+                                          onPrimary: Colors.grey,
                                           elevation: elevationButton
                                       ),
                                       onPressed: () {
+                                        showDialog<void>(
+                                          context: context,
+                                          barrierDismissible: true, // user can tap button!
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title: Text('Avvertenza'),
+                                              content: SingleChildScrollView(
+                                                child: ListBody(
+                                                  children: <Widget>[
+                                                    Text('Questa funzionalità non è stata implementata'),
+                                                  ],
+                                                ),
+                                              ),
+                                              actions: <Widget>[
+                                                TextButton(
+                                                  child: Text('Ok'),
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
                                       },
                                       child: Container(
                                         width: double.infinity,
@@ -301,7 +327,7 @@ class _moreInfoState extends State<moreInfo>{
                                           "MAPPA",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              color: Colors.black87,
+                                              color: HexColor(bianco),
                                               fontWeight: buttonFontWeight
                                           ),
                                         ),
