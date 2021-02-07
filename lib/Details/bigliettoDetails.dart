@@ -24,7 +24,7 @@ const FontWeight buttonFontWeight = FontWeight.normal;
 const double elevationButton = 5;
 
 biglietto Biglietto;
-const String _documentPath = 'PDF/biglietto.pdf';
+const String _documentPath = 'assets/PDF/biglietto.pdf';
 
 class bigliettoDetails extends StatefulWidget{
 
@@ -36,6 +36,8 @@ class bigliettoDetails extends StatefulWidget{
 }
 
 class _bigliettoDetailsState extends State<bigliettoDetails> {
+
+
 
   Future<String> prepareTestPdf() async {
     final ByteData bytes =

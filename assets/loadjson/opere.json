@@ -52,5 +52,17 @@
     "img": "assets/images/statua_di_iside.jpg",
     "nav": "Musei Capitolini",
     "tipo" : "opera"
+  },
+  {
+    "title":"Giovane donna con unicorno",
+    "img": "assets/images/giovanedonnaconunicorno.jpg",
+    "nav": "Museo Nazionale Castel Sant'Angelo",
+    "tipo" : "opera"
+  },
+  {
+    "title":"Il Bagno",
+    "img": "assets/images/ilbagno.jpg",
+    "nav": "Museo Nazionale Castel Sant'Angelo",
+    "tipo" : "opera"
   }
 ]
