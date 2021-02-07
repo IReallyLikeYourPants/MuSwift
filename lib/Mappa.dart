@@ -9,6 +9,8 @@ import 'package:location/location.dart';
 import 'package:prova_app/Ricerca.dart';
 import 'dart:math';
 
+import 'museoPage.dart';
+
 List recentiMappa = [];
 double COSTANTE_DI_OFFSET = 0.00532;
 
@@ -119,22 +121,33 @@ class _MapScreenState extends State<Mappa> {
               context: context,
               builder: (BuildContext context){
                 return Container(
-                  color: Colors.white,
                   height: 100,
+                  decoration: BoxDecoration(
+                        color: Colors.green[300],
+                        borderRadius: BorderRadius.all(Radius.circular(15))
+                    ),
                   child:
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AutoSizeText("Musei Vaticani", style: TextStyle(fontSize: titleFontSize, color: Colors.black , fontWeight: FontWeight.bold)),
                         SizedBox(height: 10),
-                        ElevatedButton(
+                        Center(child: AutoSizeText("Musei Vaticani", style: TextStyle(fontSize: 15, color: Colors.black , fontWeight: FontWeight.bold))),
+                        SizedBox(height: 10),
+                        Center(child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     primary: Colors.white,
                                 ),
                                 onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => museoPage("Musei Vaticani")
+                                      )
+                                  );
+
                                 },
-                                child: Container(
-                                  width: double.infinity,
+                                child: (Container(
+                                  width: 200,
                                   child: AutoSizeText(
                                     "INFO",
                                     textAlign: TextAlign.center,
@@ -143,8 +156,8 @@ class _MapScreenState extends State<Mappa> {
                                         fontWeight: FontWeight.bold
                                     ),
                                   ),
-                                )
-                            )
+                                ))
+                            ))
                       ]
 
                     )
@@ -167,8 +180,46 @@ class _MapScreenState extends State<Mappa> {
               context: context,
               builder: (BuildContext context){
                 return Container(
-                  color: Colors.yellow,
-                  height: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                        color: Colors.green[300],
+                        borderRadius: BorderRadius.all(Radius.circular(15))
+                    ),
+                    child:
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 10),
+                          Center(child: AutoSizeText("Museo Nazionale Castel Sant'Angelo", style: TextStyle(fontSize: 15, color: Colors.black , fontWeight: FontWeight.bold))),
+                          SizedBox(height: 10),
+                          Center(child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.white,
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => museoPage("Museo Nazionale Castel Sant'Angelo")
+                                    )
+                                );
+
+                              },
+                              child: (Container(
+                                width: 200,
+                                child: AutoSizeText(
+                                  "INFO",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.black87,
+                                      fontWeight: FontWeight.bold
+                                  ),
+                                ),
+                              ))
+                          ))
+                        ]
+
+                    )
                 );
               }
             );
@@ -188,8 +239,46 @@ class _MapScreenState extends State<Mappa> {
                 context: context,
                 builder: (BuildContext context){
                   return Container(
-                    color: Colors.yellow,
-                    height: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                          color: Colors.green[300],
+                          borderRadius: BorderRadius.all(Radius.circular(15))
+                      ),
+                      child:
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 10),
+                            Center(child: AutoSizeText("Musei Capitolini", style: TextStyle(fontSize: 15, color: Colors.black , fontWeight: FontWeight.bold))),
+                            SizedBox(height: 10),
+                            Center(child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.white,
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => museoPage("Musei Capitolini")
+                                      )
+                                  );
+
+                                },
+                                child: (Container(
+                                  width: 200,
+                                  child: AutoSizeText(
+                                    "INFO",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: Colors.black87,
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                ))
+                            ))
+                          ]
+
+                      )
                   );
                 }
             );
@@ -209,8 +298,46 @@ class _MapScreenState extends State<Mappa> {
                 context: context,
                 builder: (BuildContext context){
                   return Container(
-                    color: Colors.yellow,
-                    height: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                          color: Colors.green[300],
+                          borderRadius: BorderRadius.all(Radius.circular(15))
+                      ),
+                      child:
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 10),
+                            Center(child: AutoSizeText("Galleria Borghese", style: TextStyle(fontSize: 15, color: Colors.black , fontWeight: FontWeight.bold))),
+                            SizedBox(height: 10),
+                            Center(child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.white,
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => museoPage("Galleria Borghese")
+                                      )
+                                  );
+
+                                },
+                                child: (Container(
+                                  width: 200,
+                                  child: AutoSizeText(
+                                    "INFO",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: Colors.black87,
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                ))
+                            ))
+                          ]
+
+                      )
                   );
                 }
             );
