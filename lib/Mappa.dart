@@ -1,10 +1,16 @@
 import 'dart:async';
+import 'dart:convert';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:location/location.dart';
 import 'package:prova_app/Ricerca.dart';
 import 'dart:math';
+
+List recentiMappa = [];
+double COSTANTE_DI_OFFSET = 0.00532;
 
 class Mappa extends StatefulWidget {
   @override
@@ -13,146 +19,33 @@ class Mappa extends StatefulWidget {
 
 class _MapScreenState extends State<Mappa> {
   Completer<GoogleMapController> _controller = Completer();
-  static final CameraPosition _kGooglePlex = CameraPosition(
+  CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(41.9028, 12.4964),
     zoom: 14,
   );
-  String _mapStyle;
-  GoogleMapController _mapController;
-
-  initState() {
-    super.initState();
-    rootBundle.loadString('assets/map_style.txt').then((string) {
-      _mapStyle = string;
-    });
-  }
-
-//...
 
   _onMapCreated(GoogleMapController controller) {
     _controller.complete(controller);
     if (mounted) {
       setState(() {
         _mapController = controller;
-        controller.setMapStyle(_mapStyle);
       });
     }
   }
 
-//...
-
-Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
-MarkerId selectedMarker;
-int _markerIdCounter = 1;
-static final LatLng center = const LatLng(-33.86711, 151.1947171);
-
-  void _onMarkerTapped(MarkerId markerId) {
-    final Marker tappedMarker = markers[markerId];
-    if (tappedMarker != null) {
-      setState(() {
-        if (markers.containsKey(selectedMarker)) {
-          final Marker resetOld = markers[selectedMarker]
-              .copyWith(iconParam: BitmapDescriptor.defaultMarker);
-          markers[selectedMarker] = resetOld;
-        }
-        selectedMarker = markerId;
-        final Marker newMarker = tappedMarker.copyWith(
-          iconParam: BitmapDescriptor.defaultMarkerWithHue(
-            BitmapDescriptor.hueGreen,
-          ),
-        );
-        markers[markerId] = newMarker;
-      });
-    }
-  }
-
-  void _add() {
-    var markerIdVal = 'marker_id_$_markerIdCounter';
-    final MarkerId markerId = MarkerId(markerIdVal);
-
-    // creating a new MARKER
-    final Marker marker = Marker(
-      markerId: markerId,
-      position: LatLng(
-        center.latitude + sin(_markerIdCounter * pi / 6.0) / 20.0,
-        center.longitude + cos(_markerIdCounter * pi / 6.0) / 20.0,
+  void pointOnLocation(loc) async{
+    GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(
+      CameraPosition(
+        bearing: 0,
+        target: loc,
+        zoom: 17.0,
       ),
-      infoWindow: InfoWindow(title: markerIdVal, snippet: '*'),
-      onTap: () {
-        _onMarkerTapped(markerId);
-      },
-    );
-
-    setState(() {
-      // adding a new marker to map
-      markers[markerId] = marker;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return new Container(
-      color: Colors.white,
-      child: SafeArea(
-        child: Stack(
-          children: [
-            Scaffold(
-                body: GoogleMap(
-                  padding: EdgeInsets.only(right: 1000),
-                  initialCameraPosition: _kGooglePlex,
-                  onMapCreated: _onMapCreated,
-                  myLocationEnabled: true,
-                  myLocationButtonEnabled: false,
-                  mapType: MapType.normal,
-                  zoomControlsEnabled: false,
-                ),
-                floatingActionButton: FloatingActionButton.extended(
-                  onPressed: _currentLocation,
-                  backgroundColor: Colors.white,
-                  focusColor: Colors.red,
-                  foregroundColor: Colors.amber[400],
-                  hoverColor: Colors.white,
-                  splashColor: Colors.white,
-                  label: Icon(Icons.location_on),
-                )
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Ricerca()),
-                    );
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(72.0),
-                    ),
-                    margin : EdgeInsets.only(top: MediaQuery. of(context). size.height * 0.025),
-                    width: MediaQuery. of(context). size.width * 0.87,
-                    height: MediaQuery. of(context). size.height * 0.05,
-                    child: Row(
-                      children: [
-                        SizedBox(width: MediaQuery. of(context). size.width * 0.03,),
-                        Icon(
-                          Icons.search,
-                        )],
-                    ),
-                  ),
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-    );
+    ));
   }
 
   void _currentLocation() async {
-    final GoogleMapController controller = await _controller.future;
+    GoogleMapController controller = await _controller.future;
     LocationData currentLocation;
     var location = new Location();
     try {
@@ -169,4 +62,220 @@ static final LatLng center = const LatLng(-33.86711, 151.1947171);
       ),
     ));
   }
+
+
+
+  //String _mapStyle;
+  GoogleMapController _mapController;
+  TextEditingController tc;
+
+
+  List<Marker> markers = [];
+  List results = [];
+  String query = '';
+
+  Future<Map<String, String>> loadJson() async {
+    final jsonA = await DefaultAssetBundle.of(context).loadString('assets/loadjson/musei.json');
+    final jsonB = await DefaultAssetBundle.of(context).loadString('assets/loadjson/opere.json');
+    return {
+      'jsonMusei': jsonA,
+      'jsonOpere': jsonB
+    };
+  }
+
+
+
+
+  initState() {
+    super.initState();
+    /*rootBundle.loadString('assets/map_style.txt').then((string) {
+      _mapStyle = string;
+    });*/
+    tc = TextEditingController();
+
+    markers.add(
+      Marker(
+        markerId: MarkerId('Musei Vaticani'),
+        draggable: false,
+        position: LatLng(41.906487,12.453641),
+        onTap: (){
+          print('Hai tappato');
+          pointOnLocation(LatLng(41.906487,12.453641-COSTANTE_DI_OFFSET));
+        },
+      )
+    );
+    markers.add(
+      Marker(
+        markerId: MarkerId('Musei Capitolini'),
+        draggable: false,
+        position: LatLng(41.892944,12.482558),
+        onTap: (){
+          print('Hai tappato');
+          pointOnLocation(LatLng(41.892944,12.482558-COSTANTE_DI_OFFSET));  // This is shifted for the lng by -0.0053: from (41.892944,12.482558) to(41.892944,12.477258)
+        },
+      )
+    );
+
+  }
+
+//...
+
+
+
+//...
+
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      color: Colors.white,
+      child: SafeArea(
+        child: FutureBuilder(
+                future: loadJson(),
+                builder: (context, snapshot){
+                  if (snapshot.hasData) {
+                    var rows = json.decode(snapshot.data['jsonMusei'].toString());
+                    rows = new List<dynamic>.from(rows)..addAll(json.decode(snapshot.data['jsonOpere'].toString()));
+
+                    return Stack(
+                      children: [
+                        Scaffold(
+                            body: GoogleMap(
+                                padding: EdgeInsets.only(right: 1000),
+                                initialCameraPosition: _kGooglePlex,
+                                onMapCreated: _onMapCreated,
+                                myLocationEnabled: true,
+                                myLocationButtonEnabled: false,
+                                mapType: MapType.normal,
+                                zoomControlsEnabled: false,
+                                markers: Set.from(markers)
+                            ),
+                            floatingActionButton: FloatingActionButton.extended(
+                              onPressed: _currentLocation,
+                              backgroundColor: Colors.white,
+                              focusColor: Colors.red,
+                              foregroundColor: Colors.amber[400],
+                              hoverColor: Colors.white,
+                              splashColor: Colors.white,
+                              label: Icon(Icons.location_on),
+                            )
+                        ),
+                        Column(children: [
+                        Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(72.0),
+                            ),
+                            margin : EdgeInsets.only(top: MediaQuery. of(context). size.height * 0.025),
+                            width: MediaQuery. of(context). size.width * 0.87,
+                            height: MediaQuery. of(context). size.height * 0.05,
+                            child: Theme(
+                                child : Container(
+                                  padding: EdgeInsets.only(left: 10),
+                                  decoration: BoxDecoration(
+                                    color: HexColor(textFieldColor),
+                                    borderRadius:  BorderRadius.circular(10),
+                                  ),
+                                  child: TextField(
+                                    //style: TextStyle(color: Colors.grey),
+                                    //autofocus: true,
+                                    controller: tc,
+                                    decoration: InputDecoration(
+                                      fillColor: Colors.green,
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      focusedErrorBorder: InputBorder.none,
+
+                                      //contentPadding: EdgeInsets.only(left: 2),
+
+                                      hintText: searchbarText,
+                                      hintStyle: TextStyle(color: searchbarTextColor),
+                                      suffixIcon: IconButton(
+                                        onPressed: () => tc.clear(),
+                                        icon: Icon(Icons.clear),
+                                      ),
+                                    ),
+                                    onChanged: (t){
+                                      //buildSuggestions(context);
+                                      setState(() {
+                                        query = t;
+                                        print(rows);
+                                        setResults(query,rows);
+                                      });
+                                    },
+                                    onSubmitted: (v) {
+                                      setState(() {});
+                                    },
+                                  ),
+                                ),
+                                data: ThemeData(
+                                  primaryColor: HexColor("FFCB05"),
+                                  hintColor: HexColor("FFCB05"),
+                                )
+                            )
+                        ),
+                        query.isEmpty ?
+                        Expanded(child: Container())
+                            : Expanded(
+                            child: Column(children : [
+                              //SizedBox(width: double.infinity,child: AutoSizeText("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
+                              //Divider(color: Colors.black54,),
+                              SizedBox(height: 5,),
+                              Expanded(
+                                  child: ListView.builder(
+                                    padding: EdgeInsets.only(top:10.0),
+                                    shrinkWrap: true,
+                                    itemCount: results.length,
+                                    itemBuilder: (con, ind) {
+                                      return Container(
+                                          color: Colors.white,
+                                          child : ListTile(
+                                            title: AutoSizeText(rows[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
+                                            subtitle: AutoSizeText(rows[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+
+                                            onTap: () {
+                                              print("Hai cliccato nella listview");
+                                              pointOnLocation(LatLng(41.906487,12.453641));
+                                              if(titoli.contains(rows[ind]['title'])==false){
+                                                titoli.add(rows[ind]['title']);
+                                                recentiMappa.insert(0,rows[ind]);
+                                              };
+                                              print(recentiMappa);
+
+                                            },
+                                          ));
+                                    },
+                                  )
+                              )
+
+                            ])),
+                      ],
+                      )
+                      ]);
+                  }
+                  return Container();
+                }
+            )
+      ),
+    );
+  }
+
+  void setResults(String query,var rowss) {
+    results = rowss
+        .where((elem) =>
+    elem['title']
+        .toString()
+        .toLowerCase()
+        .contains(query.toLowerCase()) ||
+        elem['nav'].toString()
+            .toString()
+            .toLowerCase()
+            .contains(query.toLowerCase()))
+        .toList();
+
+  }
+
 }

@@ -45,6 +45,7 @@ const FontWeight titleFontWeight = FontWeight.bold;
 List recenti = [];
 List titoli = [];
 List ricercheRecenti = [];
+var rows = [];
 
 class Post {
   final String title;
