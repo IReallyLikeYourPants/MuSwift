@@ -306,10 +306,11 @@ class _prenotazioneState extends State<prenotazione> {
   }
 
   bool _decideWhichDayToEnable(DateTime day) {
-    if (day.isAfter(DateTime.now().subtract(Duration(days: 1)))) {
-      return true;
+    if (day.isBefore(DateTime.now().subtract(Duration(days: 1))) || DateFormat('E').format(day) == 'Mon') {
+      return false;
     }
-    return false;
+
+    return true;
   }
 
   _selectDate(BuildContext context) async {

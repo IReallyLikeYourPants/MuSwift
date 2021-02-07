@@ -74,7 +74,10 @@
       "Sun" : "08.00 - 19.00"
     },
     "chiusura_biglietteria" : "18.00",
-    "ultimo_ingresso" : "18.30"
+    "ultimo_ingresso" : "18.30",
+    "chiuso" : [
+      "Mon", "Sat"
+    ]
   },
   "Museo Nazionale Castel Sant'Angelo" : {
     "adulti" : 10,
@@ -229,6 +232,9 @@
       "Sat" : "08.00 - 19.00",
       "Sun" : "CHIUSO"
     },
+    "chiuso" : [
+      "Mon", "Sat"
+    ],
     "chiusura_biglietteria" : "18.00",
     "ultimo_ingresso" : "18.30"
   },
@@ -307,6 +313,9 @@
       "Sat" : "08.00 - 19.00",
       "Sun" : "08.00 - 19.00"
     },
+    "chiuso" : [
+      "Mon", "Sat"
+    ],
     "chiusura_biglietteria" : "18.00",
     "ultimo_ingresso" : "18.30"
   }

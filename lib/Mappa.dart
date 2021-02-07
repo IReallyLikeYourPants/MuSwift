@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:location/location.dart';
+import 'package:prova_app/Object/museo.dart';
 import 'package:prova_app/Ricerca.dart';
 import 'dart:math';
 
@@ -13,8 +14,9 @@ import 'museoPage.dart';
 
 List recentiMappa = [];
 double COSTANTE_DI_OFFSET = 0.00532;
-
-
+const double boxHeightPercentage = 0.25;
+const double titleFontSize = 30;
+const double subtitleFontSize = 20;
 
 class Mappa extends StatefulWidget {
   @override
@@ -121,43 +123,75 @@ class _MapScreenState extends State<Mappa> {
               context: context,
               builder: (BuildContext context){
                 return Container(
-                  height: 500,
+                  height: MediaQuery.of(context).size.height * boxHeightPercentage,
+                  padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                        color: Colors.green[300],
                         borderRadius: BorderRadius.all(Radius.circular(15))
                     ),
                   child:
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 10),
-                        Center(child: AutoSizeText("Musei Vaticani", style: TextStyle(fontSize: 15, color: Colors.black , fontWeight: FontWeight.bold))),
-                        SizedBox(height: 10),
-                        Center(child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    primary: Colors.white,
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => museoPage("Musei Vaticani")
-                                      )
-                                  );
-
-                                },
-                                child: (Container(
-                                  width: 200,
-                                  child: AutoSizeText(
-                                    "INFO",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.black87,
-                                        fontWeight: FontWeight.bold
-                                    ),
+                        Row(
+                          children: [
+                            Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                      new Radius.circular(5.0)
                                   ),
-                                ))
-                            ))
+                                  image: new DecorationImage( // per metterci l'immagine dentro
+                                    image: new ExactAssetImage(
+                                      "assets/images/museovaticano.jpg",
+                                    ),
+                                    fit: BoxFit.cover, // per adattarla al container
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey,
+                                      offset: Offset(0.0, 1.0), //(x,y)
+                                      blurRadius: 6.0,
+                                    )
+                                  ],
+                                )
+                            ),
+                            SizedBox(width: 15,),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                AutoSizeText('Musei Vaticani', style: TextStyle(fontSize: titleFontSize, fontWeight: FontWeight.bold),),
+                                AutoSizeText('Città del Vaticano - Roma', style: TextStyle(fontSize: subtitleFontSize,)),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Expanded(child: Container()),
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                primary: buttonColor,
+                                elevation: elevationButton
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => museoPage('Musei Vaticani')
+                                  )
+                              );
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              child: AutoSizeText(
+                                "MUSEO",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: textButtonColor,
+                                    fontWeight: buttonFontWeight
+                                ),
+                              ),
+                            )
+                        ),
                       ]
 
                     )
@@ -180,21 +214,55 @@ class _MapScreenState extends State<Mappa> {
               context: context,
               builder: (BuildContext context){
                 return Container(
-                    height: 100,
+                    height: MediaQuery.of(context).size.height * boxHeightPercentage,
+                    padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                        color: Colors.green[300],
                         borderRadius: BorderRadius.all(Radius.circular(15))
                     ),
                     child:
                     Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 10),
-                          Center(child: AutoSizeText("Museo Nazionale Castel Sant'Angelo", style: TextStyle(fontSize: 15, color: Colors.black , fontWeight: FontWeight.bold))),
-                          SizedBox(height: 10),
-                          Center(child: ElevatedButton(
+                          Row(
+                            children: [
+                              Container(
+                                  width: 100,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                        new Radius.circular(5.0)
+                                    ),
+                                    image: new DecorationImage( // per metterci l'immagine dentro
+                                      image: new ExactAssetImage(
+                                        "assets/images/nazionale.jpg",
+                                      ),
+                                      fit: BoxFit.cover, // per adattarla al container
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        offset: Offset(0.0, 1.0), //(x,y)
+                                        blurRadius: 6.0,
+                                      )
+                                    ],
+                                  )
+                              ),
+                              SizedBox(width: 15,),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  AutoSizeText('Museo Nazionale', style: TextStyle(fontSize: titleFontSize, fontWeight: FontWeight.bold),),
+                                  AutoSizeText('Castel Sant\'Angelo', style: TextStyle(fontSize: titleFontSize, fontWeight: FontWeight.bold),),
+                                  AutoSizeText('Lungotevere Castello,50-ROMA', style: TextStyle(fontSize: subtitleFontSize,)),
+                                ],
+                              )
+                            ],
+                          ),
+                          Expanded(child: Container()),
+                          ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
+                                  primary: buttonColor,
+                                  elevation: elevationButton
                               ),
                               onPressed: () {
                                 Navigator.push(
@@ -203,20 +271,19 @@ class _MapScreenState extends State<Mappa> {
                                         builder: (context) => museoPage("Museo Nazionale Castel Sant'Angelo")
                                     )
                                 );
-
                               },
-                              child: (Container(
-                                width: 200,
+                              child: Container(
+                                width: double.infinity,
                                 child: AutoSizeText(
-                                  "INFO",
+                                  "MUSEO",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      color: Colors.black87,
-                                      fontWeight: FontWeight.bold
+                                      color: textButtonColor,
+                                      fontWeight: buttonFontWeight
                                   ),
                                 ),
-                              ))
-                          ))
+                              )
+                          ),
                         ]
 
                     )
@@ -239,21 +306,55 @@ class _MapScreenState extends State<Mappa> {
                 context: context,
                 builder: (BuildContext context){
                   return Container(
-                      height: 100,
+                      height: MediaQuery.of(context).size.height * boxHeightPercentage,
+                      padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                          color: Colors.green[300],
                           borderRadius: BorderRadius.all(Radius.circular(15))
                       ),
                       child:
                       Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: 10),
-                            Center(child: AutoSizeText("Musei Capitolini", style: TextStyle(fontSize: 15, color: Colors.black , fontWeight: FontWeight.bold))),
-                            SizedBox(height: 10),
-                            Center(child: ElevatedButton(
+                            Row(
+                              children: [
+                                Container(
+                                    width: 100,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                      borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                          new Radius.circular(5.0)
+                                      ),
+                                      image: new DecorationImage( // per metterci l'immagine dentro
+                                        image: new ExactAssetImage(
+                                          "assets/images/museocapitolino.jpg",
+                                        ),
+                                        fit: BoxFit.cover, // per adattarla al container
+                                      ),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey,
+                                          offset: Offset(0.0, 1.0), //(x,y)
+                                          blurRadius: 6.0,
+                                        )
+                                      ],
+                                    )
+                                ),
+                                SizedBox(width: 15,),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    AutoSizeText('Museo Capitolino', style: TextStyle(fontSize: titleFontSize, fontWeight: FontWeight.bold),),
+                                    AutoSizeText('Via dei Musei Capitolini', style: TextStyle(fontSize: subtitleFontSize,)),
+                                    AutoSizeText('ROMA', style: TextStyle(fontSize: subtitleFontSize,)),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Expanded(child: Container()),
+                            ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.white,
+                                    primary: buttonColor,
+                                    elevation: elevationButton
                                 ),
                                 onPressed: () {
                                   Navigator.push(
@@ -262,20 +363,19 @@ class _MapScreenState extends State<Mappa> {
                                           builder: (context) => museoPage("Musei Capitolini")
                                       )
                                   );
-
                                 },
-                                child: (Container(
-                                  width: 200,
+                                child: Container(
+                                  width: double.infinity,
                                   child: AutoSizeText(
-                                    "INFO",
+                                    "MUSEO",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        color: Colors.black87,
-                                        fontWeight: FontWeight.bold
+                                        color: textButtonColor,
+                                        fontWeight: buttonFontWeight
                                     ),
                                   ),
-                                ))
-                            ))
+                                )
+                            ),
                           ]
 
                       )
@@ -298,21 +398,54 @@ class _MapScreenState extends State<Mappa> {
                 context: context,
                 builder: (BuildContext context){
                   return Container(
-                      height: 100,
+                      height: MediaQuery.of(context).size.height * boxHeightPercentage,
+                      padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                          color: Colors.green[300],
                           borderRadius: BorderRadius.all(Radius.circular(15))
                       ),
                       child:
                       Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: 10),
-                            Center(child: AutoSizeText("Galleria Borghese", style: TextStyle(fontSize: 15, color: Colors.black , fontWeight: FontWeight.bold))),
-                            SizedBox(height: 10),
-                            Center(child: ElevatedButton(
+                            Row(
+                              children: [
+                                Container(
+                                    width: 100,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                      borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                          new Radius.circular(5.0)
+                                      ),
+                                      image: new DecorationImage( // per metterci l'immagine dentro
+                                        image: new ExactAssetImage(
+                                          "assets/images/galleriaborghese.jpg",
+                                        ),
+                                        fit: BoxFit.cover, // per adattarla al container
+                                      ),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey,
+                                          offset: Offset(0.0, 1.0), //(x,y)
+                                          blurRadius: 6.0,
+                                        )
+                                      ],
+                                    )
+                                ),
+                                SizedBox(width: 15,),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    AutoSizeText('Galleria Borghese', style: TextStyle(fontSize: titleFontSize, fontWeight: FontWeight.bold),),
+                                    AutoSizeText('Villa Borghese - ROMA', style: TextStyle(fontSize: subtitleFontSize,)),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Expanded(child: Container()),
+                            ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.white,
+                                    primary: buttonColor,
+                                    elevation: elevationButton
                                 ),
                                 onPressed: () {
                                   Navigator.push(
@@ -321,20 +454,19 @@ class _MapScreenState extends State<Mappa> {
                                           builder: (context) => museoPage("Galleria Borghese")
                                       )
                                   );
-
                                 },
-                                child: (Container(
-                                  width: 200,
+                                child: Container(
+                                  width: double.infinity,
                                   child: AutoSizeText(
-                                    "INFO",
+                                    "MUSEO",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        color: Colors.black87,
-                                        fontWeight: FontWeight.bold
+                                        color: textButtonColor,
+                                        fontWeight: buttonFontWeight
                                     ),
                                   ),
-                                ))
-                            ))
+                                )
+                            ),
                           ]
 
                       )
