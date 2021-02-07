@@ -55,7 +55,7 @@ class _MapScreenState extends State<Mappa> {
     controller.animateCamera(CameraUpdate.newCameraPosition(
       CameraPosition(
         bearing: 0,
-        target: LatLng(currentLocation.latitude, currentLocation.longitude),
+        target: LatLng(currentLocation.latitude, currentLocation.longitude-COSTANTE_DI_OFFSET),
         zoom: 17.0,
       ),
     ));
