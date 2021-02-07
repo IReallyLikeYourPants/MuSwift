@@ -21,7 +21,7 @@ const String barColor = "FFFFFF";
 const searchbarPrimaryColor = Colors.black;
 const searchbarHintColor = Colors.black;
 const searchbarTextColor = Colors.black;
-const searchbarText = "Ricerca...";
+const searchbarText = "Cerca opere o musei";
 
 const listviewCardColor = Colors.white;
 const listviewTitleColor = Colors.black;

@@ -63,7 +63,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
           onTap: onTappedBar,
           currentIndex: _currentIndex,
           backgroundColor: Colors.white,
-          selectedItemColor: HexColor("FFCB05"),
+          selectedItemColor: HexColor("FFA62B"),
           selectedFontSize: 11,
           unselectedFontSize: 11,
           iconSize: iconSize,

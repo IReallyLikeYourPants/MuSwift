@@ -199,7 +199,7 @@ class _moreInfoState extends State<moreInfo>{
                                       opaque: true,
                                       transitionDuration: Duration(milliseconds: 225),
                                       pageBuilder: (BuildContext context, _, __) {
-                                        return new storia(snapshot.data.storia);
+                                        return new storia('Storia', titolo ,snapshot.data.storia);
                                       },
                                       transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
 
@@ -235,7 +235,7 @@ class _moreInfoState extends State<moreInfo>{
                                       opaque: true,
                                       transitionDuration: Duration(milliseconds: 225),
                                       pageBuilder: (BuildContext context, _, __) {
-                                        return new storia(snapshot.data.autore_storia);
+                                        return new storia('Autore' , snapshot.data.autore_real , snapshot.data.autore_storia);
                                       },
                                       transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
 

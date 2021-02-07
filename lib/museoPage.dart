@@ -11,12 +11,15 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:prova_app/Object/museo.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:prova_app/Details/storia.dart';
+import 'package:prova_app/Details/orario.dart';
 import 'package:prova_app/prenotazione2.dart';
 import 'package:prova_app/Details/operaDetails5.dart';
 import 'package:prova_app/main.dart';
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/rendering.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:intl/intl.dart';
 
 import 'Home.dart';
 
@@ -65,10 +68,21 @@ const double buttonDistancePercentage = 0.03;
 const Color statusBarColor = Colors.white;
 
 String nome;
+String giorno;
 List preferiti = ["Musei Capitolini"];
 List immaginiPreferiti = ["assets/images/museocapitolino.jpg"];
 List operePreferite = [];
 List immaginiOperePreferite = [];
+
+var weekday = {
+  "Mon" : "Lunedì",
+  "Tue" : "Martedì",
+  "Wed" : "Mercoledì",
+  "Thu" : "Giovedì",
+  "Fri" : "Venerdì",
+  "Sat" : "Sabato",
+  "Sun" : "Domenica",
+};
 
 
 museo Museo = new museo();
@@ -109,11 +123,11 @@ Container infoRow(IconData icon, String label){
     ),
   );
 }
-Container noteRow(IconData icon, String label){
+Container noteRow(String label, bool isTrue){
   return Container(
     child: Row(
       children: [
-        Icon(icon, size: iconSize, color: Colors.green),
+        isTrue ? Icon(Icons.check, size: iconSize, color: Colors.green) : Icon(Icons.close, size: iconSize, color: Colors.red),
         Container(
           margin: EdgeInsets.only(left: 5),
           child: AutoSizeText(
@@ -129,6 +143,11 @@ Container noteRow(IconData icon, String label){
 class museoPage extends StatefulWidget {
 
   museoPage(String title){
+    DateTime now = DateTime.now();
+    DateFormat formatter = DateFormat('E');
+    giorno = formatter.format(now);
+    print("MUSEO");
+    print(giorno);
     nome = title;
   }
 
@@ -305,7 +324,7 @@ class _museoPageState extends State<museoPage> {
                                                       opaque: true,
                                                       transitionDuration: Duration(milliseconds: 225),
                                                       pageBuilder: (BuildContext context, _, __) {
-                                                        return new storia(Museo.storia);
+                                                        return new storia('Storia', nome, Museo.storia);
                                                       },
                                                       transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
 
@@ -383,7 +402,24 @@ class _museoPageState extends State<museoPage> {
                                       ),
                                       GestureDetector(
                                           onTap: (){
+                                            Navigator.of(context).push(new PageRouteBuilder(
+                                                opaque: true,
+                                                transitionDuration: Duration(milliseconds: 225),
+                                                pageBuilder: (BuildContext context, _, __) {
+                                                  return new orario(nome, Museo.orario, Museo.chiusura_biglietteria, Museo.ultimo_ingresso);
+                                                },
+                                                transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
 
+                                                  return new SlideTransition(
+                                                    child: child,
+                                                    position: new Tween<Offset>(
+                                                      begin: const Offset(1, 0),
+                                                      end: Offset.zero,
+                                                    ).animate(animation),
+                                                  );
+                                                }
+                                            )
+                                            );
                                           },
                                           child: Container(
                                             margin: EdgeInsets.only(top: infoMargin),
@@ -394,7 +430,7 @@ class _museoPageState extends State<museoPage> {
                                                     child: Container(
                                                       margin: EdgeInsets.only(left: 10),
                                                       child: AutoSizeText(
-                                                        Museo.orario,
+                                                          weekday[giorno] + "  " + Museo.orario[giorno],
                                                         style: TextStyle(
                                                             fontSize: textFontSize,
                                                             color: textFontColor
@@ -499,10 +535,12 @@ class _museoPageState extends State<museoPage> {
                                       ),
                                       SizedBox(height: 10,),
 
-                                      noteRow(Icons.check, "Adibito per disabili"),
-                                      noteRow(Icons.check, "Visita interattiva"),
-                                      noteRow(Icons.check, "Percheggio a pagamento"),
-                                      noteRow(Icons.check, "Presenza guida"),
+                                      Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: <Widget>[
+                                          for(var item in Museo.note ) noteRow(item['testo'], item['isTrue']),
+                                        ],
+                                      ),
                                     ],
                                   )
                                 ),

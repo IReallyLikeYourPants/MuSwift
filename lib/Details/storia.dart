@@ -6,10 +6,14 @@ const double textFontSize = 17;
 
 class storia extends StatelessWidget {
 
-  String text;
+  String titolo;
+  String sottotitolo;
+  String testo;
 
-  storia(String txt){
-    this.text = txt;
+  storia(String titolo, String sottotitolo, String testo){
+    this.titolo = titolo;
+    this.sottotitolo = sottotitolo;
+    this.testo = testo;
   }
 
   @override
@@ -22,14 +26,21 @@ class storia extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: AutoSizeText("Storia", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
+        title: AutoSizeText(titolo, style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
         backgroundColor: Colors.white,
       ),
       body: ListView(
         children: [
               Container(
-                padding: const EdgeInsets.all(10),
-                child: AutoSizeText(text, style : TextStyle(color: Colors.black, fontSize: textFontSize)),
+                padding: const EdgeInsets.all(15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AutoSizeText(sottotitolo, style : TextStyle(color: Colors.black, fontSize: textFontSize + 10, fontWeight: FontWeight.bold)),
+                    SizedBox(height: 10,),
+                    AutoSizeText(testo, style : TextStyle(color: Colors.black, fontSize: textFontSize)),
+                  ],
+                )
             ),
         ],
       )

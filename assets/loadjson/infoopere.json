@@ -1,6 +1,7 @@
 {
   "Deposizione" : {
     "autore" : "Michelangelo Merisi da Caravaggio",
+    "autore_real" : "Michelangelo Merisi",
     "tipo" : "Olio su tela, cm 300 x 203",
     "anno" : "1600 - 1604 a.C.",
     "nav" : "Musei Vaticani - Città del Vaticano",
@@ -12,6 +13,7 @@
   },
   "Apollo del Belvedere" : {
     "autore" : "Leocare",
+    "autore_real" : "Leocare",
     "tipo" : "Scultura di marmo bianco, 224 cm",
     "anno" : "350 a.C.",
     "nav" :"Musei Vaticani - Città del Vaticano",
@@ -23,6 +25,7 @@
   },
   "Carita con Quattro Figli" : {
     "autore" : "Michelangelo Merisi da Caravaggio",
+    "autore_real" : "Michelangelo Merisi",
     "tipo" : "Olio su tela, cm 300 x 203",
     "anno" : "1627 - 1628 a.C.",
     "nav" :"Musei Vaticani - Roma",

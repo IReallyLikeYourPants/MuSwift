@@ -30,6 +30,8 @@ const double rowsPadding = 25.0;
 const double leftPadding = 10.0;
 
 const Color backgroundColor = null;
+const String barColor = "16697A";
+const String barTitleFontColor = "FFFFFF";
 
 
 class Home extends StatefulWidget {
@@ -45,8 +47,8 @@ class StorageUploadState extends State<Home> with TickerProviderStateMixin{
     return Theme(data: Theme.of(context).copyWith(), child: Scaffold(
         backgroundColor: backgroundColor,
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: AutoSizeText("MuSwift", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
+          backgroundColor: HexColor(barColor),
+          title: AutoSizeText("MuSwift", style: TextStyle(color: HexColor(barTitleFontColor), fontWeight: titleFontWeight)),
           actions: <Widget>[
             IconButton(
                 icon: Icon(Icons.search),

@@ -3,7 +3,6 @@
     "adulti" : 10,
     "bambini" : 5,
     "luogo" : "Città del Vaticano",
-    "orario" : "Lunedì 08-99",
     "numero" : "06+ 12346666",
     "sito" : "http://www.museivaticani.va",
     "storia" : "I Musei Vaticani furono fondati da papa Giulio II nel 1506 e aperti al pubblico nel 1771 per volere di papa Clemente XIV. La scultura che gettò le basi per la costruzione del museo fu il cosiddetto Gruppo del Laocoonte: essa raffigura Laocoonte, il sacerdote che secondo la mitologia greca tentò di convincere i Troiani a non accettare il cavallo di legno che i Greci sembravano aver donato loro. La statua fu trovata il 14 gennaio 1506 in un vigneto nei pressi della basilica di Santa Maria Maggiore a Roma. Papa Giulio II mandò Giuliano da Sangallo e Michelangelo Buonarroti, che lavoravano al Vaticano, ad esaminare la scoperta, e su loro consiglio acquistò subito la scultura dal proprietario della vigna. Un mese dopo l'opera, che rappresenta Laocoonte e i suoi figli stretti tra le spire di un serpente marino, fu esposta al pubblico in Vaticano. \nUn clamoroso caso si ebbe nel maggio del 1938, quando Adolf Hitler, capo della Germania nazista, arrivò a Roma, ospite del re Vittorio Emanuele III e di Benito Mussolini. Papa Pio XI non lo volle ricevere, e per evitare ciò si trasferì eccezionalmente, per qualche giorno, nella villa di Castel Gandolfo. Inoltre, caso senza precedenti, stabilì che il museo e la basilica fossero chiusi a ogni visitatore durante il breve periodo della visita del Führer. In tal modo il capo tedesco non sarebbe potuto entrare in territorio vaticano nemmeno accedendo ai Musei[6].",
@@ -46,7 +45,36 @@
         "title":"Statua di Iside",
         "img": "assets/images/statua_di_iside.jpg"
       }
-    ]
+    ],
+    "note" : [
+      {
+        "testo": "Adibito per disabili",
+        "isTrue" : true
+      },
+      {
+        "testo" : "Visita interattiva",
+        "isTrue" : false
+      },
+      {
+        "testo" : "Percheggio a pagamento",
+        "isTrue" : false
+      },
+      {
+        "testo" : "Presenza guida",
+        "isTrue" : true
+      }
+    ],
+    "orario" : {
+      "Mon" : "08.00 - 19.00",
+      "Tue" : "08.00 - 19.00",
+      "Wed" : "08.00 - 19.00",
+      "Thu" : "08.00 - 19.00",
+      "Fri" : "08.00 - 19.00",
+      "Sat" : "08.00 - 19.00",
+      "Sun" : "08.00 - 19.00"
+    },
+    "chiusura_biglietteria" : "18.00",
+    "ultimo_ingresso" : "18.30"
   },
   "Museo Nazionale Castel Sant'Angelo" : {
     "adulti" : 10,
@@ -95,7 +123,36 @@
         "title":"Statua di Iside",
         "img": "assets/images/statua_di_iside.jpg"
       }
-    ]
+    ],
+    "note" : [
+      {
+        "testo": "Adibito per disabili",
+        "isTrue" : false
+      },
+      {
+        "testo" : "Visita interattiva",
+        "isTrue" : false
+      },
+      {
+        "testo" : "Percheggio a pagamento",
+        "isTrue" : false
+      },
+      {
+        "testo" : "Presenza guida",
+        "isTrue" : false
+      }
+    ],
+    "orario" : {
+      "Mon" : "08.00 - 19.00",
+      "Tue" : "08.00 - 19.00",
+      "Wed" : "08.00 - 19.00",
+      "Thu" : "08.00 - 19.00",
+      "Fri" : "08.00 - 19.00",
+      "Sat" : "08.00 - 19.00",
+      "Sun" : "08.00 - 19.00"
+    },
+    "chiusura_biglietteria" : "18.00",
+    "ultimo_ingresso" : "18.30"
   },
   "Musei Capitolini" : {
     "immagine": "assets/images/museocapitolino.jpg",
@@ -144,7 +201,36 @@
         "title":"Statua di Iside",
         "img": "assets/images/statua_di_iside.jpg"
       }
-    ]
+    ],
+    "note" : [
+      {
+        "testo": "Adibito per disabili",
+        "isTrue" : true
+      },
+      {
+        "testo" : "Visita interattiva",
+        "isTrue" : false
+      },
+      {
+        "testo" : "Percheggio a pagamento",
+        "isTrue" : false
+      },
+      {
+        "testo" : "Presenza guida",
+        "isTrue" : true
+      }
+    ],
+    "orario" : {
+      "Mon" : "08.00 - 19.00",
+      "Tue" : "08.00 - 19.00",
+      "Wed" : "08.00 - 19.00",
+      "Thu" : "08.00 - 19.00",
+      "Fri" : "08.00 - 19.00",
+      "Sat" : "08.00 - 19.00",
+      "Sun" : "CHIUSO"
+    },
+    "chiusura_biglietteria" : "18.00",
+    "ultimo_ingresso" : "18.30"
   },
   "Galleria Borghese" : {
     "immagine": "assets/images/galleriaborghese.jpg",
@@ -193,6 +279,35 @@
         "title":"Statua di Iside",
         "img": "assets/images/statua_di_iside.jpg"
       }
-    ]
+    ],
+    "note" : [
+      {
+        "testo": "Adibito per disabili",
+        "isTrue" : true
+      },
+      {
+        "testo" : "Visita interattiva",
+        "isTrue" : false
+      },
+      {
+        "testo" : "Percheggio a pagamento",
+        "isTrue" : false
+      },
+      {
+        "testo" : "Presenza guida",
+        "isTrue" : true
+      }
+    ],
+    "orario" : {
+      "Mon" : "08.00 - 19.00",
+      "Tue" : "08.00 - 19.00",
+      "Wed" : "08.00 - 19.00",
+      "Thu" : "08.00 - 19.00",
+      "Fri" : "08.00 - 19.00",
+      "Sat" : "08.00 - 19.00",
+      "Sun" : "08.00 - 19.00"
+    },
+    "chiusura_biglietteria" : "18.00",
+    "ultimo_ingresso" : "18.30"
   }
 }
