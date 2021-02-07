@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:prova_app/Object/biglietto.dart';
+import 'package:prova_app/Details/bigliettoDetails.dart';
 
 const String testoSenzaBiglietti = "Non hai prenotato alcun biglietto.";
 const double tSBsize = 20;
@@ -24,6 +25,13 @@ class Biglietti extends StatefulWidget {
 
 
 class _HomeState extends State<Biglietti> {
+
+  void reload(){
+    setState(() {
+
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -56,7 +64,26 @@ class _HomeState extends State<Biglietti> {
                           title: AutoSizeText(scaduti[ind].museo,style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
                           subtitle: AutoSizeText(scaduti[ind].data,style: TextStyle(color: listviewSubtitleColor)),
                           trailing: Icon(Icons.arrow_forward_ios_rounded),
-                          onTap: () {
+                          onTap: () async {
+                            final value = await Navigator.of(context).push(new PageRouteBuilder(
+                                opaque: true,
+                                transitionDuration: Duration(milliseconds: 225),
+                                pageBuilder: (BuildContext context, _, __) {
+                                  return new bigliettoDetails(prenotati[ind]);
+                                },
+                                transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
+
+                                  return new SlideTransition(
+                                    child: child,
+                                    position: new Tween<Offset>(
+                                      begin: const Offset(1, 0),
+                                      end: Offset.zero,
+                                    ).animate(animation),
+                                  );
+                                }
+                            )
+                            );
+                            reload();
                           },
                         ));
                       },
@@ -80,7 +107,27 @@ class _HomeState extends State<Biglietti> {
                             title: AutoSizeText(prenotati[ind].museo,style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
                             subtitle: AutoSizeText(prenotati[ind].data,style: TextStyle(color: listviewSubtitleColor)),
                             trailing: Icon(Icons.arrow_forward_ios_rounded),
-                            onTap: () {},
+                            onTap: () async {
+                              final value = await Navigator.of(context).push(new PageRouteBuilder(
+                                  opaque: true,
+                                  transitionDuration: Duration(milliseconds: 225),
+                                  pageBuilder: (BuildContext context, _, __) {
+                                    return new bigliettoDetails(prenotati[ind]);
+                                  },
+                                  transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
+
+                                    return new SlideTransition(
+                                      child: child,
+                                      position: new Tween<Offset>(
+                                        begin: const Offset(1, 0),
+                                        end: Offset.zero,
+                                      ).animate(animation),
+                                    );
+                                  }
+                              )
+                              );
+                              reload();
+                            },
                           ));
                     },
                   )),
@@ -103,7 +150,27 @@ class _HomeState extends State<Biglietti> {
                             title:AutoSizeText(prenotati[ind].museo,style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
                             subtitle: AutoSizeText(prenotati[ind].data,style: TextStyle(color: listviewSubtitleColor)),
                             trailing: Icon(Icons.arrow_forward_ios_rounded),
-                            onTap: () {},
+                            onTap: () async {
+                              final value = await Navigator.of(context).push(new PageRouteBuilder(
+                                  opaque: true,
+                                  transitionDuration: Duration(milliseconds: 225),
+                                  pageBuilder: (BuildContext context, _, __) {
+                                    return new bigliettoDetails(prenotati[ind]);
+                                  },
+                                  transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
+
+                                    return new SlideTransition(
+                                      child: child,
+                                      position: new Tween<Offset>(
+                                        begin: const Offset(1, 0),
+                                        end: Offset.zero,
+                                      ).animate(animation),
+                                    );
+                                  }
+                              )
+                              );
+                              reload();
+                            },
                           ));
                     },
                   )),
@@ -121,7 +188,26 @@ class _HomeState extends State<Biglietti> {
                         title: AutoSizeText(scaduti[ind].museo,style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
                         subtitle: AutoSizeText(scaduti[ind].data,style: TextStyle(color: listviewSubtitleColor)),
                         trailing: Icon(Icons.arrow_forward_ios_rounded),
-                        onTap: () {
+                        onTap: () async {
+                          final value = await Navigator.of(context).push(new PageRouteBuilder(
+                              opaque: true,
+                              transitionDuration: Duration(milliseconds: 225),
+                              pageBuilder: (BuildContext context, _, __) {
+                                return new bigliettoDetails(prenotati[ind]);
+                              },
+                              transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
+
+                                return new SlideTransition(
+                                  child: child,
+                                  position: new Tween<Offset>(
+                                    begin: const Offset(1, 0),
+                                    end: Offset.zero,
+                                  ).animate(animation),
+                                );
+                              }
+                          )
+                          );
+                          reload();
                         },
                       ));
                     },
