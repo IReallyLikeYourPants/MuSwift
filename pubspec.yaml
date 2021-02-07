@@ -23,6 +23,8 @@ environment:
 
 
 dependencies:
+  permission_handler: ^5.1.0+2
+  permission: ^0.1.7
   flutter_full_pdf_viewer: ^1.0.4
   intl: ^0.16.0
   sliding_up_panel: ^1.0.2
@@ -46,7 +48,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  google_maps_flutter: ^1.0.5
+  google_maps_flutter: ^1.2.0
   location: ^3.2.4
 
 dev_dependencies:
