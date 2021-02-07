@@ -1,16 +1,14 @@
 # MuSwift
 
-A new Flutter application.
+App android che rinchiude in se:
+- Le informazioni riguardo le opere e i musei
+- Mappa che mostra i musei nelle vicinanze
+- La prenotazione a tali musei
 
-## Getting Started
+Nella versione prodotta ci siamo focalizzati sulla città di Roma, anche se l’applicazione stessa
+potrebbe riguardare tutta l’Italia.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+L’utilizzo di questa app è orientata a chiunque fosse appassionato di opere/musei, quindi sia a
+persone di zona, ma anche ai turisti alla ricerca dei musei più importanti della città.
+Al suo interno oltre alle informazioni generali di tali beni, è possibile in modo semplice visualizzare
+su mappa i musei nelle vicinanze e prenotare in pochi passi la visita a un determinato museo.
