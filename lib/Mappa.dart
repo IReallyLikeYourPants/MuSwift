@@ -12,6 +12,8 @@ import 'dart:math';
 List recentiMappa = [];
 double COSTANTE_DI_OFFSET = 0.00532;
 
+
+
 class Mappa extends StatefulWidget {
   @override
   _MapScreenState createState() => _MapScreenState();
@@ -23,15 +25,9 @@ class _MapScreenState extends State<Mappa> {
     target: LatLng(41.9028, 12.4964),
     zoom: 14,
   );
+  String _mapStyle;
 
-  _onMapCreated(GoogleMapController controller) {
-    _controller.complete(controller);
-    if (mounted) {
-      setState(() {
-        _mapController = controller;
-      });
-    }
-  }
+
 
   void pointOnLocation(loc) async{
     GoogleMapController controller = await _controller.future;
@@ -68,7 +64,8 @@ class _MapScreenState extends State<Mappa> {
   //String _mapStyle;
   GoogleMapController _mapController;
   TextEditingController tc;
-
+  BitmapDescriptor vaticano;
+  BitmapDescriptor mapMarker;
 
   List<Marker> markers = [];
   List results = [];
@@ -83,37 +80,73 @@ class _MapScreenState extends State<Mappa> {
     };
   }
 
-
+  void setCustomMarker() async {
+      mapMarker = await BitmapDescriptor.fromAssetImage(
+          ImageConfiguration(size: Size(2, 2)), 'assets/images/iconamuseo3.png');
+  }
 
 
   initState() {
     super.initState();
-    /*rootBundle.loadString('assets/map_style.txt').then((string) {
+    rootBundle.loadString('assets/map_style.txt').then((string) {
       _mapStyle = string;
-    });*/
+    });
+    setCustomMarker();
+
     tc = TextEditingController();
 
+
+  }
+
+  _onMapCreated(GoogleMapController controller) {
+    _controller.complete(controller);
+    if (mounted) {
+      setState(() {
+        _mapController = controller;
+        controller.setMapStyle(_mapStyle);
+      });
+    }
     markers.add(
-      Marker(
-        markerId: MarkerId('Musei Vaticani'),
-        draggable: false,
-        position: LatLng(41.906487,12.453641),
-        onTap: (){
-          print('Hai tappato');
-          pointOnLocation(LatLng(41.906487,12.453641-COSTANTE_DI_OFFSET));
-        },
-      )
+        Marker(
+          markerId: MarkerId('Musei Vaticani'),
+          draggable: false,
+          position: LatLng(41.906487,12.453641),
+          icon: mapMarker,
+          onTap: (){
+            print('Hai tappato');
+            pointOnLocation(LatLng(41.906487,12.453641-COSTANTE_DI_OFFSET));
+            showModalBottomSheet<void>(
+              context: context,
+              builder: (BuildContext context){
+                return Container(
+                  color: Colors.yellow,
+                  height: 200,
+                );
+              }
+            );
+          },
+        )
     );
     markers.add(
-      Marker(
-        markerId: MarkerId('Musei Capitolini'),
-        draggable: false,
-        position: LatLng(41.892944,12.482558),
-        onTap: (){
-          print('Hai tappato');
-          pointOnLocation(LatLng(41.892944,12.482558-COSTANTE_DI_OFFSET));  // This is shifted for the lng by -0.0053: from (41.892944,12.482558) to(41.892944,12.477258)
-        },
-      )
+        Marker(
+          markerId: MarkerId('Musei Capitolini'),
+          draggable: false,
+          position: LatLng(41.892944,12.482558),
+          icon: mapMarker,
+          onTap: (){
+            print('Hai tappato');
+            pointOnLocation(LatLng(41.892944,12.482558-COSTANTE_DI_OFFSET));  // This is shifted for the lng by -0.0053: from (41.892944,12.482558) to(41.892944,12.477258)
+            showModalBottomSheet<void>(
+                context: context,
+                builder: (BuildContext context){
+                  return Container(
+                    color: Colors.yellow,
+                    height: 200,
+                  );
+                }
+            );
+          },
+        )
     );
 
   }

@@ -81,6 +81,7 @@ flutter:
     - assets/images/rattodiprospertina.jpg
     - assets/images/amoreepsiche.jpg
     - assets/images/statua_di_iside.jpg
+    - assets/images/iconamuseo3.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
