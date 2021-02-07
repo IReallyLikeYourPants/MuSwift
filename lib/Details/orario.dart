@@ -6,7 +6,6 @@ const FontWeight titleFontWeight = FontWeight.bold;
 const double textFontSize = 17;
 
 class orario extends StatelessWidget {
-
   String museo;
   var tabella;
   String giorno;

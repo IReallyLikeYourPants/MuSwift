@@ -450,7 +450,9 @@ class _museoPageState extends State<museoPage> {
                                         children: [
                                           Icon(Icons.watch_later_outlined, color: Colors.red,),
                                           SizedBox(width: 5,),
-                                          AutoSizeText("Esiste una prenotazione per questo museo", style: TextStyle( color: Colors.redAccent, fontSize: textFontSize),)
+                                          Flexible(
+                                            child: AutoSizeText("Esiste una prenotazione per questo museo", style: TextStyle( color: Colors.redAccent, fontSize: textFontSize),),
+                                          )
                                         ],
                                       ) : Container(),
                                       Row(
@@ -463,12 +465,12 @@ class _museoPageState extends State<museoPage> {
                                                           primary: buttonColor,
                                                           elevation: elevationButton
                                                       ),
-                                                      onPressed: () {
-                                                        Navigator.of(context).push(new PageRouteBuilder(
+                                                      onPressed: ()async {
+                                                        final value = await Navigator.of(context).push(new PageRouteBuilder(
                                                             opaque: true,
                                                             transitionDuration: Duration(milliseconds: 225),
                                                             pageBuilder: (BuildContext context, _, __) {
-                                                              return new prenotazione(nome, Museo.adulti, Museo.bambini);
+                                                              return new prenotazione(nome, Museo.luogo, Museo.adulti, Museo.bambini);
                                                             },
                                                             transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
 
@@ -482,6 +484,9 @@ class _museoPageState extends State<museoPage> {
                                                             }
                                                         )
                                                         );
+                                                        setState(() {
+
+                                                        });
                                                       },
                                                       child: Container(
                                                         width: double.infinity,

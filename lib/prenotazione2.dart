@@ -28,7 +28,7 @@ const double textPercentage = 0.25;
 
 const String textFieldColor = "FAFAFA";
 
-biglietto Biglietto = new biglietto();
+biglietto Biglietto;
 int adulti_prezzo;
 int bambini_prezzo;
 int adulti = 1;
@@ -67,8 +67,8 @@ class MaskedTextInputFormatter extends TextInputFormatter {
 
 class prenotazione extends StatefulWidget {
 
-  prenotazione(String museo, int adu, int bam){
-    Biglietto.museo = museo;
+  prenotazione(String museo, String luogo, int adu, int bam){
+    Biglietto = new biglietto(museo, luogo);
     adulti_prezzo = adu;
     bambini_prezzo = bam;
 
@@ -127,8 +127,8 @@ class _prenotazioneState extends State<prenotazione> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("Prenotazione", style: TextStyle( fontSize: titleFontSize, fontWeight: FontWeight.bold, color: HexColor(titleFontColor)), ),
-                                  Text(Biglietto.museo, style: TextStyle( fontSize: subTitleFontSize, fontWeight: FontWeight.bold, color: HexColor(titleFontColor)), ),
+                                  AutoSizeText("Prenotazione", style: TextStyle( fontSize: titleFontSize, fontWeight: FontWeight.bold, color: HexColor(titleFontColor)), ),
+                                  AutoSizeText(Biglietto.museo, style: TextStyle( fontSize: subTitleFontSize, fontWeight: FontWeight.bold, color: HexColor(titleFontColor)), ),
                                 ],
                               )
                             ],

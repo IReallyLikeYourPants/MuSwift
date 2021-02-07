@@ -23,6 +23,7 @@ environment:
 
 
 dependencies:
+  flutter_full_pdf_viewer: ^1.0.4
   intl: ^0.16.0
   sliding_up_panel: ^1.0.2
   flutter_number_picker:
@@ -62,26 +63,9 @@ dev_dependencies:
 flutter:
   assets:
     - assets/map_style.txt
-    - assets/images/deposizione.jpg
-    - assets/loadjson/musei.json
-    - assets/loadjson/opere.json
-    - assets/loadjson/viste.json
-    - assets/loadjson/infomusei.json
-    - assets/loadjson/infoopere.json
-    - assets/images/coming_soon.png
-    - assets/images/museovaticano.jpg
-    - assets/images/museocapitolino.jpg
-    - assets/images/nazionale.jpg
-    - assets/images/galleriaborghese.jpg
-    - assets/images/apollodelbelvedere.jpg
-    - assets/images/caritaconquattrofigli.jpg
-    - assets/images/gruppodellaoconte.jpg
-    - assets/images/david.jpg
-    - assets/images/apolloedafne.jpg
-    - assets/images/rattodiprospertina.jpg
-    - assets/images/amoreepsiche.jpg
-    - assets/images/statua_di_iside.jpg
-    - assets/images/iconamuseo3.png
+    - assets/images/
+    - assets/loadjson/
+    - assets/PDF/biglietto.pdf
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

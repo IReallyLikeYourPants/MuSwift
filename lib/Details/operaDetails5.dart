@@ -59,7 +59,6 @@ class operaDetails3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: AutoSizeText("Info", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
           backgroundColor: Colors.white,
           actions: [
             favorite()
@@ -183,11 +182,6 @@ class _moreInfoState extends State<moreInfo>{
                       ),
                       SizedBox(height: 20),
                       Divider(),
-                      AutoSizeText("Stile", style: TextStyle(fontSize: titleFontSize, color: subTextColorFont, fontWeight: FontWeight.bold)),
-                      AutoSizeText(snapshot.data.stile, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
-                      SizedBox(height: 20),
-                      Divider(),
-                      AutoSizeText("Storia", style: TextStyle(fontSize: titleFontSize, color: subTextColorFont, fontWeight: FontWeight.bold)),
                       Text(snapshot.data.storia, maxLines: 3, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
                       SizedBox(height: 5,),
                       Row(
@@ -223,7 +217,7 @@ class _moreInfoState extends State<moreInfo>{
                       ),
                       SizedBox(height: 10),
                       Divider(),
-                      AutoSizeText("Autore", style: TextStyle(fontSize: titleFontSize, color: subTextColorFont, fontWeight: FontWeight.bold)),
+                      AutoSizeText(snapshot.data.autore_real, style: TextStyle(fontSize: titleFontSize, color: subTextColorFont, fontWeight: FontWeight.bold)),
                       Text(snapshot.data.autore_storia, maxLines: 3, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
                       SizedBox(height: 5,),
                       Row(
