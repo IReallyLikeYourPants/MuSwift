@@ -121,7 +121,7 @@ class _MapScreenState extends State<Mappa> {
               context: context,
               builder: (BuildContext context){
                 return Container(
-                  height: 100,
+                  height: 500,
                   decoration: BoxDecoration(
                         color: Colors.green[300],
                         borderRadius: BorderRadius.all(Radius.circular(15))

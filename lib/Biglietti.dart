@@ -39,154 +39,31 @@ class _HomeState extends State<Biglietti> {
           title: new AutoSizeText("Biglietto", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
           backgroundColor: Colors.white,
         ),
-        body: Container(child:
+        body: Container(
+          padding: EdgeInsets.all((10)),
+          child:
         Stack(children: [
           Column(children: [
-            if (prenotati.isEmpty == true)
-              scaduti.isEmpty ? Expanded(child:
-              Container(child:
+            (prenotati.isEmpty) ?
+              Container(
+                width:  MediaQuery. of(context). size. width,
+                height: MediaQuery. of(context). size. width,
+                child:
               Center(child:
               Text(testoSenzaBiglietti,style:
               TextStyle(fontSize: tSBsize, color: tSBcolor, fontWeight: tSBweight)
-                ,)),),) :
-              Expanded(
-                  child: ListView(children: [
-                    SizedBox(width: double.infinity,child: AutoSizeText("   Biglietti Scaduti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 15),textAlign: TextAlign.left)),
-                    Divider(color: Colors.black54,),
-                    Expanded (child :
-                    ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      padding: EdgeInsets.only(top:10.0),
-                      shrinkWrap: true,
-                      itemCount: scaduti.length,
-                      itemBuilder: (con, ind) {
-                        return Card(color: listviewCardColor,child: ListTile(
-                          title: AutoSizeText(scaduti[ind].museo,style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                          subtitle: AutoSizeText(scaduti[ind].data,style: TextStyle(color: listviewSubtitleColor)),
-                          trailing: Icon(Icons.arrow_forward_ios_rounded),
-                          onTap: () async {
-                            final value = await Navigator.of(context).push(new PageRouteBuilder(
-                                opaque: true,
-                                transitionDuration: Duration(milliseconds: 225),
-                                pageBuilder: (BuildContext context, _, __) {
-                                  return new bigliettoDetails(prenotati[ind]);
-                                },
-                                transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
-
-                                  return new SlideTransition(
-                                    child: child,
-                                    position: new Tween<Offset>(
-                                      begin: const Offset(1, 0),
-                                      end: Offset.zero,
-                                    ).animate(animation),
-                                  );
-                                }
-                            )
-                            );
-                            reload();
-                          },
-                        ));
-                      },
-                    )),
-                  ],)
-              )
-            else scaduti.isEmpty? Expanded(
-                child: ListView(children: [
-                  SizedBox(width: double.infinity,child: AutoSizeText("   Biglietti Validi",style: TextStyle(color: Colors.black54,height: 2,fontSize: 15),textAlign: TextAlign.left)),
-                  Divider(color: Colors.black54,),
-                  Expanded (child :
-                  ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    padding: EdgeInsets.only(top:10.0),
-                    shrinkWrap: true,
-                    itemCount: prenotati == null ? 0 : prenotati.length,
-                    itemBuilder: (con, ind) {
-                      return Card (
-                          color: listviewCardColor,
-                          child: ListTile(
-                            title: AutoSizeText(prenotati[ind].museo,style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                            subtitle: AutoSizeText(prenotati[ind].data,style: TextStyle(color: listviewSubtitleColor)),
-                            trailing: Icon(Icons.arrow_forward_ios_rounded),
-                            onTap: () async {
-                              final value = await Navigator.of(context).push(new PageRouteBuilder(
-                                  opaque: true,
-                                  transitionDuration: Duration(milliseconds: 225),
-                                  pageBuilder: (BuildContext context, _, __) {
-                                    return new bigliettoDetails(prenotati[ind]);
-                                  },
-                                  transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
-
-                                    return new SlideTransition(
-                                      child: child,
-                                      position: new Tween<Offset>(
-                                        begin: const Offset(1, 0),
-                                        end: Offset.zero,
-                                      ).animate(animation),
-                                    );
-                                  }
-                              )
-                              );
-                              reload();
-                            },
-                          ));
-                    },
-                  )),
-                ],)
-            ) :
-            Expanded(
-                child: ListView(children: [
-                  SizedBox(width: double.infinity,child: AutoSizeText("   Biglietti Validi",style: TextStyle(color: Colors.black54,height: 2,fontSize: 15),textAlign: TextAlign.left)),
-                  Divider(color: Colors.black54,),
-                  Expanded (child :
-                  ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    padding: EdgeInsets.only(top:10.0),
-                    shrinkWrap: true,
-                    itemCount: prenotati == null ? 0 : prenotati.length,
-                    itemBuilder: (con, ind) {
-                      return Card (
-                          color: listviewCardColor,
-                          child: ListTile(
-                            title:AutoSizeText(prenotati[ind].museo,style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                            subtitle: AutoSizeText(prenotati[ind].data,style: TextStyle(color: listviewSubtitleColor)),
-                            trailing: Icon(Icons.arrow_forward_ios_rounded),
-                            onTap: () async {
-                              final value = await Navigator.of(context).push(new PageRouteBuilder(
-                                  opaque: true,
-                                  transitionDuration: Duration(milliseconds: 225),
-                                  pageBuilder: (BuildContext context, _, __) {
-                                    return new bigliettoDetails(prenotati[ind]);
-                                  },
-                                  transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
-
-                                    return new SlideTransition(
-                                      child: child,
-                                      position: new Tween<Offset>(
-                                        begin: const Offset(1, 0),
-                                        end: Offset.zero,
-                                      ).animate(animation),
-                                    );
-                                  }
-                              )
-                              );
-                              reload();
-                            },
-                          ));
-                    },
-                  )),
-
-                  SizedBox(width: double.infinity,child: AutoSizeText("   Biglietti Scaduti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 15),textAlign: TextAlign.left)),
-                  Divider(color: Colors.black54,),
-                  Expanded (child :
-                  ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    padding: EdgeInsets.only(top:10.0),
-                    shrinkWrap: true,
-                    itemCount: scaduti.length,
-                    itemBuilder: (con, ind) {
-                      return Card(color: listviewCardColor,child: ListTile(
-                        title: AutoSizeText(scaduti[ind].museo,style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                        subtitle: AutoSizeText(scaduti[ind].data,style: TextStyle(color: listviewSubtitleColor)),
+                ,)),) :
+              ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.only(top:10.0),
+                shrinkWrap: true,
+                itemCount: prenotati == null ? 0 : prenotati.length,
+                itemBuilder: (con, ind) {
+                  return Card (
+                      color: listviewCardColor,
+                      child: ListTile(
+                        title:AutoSizeText(prenotati[ind].museo,style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
+                        subtitle: AutoSizeText(prenotati[ind].data,style: TextStyle(color: listviewSubtitleColor)),
                         trailing: Icon(Icons.arrow_forward_ios_rounded),
                         onTap: () async {
                           final value = await Navigator.of(context).push(new PageRouteBuilder(
@@ -210,14 +87,13 @@ class _HomeState extends State<Biglietti> {
                           reload();
                         },
                       ));
-                    },
-                  )),
-                ],)
-            )
-
-
-          ],)
-        ],),)
+                },
+              )
+          ],
+          )
+        ],
+        ),
+        )
     );
   }
 }
