@@ -119,8 +119,35 @@ class _MapScreenState extends State<Mappa> {
               context: context,
               builder: (BuildContext context){
                 return Container(
-                  color: Colors.yellow,
-                  height: 200,
+                  color: Colors.white,
+                  height: 100,
+                  child:
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AutoSizeText("Musei Vaticani", style: TextStyle(fontSize: titleFontSize, color: Colors.black , fontWeight: FontWeight.bold)),
+                        SizedBox(height: 10),
+                        ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    primary: Colors.white,
+                                ),
+                                onPressed: () {
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  child: AutoSizeText(
+                                    "INFO",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: Colors.black87,
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                )
+                            )
+                      ]
+
+                    )
                 );
               }
             );
@@ -141,7 +168,7 @@ class _MapScreenState extends State<Mappa> {
               builder: (BuildContext context){
                 return Container(
                   color: Colors.yellow,
-                  height: 200,
+                  height: 100,
                 );
               }
             );
@@ -162,7 +189,7 @@ class _MapScreenState extends State<Mappa> {
                 builder: (BuildContext context){
                   return Container(
                     color: Colors.yellow,
-                    height: 200,
+                    height: 100,
                   );
                 }
             );
@@ -183,7 +210,7 @@ class _MapScreenState extends State<Mappa> {
                 builder: (BuildContext context){
                   return Container(
                     color: Colors.yellow,
-                    height: 200,
+                    height: 100,
                   );
                 }
             );
