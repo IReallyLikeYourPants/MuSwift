@@ -82,7 +82,7 @@ class _MapScreenState extends State<Mappa> {
 
   void setCustomMarker() async {
       mapMarker = await BitmapDescriptor.fromAssetImage(
-          ImageConfiguration(size: Size(2, 2)), 'assets/images/iconamuseo3.png');
+          ImageConfiguration(size: Size(1, 1)), 'assets/images/iconamuseo3.png');
   }
 
 
@@ -129,6 +129,27 @@ class _MapScreenState extends State<Mappa> {
     );
     markers.add(
         Marker(
+          markerId: MarkerId("Museo Nazionale Castel Sant'Angelo"),
+          draggable: false,
+          position: LatLng(41.90308,12.4661811),
+          icon: mapMarker,
+          onTap: (){
+            print('Hai tappato');
+            pointOnLocation(LatLng(41.90308,12.4661811-COSTANTE_DI_OFFSET));
+            showModalBottomSheet<void>(
+              context: context,
+              builder: (BuildContext context){
+                return Container(
+                  color: Colors.yellow,
+                  height: 200,
+                );
+              }
+            );
+          },
+        )
+    );
+    markers.add(
+        Marker(
           markerId: MarkerId('Musei Capitolini'),
           draggable: false,
           position: LatLng(41.892944,12.482558),
@@ -136,6 +157,27 @@ class _MapScreenState extends State<Mappa> {
           onTap: (){
             print('Hai tappato');
             pointOnLocation(LatLng(41.892944,12.482558-COSTANTE_DI_OFFSET));  // This is shifted for the lng by -0.0053: from (41.892944,12.482558) to(41.892944,12.477258)
+            showModalBottomSheet<void>(
+                context: context,
+                builder: (BuildContext context){
+                  return Container(
+                    color: Colors.yellow,
+                    height: 200,
+                  );
+                }
+            );
+          },
+        )
+    );
+    markers.add(
+        Marker(
+          markerId: MarkerId('Galleria Borghese'),
+          draggable: false,
+          position: LatLng(41.9083963664,12.4885313792),
+          icon: mapMarker,
+          onTap: (){
+            print('Hai tappato');
+            pointOnLocation(LatLng(41.9083963664,12.4885313792-COSTANTE_DI_OFFSET));  // This is shifted for the lng by -0.0053: from (41.892944,12.482558) to(41.892944,12.477258)
             showModalBottomSheet<void>(
                 context: context,
                 builder: (BuildContext context){
@@ -264,19 +306,32 @@ class _MapScreenState extends State<Mappa> {
                                     itemCount: results.length,
                                     itemBuilder: (con, ind) {
                                       return Container(
+                                          height: 50,
+                                          width: 200,
                                           color: Colors.white,
                                           child : ListTile(
-                                            title: AutoSizeText(rows[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                            subtitle: AutoSizeText(rows[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
-
+                                            title: AutoSizeText(results[ind]['title'],style: TextStyle(color: listviewTitleColor)),
                                             onTap: () {
                                               print("Hai cliccato nella listview");
-                                              pointOnLocation(LatLng(41.906487,12.453641));
-                                              if(titoli.contains(rows[ind]['title'])==false){
-                                                titoli.add(rows[ind]['title']);
-                                                recentiMappa.insert(0,rows[ind]);
+
+                                              String titolo = results[ind]['title'];
+
+                                              for (var i = 0; i < markers.length; i++){
+                                                if (markers[i].markerId == MarkerId(titolo)){
+                                                  print(markers[i].markerId);
+                                                  print(titolo);
+                                                  print(MarkerId(titolo));
+                                                  print(markers[i].markerId == MarkerId(titolo));
+                                                  pointOnLocation(LatLng(markers[i].position.latitude,markers[i].position.longitude-COSTANTE_DI_OFFSET));
+                                                }
+                                              };
+
+                                              if(titoli.contains(results[ind]['title'])==false){
+                                                titoli.add(results[ind]['title']);
+                                                recentiMappa.insert(0,results[ind]);
                                               };
                                               print(recentiMappa);
+
 
                                             },
                                           ));
@@ -303,7 +358,7 @@ class _MapScreenState extends State<Mappa> {
         .toString()
         .toLowerCase()
         .contains(query.toLowerCase()) ||
-        elem['nav'].toString()
+        elem['title'].toString()
             .toString()
             .toLowerCase()
             .contains(query.toLowerCase()))
