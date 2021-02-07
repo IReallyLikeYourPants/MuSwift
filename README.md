@@ -1,6 +1,6 @@
 # MuSwift
 
-App android che rinchiude in se:
+App android friendly-user con:
 - Le informazioni riguardo le opere e i musei
 - Mappa che mostra i musei nelle vicinanze
 - La prenotazione a tali musei
