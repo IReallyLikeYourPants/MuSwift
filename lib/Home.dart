@@ -215,7 +215,7 @@ class StorageUploadState extends State<Home> with TickerProviderStateMixin{
                     :
                     Container(
                       height: MediaQuery.of(context).size.height * itemHeightPercentage,
-                      child: Expanded(child: FutureBuilder(
+                      child: FutureBuilder(
                         builder: (context,snapshot) {
                           return ListView.builder(
                             padding: EdgeInsets.only(left: leftPadding, bottom: rowsPadding),
@@ -271,7 +271,7 @@ class StorageUploadState extends State<Home> with TickerProviderStateMixin{
                           );
                         },
 
-                      ))
+                      )
                     ),
                   ],
                 )
