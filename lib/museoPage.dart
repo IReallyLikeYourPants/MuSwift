@@ -512,6 +512,30 @@ class _museoPageState extends State<museoPage> {
                                                           elevation: elevationButton
                                                       ),
                                                       onPressed: () {
+                                                        showDialog<void>(
+                                                          context: context,
+                                                          barrierDismissible: true, // user can tap button!
+                                                          builder: (BuildContext context) {
+                                                            return AlertDialog(
+                                                              title: Text('Avvertenza'),
+                                                              content: SingleChildScrollView(
+                                                                child: ListBody(
+                                                                  children: <Widget>[
+                                                                    Text('Questa funzionalità non è stata implementata'),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              actions: <Widget>[
+                                                                TextButton(
+                                                                  child: Text('Ok'),
+                                                                  onPressed: () {
+                                                                    Navigator.of(context).pop();
+                                                                  },
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
                                                       },
                                                       child: Container(
                                                         width: double.infinity,
