@@ -211,56 +211,8 @@ class StorageUploadState extends State<Home> with TickerProviderStateMixin{
                     ),
                     Divider(),
                     preferiti.isEmpty ?
-                    Container(
-                        height: MediaQuery.of(context).size.height * itemHeightPercentage,
-                        child: Expanded(child: FutureBuilder(
-                          future: DefaultAssetBundle.of(context).loadString('assets/loadjson/viste.json'),
-                          builder: (context, snapshot){
-                            var newViste = json.decode(snapshot.data.toString());
-
-                            return ListView.builder(
-                              padding: EdgeInsets.only(left: leftPadding, bottom: rowsPadding/2),
-                              scrollDirection: Axis.horizontal,
-                              itemCount: newViste == null ? 0 : newViste.length,
-                              itemBuilder: (BuildContext context, int index){
-                                return GestureDetector(
-                                  onTap: (){
-
-                                  },
-                                  child: Container( // primo elemento della prima lista di opere
-                                    padding: EdgeInsets.all(itemPadding),
-                                    margin: EdgeInsets.only(right: 10.0), // il bordo tra un'opera e l'altraZ
-                                    width: MediaQuery.of(context).size.width * itemWidthPercentage,
-                                    decoration: BoxDecoration(
-                                      color: HexColor(itemBackgroundColor),
-                                      borderRadius: new BorderRadius.all( // per i bordi arrotondati
-                                          new Radius.circular(5.0)
-                                      ),
-                                      image: new DecorationImage( // per metterci l'immagine dentro
-                                        image: new ExactAssetImage(
-                                          newViste[index]['img'],
-                                        ),
-                                        fit: BoxFit.cover, // per adattarla al container
-                                      ),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey,
-                                          offset: Offset(0.0, 1.0), //(x,y)
-                                          blurRadius: 6.0,
-                                        )
-                                      ],
-                                    ),
-                                    child: Align( // per allineare la scritta in una posizione specifica
-                                        alignment: Alignment.bottomLeft,
-                                        child: AutoSizeText(newViste[index]['title'], style: TextStyle(fontSize: itemTitleFontSize, color: itemFontColor),)
-                                    ),
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                        ))
-                    ):
+                    Container(child: Center(child: AutoSizeText("Nessun preferito")))
+                    :
                     Container(
                       height: MediaQuery.of(context).size.height * itemHeightPercentage,
                       child: Expanded(child: FutureBuilder(
