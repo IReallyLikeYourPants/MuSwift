@@ -1,6 +1,6 @@
 # MuSwift
 
-App android friendly-user con:
+App Android friendly-user con:
 - Le informazioni riguardo le opere e i musei
 - Mappa che mostra i musei nelle vicinanze
 - La prenotazione a tali musei
