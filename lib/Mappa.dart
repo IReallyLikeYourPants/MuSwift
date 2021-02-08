@@ -597,9 +597,12 @@ class _MapScreenState extends State<Mappa> {
                                         print(rows);
                                         setResults(query,rows);
                                       });
+                                      print(results);
                                     },
                                     onSubmitted: (v) {
                                       setState(() {});
+                                      print(results);
+
                                     },
                                   ),
                                 ),
@@ -616,7 +619,8 @@ class _MapScreenState extends State<Mappa> {
                               //SizedBox(width: double.infinity,child: AutoSizeText("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
                               //Divider(color: Colors.black54,),
                               SizedBox(width: MediaQuery. of(context). size.width),
-                              results.isEmpty ? Container() : Container(height: (results.length > 10) ? 300 : results.length * 50.0, width: MediaQuery. of(context). size.width * 0.87,
+                              results.isEmpty ? Container() :
+                              Container(height: (results.length > 10) ? 300 : results.length * 50.0, width: MediaQuery. of(context). size.width * 0.87,
                                   child: ListView.builder(
                                 shrinkWrap: true,
                                 itemCount: results.length,
@@ -628,14 +632,11 @@ class _MapScreenState extends State<Mappa> {
                                       child : ListTile(
                                         title: AutoSizeText(results[ind]['title'],style: TextStyle(color: listviewTitleColor)),
                                         onTap: () {
-                                          setState(() {
-                                            query = "";
-                                            print(rows);
-                                            setResults(query,rows);
-                                          });
+
                                           print("Hai cliccato nella listview");
 
                                           String titolo = results[ind]['title'];
+                                          print(titolo);
 
                                           for (var i = 0; i < markers.length; i++){
                                             if (markers[i].markerId == MarkerId(titolo)){
@@ -647,11 +648,11 @@ class _MapScreenState extends State<Mappa> {
                                             }
                                           };
 
-                                          if(titoli.contains(results[ind]['title'])==false){
-                                            titoli.add(results[ind]['title']);
-                                            recentiMappa.insert(0,results[ind]);
-                                          };
-                                          print(recentiMappa);
+                                          setState(() {
+                                            query = "";
+                                            print(results);
+                                            setResults(query,rows);
+                                          });
 
 
                                         },
