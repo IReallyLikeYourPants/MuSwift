@@ -15,12 +15,13 @@ const listviewSubtitleColor = Colors.black;
 
 const FontWeight titleFontWeight = FontWeight.bold;
 
-List prenotati = [
-];
+List prenotati = [];
 List scaduti = [
 ];
 
 class Biglietti extends StatefulWidget {
+
+
   @override
   _HomeState createState() => _HomeState();
 }
@@ -36,6 +37,7 @@ class _HomeState extends State<Biglietti> {
 
   @override
   Widget build(BuildContext context) {
+
     return new Scaffold(
         appBar: new AppBar(
           title: new AutoSizeText("Biglietti", style: TextStyle(color: HexColor(bianco), fontWeight: titleFontWeight)),

@@ -114,7 +114,7 @@ class _moreInfoState extends State<moreInfo>{
     if(isDropped){
       return Icon(Icons.keyboard_arrow_down, size: 30,);
     }
-    return Container();
+    return Icon(Icons.keyboard_arrow_up, size: 30,);
   }
 
   Widget build(BuildContext context){
@@ -177,7 +177,22 @@ class _moreInfoState extends State<moreInfo>{
                         child: Center(
                           child: GestureDetector(
                             onTap: (){
+                              if(isDropped){
                                 dropping();
+                                _scrollController.animateTo(
+                                  MediaQuery. of(context). size. height * dropDownPixelPercentage,
+                                  curve: Curves.easeOut,
+                                  duration: const Duration(milliseconds: animationMilliseconds),
+                                );
+                              }
+                              else{
+                                dropping();
+                                _scrollController.animateTo(
+                                  0.0,
+                                  curve: Curves.easeOut,
+                                  duration: const Duration(milliseconds: animationMilliseconds),
+                                );
+                              }
                             },
                             child: dropDown(),
                           )
