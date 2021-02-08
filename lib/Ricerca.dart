@@ -317,7 +317,8 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                             ),
                                           ),
                                           title: AutoSizeText(rows[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                          subtitle: AutoSizeText(rows[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                          subtitle: (rows[ind]['tipo'] == 'museo') ? AutoSizeText(rows[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)) : AutoSizeText(rows[ind]['autore'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+
 
                                           onTap: () {
                                             if(titoli.contains(rows[ind]['title'])==false){
@@ -383,7 +384,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                   ),
                                                 ),
                                                 title: AutoSizeText(recenti[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                                subtitle: AutoSizeText(recenti[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                                  subtitle: (recenti[ind]['tipo'] == 'museo') ? AutoSizeText(recenti[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)) : AutoSizeText(recenti[ind]['autore'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                 onTap: () {
                                                   if(recenti[ind]['tipo'] == "museo") {
@@ -440,7 +441,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                             ),
                                           ),
                                           title: AutoSizeText(rows[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                          subtitle: AutoSizeText(rows[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                          subtitle: (rows[ind]['tipo'] == 'museo') ? AutoSizeText(rows[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)) : AutoSizeText(rows[ind]['autore'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                           onTap: () {
                                             if(titoli.contains(rows[ind]['title'])==false){
@@ -507,7 +508,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                           ),
                                                         ),
                                                         title: AutoSizeText(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                                        subtitle: AutoSizeText(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                                        subtitle: (results[ind]['tipo'] == 'museo') ? AutoSizeText(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)) : AutoSizeText(results[ind]['autore'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                         onTap: () {
                                                           if(titoli.contains(results[ind]['title'])==false){
@@ -563,7 +564,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                             ),
                                                           ),
                                                           title: AutoSizeText(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                                          subtitle: AutoSizeText(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                                          subtitle: (results[ind]['tipo'] == 'museo') ? AutoSizeText(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)) : AutoSizeText(results[ind]['autore'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                           onTap: () {
                                                             if(titoli.contains(results[ind]['title'])==false){
@@ -610,7 +611,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                             ),
                                                           ),
                                                           title: AutoSizeText(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                                          subtitle: AutoSizeText(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                                          subtitle: (results[ind]['tipo'] == 'museo') ? AutoSizeText(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)) : AutoSizeText(results[ind]['autore'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                           onTap: () {
                                                             if(titoli.contains(results[ind]['title'])==false){
