@@ -252,6 +252,7 @@ class _prenotazioneState extends State<prenotazione> {
                               )
                             ],
                           ),
+                          AutoSizeText("(Sotto i 15 anni inclusi)", style: TextStyle(fontSize: textFontSize, color: textFontColor)),
                           SizedBox(height: 30,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
