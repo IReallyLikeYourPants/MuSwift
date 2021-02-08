@@ -5,7 +5,7 @@ App android friendly-user con:
 - Mappa che mostra i musei nelle vicinanze
 - La prenotazione a tali musei
 
-Nella versione prodotta ci siamo focalizzati sulla città di Roma, anche se l’applicazione stessa
+Nella versione prodotta ci siamo focalizzati sulla città di Roma, anche se l’applicazione
 potrebbe riguardare tutta l’Italia.
 
 L’utilizzo di questa app è orientato a chiunque fosse appassionato di opere/musei, quindi sia a
