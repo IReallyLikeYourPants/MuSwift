@@ -449,10 +449,10 @@ class _museoPageState extends State<museoPage> {
                                       Divider(color: Colors.black),
                                       isBooked.contains(nome) ? Row(
                                         children: [
-                                          Icon(Icons.watch_later_outlined, color: Colors.red,),
+                                          Icon(Icons.watch_later_outlined, color: Colors.green,),
                                           SizedBox(width: 5,),
                                           Flexible(
-                                            child: AutoSizeText("Esiste una prenotazione per questo museo", style: TextStyle( color: Colors.redAccent, fontSize: textFontSize),),
+                                            child: AutoSizeText("Esiste una prenotazione per questo museo", style: TextStyle( color: Colors.green, fontSize: textFontSize),),
                                           )
                                         ],
                                       ) : Container(),

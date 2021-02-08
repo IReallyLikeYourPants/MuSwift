@@ -17,8 +17,8 @@ import 'museoPage.dart';
 List recentiMappa = [];
 double COSTANTE_DI_OFFSET = 0.00532;
 const double boxHeightPercentage = 0.25;
-const double titleFontSize = 30;
-const double subtitleFontSize = 20;
+const double titleFontSize = 20;
+const double subtitleFontSize = 15;
 
 class Mappa extends StatefulWidget {
   @override

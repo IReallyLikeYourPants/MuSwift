@@ -206,7 +206,7 @@ class StorageUploadState extends State<Home> with TickerProviderStateMixin{
                       child: new Padding(
                           padding: new EdgeInsets.only(left: leftPadding), // padding è lo spazio vuoto
                           child: new AutoSizeText(
-                            'Musei preferiti',
+                            'Preferiti',
                             style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
                           )
                       ),
