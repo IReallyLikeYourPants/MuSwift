@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:intl/intl.dart';
+import 'package:prova_app/constant.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 const FontWeight titleFontWeight = FontWeight.bold;
 const double textFontSize = 17;
@@ -29,13 +31,13 @@ class orario extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           leading: GestureDetector(
-            child: Icon(Icons.arrow_back, color: Colors.black,),
+            child: Icon(Icons.arrow_back, color: HexColor(bianco),),
             onTap: (){
               Navigator.pop(context);
             },
           ),
-          title: AutoSizeText('Orario', style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
-          backgroundColor: Colors.white,
+          title: AutoSizeText('Orario', style: TextStyle(color: HexColor(bianco), fontWeight: titleFontWeight)),
+          backgroundColor: HexColor(primoColor),
         ),
         body: ListView(
           children: [

@@ -36,6 +36,7 @@ int totale;
 String nome;
 String cognome;
 var chiuso;
+DateTime oggi;
 
 class MaskedTextInputFormatter extends TextInputFormatter {
   final String mask;
@@ -73,6 +74,12 @@ class prenotazione extends StatefulWidget {
     bambini_prezzo = bam;
     chiuso = c;
     totale = adu;
+
+    oggi = DateTime.now();
+
+    while(chiuso.contains(DateFormat('E').format(oggi))){
+      oggi = oggi.add(Duration(days: 1));
+    }
   }
 
   @override
@@ -322,7 +329,7 @@ class _prenotazioneState extends State<prenotazione> {
   _selectDate(BuildContext context) async {
     DateTime newSelectedDate = await showDatePicker(
         context: context,
-        initialDate: _selectedDate != null ? _selectedDate : DateTime.now(),
+        initialDate: _selectedDate != null ? _selectedDate : oggi,
         firstDate: DateTime(2000),
         lastDate: DateTime(2040),
         selectableDayPredicate: _decideWhichDayToEnable,

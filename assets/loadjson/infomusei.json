@@ -234,7 +234,7 @@
       "Sun" : "CHIUSO"
     },
     "chiuso" : [
-      "Mon", "Sat"
+      "Mon", "Tue", "Sat"
     ],
     "chiusura_biglietteria" : "18.00",
     "ultimo_ingresso" : "18.30"

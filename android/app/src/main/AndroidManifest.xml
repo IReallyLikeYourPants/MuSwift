@@ -9,8 +9,8 @@
 
 
     <application
-        android:label="prova_app"
-        android:icon="@mipmap/ic_launcher">
+        android:label="MuSwift"
+        android:icon="@mipmap/launcher_icon">
        <meta-data android:name="com.google.android.geo.API_KEY"
            android:value="AIzaSyC9j6wY3A5mEgP39hAGgoscEkYxUmLK9Z4"/>
         <activity

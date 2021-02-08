@@ -528,7 +528,7 @@ class _museoPageState extends State<museoPage> {
                                                               ),
                                                               actions: <Widget>[
                                                                 TextButton(
-                                                                  child: Text('Ok'),
+                                                                  child: Text('OK'),
                                                                   onPressed: () {
                                                                     Navigator.of(context).pop();
                                                                   },

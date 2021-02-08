@@ -62,7 +62,8 @@ class operaDetails3 extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: HexColor(primoColor),
           actions: [
-            favorite()
+            favorite(),
+            SizedBox(width: 20,)
           ],
           leading: GestureDetector(
             child: Icon(Icons.arrow_back, color: HexColor(bianco)),
@@ -312,7 +313,7 @@ class _moreInfoState extends State<moreInfo>{
                                               ),
                                               actions: <Widget>[
                                                 TextButton(
-                                                  child: Text('Ok'),
+                                                  child: Text('OK'),
                                                   onPressed: () {
                                                     Navigator.of(context).pop();
                                                   },

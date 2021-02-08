@@ -111,7 +111,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
       };
     }
     return Theme(data: Theme.of(context).copyWith(), child: Container(
-        color: statusBarColor,
+        color: HexColor(primoColor),
         child: SafeArea(
             child: FutureBuilder(
                 future: loadJson(),
@@ -191,7 +191,7 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                             Navigator.pop(context);
                           },
                         ),
-                        backgroundColor: Colors.white,
+                        backgroundColor: HexColor(primoColor),
                         bottom: TabBar(
                           controller: _tabController,
                           indicatorColor: tabIndicatorColor,
@@ -279,34 +279,96 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                       ),
 
                       backgroundColor: HexColor(backroundColor),
-                      body: Container(
-                        padding: EdgeInsets.only(top:10),
-                        child: Stack(
-                          children: [
-                            Column(
-                              children: [
-                                query.isEmpty ?
-                                Expanded(
-                                    child:
-                                    Column(children : [
-                                      titoli.isEmpty ?
-                                      Expanded(child:
-                                      ListView(children: [
-                                        SizedBox(width: double.infinity,child: AutoSizeText(
-                                          '  Consigliati',
-                                          style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
+                      body: Column(
+                        children: [
+                          query.isEmpty ?
+                          Expanded(
+                              child:
+                              Column(children : [
+                                titoli.isEmpty ?
+                                Expanded(child:
+                                ListView(children: [
+                                  SizedBox(width: double.infinity,child: AutoSizeText(
+                                    '  Consigliati',
+                                    style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
+                                  )),
+                                  Divider(color: Colors.black54,),
+                                  Container (child :
+                                  ListView.builder(
+                                    physics: NeverScrollableScrollPhysics(),
+                                    padding: EdgeInsets.only(top:10.0),
+                                    shrinkWrap: true,
+                                    itemCount: rows.length,
+                                    itemBuilder: (con, ind) {
+                                      return Container(
+                                        padding: EdgeInsets.only(bottom: 5, left: 10, right: 10),
+                                        child: Card(color: listviewCardColor,child: ListTile(
+                                          leading: Container(
+                                            width: itemImageSizeWidth,
+                                            height: itemImageSizeHeight,
+                                            decoration: BoxDecoration(
+                                                borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                                    new Radius.circular(roundedValue)
+                                                ),
+                                                image : DecorationImage(
+                                                    fit: BoxFit.cover,
+                                                    image: AssetImage(rows[ind]['img'].toString())
+                                                )
+                                            ),
+                                          ),
+                                          title: AutoSizeText(rows[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
+                                          subtitle: AutoSizeText(rows[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+
+                                          onTap: () {
+                                            if(titoli.contains(rows[ind]['title'])==false){
+                                              titoli.add(rows[ind]['title']);
+                                              recenti.insert(0,rows[ind]);
+
+                                            }
+
+                                            if(rows[ind]['tipo'] == "museo") {
+
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          museoPage(
+                                                            rows[ind]['title'],
+                                                          )
+                                                  )
+                                              );
+                                            }
+                                            else Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) => operaDetails3(rows[ind]['img'], rows[ind]['title'])
+                                                )
+                                            );
+                                          },
                                         )),
-                                        Divider(color: Colors.black54,),
-                                        Expanded (child :
-                                        ListView.builder(
-                                          physics: NeverScrollableScrollPhysics(),
-                                          padding: EdgeInsets.only(top:10.0),
-                                          shrinkWrap: true,
-                                          itemCount: rows.length,
-                                          itemBuilder: (con, ind) {
-                                            return Container(
-                                              padding: EdgeInsets.only(bottom: 5, left: 10, right: 10),
-                                              child: Card(color: listviewCardColor,child: ListTile(
+                                      );
+                                    },
+                                  )),
+                                ],)) :
+                                Expanded(child:
+                                ListView(children: [
+                                  SizedBox(width: double.infinity,child: AutoSizeText(
+                                    '  Recenti',
+                                    style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
+                                  )),
+                                  Divider(color: Colors.black54,),
+                                  Container (child :
+                                  ListView.builder(
+                                    physics: NeverScrollableScrollPhysics(),
+                                    padding: EdgeInsets.only(top:10.0),
+                                    shrinkWrap: true,
+                                    itemCount: recenti == null ? 0 : recenti.length,
+                                    itemBuilder: (con, ind) {
+                                      return Container(
+                                          padding: EdgeInsets.only(bottom: 5, left: 10, right: 10),
+                                          child : Card (
+                                              color: listviewCardColor,
+                                              child: ListTile(
                                                 leading: Container(
                                                   width: itemImageSizeWidth,
                                                   height: itemImageSizeHeight,
@@ -316,28 +378,21 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                       ),
                                                       image : DecorationImage(
                                                           fit: BoxFit.cover,
-                                                          image: AssetImage(rows[ind]['img'].toString())
+                                                          image: AssetImage(recenti[ind]['img'].toString())
                                                       )
                                                   ),
                                                 ),
-                                                title: AutoSizeText(rows[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                                subtitle: AutoSizeText(rows[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                                title: AutoSizeText(recenti[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
+                                                subtitle: AutoSizeText(recenti[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                 onTap: () {
-                                                  if(titoli.contains(rows[ind]['title'])==false){
-                                                    titoli.add(rows[ind]['title']);
-                                                    recenti.insert(0,rows[ind]);
-
-                                                  }
-
-                                                  if(rows[ind]['tipo'] == "museo") {
-
+                                                  if(recenti[ind]['tipo'] == "museo") {
                                                     Navigator.push(
                                                         context,
                                                         MaterialPageRoute(
                                                             builder: (context) =>
                                                                 museoPage(
-                                                                  rows[ind]['title'],
+                                                                  recenti[ind]['title'],
                                                                 )
                                                         )
                                                     );
@@ -345,32 +400,97 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                   else Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
-                                                          builder: (context) => operaDetails3(rows[ind]['img'], rows[ind]['title'])
+                                                          builder: (context) => operaDetails3(recenti[ind]['img'], recenti[ind]['title'])
                                                       )
                                                   );
                                                 },
-                                              )),
+                                              ))
+                                      );
+                                    },
+                                  )),
+
+                                  SizedBox(width: double.infinity,child: AutoSizeText(
+                                    '  Consigliati',
+                                    style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
+                                  )),
+                                  Divider(color: Colors.black54,),
+                                  Container (child :
+                                  ListView.builder(
+                                    physics: NeverScrollableScrollPhysics(),
+                                    padding: EdgeInsets.only(top:10.0),
+                                    shrinkWrap: true,
+                                    itemCount: rows.length,
+                                    itemBuilder: (con, ind) {
+                                      return Container(
+                                        padding: EdgeInsets.only(bottom: 5, left: 10, right: 10),
+                                        child: Card(
+                                            color: listviewCardColor,child:
+                                        ListTile(
+                                          leading: Container(
+                                            width: itemImageSizeWidth,
+                                            height: itemImageSizeHeight,
+                                            decoration: BoxDecoration(
+                                                borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                                    new Radius.circular(roundedValue)
+                                                ),
+                                                image : DecorationImage(
+                                                    fit: BoxFit.cover,
+                                                    image: AssetImage(rows[ind]['img'].toString())
+                                                )
+                                            ),
+                                          ),
+                                          title: AutoSizeText(rows[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
+                                          subtitle: AutoSizeText(rows[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+
+                                          onTap: () {
+                                            if(titoli.contains(rows[ind]['title'])==false){
+                                              titoli.add(rows[ind]['title']);
+                                              recenti.insert(0,rows[ind]);
+
+                                            }
+
+                                            if(rows[ind]['tipo'] == "museo") {
+
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          museoPage(
+                                                            rows[ind]['title'],
+                                                          )
+                                                  )
+                                              );
+                                            }
+                                            else Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) => operaDetails3(rows[ind]['img'], rows[ind]['title'])
+                                                )
                                             );
                                           },
                                         )),
-                                      ],)) :
-                                          Expanded(child:
-                                          ListView(children: [
-                                            SizedBox(width: double.infinity,child: AutoSizeText(
-                                              '  Recenti',
-                                              style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
-                                            )),
-                                            Divider(color: Colors.black54,),
-                                            Expanded (child :
-                                            ListView.builder(
-                                              physics: NeverScrollableScrollPhysics(),
-                                              padding: EdgeInsets.only(top:10.0),
-                                              shrinkWrap: true,
-                                              itemCount: recenti == null ? 0 : recenti.length,
-                                              itemBuilder: (con, ind) {
-                                                return Container(
+                                      );
+                                    },
+                                  )),
+                                ],))
+                              ]))
+                              : Expanded(
+                              child: Column(children : [
+                                //SizedBox(width: double.infinity,child: AutoSizeText("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
+                                //Divider(color: Colors.black54,),
+                                SizedBox(height: 5,),
+                                Expanded(
+                                    child: TabBarView(
+                                        controller : _tabController,
+                                        children: [
+                                          ListView.builder(
+                                            padding: EdgeInsets.only(top:10.0),
+                                            shrinkWrap: true,
+                                            itemCount: results.length,
+                                            itemBuilder: (con, ind) {
+                                              return Container(
                                                   padding: EdgeInsets.only(bottom: 5, left: 10, right: 10),
-                                                  child : Card (
+                                                  child : Card(
                                                       color: listviewCardColor,
                                                       child: ListTile(
                                                         leading: Container(
@@ -382,21 +502,28 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                               ),
                                                               image : DecorationImage(
                                                                   fit: BoxFit.cover,
-                                                                  image: AssetImage(recenti[ind]['img'].toString())
+                                                                  image: AssetImage(results[ind]['img'].toString())
                                                               )
                                                           ),
                                                         ),
-                                                        title: AutoSizeText(recenti[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                                        subtitle: AutoSizeText(recenti[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+                                                        title: AutoSizeText(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
+                                                        subtitle: AutoSizeText(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
                                                         onTap: () {
-                                                          if(recenti[ind]['tipo'] == "museo") {
+                                                          if(titoli.contains(results[ind]['title'])==false){
+                                                            titoli.add(results[ind]['title']);
+                                                            recenti.insert(0,results[ind]);
+
+                                                          }
+
+                                                          if(results[ind]['tipo'] == "museo") {
+
                                                             Navigator.push(
                                                                 context,
                                                                 MaterialPageRoute(
                                                                     builder: (context) =>
                                                                         museoPage(
-                                                                          recenti[ind]['title'],
+                                                                          results[ind]['title'],
                                                                         )
                                                                 )
                                                             );
@@ -404,246 +531,113 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                                                           else Navigator.push(
                                                               context,
                                                               MaterialPageRoute(
-                                                                  builder: (context) => operaDetails3(recenti[ind]['img'], recenti[ind]['title'])
-                                                              )
-                                                          );
-                                                        },
-                                                      ))
-                                                );
-                                              },
-                                            )),
-
-                                            SizedBox(width: double.infinity,child: AutoSizeText(
-                                              '  Consigliati',
-                                              style: new TextStyle(fontWeight: titleFontWeight, fontSize: titleFontSize, color: titleFontColor),
-                                            )),
-                                            Divider(color: Colors.black54,),
-                                            Expanded (child :
-                                            ListView.builder(
-                                              physics: NeverScrollableScrollPhysics(),
-                                              padding: EdgeInsets.only(top:10.0),
-                                              shrinkWrap: true,
-                                              itemCount: rows.length,
-                                              itemBuilder: (con, ind) {
-                                                return Container(
-                                                  padding: EdgeInsets.only(bottom: 5, left: 10, right: 10),
-                                                  child: Card(
-                                                      color: listviewCardColor,child:
-                                                  ListTile(
-                                                    leading: Container(
-                                                      width: itemImageSizeWidth,
-                                                      height: itemImageSizeHeight,
-                                                      decoration: BoxDecoration(
-                                                          borderRadius: new BorderRadius.all( // per i bordi arrotondati
-                                                              new Radius.circular(roundedValue)
-                                                          ),
-                                                          image : DecorationImage(
-                                                              fit: BoxFit.cover,
-                                                              image: AssetImage(rows[ind]['img'].toString())
-                                                          )
-                                                      ),
-                                                    ),
-                                                    title: AutoSizeText(rows[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                                    subtitle: AutoSizeText(rows[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
-
-                                                    onTap: () {
-                                                      if(titoli.contains(rows[ind]['title'])==false){
-                                                        titoli.add(rows[ind]['title']);
-                                                        recenti.insert(0,rows[ind]);
-
-                                                      }
-
-                                                      if(rows[ind]['tipo'] == "museo") {
-
-                                                        Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder: (context) =>
-                                                                    museoPage(
-                                                                      rows[ind]['title'],
-                                                                    )
-                                                            )
-                                                        );
-                                                      }
-                                                      else Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                              builder: (context) => operaDetails3(rows[ind]['img'], rows[ind]['title'])
-                                                          )
-                                                      );
-                                                    },
-                                                  )),
-                                                );
-                                              },
-                                            )),
-                                          ],))
-                                    ]))
-                                    : Expanded(
-                                    child: Column(children : [
-                                      //SizedBox(width: double.infinity,child: AutoSizeText("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
-                                      //Divider(color: Colors.black54,),
-                                      SizedBox(height: 5,),
-                                      Expanded(
-                                          child: TabBarView(
-                                              controller : _tabController,
-                                              children: [
-                                                ListView.builder(
-                                                  padding: EdgeInsets.only(top:10.0),
-                                                  shrinkWrap: true,
-                                                  itemCount: results.length,
-                                                  itemBuilder: (con, ind) {
-                                                    return Container(
-                                                        padding: EdgeInsets.only(bottom: 5, left: 10, right: 10),
-                                                        child : Card(
-                                                        color: listviewCardColor,
-                                                        child: ListTile(
-                                                      leading: Container(
-                                                        width: itemImageSizeWidth,
-                                                        height: itemImageSizeHeight,
-                                                        decoration: BoxDecoration(
-                                                            borderRadius: new BorderRadius.all( // per i bordi arrotondati
-                                                                new Radius.circular(roundedValue)
-                                                            ),
-                                                            image : DecorationImage(
-                                                                fit: BoxFit.cover,
-                                                                image: AssetImage(results[ind]['img'].toString())
-                                                            )
-                                                        ),
-                                                      ),
-                                                      title: AutoSizeText(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                                      subtitle: AutoSizeText(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
-
-                                                      onTap: () {
-                                                        if(titoli.contains(results[ind]['title'])==false){
-                                                          titoli.add(results[ind]['title']);
-                                                          recenti.insert(0,results[ind]);
-
-                                                        }
-
-                                                        if(results[ind]['tipo'] == "museo") {
-
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder: (context) =>
-                                                                      museoPage(
-                                                                        results[ind]['title'],
-                                                                      )
-                                                              )
-                                                          );
-                                                        }
-                                                        else Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder: (context) => operaDetails3(results[ind]['img'], results[ind]['title'])
-                                                            )
-                                                        );
-                                                      },
-                                                    )));
-                                                  },
-                                                ), // TUTTO TAB
-                                                ListView.builder(
-                                                  padding: EdgeInsets.only(top:10.0),
-                                                  shrinkWrap: true,
-                                                  itemCount: results.length,
-                                                  itemBuilder: (con, ind) {
-                                                    if (results[ind]["tipo"] == "museo" ){
-                                                      return Container(
-                                                          padding: EdgeInsets.only(bottom: 5, left: 10, right: 10),
-                                                          child: Card(
-                                                          color: listviewCardColor,
-                                                          child: ListTile(
-                                                        leading: Container(
-                                                          width: itemImageSizeWidth,
-                                                          height: itemImageSizeHeight,
-                                                          decoration: BoxDecoration(
-                                                              borderRadius: new BorderRadius.all( // per i bordi arrotondati
-                                                                  new Radius.circular(roundedValue)
-                                                              ),
-                                                              image : DecorationImage(
-                                                                  fit: BoxFit.cover,
-                                                                  image: AssetImage(results[ind]['img'].toString())
-                                                              )
-                                                          ),
-                                                        ),
-                                                        title: AutoSizeText(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                                        subtitle: AutoSizeText(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
-
-                                                        onTap: () {
-                                                          if(titoli.contains(results[ind]['title'])==false){
-                                                            titoli.add(results[ind]['title']);
-                                                            recenti.insert(0,results[ind]);
-                                                          }
-
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder: (context) => museoPage(
-                                                                    results[ind]['title'],
-                                                                  )
-                                                              )
-                                                          );
-                                                        },
-                                                      )));
-                                                    }
-                                                    return Container();
-                                                  },
-                                                ), // MUSEI TAB
-                                                ListView.builder(
-                                                  padding: EdgeInsets.only(top:10.0),
-                                                  shrinkWrap: true,
-                                                  itemCount: results.length,
-                                                  itemBuilder: (con, ind) {
-                                                    if (results[ind]["tipo"] == "opera" ){
-                                                      return Container(
-                                                          padding: EdgeInsets.only(bottom: 5, left: 10, right: 10),
-                                                          child: Card(
-                                                          color: listviewCardColor,
-                                                          child: ListTile(
-                                                        leading: Container(
-                                                          width: itemImageSizeWidth,
-                                                          height: itemImageSizeHeight,
-                                                          decoration: BoxDecoration(
-                                                              borderRadius: new BorderRadius.all( // per i bordi arrotondati
-                                                                  new Radius.circular(roundedValue)
-                                                              ),
-                                                              image : DecorationImage(
-                                                                  fit: BoxFit.cover,
-                                                                  image: AssetImage(results[ind]['img'].toString())
-                                                              )
-                                                          ),
-                                                        ),
-                                                        title: AutoSizeText(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
-                                                        subtitle: AutoSizeText(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
-
-                                                        onTap: () {
-                                                          if(titoli.contains(results[ind]['title'])==false){
-                                                            titoli.add(results[ind]['title']);
-                                                            recenti.insert(0,results[ind]);
-                                                          }
-
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
                                                                   builder: (context) => operaDetails3(results[ind]['img'], results[ind]['title'])
                                                               )
                                                           );
                                                         },
                                                       )));
-                                                    }
-                                                    return Container();
-                                                  },
-                                                ), // OPERE TAB
-                                              ]
-                                          )
-                                      )
+                                            },
+                                          ), // TUTTO TAB
+                                          ListView.builder(
+                                            padding: EdgeInsets.only(top:10.0),
+                                            shrinkWrap: true,
+                                            itemCount: results.length,
+                                            itemBuilder: (con, ind) {
+                                              if (results[ind]["tipo"] == "museo" ){
+                                                return Container(
+                                                    padding: EdgeInsets.only(bottom: 5, left: 10, right: 10),
+                                                    child: Card(
+                                                        color: listviewCardColor,
+                                                        child: ListTile(
+                                                          leading: Container(
+                                                            width: itemImageSizeWidth,
+                                                            height: itemImageSizeHeight,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                                                    new Radius.circular(roundedValue)
+                                                                ),
+                                                                image : DecorationImage(
+                                                                    fit: BoxFit.cover,
+                                                                    image: AssetImage(results[ind]['img'].toString())
+                                                                )
+                                                            ),
+                                                          ),
+                                                          title: AutoSizeText(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
+                                                          subtitle: AutoSizeText(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
 
-                                    ])),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
+                                                          onTap: () {
+                                                            if(titoli.contains(results[ind]['title'])==false){
+                                                              titoli.add(results[ind]['title']);
+                                                              recenti.insert(0,results[ind]);
+                                                            }
+
+                                                            Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (context) => museoPage(
+                                                                      results[ind]['title'],
+                                                                    )
+                                                                )
+                                                            );
+                                                          },
+                                                        )));
+                                              }
+                                              return Container();
+                                            },
+                                          ), // MUSEI TAB
+                                          ListView.builder(
+                                            padding: EdgeInsets.only(top:10.0),
+                                            shrinkWrap: true,
+                                            itemCount: results.length,
+                                            itemBuilder: (con, ind) {
+                                              if (results[ind]["tipo"] == "opera" ){
+                                                return Container(
+                                                    padding: EdgeInsets.only(bottom: 5, left: 10, right: 10),
+                                                    child: Card(
+                                                        color: listviewCardColor,
+                                                        child: ListTile(
+                                                          leading: Container(
+                                                            width: itemImageSizeWidth,
+                                                            height: itemImageSizeHeight,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius: new BorderRadius.all( // per i bordi arrotondati
+                                                                    new Radius.circular(roundedValue)
+                                                                ),
+                                                                image : DecorationImage(
+                                                                    fit: BoxFit.cover,
+                                                                    image: AssetImage(results[ind]['img'].toString())
+                                                                )
+                                                            ),
+                                                          ),
+                                                          title: AutoSizeText(results[ind]['title'],style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
+                                                          subtitle: AutoSizeText(results[ind]['nav'].toString(),style: TextStyle(color: listviewSubtitleColor)),
+
+                                                          onTap: () {
+                                                            if(titoli.contains(results[ind]['title'])==false){
+                                                              titoli.add(results[ind]['title']);
+                                                              recenti.insert(0,results[ind]);
+                                                            }
+
+                                                            Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (context) => operaDetails3(results[ind]['img'], results[ind]['title'])
+                                                                )
+                                                            );
+                                                          },
+                                                        )));
+                                              }
+                                              return Container();
+                                            },
+                                          ), // OPERE TAB
+                                        ]
+                                    )
+                                )
+
+                              ])),
+                        ],
+                      )
+
                     );
                   }
                   return Container();

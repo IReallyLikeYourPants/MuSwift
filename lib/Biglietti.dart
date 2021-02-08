@@ -38,7 +38,7 @@ class _HomeState extends State<Biglietti> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new AutoSizeText("Biglietto", style: TextStyle(color: HexColor(bianco), fontWeight: titleFontWeight)),
+          title: new AutoSizeText("Biglietti", style: TextStyle(color: HexColor(bianco), fontWeight: titleFontWeight)),
           backgroundColor: HexColor(primoColor),
         ),
         body: Container(
