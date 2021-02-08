@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/widgets.dart';
 import 'package:prova_app/constant.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -40,7 +41,7 @@ class storia extends StatelessWidget {
                   children: [
                     AutoSizeText(sottotitolo, style : TextStyle(color: Colors.black, fontSize: textFontSize + 10, fontWeight: FontWeight.bold)),
                     SizedBox(height: 10,),
-                    AutoSizeText(testo, style : TextStyle(color: Colors.black, fontSize: textFontSize)),
+                    AutoSizeText(testo,textAlign: TextAlign.justify, style : TextStyle(color: Colors.black, fontSize: textFontSize)),
                   ],
                 )
             ),

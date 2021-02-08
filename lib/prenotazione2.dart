@@ -80,6 +80,9 @@ class prenotazione extends StatefulWidget {
     while(chiuso.contains(DateFormat('E').format(oggi))){
       oggi = oggi.add(Duration(days: 1));
     }
+
+    print("OGGI");
+    print(DateFormat('E').format(oggi));
   }
 
   @override
@@ -313,7 +316,7 @@ class _prenotazioneState extends State<prenotazione> {
   }
 
   bool _decideWhichDayToEnable(DateTime day) {
-    if (day.isBefore(DateTime.now().subtract(Duration(days: 1))) || DateFormat('E').format(day) == 'Mon') {
+    if (day.isBefore(DateTime.now().subtract(Duration(days: 1)))) {
       return false;
     }
 
@@ -853,6 +856,59 @@ class riepilogo extends StatelessWidget {
                             ],
                           ),
                           Expanded(child: Container()),
+                          ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  primary: HexColor(accentuatoColor),
+                                  elevation: elevationButton
+                              ),
+                              onPressed: () {
+                                showDialog<void>(
+                                  context: context,
+                                  barrierDismissible: true, // user can tap button!
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text('Attenzione'),
+                                      content: SingleChildScrollView(
+                                        child: ListBody(
+                                          children: <Widget>[
+                                            Text('Sicuro di voler annullare la prenotazione?'),
+                                          ],
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          child: Text('NO'),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                        ),
+                                        TextButton(
+                                          child: Text('SI'),
+                                          onPressed: () {
+                                            int count = 0;
+                                            Navigator.popUntil(context, (route) {
+                                              return count++ == 4;
+                                            });
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                              child: Container(
+                                width: double.infinity,
+                                child: AutoSizeText(
+                                  "ANNULLA",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: textButtonColor,
+                                      fontWeight: buttonFontWeight
+                                  ),
+                                ),
+                              )
+                          ),
+                          SizedBox(height: 10,),
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   primary: HexColor(accentuatoColor),

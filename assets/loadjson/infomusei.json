@@ -1,13 +1,13 @@
 {
   "Musei Vaticani" : {
-    "adulti" : 10,
-    "bambini" : 5,
+    "adulti" : 16,
+    "bambini" : 8,
     "luogo" : "Città del Vaticano",
-    "numero" : "06+ 12346666",
+    "numero" : "+06 12346666",
     "sito" : "http://www.museivaticani.va",
     "storia" : "I Musei Vaticani furono fondati da papa Giulio II nel 1506 e aperti al pubblico nel 1771 per volere di papa Clemente XIV. La scultura che gettò le basi per la costruzione del museo fu il cosiddetto Gruppo del Laocoonte: essa raffigura Laocoonte, il sacerdote che secondo la mitologia greca tentò di convincere i Troiani a non accettare il cavallo di legno che i Greci sembravano aver donato loro. La statua fu trovata il 14 gennaio 1506 in un vigneto nei pressi della basilica di Santa Maria Maggiore a Roma. Papa Giulio II mandò Giuliano da Sangallo e Michelangelo Buonarroti, che lavoravano al Vaticano, ad esaminare la scoperta, e su loro consiglio acquistò subito la scultura dal proprietario della vigna. Un mese dopo l'opera, che rappresenta Laocoonte e i suoi figli stretti tra le spire di un serpente marino, fu esposta al pubblico in Vaticano. \nUn clamoroso caso si ebbe nel maggio del 1938, quando Adolf Hitler, capo della Germania nazista, arrivò a Roma, ospite del re Vittorio Emanuele III e di Benito Mussolini. Papa Pio XI non lo volle ricevere, e per evitare ciò si trasferì eccezionalmente, per qualche giorno, nella villa di Castel Gandolfo. Inoltre, caso senza precedenti, stabilì che il museo e la basilica fossero chiusi a ogni visitatore durante il breve periodo della visita del Führer. In tal modo il capo tedesco non sarebbe potuto entrare in territorio vaticano nemmeno accedendo ai Musei[6].",
     "immagine" : "assets/images/museovaticano.jpg",
-    "rate" : 5.0,
+    "rate" : 4.5,
     "opere" : [
       {
         "title":"Deposizione",
@@ -28,16 +28,16 @@
     ],
     "note" : [
       {
-        "testo": "Adibito per disabili",
+        "testo": "Adatto ai bambini",
         "isTrue" : true
       },
       {
         "testo" : "Visita interattiva",
-        "isTrue" : false
+        "isTrue" : true
       },
       {
         "testo" : "Percheggio a pagamento",
-        "isTrue" : false
+        "isTrue" : true
       },
       {
         "testo" : "Presenza guida",
@@ -45,29 +45,29 @@
       }
     ],
     "orario" : {
-      "Mon" : "08.00 - 19.00",
-      "Tue" : "08.00 - 19.00",
-      "Wed" : "08.00 - 19.00",
-      "Thu" : "08.00 - 19.00",
-      "Fri" : "08.00 - 19.00",
-      "Sat" : "08.00 - 19.00",
-      "Sun" : "08.00 - 19.00"
+      "Mon" : "08.30 - 18.30",
+      "Tue" : "08.30 - 18.30",
+      "Wed" : "08.30 - 18.30",
+      "Thu" : "08.30 - 18.30",
+      "Fri" : "08.30 - 18.30",
+      "Sat" : "08.30 - 18.30",
+      "Sun" : "CHIUSO"
     },
-    "chiusura_biglietteria" : "18.00",
-    "ultimo_ingresso" : "18.30",
+    "chiusura_biglietteria" : "16.00",
+    "ultimo_ingresso" : "16.30",
     "chiuso" : [
-      "Mon", "Sat"
+      "Sun"
     ]
   },
   "Museo Nazionale Castel Sant'Angelo" : {
-    "adulti" : 10,
-    "bambini" : 5,
+    "adulti" : 15,
+    "bambini" : 0,
     "luogo" : "Lungotevere Castello",
-    "numero" : "06+ 1232342346",
-    "sito" : "http://castelsantangelo.beniculturali.it/",
+    "numero" : "+06 6819111",
+    "sito" : "https://castelsantangelo.com/",
     "storia" : "Castel Sant'Angelo (o Mole Adrianorum o Castellum Crescentii nel X-XII sec.), detto anche Mausoleo di Adriano, è un monumento di Roma, situato sulla sponda destra del Tevere di fronte al pons Aelius (attuale ponte Sant'Angelo), a poca distanza dal Vaticano, tra il rione di Borgo e quello di Prati; è collegato allo Stato del Vaticano attraverso il corridoio fortificato del \"passetto\". Il castello è stato radicalmente modificato più volte in epoca medievale e rinascimentale. Proprietà demaniale dello Stato Italiano, dal dicembre 2014 il Ministero per i beni e le attività culturali lo ha gestito tramite il Polo museale del Lazio, e dal dicembre 2019 attraverso la Direzione Musei statali di Roma. ",
     "immagine" : "assets/images/nazionale.jpg",
-    "rate" : 4.0,
+    "rate" : 4.5,
     "opere" : [
       {
         "title":"Giovane donna con unicorno",
@@ -101,29 +101,29 @@
       }
     ],
     "orario" : {
-      "Mon" : "08.00 - 19.00",
-      "Tue" : "08.00 - 19.00",
-      "Wed" : "08.00 - 19.00",
-      "Thu" : "08.00 - 19.00",
-      "Fri" : "08.00 - 19.00",
-      "Sat" : "08.00 - 19.00",
-      "Sun" : "08.00 - 19.00"
+      "Mon" : "09.00 - 19.30",
+      "Tue" : "09.00 - 19.30",
+      "Wed" : "09.00 - 19.30",
+      "Thu" : "09.00 - 19.30",
+      "Fri" : "09.00 - 19.30",
+      "Sat" : "09.00 - 19.30",
+      "Sun" : "09.00 - 19.30"
     },
-    "chiusura_biglietteria" : "18.00",
+    "chiusura_biglietteria" : "18.30",
     "ultimo_ingresso" : "18.30",
     "chiuso" : [
-      "Mon", "Sat"
+
     ]
   },
   "Musei Capitolini" : {
     "immagine": "assets/images/museocapitolino.jpg",
-    "adulti" : 10,
-    "bambini" : 5,
+    "adulti" : 11,
+    "bambini" : 0,
     "luogo" : "Via dei Musei Capitolini",
-    "numero" : "+06 12346666",
+    "numero" : "+06 0608",
     "sito" : "http://www.museicapitolini.org/",
     "storia" : "La nascita dei Musei Capitolini risale al 1471, quando il papa Sisto IV donò al popolo romano un gruppo di statue bronzee conservate fino ad allora al Laterano, che costituirono il nucleo iniziale della raccolta. Le collezioni furono successivamente incrementate dai pontefici con opere provenienti dagli scavi di Roma, dal Vaticano o acquistate appositamente per il museo, come la collezione Albani. Intorno alla metà del XVIII secolo Benedetto XIV fondò la Pinacoteca. Le raccolte archeologiche si arricchirono notevolmente alla fine dell'Ottocento con i rinvenimenti degli scavi per la costruzione di interi quartieri della città, divenuta capitale d'Italia.\nLe raccolte dei Musei Capitolini sono esposte nei due edifici che insieme al Palazzo Senatorio delimitano la piazza del Campidoglio, il Palazzo dei Conservatori e il Palazzo Nuovo, collegati tra loro da una galleria sotterranea che ospita la Galleria Lapidaria e conduce all'antico Tabularium, le cui arcate monumentali si affacciano sul Foro Romano.\nNel Palazzo Nuovo, in un ordinamento museale di grande fascino rimasto sostanzialmente invariato dal Settecento, sono conservate le raccolte di sculture antiche frutto del collezionismo delle grandi famiglie nobiliari dei secoli passati: famosissime le raccolte dei busti di filosofi e di imperatori romani, la statua del Galata morente, la Venere Capitolina e l'imponente statua di Marforio che domina il cortile.\nIl Palazzo dei Conservatori mostra nelle sale dell'Appartamento l'originale nucleo architettonico dell'edificio, decorato da splendidi affreschi con le storie di Roma e nobilitato dalla presenza degli antichi bronzi capitolini: la Lupa, lo Spinario, il Bruto Capitolino.\nLa grande aula vetrata recentemente realizzata al primo piano del palazzo custodisce la statua equestre in bronzo di Marco Aurelio, già sulla piazza capitolina, e gli imponenti resti del tempio di Giove Capitolino, affiancati da una sezione dedicata alla più antica storia del Campidoglio, dalle prime frequentazioni alla costruzione dell'edificio sacro, con i risultati dei recenti scavi. Le sale che si affacciano sull'aula ospitano le opere provenienti dagli Horti dell'Esquilino, quelle di raccordo con l'Appartamento dei Conservatori la Collezione Castellani, testimonianza del collezionismo ottocentesco.\nAl secondo piano la Pinacoteca Capitolina presenta, in un percorso ordinato cronologicamente dal tardo Medioevo al Settecento, opere di grande rilevanza, come i quadri del Caravaggio (la Buona Ventura e il San Giovanni Battista), la grande tela del Guercino (il seppellimento di Santa Petronilla) e un consistente nucleo di dipinti di Guido Reni e Pietro da Cortona.\nNel Palazzo Caffarelli-Clementino sono situati il Medagliere Capitolino, con le preziose raccolte di raccolte di monete, medaglie, gemme e gioielli, e uno spazio dedicato alle mostre temporanee.",
-    "rate" : 3.0,
+    "rate" : 4.0,
     "opere" : [
       {
         "title":"Buona ventura",
@@ -148,38 +148,38 @@
         "isTrue" : false
       },
       {
-        "testo" : "Percheggio a pagamento",
+        "testo" : "Parcheggio a pagamento",
         "isTrue" : false
       },
       {
         "testo" : "Presenza guida",
-        "isTrue" : true
+        "isTrue" : false
       }
     ],
     "orario" : {
-      "Mon" : "08.00 - 19.00",
-      "Tue" : "08.00 - 19.00",
-      "Wed" : "08.00 - 19.00",
-      "Thu" : "08.00 - 19.00",
-      "Fri" : "08.00 - 19.00",
-      "Sat" : "08.00 - 19.00",
+      "Mon" : "09.30 - 19.30",
+      "Tue" : "09.30 - 19.30",
+      "Wed" : "09.30 - 19.30",
+      "Thu" : "09.30 - 19.30",
+      "Fri" : "09.30 - 19.30",
+      "Sat" : "CHIUSO",
       "Sun" : "CHIUSO"
     },
     "chiuso" : [
-      "Mon", "Tue", "Sat"
+      "Sun", "Sat"
     ],
-    "chiusura_biglietteria" : "18.00",
+    "chiusura_biglietteria" : "18.30",
     "ultimo_ingresso" : "18.30"
   },
   "Galleria Borghese" : {
     "immagine": "assets/images/galleriaborghese.jpg",
-    "adulti" : 10,
-    "bambini" : 5,
+    "adulti" : 13,
+    "bambini" : 2,
     "luogo" : "Villa Borghese",
-    "numero" : "+39 0667233753",
+    "numero" : "+06 67233753",
     "sito" : "https://galleriaborghese.beniculturali.it/visita/info-biglietti/",
     "storia" : "La Villa Borghese Pinciana, oggi sede della Galleria Borghese, fu costruita per essere un museo, luogo di cultura, per l'esposizione di immagini esemplari dell'arte antica e moderna, per la musica, gli studi in una piccola biblioteca, ma anche per la contemplazione della natura (con rare piante e animali), dei campioni di fossili e infine della tecnologia moderna di allora (ad esempio automi, specchi, lenti bizzarre e orologi particolari), i pregi della sua architettura sono attribuibili a Flaminio Ponzio, architetto di fiducia del Papa e del Cardinale.\n\nDalla Villa si amministrava un'azienda agricola con vigne, orti, caccia, stalle, rimesse, piccionaie nelle torri (di cui sono ancora visibili gli accessi), un'uccelliera grande, una riserva del ghiaccio, la grotta del vino e perfino la cultura del baco da seta. Le piante più rare, importate dall'Olanda o dalle Nuove Indie, e un giardino zoologico completavano il Teatro dell'Universo voluto dal cardinale Scipione.\n\nLa ricca collezione Borghese consta di sculture, bassorilievi e mosaici antichi, nonché dipinti e sculture dal XV al XVIII secolo. La raccolta, costituita inizialmente dal cardinale Scipione Borghese all'inizio del XVII secolo, conserva capolavori di Antonello da Messina, Giovanni Bellini, Raffaello, Tiziano, Correggio, Caravaggio e splendide sculture di Gian Lorenzo Bernini e del Canova.\nIl nucleo più importante delle sculture e delle pitture nella Galleria Borghese risale al collezionismo del cardinale Scipione (1579-1633), figlio di Ortensia Borghese, sorella del Papa Paolo V, e di Francesco Caffarelli, ma gli eventi dei tre secoli successivi, tra perdite e acquisti, hanno lasciato notevoli tracce. L'attenzione del cardinale Scipione era rivolta a tutte le espressioni di arte antica, rinascimentale e contemporanea, atte a rievocare una nuova età dell'oro. Non particolarmente interessato all'arte medioevale, ricercò invece, con passione, la scultura antica. Ma l'ambizione del cardinale favorì la creazione di nuove sculture e soprattutto di gruppi marmorei che fossero messi a confronto con le opere antiche.\nIl ritratto di Paolina Bonaparte Borghese, eseguito dal Canova tra il 1805 e il 1808, è presente nella Villa dal 1838. Nel 1807 Camillo Borghese vende a Napoleone 154 statue, 160 busti, 170 bassorilievi, 30 colonne e vari vasi che costituiscono il fondo Borghese del Louvre. Ma già nel terzo decennio dell'Ottocento le gravi lacune sembrano colmate con nuovi materiali provenienti da recenti scavi archeologici e con opere recuperate dalle cantine e da varie altre dimore borghesiane. La collezione dei dipinti era notevole.\n\nNel 1607 il Papa aveva fatto assegnare a Scipione 107 dipinti confiscati al pittore Giuseppe Cesari, detto il Cavalier d'Arpino. Dell'anno successivo fu l'asportazione clandestina dalla cappella Baglioni nella chiesa di S.Francesco a Perugia e il trasporto a Roma della Deposizione di Raffaello, assegnata al cardinale Scipione.\n\nNel 1682 confluisce parte dell'eredità di Olimpia Aldobrandini, che includeva opere della collezione del cardinale Salviati e di Lucrezia d'Este, nella collezione Borghese. Nel 1827 Camillo Borghese acquistò a Parigi l'importante Danae del Correggio.",
-    "rate" : 2.0,
+    "rate" : 4.0,
     "opere" : [
       {
         "title":"David",
@@ -205,11 +205,11 @@
       },
       {
         "testo" : "Visita interattiva",
-        "isTrue" : false
+        "isTrue" : true
       },
       {
         "testo" : "Percheggio a pagamento",
-        "isTrue" : false
+        "isTrue" : true
       },
       {
         "testo" : "Presenza guida",
@@ -217,18 +217,18 @@
       }
     ],
     "orario" : {
-      "Mon" : "08.00 - 19.00",
-      "Tue" : "08.00 - 19.00",
-      "Wed" : "08.00 - 19.00",
-      "Thu" : "08.00 - 19.00",
-      "Fri" : "08.00 - 19.00",
-      "Sat" : "08.00 - 19.00",
-      "Sun" : "08.00 - 19.00"
+      "Mon" : "09.00 - 19.00",
+      "Tue" : "09.00 - 19.00",
+      "Wed" : "09.00 - 19.00",
+      "Thu" : "09.00 - 19.00",
+      "Fri" : "09.00 - 19.00",
+      "Sat" : "CHIUSO",
+      "Sun" : "CHIUSO"
     },
     "chiuso" : [
-      "Mon", "Sat"
+      "Sun", "Sat"
     ],
     "chiusura_biglietteria" : "18.00",
-    "ultimo_ingresso" : "18.30"
+    "ultimo_ingresso" : "17.00"
   }
 }

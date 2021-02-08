@@ -121,9 +121,38 @@ class _bigliettoDetailsState extends State<bigliettoDetails> {
                         elevation: elevationButton
                     ),
                     onPressed: () {
-                      prenotati.remove(Biglietto);
-                      isBooked.remove(Biglietto.museo);
-                      Navigator.pop(context);
+                      showDialog<void>(
+                        context: context,
+                        barrierDismissible: true, // user can tap button!
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Attenzione'),
+                            content: SingleChildScrollView(
+                              child: ListBody(
+                                children: <Widget>[
+                                  Text('Una volta rimosso non sarà possibile recuperare la prenotazione!'),
+                                ],
+                              ),
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                child: Text('ANNULLA'),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                              TextButton(
+                                child: Text('CONFERMA'),
+                                onPressed: () {
+                                  prenotati.remove(Biglietto);
+                                  isBooked.remove(Biglietto.museo);
+                                  Navigator.of(context).popUntil((route) => route.isFirst);
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
                     },
                     child: Container(
                       width: double.infinity,

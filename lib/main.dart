@@ -67,11 +67,11 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(icon: new Icon(Icons.home),
-                title: Container()),
+                title: AutoSizeText("In primo piano")),
             BottomNavigationBarItem(icon: new Icon(Icons.map),
-                title: Container()),
+                title: AutoSizeText("Mappa")),
             BottomNavigationBarItem(icon: new Icon(Icons.book),
-                title: Container())
+                title: AutoSizeText("Biglietti"))
           ]
       ),
     );
