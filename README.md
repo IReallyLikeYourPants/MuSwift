@@ -14,7 +14,7 @@ Al suo interno oltre alle informazioni generali di tali beni è possibile, in mo
 su mappa i musei nelle vicinanze e prenotare in pochi passi la visita a un determinato museo.
 
 # Installazione APP
-Installare l'APK da [quì](https://github.com/Quelehir/MuSwift/blob/main/APK/MuSwift.apk)
+Scaricare l'APK da [quì](https://github.com/Quelehir/MuSwift/blob/main/APK/MuSwift.apk)
 
 # Screen
 
