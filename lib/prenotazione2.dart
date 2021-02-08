@@ -530,7 +530,7 @@ class _prenotazione2State extends State<prenotazione2> {
               errorBorder: InputBorder.none,
               disabledBorder: InputBorder.none,
               focusedErrorBorder: InputBorder.none,
-              hintText: "Mese",
+              hintText: "MM",
             ),
             validator: (String value) {
               if (value.isEmpty || int.parse(value) > 12 || int.parse(value)< 0) {
@@ -553,7 +553,7 @@ class _prenotazione2State extends State<prenotazione2> {
             keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.digitsOnly,
-              LengthLimitingTextInputFormatter(4),
+              LengthLimitingTextInputFormatter(2),
             ],
             decoration: InputDecoration(
               fillColor: Colors.green,
@@ -563,10 +563,10 @@ class _prenotazione2State extends State<prenotazione2> {
               errorBorder: InputBorder.none,
               disabledBorder: InputBorder.none,
               focusedErrorBorder: InputBorder.none,
-              hintText: "Anno",
+              hintText: "AA",
             ),
             validator: (String value) {
-              if (value.isEmpty || int.parse(value) < 2021) {
+              if (value.isEmpty || int.parse(value) < 21) {
                 return 'Anno non valido';
               }
               return null;
