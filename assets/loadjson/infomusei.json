@@ -18,32 +18,12 @@
         "img": "assets/images/apollodelbelvedere.jpg"
       },
       {
-        "title":"Carita con Quattro Figli",
+        "title":"Carita' con Quattro Figli",
         "img": "assets/images/caritaconquattrofigli.jpg"
       },
       {
         "title":"Gruppo del Laocoonte",
         "img": "assets/images/gruppodellaoconte.jpg"
-      },
-      {
-        "title":"David",
-        "img": "assets/images/david.jpg"
-      },
-      {
-        "title":"Apollo e Dafne",
-        "img": "assets/images/apolloedafne.jpg"
-      },
-      {
-        "title":"Ratto di Proserpina",
-        "img": "assets/images/rattodiprospertina.jpg"
-      },
-      {
-        "title":"Amore e Psiche",
-        "img": "assets/images/amoreepsiche.jpg"
-      },
-      {
-        "title":"Statua di Iside",
-        "img": "assets/images/statua_di_iside.jpg"
       }
     ],
     "note" : [
@@ -90,40 +70,16 @@
     "rate" : 4.0,
     "opere" : [
       {
-        "title":"Deposizione",
-        "img": "assets/images/deposizione.jpg"
+        "title":"Giovane donna con unicorno",
+        "img": "assets/images/giovanedonnaconunicorno.jpg"
       },
       {
-        "title":"Apollo del Belvedere",
-        "img": "assets/images/apollodelbelvedere.jpg"
+        "title":"Il Bagno",
+        "img": "assets/images/ilbagno.jpg"
       },
       {
-        "title":"Carita con Quattro Figli",
-        "img": "assets/images/caritaconquattrofigli.jpg"
-      },
-      {
-        "title":"Gruppo del Laocoonte",
-        "img": "assets/images/gruppodellaoconte.jpg"
-      },
-      {
-        "title":"David",
-        "img": "assets/images/david.jpg"
-      },
-      {
-        "title":"Apollo e Dafne",
-        "img": "assets/images/apolloedafne.jpg"
-      },
-      {
-        "title":"Ratto di Proserpina",
-        "img": "assets/images/rattodiprospertina.jpg"
-      },
-      {
-        "title":"Amore e Psiche",
-        "img": "assets/images/amoreepsiche.jpg"
-      },
-      {
-        "title":"Statua di Iside",
-        "img": "assets/images/statua_di_iside.jpg"
+        "title":"San Girolamo penitente",
+        "img": "assets/images/san_girolamo_penitente.jpg"
       }
     ],
     "note" : [
@@ -170,36 +126,12 @@
     "rate" : 3.0,
     "opere" : [
       {
-        "title":"Deposizione",
-        "img": "assets/images/deposizione.jpg"
+        "title":"Buona ventura",
+        "img": "assets/images/buona_ventura.jpg"
       },
       {
-        "title":"Apollo del Belvedere",
-        "img": "assets/images/apollodelbelvedere.jpg"
-      },
-      {
-        "title":"Carita con Quattro Figli",
-        "img": "assets/images/caritaconquattrofigli.jpg"
-      },
-      {
-        "title":"Gruppo del Laocoonte",
-        "img": "assets/images/gruppodellaoconte.jpg"
-      },
-      {
-        "title":"David",
-        "img": "assets/images/david.jpg"
-      },
-      {
-        "title":"Apollo e Dafne",
-        "img": "assets/images/apolloedafne.jpg"
-      },
-      {
-        "title":"Ratto di Proserpina",
-        "img": "assets/images/rattodiprospertina.jpg"
-      },
-      {
-        "title":"Amore e Psiche",
-        "img": "assets/images/amoreepsiche.jpg"
+        "title":"Statua equestre di Marco Aurelio",
+        "img": "assets/images/statua_di_marco_aurelio.jpg"
       },
       {
         "title":"Statua di Iside",
@@ -250,22 +182,6 @@
     "rate" : 2.0,
     "opere" : [
       {
-        "title":"Deposizione",
-        "img": "assets/images/deposizione.jpg"
-      },
-      {
-        "title":"Apollo del Belvedere",
-        "img": "assets/images/apollodelbelvedere.jpg"
-      },
-      {
-        "title":"Carita con Quattro Figli",
-        "img": "assets/images/caritaconquattrofigli.jpg"
-      },
-      {
-        "title":"Gruppo del Laocoonte",
-        "img": "assets/images/gruppodellaoconte.jpg"
-      },
-      {
         "title":"David",
         "img": "assets/images/david.jpg"
       },
@@ -280,10 +196,6 @@
       {
         "title":"Amore e Psiche",
         "img": "assets/images/amoreepsiche.jpg"
-      },
-      {
-        "title":"Statua di Iside",
-        "img": "assets/images/statua_di_iside.jpg"
       }
     ],
     "note" : [

@@ -4,27 +4,31 @@
     "img": "assets/images/museovaticano.jpg",
     "nav" : "Città del Vaticano",
     "tipo": "museo",
-    "stile" : ""
+    "stile" : "",
+    "autore" : ""
   },
   {
     "title":"Museo Nazionale Castel Sant'Angelo",
     "img": "assets/images/nazionale.jpg",
     "nav" : "Lungotevere Castello",
     "tipo": "museo",
-    "stile" : ""
+    "stile" : "",
+    "autore" : ""
   },
   {
     "title":"Musei Capitolini",
     "img": "assets/images/museocapitolino.jpg",
     "nav" : "Via dei Musei Capitolini",
     "tipo": "museo",
-    "stile" : ""
+    "stile" : "",
+    "autore" : ""
   },
   {
     "title":"Galleria Borghese",
     "img": "assets/images/galleriaborghese.jpg",
     "nav" : "Villa Borghese",
     "tipo": "museo",
-    "stile" : ""
+    "stile" : "",
+    "autore" : ""
   }
 ]

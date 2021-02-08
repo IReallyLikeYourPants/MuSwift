@@ -4,76 +4,111 @@
     "img": "assets/images/deposizione.jpg",
     "nav": "Musei Vaticani",
     "tipo" : "opera",
-    "stile" : "Barocco"
+    "stile" : "Barocco",
+    "autore" : "Michelangelo Merisi da Caravaggio"
   },
   {
     "title":"Apollo del Belvedere",
     "img": "assets/images/apollodelbelvedere.jpg",
     "nav": "Musei Vaticani",
     "tipo" : "opera",
-    "stile" : "Autonomo"
+    "stile" : "Autonomo",
+    "autore" : "Leocare"
   },
   {
-    "title":"Carita con Quattro Figli",
+    "title":"Carita' con Quattro Figli",
     "img": "assets/images/caritaconquattrofigli.jpg",
     "nav": "Musei Vaticani",
     "tipo" : "opera",
-    "stile" : ""
+    "stile" : "Barocco",
+    "autore" : "Gian Lorenzo Bernini"
   },
   {
     "title":"Gruppo del Laocoonte",
     "img": "assets/images/gruppodellaoconte.jpg",
     "nav": "Musei Vaticani",
     "tipo" : "opera",
-    "stile" : ""
+    "stile" : "Scultura ellenistica",
+    "autore" : "Agesandro, Atanodoro di Rodi e Polidoro"
   },
   {
     "title":"David",
     "img": "assets/images/david.jpg",
     "nav": "Galleria Borghese",
     "tipo" : "opera",
-    "stile" : ""
+    "stile" : "Barocco",
+    "autore" : "Gian Lorenzo Bernini"
   },
   {
     "title":"Apollo e Dafne",
     "img": "assets/images/apolloedafne.jpg",
     "nav": "Galleria Borghese",
     "tipo" : "opera",
-    "stile" : ""
+    "stile" : "Barocco",
+    "autore" : "Gian Lorenzo Bernini"
   },
   {
     "title":"Ratto di Proserpina",
     "img": "assets/images/rattodiprospertina.jpg",
     "nav": "Galleria Borghese",
     "tipo" : "opera",
-    "stile" : ""
+    "stile" : "Barocco",
+    "autore" : "Gian Lorenzo Bernini"
   },
   {
     "title":"Amore e Psiche",
     "img": "assets/images/amoreepsiche.jpg",
     "nav": "Galleria Borghese",
     "tipo" : "opera",
-    "stile" : ""
+    "stile" : "Barocco",
+    "autore" : "Zucchi Jacopo"
   },
   {
     "title":"Statua di Iside",
     "img": "assets/images/statua_di_iside.jpg",
     "nav": "Musei Capitolini",
     "tipo" : "opera",
-    "stile" : ""
+    "stile" : "Barocco",
+    "autore" : "Non definito"
   },
   {
     "title":"Giovane donna con unicorno",
     "img": "assets/images/giovanedonnaconunicorno.jpg",
     "nav": "Museo Nazionale Castel Sant'Angelo",
     "tipo" : "opera",
-    "stile" : ""
+    "stile" : "Autonomo",
+    "autore" : "Luca Longhi"
   },
   {
     "title":"Il Bagno",
     "img": "assets/images/ilbagno.jpg",
     "nav": "Museo Nazionale Castel Sant'Angelo",
     "tipo" : "opera",
-    "stile" : ""
+    "stile" : "Rinascimento italiano",
+    "autore" : "Dosso Dossi"
+  },
+  {
+    "title":"Statua equestre di Marco Aurelio",
+    "img": "assets/images/statua_di_marco_aurelio.jpg",
+    "nav": "Musei Capitolini",
+    "tipo" : "opera",
+    "stile" : "Stile non definito",
+    "autore" : "Non definito"
+  },
+  {
+    "title":"Buona ventura",
+    "img": "assets/images/buona_ventura.jpg",
+    "nav": "Musei Capitolini",
+    "tipo" : "opera",
+    "stile" : "Barocco",
+    "autore" : "Michelangelo Merisi da Caravaggio"
+  },
+  {
+    "title":"San Girolamo penitentea",
+    "img": "assets/images/san_girolamo_penitente.jpg",
+    "nav": "Museo Nazionale Castel Sant'Angelo",
+    "tipo" : "opera",
+    "stile" : "Rinascimento veneziano",
+    "autore" : "Lorenzo Lotto"
   }
 ]
