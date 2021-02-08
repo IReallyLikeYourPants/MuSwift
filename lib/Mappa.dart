@@ -576,7 +576,7 @@ class _MapScreenState extends State<Mappa> {
 
                                       //contentPadding: EdgeInsets.only(left: 2),
 
-                                      hintText: searchbarText,
+                                      hintText: "Ricerca musei..",
                                       hintStyle: TextStyle(color: searchbarTextColor),
                                       suffixIcon: IconButton(
                                         onPressed: () => {
