@@ -15,7 +15,7 @@ const waitValue = 0;
 
 const int animationMilliseconds = 300;
 const double dropDownPixelPercentage = 0.86;
-const double bottomHeightPercentage = 0.32;
+const double bottomHeightPercentage = 0.35;
 const double initalScrollPercentage = 0.13;
 const Color statusBarColor = Colors.white;
 
@@ -169,6 +169,7 @@ class _moreInfoState extends State<moreInfo>{
                       SizedBox(height: MediaQuery. of(context). size. height * textDistancePercentage,),
                       AutoSizeText(snapshot.data.autore, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
                       AutoSizeText(snapshot.data.tipo, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
+                      AutoSizeText(snapshot.data.stile, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
                       AutoSizeText(snapshot.data.anno, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
                       AutoSizeText(snapshot.data.nav, style: TextStyle(fontSize: subTextFontSize, color: subTextColorFont)),
                       Container(

@@ -3,66 +3,77 @@
     "title":"Deposizione",
     "img": "assets/images/deposizione.jpg",
     "nav": "Musei Vaticani",
-    "tipo" : "opera"
+    "tipo" : "opera",
+    "stile" : "Barocco"
   },
   {
     "title":"Apollo del Belvedere",
     "img": "assets/images/apollodelbelvedere.jpg",
     "nav": "Musei Vaticani",
-    "tipo" : "opera"
+    "tipo" : "opera",
+    "stile" : "Autonomo"
   },
   {
     "title":"Carita con Quattro Figli",
     "img": "assets/images/caritaconquattrofigli.jpg",
     "nav": "Musei Vaticani",
-    "tipo" : "opera"
+    "tipo" : "opera",
+    "stile" : ""
   },
   {
     "title":"Gruppo del Laocoonte",
     "img": "assets/images/gruppodellaoconte.jpg",
     "nav": "Musei Vaticani",
-    "tipo" : "opera"
+    "tipo" : "opera",
+    "stile" : ""
   },
   {
     "title":"David",
     "img": "assets/images/david.jpg",
     "nav": "Galleria Borghese",
-    "tipo" : "opera"
+    "tipo" : "opera",
+    "stile" : ""
   },
   {
     "title":"Apollo e Dafne",
     "img": "assets/images/apolloedafne.jpg",
     "nav": "Galleria Borghese",
-    "tipo" : "opera"
+    "tipo" : "opera",
+    "stile" : ""
   },
   {
     "title":"Ratto di Proserpina",
     "img": "assets/images/rattodiprospertina.jpg",
     "nav": "Galleria Borghese",
-    "tipo" : "opera"
+    "tipo" : "opera",
+    "stile" : ""
   },
   {
     "title":"Amore e Psiche",
     "img": "assets/images/amoreepsiche.jpg",
     "nav": "Galleria Borghese",
-    "tipo" : "opera"
+    "tipo" : "opera",
+    "stile" : ""
   },
   {
     "title":"Statua di Iside",
     "img": "assets/images/statua_di_iside.jpg",
     "nav": "Musei Capitolini",
-    "tipo" : "opera"
+    "tipo" : "opera",
+    "stile" : ""
   },
   {
     "title":"Giovane donna con unicorno",
     "img": "assets/images/giovanedonnaconunicorno.jpg",
     "nav": "Museo Nazionale Castel Sant'Angelo",
-    "tipo" : "opera"
+    "tipo" : "opera",
+    "stile" : ""
   },
   {
     "title":"Il Bagno",
     "img": "assets/images/ilbagno.jpg",
     "nav": "Museo Nazionale Castel Sant'Angelo",
-    "tipo" : "opera"
+    "tipo" : "opera",
+    "stile" : ""
   }
 ]
