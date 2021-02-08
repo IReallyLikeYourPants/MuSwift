@@ -194,9 +194,9 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                         backgroundColor: HexColor(primoColor),
                         bottom: TabBar(
                           controller: _tabController,
-                          indicatorColor: tabIndicatorColor,
-                          labelColor: tabActiveTextColor,
-                          unselectedLabelColor: tabTextColor,
+                          indicatorColor: HexColor(accentuatoColor),
+                          labelColor: HexColor(accentuatoColor),
+                          unselectedLabelColor: HexColor(bianco),
                           tabs: <Widget>[
                             Tab(
                               child: AutoSizeText(
