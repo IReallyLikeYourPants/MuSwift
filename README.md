@@ -13,4 +13,4 @@ persone della zona, ma anche ai turisti alla ricerca dei musei più importanti d
 Al suo interno oltre alle informazioni generali di tali beni, è possibile in modo semplice visualizzare
 su mappa i musei nelle vicinanze e prenotare in pochi passi la visita a un determinato museo.
 
-![alt text](https://github.com/Quelehir/MuSwift/blob/main/app_screen/Screenshot_1612807494.png?raw=true)
+![alt text](https://github.com/Quelehir/MuSwift/blob/main/app_screen/Screenshot_20210208_191457_com.example.prova_app.jpg?raw=true)
