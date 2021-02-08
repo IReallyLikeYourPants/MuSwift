@@ -165,7 +165,7 @@ class _museoPageState extends State<museoPage> {
         if(snapshot.hasData){
           Museo = snapshot.data;
           return Container(
-            color: statusBarColor,
+            color: HexColor(primoColor),
             child: SafeArea(
               child: DefaultTabController(
                   length: 2,
@@ -186,7 +186,7 @@ class _museoPageState extends State<museoPage> {
                                 ),
                                 collapsedHeight: MediaQuery. of(context). size. height * collapsedHeightPercentage,
                                 expandedHeight: MediaQuery. of(context). size. height * expandedHeightPercentage,
-                                backgroundColor: statusBarColor,
+                                backgroundColor: HexColor(primoColor),
                                 elevation: 0,
                                 floating: false,
                                 snap: false,
@@ -370,7 +370,7 @@ class _museoPageState extends State<museoPage> {
                                                       ),
                                                     )
                                                 ),
-                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: iconGoToColor)
+                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: HexColor(accentuatoColor))
                                               ],
                                             ),
                                           )
@@ -396,7 +396,7 @@ class _museoPageState extends State<museoPage> {
                                                       ),
                                                     )
                                                 ),
-                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: iconGoToColor)
+                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: HexColor(accentuatoColor))
                                               ],
                                             ),
                                           )
@@ -439,7 +439,7 @@ class _museoPageState extends State<museoPage> {
                                                       ),
                                                     )
                                                 ),
-                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: iconGoToColor)
+                                                Icon(Icons.navigate_next_sharp, size: nextIconSize, color: HexColor(accentuatoColor))
                                               ],
                                             ),
                                           )

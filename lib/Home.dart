@@ -49,12 +49,12 @@ class StorageUploadState extends State<Home> with TickerProviderStateMixin{
     return Theme(data: Theme.of(context).copyWith(), child: Scaffold(
         backgroundColor: backgroundColor,
         appBar: AppBar(
-          backgroundColor: HexColor(barColor),
-          title: AutoSizeText("MuSwift", style: TextStyle(color: HexColor(barTitleFontColor), fontWeight: titleFontWeight)),
+          backgroundColor: HexColor(primoColor),
+          title: AutoSizeText("MuSwift", style: TextStyle(color: HexColor(bianco), fontWeight: titleFontWeight)),
           actions: <Widget>[
             IconButton(
                 icon: Icon(Icons.search),
-                color: HexColor("FFA62B"),
+                color: HexColor(accentuatoColor),
                 onPressed: () {
                   Navigator.push(
                     context,

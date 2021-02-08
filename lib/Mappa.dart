@@ -9,6 +9,8 @@ import 'package:location/location.dart';
 import 'package:prova_app/Object/museo.dart';
 import 'package:prova_app/Ricerca.dart';
 import 'dart:math';
+import 'package:prova_app/constant.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 import 'museoPage.dart';
 
@@ -77,10 +79,10 @@ class _MapScreenState extends State<Mappa> {
 
   Future<Map<String, String>> loadJson() async {
     final jsonA = await DefaultAssetBundle.of(context).loadString('assets/loadjson/musei.json');
-    final jsonB = await DefaultAssetBundle.of(context).loadString('assets/loadjson/opere.json');
+    //final jsonB = await DefaultAssetBundle.of(context).loadString('assets/loadjson/opere.json');
     return {
       'jsonMusei': jsonA,
-      'jsonOpere': jsonB
+      //'jsonOpere': jsonB
     };
   }
 
@@ -117,7 +119,13 @@ class _MapScreenState extends State<Mappa> {
           position: LatLng(41.906487,12.453641),
           icon: mapMarker,
           onTap: (){
+            setState(() {
+            query = "";
+            print(rows);
+            setResults(query,rows);
+            });
             print('Hai tappato');
+
             pointOnLocation(LatLng(41.906487,12.453641-COSTANTE_DI_OFFSET));
             showModalBottomSheet<void>(
               context: context,
@@ -169,7 +177,7 @@ class _MapScreenState extends State<Mappa> {
                         Expanded(child: Container()),
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                primary: buttonColor,
+                                primary: HexColor(accentuatoColor),
                                 elevation: elevationButton
                             ),
                             onPressed: () {
@@ -208,6 +216,11 @@ class _MapScreenState extends State<Mappa> {
           position: LatLng(41.90308,12.4661811),
           icon: mapMarker,
           onTap: (){
+            setState(() {
+              query = "";
+              print(rows);
+              setResults(query,rows);
+            });
             print('Hai tappato');
             pointOnLocation(LatLng(41.90308,12.4661811-COSTANTE_DI_OFFSET));
             showModalBottomSheet<void>(
@@ -261,7 +274,7 @@ class _MapScreenState extends State<Mappa> {
                           Expanded(child: Container()),
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  primary: buttonColor,
+                                  primary: HexColor(accentuatoColor),
                                   elevation: elevationButton
                               ),
                               onPressed: () {
@@ -300,6 +313,11 @@ class _MapScreenState extends State<Mappa> {
           position: LatLng(41.892944,12.482558),
           icon: mapMarker,
           onTap: (){
+            setState(() {
+              query = "";
+              print(rows);
+              setResults(query,rows);
+            });
             print('Hai tappato');
             pointOnLocation(LatLng(41.892944,12.482558-COSTANTE_DI_OFFSET));  // This is shifted for the lng by -0.0053: from (41.892944,12.482558) to(41.892944,12.477258)
             showModalBottomSheet<void>(
@@ -353,7 +371,7 @@ class _MapScreenState extends State<Mappa> {
                             Expanded(child: Container()),
                             ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                    primary: buttonColor,
+                                    primary: HexColor(accentuatoColor),
                                     elevation: elevationButton
                                 ),
                                 onPressed: () {
@@ -392,6 +410,11 @@ class _MapScreenState extends State<Mappa> {
           position: LatLng(41.9083963664,12.4885313792),
           icon: mapMarker,
           onTap: (){
+            setState(() {
+              query = "";
+              print(rows);
+              setResults(query,rows);
+            });
             print('Hai tappato');
             pointOnLocation(LatLng(41.9083963664,12.4885313792-COSTANTE_DI_OFFSET));  // This is shifted for the lng by -0.0053: from (41.892944,12.482558) to(41.892944,12.477258)
             showModalBottomSheet<void>(
@@ -444,7 +467,7 @@ class _MapScreenState extends State<Mappa> {
                             Expanded(child: Container()),
                             ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                    primary: buttonColor,
+                                    primary: HexColor(accentuatoColor),
                                     elevation: elevationButton
                                 ),
                                 onPressed: () {
@@ -489,14 +512,14 @@ class _MapScreenState extends State<Mappa> {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      color: Colors.white,
+      color: HexColor(primoColor),
       child: SafeArea(
         child: FutureBuilder(
                 future: loadJson(),
                 builder: (context, snapshot){
                   if (snapshot.hasData) {
                     var rows = json.decode(snapshot.data['jsonMusei'].toString());
-                    rows = new List<dynamic>.from(rows)..addAll(json.decode(snapshot.data['jsonOpere'].toString()));
+                    //rows = new List<dynamic>.from(rows)..addAll(json.decode(snapshot.data['jsonOpere'].toString()));
 
                     return Stack(
                       children: [
@@ -513,15 +536,16 @@ class _MapScreenState extends State<Mappa> {
                             ),
                             floatingActionButton: FloatingActionButton.extended(
                               onPressed: _currentLocation,
-                              backgroundColor: Colors.white,
+                              backgroundColor: HexColor(primoColor),
                               focusColor: Colors.red,
-                              foregroundColor: Colors.amber[400],
+                              foregroundColor: HexColor(bianco),
                               hoverColor: Colors.white,
                               splashColor: Colors.white,
                               label: Icon(Icons.location_on),
                             )
                         ),
-                        Column(children: [
+                        Column(crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
                         Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -555,7 +579,14 @@ class _MapScreenState extends State<Mappa> {
                                       hintText: searchbarText,
                                       hintStyle: TextStyle(color: searchbarTextColor),
                                       suffixIcon: IconButton(
-                                        onPressed: () => tc.clear(),
+                                        onPressed: () => {
+                                          tc.clear(),
+                                          setState(() {
+                                            query = "";
+                                            print(rows);
+                                            setResults(query,rows);
+                                          }),
+                                        },
                                         icon: Icon(Icons.clear),
                                       ),
                                     ),
@@ -584,46 +615,50 @@ class _MapScreenState extends State<Mappa> {
                             child: Column(children : [
                               //SizedBox(width: double.infinity,child: AutoSizeText("  Recenti",style: TextStyle(color: Colors.black54,height: 2,fontSize: 23),textAlign: TextAlign.left)),
                               //Divider(color: Colors.black54,),
-                              SizedBox(height: 5,),
-                              Expanded(
+                              SizedBox(width: MediaQuery. of(context). size.width),
+                              results.isEmpty ? Container() : Container(height: (results.length > 10) ? 300 : results.length * 50.0, width: MediaQuery. of(context). size.width * 0.87,
                                   child: ListView.builder(
-                                    padding: EdgeInsets.only(top:10.0),
-                                    shrinkWrap: true,
-                                    itemCount: results.length,
-                                    itemBuilder: (con, ind) {
-                                      return Container(
-                                          height: 50,
-                                          width: 200,
-                                          color: Colors.white,
-                                          child : ListTile(
-                                            title: AutoSizeText(results[ind]['title'],style: TextStyle(color: listviewTitleColor)),
-                                            onTap: () {
-                                              print("Hai cliccato nella listview");
+                                shrinkWrap: true,
+                                itemCount: results.length,
+                                itemBuilder: (con, ind) {
+                                  return Container(
+                                      height: 50,
+                                      width: 200,
+                                      color: Colors.white,
+                                      child : ListTile(
+                                        title: AutoSizeText(results[ind]['title'],style: TextStyle(color: listviewTitleColor)),
+                                        onTap: () {
+                                          setState(() {
+                                            query = "";
+                                            print(rows);
+                                            setResults(query,rows);
+                                          });
+                                          print("Hai cliccato nella listview");
 
-                                              String titolo = results[ind]['title'];
+                                          String titolo = results[ind]['title'];
 
-                                              for (var i = 0; i < markers.length; i++){
-                                                if (markers[i].markerId == MarkerId(titolo)){
-                                                  print(markers[i].markerId);
-                                                  print(titolo);
-                                                  print(MarkerId(titolo));
-                                                  print(markers[i].markerId == MarkerId(titolo));
-                                                  pointOnLocation(LatLng(markers[i].position.latitude,markers[i].position.longitude-COSTANTE_DI_OFFSET));
-                                                }
-                                              };
+                                          for (var i = 0; i < markers.length; i++){
+                                            if (markers[i].markerId == MarkerId(titolo)){
+                                              print(markers[i].markerId);
+                                              print(titolo);
+                                              print(MarkerId(titolo));
+                                              print(markers[i].markerId == MarkerId(titolo));
+                                              pointOnLocation(LatLng(markers[i].position.latitude,markers[i].position.longitude-COSTANTE_DI_OFFSET));
+                                            }
+                                          };
 
-                                              if(titoli.contains(results[ind]['title'])==false){
-                                                titoli.add(results[ind]['title']);
-                                                recentiMappa.insert(0,results[ind]);
-                                              };
-                                              print(recentiMappa);
+                                          if(titoli.contains(results[ind]['title'])==false){
+                                            titoli.add(results[ind]['title']);
+                                            recentiMappa.insert(0,results[ind]);
+                                          };
+                                          print(recentiMappa);
 
 
-                                            },
-                                          ));
-                                    },
-                                  )
-                              )
+                                        },
+                                      ));
+                                },
+                              ))
+
 
                             ])),
                       ],

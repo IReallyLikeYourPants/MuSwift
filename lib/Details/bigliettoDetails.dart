@@ -4,6 +4,7 @@ import 'package:prova_app/Object/biglietto.dart';
 import 'package:prova_app/main.dart';
 import 'package:prova_app/Biglietti.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:prova_app/constant.dart';
 
 import 'dart:io';
 import 'dart:typed_data';
@@ -57,13 +58,13 @@ class _bigliettoDetailsState extends State<bigliettoDetails> {
     return Scaffold(
         appBar: AppBar(
           leading: GestureDetector(
-            child: Icon(Icons.arrow_back, color: Colors.black,),
+            child: Icon(Icons.arrow_back, color: HexColor(bianco),),
             onTap: (){
               Navigator.pop(context);
             },
           ),
-          title: AutoSizeText('Prenotazione', style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
-          backgroundColor: Colors.white,
+          title: AutoSizeText('Prenotazione', style: TextStyle(color: HexColor(bianco), fontWeight: titleFontWeight)),
+          backgroundColor: HexColor(primoColor),
         ),
         body: Container(
             padding: const EdgeInsets.all(20),
@@ -116,7 +117,7 @@ class _bigliettoDetailsState extends State<bigliettoDetails> {
                 Expanded(child: Container()),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: buttonColor,
+                        primary: HexColor(accentuatoColor),
                         elevation: elevationButton
                     ),
                     onPressed: () {
@@ -139,23 +140,36 @@ class _bigliettoDetailsState extends State<bigliettoDetails> {
                 SizedBox(height: 10,),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: buttonColor,
+                        primary: HexColor(accentuatoColor),
                         elevation: elevationButton
                     ),
                     onPressed: () => {
                       // We need to prepare the test PDF, and then we can display the PDF.
                       prepareTestPdf().then((path) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => FullPdfViewerScreen(path)),
+                        Navigator.of(context).push(new PageRouteBuilder(
+                            opaque: true,
+                            transitionDuration: Duration(milliseconds: 225),
+                            pageBuilder: (BuildContext context, _, __) {
+                              return new FullPdfViewerScreen(path);
+                            },
+                            transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
+
+                              return new SlideTransition(
+                                child: child,
+                                position: new Tween<Offset>(
+                                  begin: const Offset(1, 0),
+                                  end: Offset.zero,
+                                ).animate(animation),
+                              );
+                            }
+                        )
                         );
                       })
                     },
                     child: Container(
                       width: double.infinity,
                       child: AutoSizeText(
-                        "SCARICA PDF",
+                        "VISUALIZZA PDF",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: textButtonColor,
@@ -182,7 +196,8 @@ class FullPdfViewerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return PDFViewerScaffold(
         appBar: AppBar(
-          title: Text("Document"),
+            backgroundColor: HexColor(primoColor),
+          title: AutoSizeText("PDF", style: TextStyle(color: HexColor(bianco))),
         ),
         path: pdfPath);
   }

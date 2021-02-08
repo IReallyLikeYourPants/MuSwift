@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:prova_app/Object/biglietto.dart';
 import 'package:prova_app/Details/bigliettoDetails.dart';
+import 'package:prova_app/constant.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 const String testoSenzaBiglietti = "Non hai prenotato alcun biglietto.";
 const double tSBsize = 20;
@@ -36,8 +38,8 @@ class _HomeState extends State<Biglietti> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new AutoSizeText("Biglietto", style: TextStyle(color: Colors.black, fontWeight: titleFontWeight)),
-          backgroundColor: Colors.white,
+          title: new AutoSizeText("Biglietto", style: TextStyle(color: HexColor(bianco), fontWeight: titleFontWeight)),
+          backgroundColor: HexColor(primoColor),
         ),
         body: Container(
           padding: EdgeInsets.all((10)),
@@ -64,7 +66,7 @@ class _HomeState extends State<Biglietti> {
                       child: ListTile(
                         title:AutoSizeText(prenotati[ind].museo,style: TextStyle(color: listviewTitleColor, fontWeight: FontWeight.bold)),
                         subtitle: AutoSizeText(prenotati[ind].data,style: TextStyle(color: listviewSubtitleColor)),
-                        trailing: Icon(Icons.arrow_forward_ios_rounded),
+                        trailing: Icon(Icons.arrow_forward_ios_rounded, color: HexColor(accentuatoColor)),
                         onTap: () async {
                           final value = await Navigator.of(context).push(new PageRouteBuilder(
                               opaque: true,

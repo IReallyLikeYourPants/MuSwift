@@ -9,6 +9,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:prova_app/Home.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:prova_app/constant.dart';
 
 import 'package:prova_app/Details/operaDetails5.dart';
 import 'museoPage.dart';
@@ -123,12 +124,12 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
                       appBar: yo.isEmpty ?
                       AppBar( //yo serve per risolvere un bug
                         leading: GestureDetector(
-                          child: Icon(Icons.arrow_back, color: Colors.black,),
+                          child: Icon(Icons.arrow_back, color: HexColor(bianco),),
                           onTap: (){
                             Navigator.pop(context);
                           },
                         ),
-                        backgroundColor: HexColor(barColor),
+                        backgroundColor: HexColor(primoColor),
                         title: Theme(
                             child : Container(
                               padding: EdgeInsets.only(left: 10),

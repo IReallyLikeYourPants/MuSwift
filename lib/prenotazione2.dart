@@ -10,10 +10,9 @@ import 'package:prova_app/Biglietti.dart';
 import 'package:prova_app/museoPage.dart';
 import 'package:prova_app/main.dart';
 import 'package:flutter/services.dart';
+import 'package:prova_app/constant.dart';
 
-const Color statusBarColor = Colors.white;
 const Color backgroundColor = Colors.white;
-const Color topColor = Colors.blue;
 
 const double topSizePercentage = 0.15;
 
@@ -97,7 +96,7 @@ class _prenotazioneState extends State<prenotazione> {
     final GlobalKey<FormState> _formKey2 = GlobalKey<FormState>();
 
     return Container(
-      color : statusBarColor,
+      color : HexColor(primoColor),
       child: SafeArea(
         child: Scaffold(
             resizeToAvoidBottomPadding: false,
@@ -106,7 +105,7 @@ class _prenotazioneState extends State<prenotazione> {
                 Container(
                   width: double.infinity,
                   height: double.infinity,
-                  color: topColor,
+                  color: HexColor(primoColor),
                 ),
                 Column(
                   children: [
@@ -253,7 +252,7 @@ class _prenotazioneState extends State<prenotazione> {
                           Expanded(child: Container()),
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  primary: buttonColor,
+                                  primary: HexColor(accentuatoColor),
                                   elevation: elevationButton
                               ),
                               onPressed: () {
@@ -331,12 +330,12 @@ class _prenotazioneState extends State<prenotazione> {
           return Theme(
             data: ThemeData.dark().copyWith(
               colorScheme: ColorScheme.dark(
-                primary: Colors.deepPurple,
-                onPrimary: Colors.white,
-                surface: Colors.blueGrey,
-                onSurface: Colors.yellow,
+                primary: HexColor(accentuatoColor),
+                onPrimary: HexColor("ffffff"),
+                surface: HexColor(primoColor),
+                onSurface: HexColor("ffffff"),
               ),
-              dialogBackgroundColor: Colors.blue[500],
+              dialogBackgroundColor: HexColor(secondoColor),
             ),
             child: child,
           );
@@ -605,7 +604,7 @@ class _prenotazione2State extends State<prenotazione2> {
   Widget build(BuildContext context) {
 
     return Container(
-      color : statusBarColor,
+      color : HexColor(primoColor),
       child: SafeArea(
         child: Scaffold(
           resizeToAvoidBottomPadding: false,
@@ -614,7 +613,7 @@ class _prenotazione2State extends State<prenotazione2> {
                 Container(
                   width: double.infinity,
                   height: double.infinity,
-                  color: topColor,
+                  color: HexColor(primoColor),
                 ),
                 Column(
                   children: [
@@ -680,7 +679,7 @@ class _prenotazione2State extends State<prenotazione2> {
                             Expanded(child: Container()),
                             ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                    primary: buttonColor,
+                                    primary: HexColor(accentuatoColor),
                                     elevation: elevationButton
                                 ),
                                 onPressed: () {
@@ -748,7 +747,7 @@ class riepilogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color : statusBarColor,
+      color : HexColor(primoColor),
       child: SafeArea(
         child: Scaffold(
             resizeToAvoidBottomPadding: false,
@@ -757,7 +756,7 @@ class riepilogo extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   height: double.infinity,
-                  color: topColor,
+                  color: HexColor(primoColor),
                 ),
                 Column(
                   children: [
@@ -849,7 +848,7 @@ class riepilogo extends StatelessWidget {
                           Expanded(child: Container()),
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  primary: buttonColor,
+                                  primary: HexColor(accentuatoColor),
                                   elevation: elevationButton
                               ),
                               onPressed: () {
