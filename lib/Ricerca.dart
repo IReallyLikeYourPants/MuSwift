@@ -662,6 +662,10 @@ class StorageUploadState extends State<Ricerca> with TickerProviderStateMixin{
         elem['stile'].toString()
             .toString()
             .toLowerCase()
+            .contains(query.toLowerCase()) ||
+        elem['autore'].toString()
+            .toString()
+            .toLowerCase()
             .contains(query.toLowerCase())
     )
         .toList();
