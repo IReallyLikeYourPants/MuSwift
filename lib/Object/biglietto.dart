@@ -8,6 +8,8 @@ class biglietto{
   int bambini;
   int costo;
 
+
+
   biglietto(String museo,String luogo){
     this.museo = museo;
     this.luogo = luogo;

@@ -280,9 +280,9 @@ class _museoPageState extends State<museoPage> {
                               SliverPersistentHeader(
                                 delegate: _SliverAppBarDelegate(
                                   TabBar(
-                                    indicatorColor: HexColor(bianco),
-                                    labelColor: HexColor(bianco),
-                                    unselectedLabelColor: HexColor(secondaVarianteColor),
+                                    indicatorColor: HexColor(accentuatoColor),
+                                    labelColor: HexColor(accentuatoColor),
+                                    unselectedLabelColor: HexColor(bianco),
                                     tabs: <Widget>[
                                       Tab(
                                         child: AutoSizeText("INFORMAZIONI",
