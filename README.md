@@ -12,3 +12,5 @@ L’utilizzo di questa app è orientato a chiunque fosse appassionato di opere/m
 persone della zona, ma anche ai turisti alla ricerca dei musei più importanti della città.
 Al suo interno oltre alle informazioni generali di tali beni, è possibile in modo semplice visualizzare
 su mappa i musei nelle vicinanze e prenotare in pochi passi la visita a un determinato museo.
+
+![alt text](https://github.com/Quelehir/MuSwift/blob/main/app_screen/Screenshot_1612807494.png?raw=true)
